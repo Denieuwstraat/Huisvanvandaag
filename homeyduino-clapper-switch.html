@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bouw je eigen Clapper switch met Homeyduino</title>
+
+<meta name="description" content="Bouw je eigen clap switch met een Wemos D1 Mini en Homeyduino. Klap twee keer en start automatisch Homey flows of schakel apparaten in of uit.">
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+line-height:1.7;
+max-width:900px;
+margin:auto;
+padding:20px;
+color:#222;
+}
+
+h1,h2,h3{
+margin-top:40px;
+}
+
+code{
+background:#f4f4f4;
+padding:10px;
+display:block;
+overflow-x:auto;
+}
+
+ul{
+margin-left:20px;
+}
+
+.note{
+background:#f6f6f6;
+padding:15px;
+border-left:4px solid #2a9d8f;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Bouw je eigen ‘Clapper’ switch met Homeyduino</h1>
+
+<p>
+Wie herinnert zich nog de <strong>‘Clapper’</strong>?  
+Deze opvallende Amerikaanse uitvinding uit de jaren 80 en 90 werkte op een verrassend simpele manier:  
+<strong>klappen in je handen en het licht ging aan of uit.</strong>
+</p>
+
+<p>
+Voor die tijd was dat een futuristisch stukje domotica. Tegenwoordig zijn smart homes een stuk geavanceerder, maar het idee achter de Clapper is nog steeds leuk én praktisch.
+</p>
+
+<p>
+Met behulp van <strong>Homey, Homeyduino en een eenvoudige geluidssensor</strong> kun je een moderne versie bouwen die niet alleen lampen schakelt, maar ook complete <strong>Homey flows</strong> kan starten.
+</p>
+
+<p>
+Zelf gebruik ik er inmiddels één op de slaapkamer. Wanneer ik twee keer klap voordat ik ga slapen, schakelt Homey automatisch alle verlichting uit.
+</p>
+
+<h2>Waarom een clap switch nog steeds handig is</h2>
+
+<p>
+Hoewel het concept oud is, zijn er verrassend veel moderne toepassingen:
+</p>
+
+<ul>
+<li>Verlichting uitschakelen wanneer je al in bed ligt</li>
+<li>Een “alles uit” flow starten wanneer je het huis verlaat</li>
+<li>Lampen bedienen wanneer je handen vol zijn</li>
+<li>Een leuke smart-home interactie voor kinderen of gasten</li>
+</ul>
+
+<p>
+Het mooie is dat een simpele geluidssensor via Homeyduino kan worden gekoppeld aan vrijwel elke automatisering die Homey ondersteunt.
+</p>
+
+<h2>Benodigdheden</h2>
+
+<ul>
+<li>Wemos D1 Mini (ESP8266)</li>
+<li>Geluidssensor voor Arduino</li>
+<li>Micro-USB voeding</li>
+<li>Homey Smart Home Hub met Homeyduino app</li>
+<li>Arduino IDE</li>
+</ul>
+
+<p>
+Deze onderdelen zijn goedkoop en eenvoudig te verkrijgen. Vaak kosten ze samen minder dan een standaard smart-home sensor.
+</p>
+
+<h2>Aansluitschema</h2>
+
+<p>Sluit de geluidssensor als volgt aan op de Wemos D1 Mini:</p>
+
+<table>
+<tr>
+<th>Sensor</th>
+<th>Wemos D1 Mini pin</th>
+</tr>
+
+<tr>
+<td>OUT</td>
+<td>D2</td>
+</tr>
+
+<tr>
+<td>VCC</td>
+<td>5V</td>
+</tr>
+
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+
+</table>
+
+<h2>Arduino IDE installeren</h2>
+
+<p>
+Installeer eerst de Arduino IDE. Vervolgens moeten enkele libraries worden toegevoegd.
+</p>
+
+<h3>Homeyduino library installeren</h3>
+
+<p>
+Ga naar:
+</p>
+
+<p><strong>Schets → Bibliotheek gebruiken → Bibliotheken beheren</strong></p>
+
+<p>
+Zoek vervolgens op <strong>Homeyduino</strong> en installeer deze library.
+</p>
+
+<p>
+Zoek daarna ook naar <strong>ESP8266</strong> en installeer deze eveneens.
+</p>
+
+<h3>Wemos board installeren</h3>
+
+<p>
+Ga naar:
+</p>
+
+<p><strong>Hulpmiddelen → Board → Boardbeheer</strong></p>
+
+<p>
+Zoek naar <strong>Wemos D1 Mini</strong> en installeer het board.
+</p>
+
+<h2>Homeyduino clap switch code</h2>
+
+<p>
+Open nu een nieuw Arduino project en vervang de standaard tekst door onderstaande code.
+</p>
+
+<p class="note">
+Let op: vervang <strong>&lt;SSID&gt;</strong> en <strong>&lt;PASSWORD&gt;</strong> door je eigen wifi gegevens.
+</p>
+
+<code>
+
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+#include &lt;Homey.h&gt;
+
+int soundSensor = D2;
+int claps = 0;
+long detectionSpanInitial = 0;
+long detectionSpan = 0;
+boolean ClapState = false;
+
+void wifi() {
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.begin("&lt;SSID&gt;", "&lt;PASSWORD&gt;");
+    uint8_t timeout = 30;
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      if (timeout&lt;1) break;
+    }
+  }
+}
+ 
+void setup() {
+ Serial.begin(9600); 
+  Homey.begin("Sound sensor");
+  Homey.setClass("sensor");
+  pinMode(soundSensor, INPUT);
+ }
+ 
+void loop() {
+
+   wifi();
+   Homey.loop();
+
+   int sensorState = digitalRead(soundSensor);
+
+   if (sensorState == 0)
+   {
+      if (claps == 0)
+      {
+         detectionSpanInitial = detectionSpan = millis();
+         claps++;
+      }
+      else if (claps > 0 && millis()-detectionSpan >= 50)
+      {
+         detectionSpan = millis();
+         claps++;
+      }
+   }
+
+   if (millis()-detectionSpanInitial >= 400)
+   {
+      if (claps == 2)
+      {
+         if (!ClapState)
+         {
+            ClapState = true;
+            Homey.trigger("clap_on",true);
+         }
+         else
+         {
+            ClapState = false;
+            Homey.trigger("clap_off",false);
+         }
+      }
+
+      claps = 0;
+   }
+
+}
+
+</code>
+
+<h2>Uploaden naar de Wemos</h2>
+
+<p>
+Controleer eerst of het juiste board geselecteerd is:
+</p>
+
+<p>
+<strong>LOLIN (Wemos) D1 R2 & Mini</strong>
+</p>
+
+<p>
+Klik daarna op <strong>Upload</strong> om de code naar het board te sturen.
+</p>
+
+<h2>Testen via de seriële monitor</h2>
+
+<p>
+Open de seriële monitor via:
+</p>
+
+<p>
+<strong>Hulpmiddelen → Seriële monitor</strong>
+</p>
+
+<p>
+Wanneer je twee keer klapt zou de sensor een trigger moeten detecteren.
+</p>
+
+<p>
+Probeer ook eens één of drie keer te klappen. De code is zo geschreven dat deze alleen reageert op twee snelle klappen om valse triggers te voorkomen.
+</p>
+
+<h2>Koppelen aan Homey</h2>
+
+<p>
+Open de Homey app en voeg een nieuw apparaat toe:
+</p>
+
+<ul>
+<li>Apparaten</li>
+<li>Homeyduino</li>
+<li>Arduino</li>
+<li>Installeren</li>
+</ul>
+
+<p>
+Kies vervolgens de sensor die je zojuist hebt geconfigureerd.
+</p>
+
+<h2>Homey flow instellen</h2>
+
+<p>
+Gebruik in Homey een <strong>Boolean trigger</strong> met:
+</p>
+
+<ul>
+<li><strong>clap_on</strong></li>
+<li><strong>clap_off</strong></li>
+</ul>
+
+<p>
+Hiermee kun je flows maken zoals:
+</p>
+
+<ul>
+<li>Alle lampen uitschakelen</li>
+<li>Nachtmodus activeren</li>
+<li>Een specifieke lamp schakelen</li>
+</ul>
+
+<h2>Tot slot</h2>
+
+<p>
+Hopelijk heb je nu je eigen moderne versie van de klassieke Clapper gebouwd.
+</p>
+
+<p>
+Het is een simpel maar leuk project dat laat zien hoe makkelijk je zelf slimme automatiseringen kunt maken met Homey en Homeyduino.
+</p>
+
+<p>
+Heb je zelf nog creatieve toepassingen bedacht voor een clap switch?  
+Laat het vooral weten!
+</p>
+
+</body>
+</html>

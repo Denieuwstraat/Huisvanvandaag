@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homeyduino licht- en temperatuursensor: compacte context voor slimmere flows</title>
+  <meta name="description" content="Door lichtsterkte en temperatuur te meten krijgt Homey extra context. Dat maakt flows slimmer en voorkomt onnodig schakelen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
+      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
+      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
+    <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html">Home</a><a href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html" class="active">DIY</a><a href="tutorials.html">Tutorials</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="article-hero">
+  <div class="container article-layout">
+    <div>
+      <div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><a href="diy.html">DIY</a><span>•</span><span>Licht- en temperatuursensor</span></div>
+      <span class="eyebrow">DIY project • contextsensor</span>
+      <h1>Homeyduino licht- en temperatuursensor: compacte context voor slimmere flows</h1>
+      <p class="lead muted">Door lichtsterkte en temperatuur te meten krijgt Homey extra context. Dat maakt flows slimmer en voorkomt onnodig schakelen.</p>
+      <div class="meta-list"><span class="meta-pill">Moeilijkheid: beginner tot gemiddeld</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: licht en klimaat</span></div>
+    </div>
+    <div class="panel">
+      <h3>Waarom dit artikel de moeite waard is</h3>
+      <p class="muted">Niet alleen bouwen om het bouwen, maar een project of achtergrondverhaal met een duidelijke plek in een slim en betaalbaar huis.</p>
+      <div class="check-list">
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Praktisch</strong><br><span class="muted">Toegepast in een echt huis of gebaseerd op een concrete behoefte.</span></div></div>
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Toegankelijk</strong><br><span class="muted">Uitleg in duidelijke stappen, zonder onnodig technisch jargon.</span></div></div>
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Doorvertaald naar Homey</strong><br><span class="muted">Altijd gedacht vanuit automatisering, triggers en praktische flows.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-tight">
+  <div class="container article-layout">
+    <article class="article-body">
+<p class="lead">Een slim huis wordt pas echt slim wanneer het niet alleen reageert op aanwezigheid, maar ook op context. Lichtsterkte en temperatuur zijn daar perfecte voorbeelden van. Ze helpen Homey beslissen of een lamp aan moet, of een ruimte te warm wordt en wanneer een routine logisch voelt.</p>
+<h2 id="waarom">Waarom context belangrijk is</h2>
+<p>De meerwaarde van deze sensor zit niet in één spectaculaire meting, maar in de combinatie. Met lichtsterkte kun je voorkomen dat verlichting overdag onnodig aangaat. Met temperatuur kun je meldingen, ventilatie of comfortflows verfijnen. Samen zorgen ze ervoor dat automatisering minder star wordt.</p>
+<h2 id="benodigd">Benodigdheden</h2>
+<ul>
+  <li>ESP8266 of Wemos D1 Mini</li>
+  <li>LDR of andere lichtsensor</li>
+  <li>DHT11 of vergelijkbare temperatuur-/vochtigheidssensor</li>
+  <li>Homey met Homeyduino</li>
+  <li>Arduino IDE</li>
+</ul>
+<h2 id="software">Software en koppeling</h2>
+<p>In de aangeleverde tekst werd deze sensor al netjes opgezet als een combinatieproject waarbij meerdere capabilities naar Homey worden gestuurd. Dat maakt het niet alleen efficiënter qua hardware, maar ook aantrekkelijker voor de site: één artikel, meerdere toepassingen.</p>
+<pre><code>Homey.addCapability(&quot;measure_temperature&quot;);
+Homey.addCapability(&quot;measure_humidity&quot;);
+Homey.addCapability(&quot;measure_luminance&quot;);</code></pre>
+<p>Voor de lezer is vooral belangrijk dat duidelijk wordt dat je hiermee geen losse gadget bouwt, maar een contextsensor die Homey helpt betere keuzes te maken.</p>
+<h2 id="flows">Voorbeelden van flows</h2>
+<ul>
+  <li>Laat hal- of buitenverlichting alleen aangaan als het daadwerkelijk donker genoeg is.</li>
+  <li>Gebruik temperatuur om te melden dat een zolder of slaapkamer te warm wordt.</li>
+  <li>Koppel licht en temperatuur aan aanwezigheid voor slimmere comfortscènes.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Dit artikel past logisch binnen de DIY-sectie als brug tussen simpele sensoren en uitgebreidere multisensor-projecten. Het laat goed zien hoe betaalbare onderdelen Homey merkbaar slimmer kunnen maken.</p>
+</article>
+    <aside class="side-stack">
+      <div class="toc">
+        <h3>In dit artikel</h3>
+        <a href="#waarom">Waarom context belangrijk is</a><a href="#benodigd">Benodigdheden</a><a href="#software">Software en koppeling</a><a href="#flows">Voorbeelden van flows</a><a href="#conclusie">Conclusie</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>Wat je hierna kunt lezen</h3>
+        <div class="footer-links">
+          <a href="diy.html">Meer DIY projecten</a>
+          <a href="homey.html">Homey als centrale hub</a>
+          <a href="tutorials.html">Tutorials en flows</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
+      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
+    </div>
+    <div>
+      <h4>Start hier</h4>
+      <div class="footer-links">
+        <a href="homey.html">Homey uitgelegd</a>
+        <a href="tutorials.html">Eerste flows en routines</a>
+        <a href="diy.html">DIY projecten</a>
+      </div>
+    </div>
+    <div>
+      <h4>Populaire onderwerpen</h4>
+      <div class="footer-links">
+        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
+        <a href="homeyduino-relay.html">Relay switch</a>
+        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
+      </div>
+    </div>
+    <div>
+      <h4>Praktisch</h4>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="over.html">Over dit blog</a>
+        <a href="#">Privacy & disclaimer</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 huisvanvandaag.nl</span>
+    <span>Gebouwd voor GitHub Pages</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

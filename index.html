@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>huisvanvandaag.nl | Homey, Google Home en DIY smart-home projecten</title>
+  <meta name="description" content="Praktische tutorials, overtuigende Homey flows en DIY Homeyduino projecten waarmee je vandaag je eigen Huis van de Toekomst bouwt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
+      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
+      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
+    <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html" class="active">Home</a><a href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html">DIY</a><a href="tutorials.html">Tutorials</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Slimmer wonen zonder gedoe</span>
+      <h1>Het Huis van de Toekomst, maar dan vandaag.</h1>
+      <p>huisvanvandaag.nl laat zien hoe je met <strong>Homey</strong>, <strong>Google Home</strong> en betaalbare <strong>DIY-projecten</strong> een huis bouwt dat slimmer, comfortabeler en leuker wordt om in te wonen. Verwacht praktische tutorials, heldere automatiseringen en zelfgemaakte Homeyduino projecten — getest in een echt huis.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="homey.html">Begin met Homey</a>
+        <a class="btn btn-ghost" href="diy.html">Bekijk DIY projecten</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>Praktisch</strong><span class="muted">Geen gadgetverzameling, maar oplossingen die thuis echt iets opleveren.</span></div>
+        <div class="stat"><strong>Betaalbaar</strong><span class="muted">Slimme automatisering met haalbare hardware en logische keuzes.</span></div>
+        <div class="stat"><strong>Zelfbouw</strong><span class="muted">Van Homey flows tot ESP8266 en ESP32 projecten met Homeyduino.</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="showcase-card">
+        <div class="showcase-top">
+          <span class="badge">Live smart-home overzicht</span>
+          <span class="small-tag">Homey + Google + DIY</span>
+        </div>
+        <div class="mock-home">
+          <div class="home-grid-lines"></div>
+          <div class="room room-a" data-room="Woonkamer"><span class="device" style="left:22%;top:34%;"></span><span class="device" style="right:20%;bottom:26%;"></span></div>
+          <div class="room room-b" data-room="Keuken"><span class="device" style="left:26%;top:42%;"></span></div>
+          <div class="room room-c" data-room="Hal"><span class="device" style="right:22%;top:36%;"></span></div>
+          <div class="room room-d" data-room="Kantoor"><span class="device" style="left:22%;bottom:24%;"></span><span class="device" style="right:18%;top:28%;"></span></div>
+          <div class="room room-e" data-room="Slaapkamer"><span class="device" style="left:18%;top:34%;"></span><span class="device" style="right:20%;bottom:22%;"></span></div>
+          <div class="room room-f" data-room="Brievenbus"><span class="device" style="left:38%;top:44%;"></span></div>
+        </div>
+      </div>
+      <div class="floating-card flow-card">
+        <div class="label">Flow van vandaag</div>
+        <h3>Thuiskomst-modus</h3>
+        <p class="small muted">Telefoon gedetecteerd, verlichting aan en Google leest meldingen voor die er toe doen.</p>
+      </div>
+      <div class="floating-card sensor-card">
+        <div class="label">DIY project</div>
+        <h3>CO₂ sensor met Homeyduino</h3>
+        <p class="small muted">Meet het binnenklimaat en schakel automatisch ventilatie of waarschuwingen in.</p>
+        <div class="chips"><span class="chip">ESP8266</span><span class="chip">MH-Z19B</span><span class="chip">Praktisch</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="label">Automatisering dekking</div>
+        <strong style="font-size:2rem; display:block; margin-top:.3rem;">87%</strong>
+        <span class="muted">Verlichting, meldingen, comfort en luchtkwaliteit automatisch geregeld.</span>
+        <div class="progress"><span style="width:87%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-tight">
+  <div class="container">
+    <div class="section-header">
+      <div><span class="eyebrow">Start hier</span><h2>In drie stappen naar een slimmer huis</h2></div>
+      <p>Nieuwe bezoeker? Dit zijn de drie routes waar de meeste mensen mee beginnen.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card"><div class="card-icon">🏠</div><h3>Homey uitgelegd</h3><p class="muted">Wat is Homey precies, waarom is het zo geschikt als centrale hub en hoe begin je verstandig?</p><a class="link" href="homey.html">Naar Homey basis →</a></article>
+      <article class="card"><div class="card-icon">⚡</div><h3>Eerste automatiseringen</h3><p class="muted">Flows en routines voor verlichting, thuiskomst, nachtmodus en energiebesparing.</p><a class="link" href="tutorials.html">Bekijk tutorials →</a></article>
+      <article class="card"><div class="card-icon">🔧</div><h3>Zelf bouwen met Homeyduino</h3><p class="muted">Van deurcontact tot CO₂ sensor: projecten die je huis slimmer maken dan standaardproducten.</p><a class="link" href="diy.html">Ontdek DIY →</a></article>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container story-grid">
+    <div class="story-photo"></div>
+    <div class="panel">
+      <span class="eyebrow">Mijn verhaal</span>
+      <h2>Van het Huis van de Toekomst naar een huis dat vandaag met je meedenkt</h2>
+      <p>Als kind maakte het <strong>Huis van de Toekomst</strong> enorme indruk. Klimaatregeling, beeldbellen, spraakherkenning en slimme toegang voelden toen haast buitenaards. Jaren later werd de vraag alleen maar interessanter: <strong>hoeveel van die toekomst kun je vandaag al zelf bouwen?</strong></p>
+      <p>Dat is precies waar dit blog om draait. Niet om gadgets verzamelen, maar om technologie thuis echt nuttig te maken — betaalbaar, praktisch en stap voor stap uitgelegd.</p>
+      <div class="chips"><span class="chip">Homey als hart van het huis</span><span class="chip">Google Home voor routines</span><span class="chip">DIY waar standaard tekortschiet</span></div>
+      <a class="link" href="over.html">Lees het volledige verhaal →</a>
+    </div>
+  </div>
+</section>
+<section class="section-tight">
+  <div class="container">
+    <div class="section-header">
+      <div><span class="eyebrow">Nieuwe en verbeterde artikelen</span><h2>Logisch geplaatst binnen de site</h2></div>
+      <p>De aangeleverde teksten zijn aangescherpt en ondergebracht waar ze het meeste toevoegen: bij DIY voor praktische projecten en bij achtergrond voor het verhaal achter het blog.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card"><h3>CO₂ sensor met Homeyduino</h3><p class="muted">Een betaalbare zelfbouwsensor die luchtkwaliteit zichtbaar maakt en ventilatie kan aansturen.</p><a class="link" href="homeyduino-co2-sensor.html">Lees artikel →</a></article>
+      <article class="card"><h3>Relay switch met Homey en Google</h3><p class="muted">Slim schakelen met een Wemos D1 Mini en een relaymodule, inclusief duidelijke veiligheidswaarschuwing.</p><a class="link" href="homeyduino-relay.html">Lees artikel →</a></article>
+      <article class="card"><h3>Chriet Titulaer en het Huis van de Toekomst</h3><p class="muted">Het achtergrondverhaal dat de rode draad vormt van huisvanvandaag.nl.</p><a class="link" href="chriet-titulaer.html">Lees artikel →</a></article>
+    </div>
+  </div>
+</section>
+<section class="section-soft">
+  <div class="container">
+    <div class="section-header">
+      <div><span class="eyebrow">DIY projecten</span><h2>Homeyduino artikelen op hun logische plek</h2></div>
+      <p>Deze projecten horen thuis in de DIY-sectie: ze zijn uniek, praktisch en laten perfect zien waar het blog zich mee onderscheidt.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card"><div class="card-icon">🌡️</div><h3>Licht- en temperatuursensor</h3><p class="muted">Compact project voor klimaat en lichtgestuurde flows.</p><a class="link" href="homeyduino-licht-temperatuur-sensor.html">Bekijk project →</a></article>
+      <article class="card"><div class="card-icon">🚪</div><h3>Deur- en raamsensor</h3><p class="muted">Eenvoudige contactmelding voor beveiliging, verlichting of regenwaarschuwingen.</p><a class="link" href="homeyduino-deur-raam-sensor.html">Bekijk project →</a></article>
+      <article class="card"><div class="card-icon">👏</div><h3>Clapper switch</h3><p class="muted">Een moderne knipoog naar een klassiek domotica-idee, nu gekoppeld aan Homey.</p><a class="link" href="homeyduino-clapper-switch.html">Bekijk project →</a></article>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container newsletter">
+    <div>
+      <span class="eyebrow">Niets missen?</span>
+      <h2>Ontvang nieuwe flows, tutorials en DIY-projecten in je inbox</h2>
+      <p>Geen spam, wel slimme ideeën voor Homey, Google Home en zelfbouwprojecten die je huis echt beter maken.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Je e-mailadres" aria-label="Je e-mailadres">
+      <button class="btn btn-primary" type="button">Schrijf me in</button>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
+      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
+    </div>
+    <div>
+      <h4>Start hier</h4>
+      <div class="footer-links">
+        <a href="homey.html">Homey uitgelegd</a>
+        <a href="tutorials.html">Eerste flows en routines</a>
+        <a href="diy.html">DIY projecten</a>
+      </div>
+    </div>
+    <div>
+      <h4>Populaire onderwerpen</h4>
+      <div class="footer-links">
+        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
+        <a href="homeyduino-relay.html">Relay switch</a>
+        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
+      </div>
+    </div>
+    <div>
+      <h4>Praktisch</h4>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="over.html">Over dit blog</a>
+        <a href="#">Privacy & disclaimer</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 huisvanvandaag.nl</span>
+    <span>Gebouwd voor GitHub Pages</span>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
