@@ -10,6 +10,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .clapper-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .clapper-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .clapper-hero-media figure,
+    .clapper-hero-media figcaption {
+      margin: 0;
+    }
+
+    .clapper-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .clapper-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .clapper-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .clapper-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .clapper-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .clapper-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .clapper-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .clapper-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .clapper-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 <header class="site-header">
@@ -42,46 +103,80 @@
           <span>•</span>
           <span>Clapper switch</span>
         </div>
+
         <span class="eyebrow">DIY project • Homeyduino</span>
         <h1>Bouw je eigen ‘Clapper’ switch met Homeyduino</h1>
-        <p class="lead muted">Een moderne versie van een klassieker: herken twee klappen met een geluidssensor en gebruik die als trigger voor slimme Homey-flows.</p>
+        <p class="lead muted">
+          Een moderne versie van een klassieker: herken twee klappen met een geluidssensor en gebruik die direct als trigger voor slimme Homey-flows. Dit is een laagdrempelig project dat snel gebouwd is, weinig kost en meteen een zichtbaar resultaat oplevert.
+        </p>
+
         <div class="meta-list">
           <span class="meta-pill">Categorie: DIY</span>
           <span class="meta-pill">Platform: Homeyduino</span>
           <span class="meta-pill">Hardware: Wemos D1 Mini</span>
         </div>
       </div>
-      <div class="panel">
+
+      <div class="panel clapper-info-panel">
         <h3>Waarom dit project leuk én nuttig is</h3>
         <div class="check-list">
           <div class="check-item">
             <span class="check-mark">✓</span>
-            <div><strong>Herkenbaar idee</strong><br><span class="muted">Een moderne vertaling van de originele Clapper.</span></div>
+            <div>
+              <strong>Binnen een uur werkend</strong><br>
+              <span class="muted">Geen gedoe: aansluiten, uploaden en testen. Je hebt snel resultaat.</span>
+            </div>
           </div>
+
           <div class="check-item">
             <span class="check-mark">✓</span>
-            <div><strong>Direct bruikbaar</strong><br><span class="muted">Gebruik twee klappen als trigger voor Homey-flows.</span></div>
+            <div>
+              <strong>Goedkoop project</strong><br>
+              <span class="muted">Voor ± €10–15 bouw je een volledig werkende smart-home trigger.</span>
+            </div>
           </div>
+
           <div class="check-item">
             <span class="check-mark">✓</span>
-            <div><strong>Leuk om te bouwen</strong><br><span class="muted">Eenvoudige hardware met een duidelijk resultaat.</span></div>
+            <div>
+              <strong>Direct toepasbaar in huis</strong><br>
+              <span class="muted">Klap twee keer → verlichting uit, avondmodus aan of meerdere apparaten tegelijk schakelen.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Perfect beginnersproject</strong><br>
+              <span class="muted">Weinig onderdelen, simpele code en meteen een zichtbaar resultaat.</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="section-tight">
-    <div class="container article-layout">
-      <article class="article-body">
+    <div class="container clapper-hero-media">
+      <div class="panel">
         <figure>
           <img src="assets/clapper-switch-homey.png" alt="Illustratie van de originele Clapper naast een moderne smart-home speaker en lamp">
-          <figcaption class="muted small">De originele Clapper was ooit een opvallend stukje huisautomatisering. Dit project vertaalt dat idee naar een moderne Homey-opstelling.</figcaption>
+          <figcaption class="muted small">
+            De originele Clapper was ooit een opvallend stukje huisautomatisering. Dit project vertaalt dat idee naar een moderne Homey-opstelling.
+          </figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
 
-        <p class="lead">Wie hem nog kent, herinnert zich vooral het idee: in je handen klappen en een lamp gaat aan. De originele Clapper uit de jaren 80 en 90 voelde destijds bijna futuristisch. Inmiddels is het concept technisch allang ingehaald, maar juist daardoor is het leuk om er een moderne smart-home versie van te bouwen.</p>
+  <section class="section-tight" style="padding-top: 14px;">
+    <div class="container clapper-content-layout">
+      <article class="article-body clapper-article">
+        <p class="lead">
+          Wie hem nog kent, herinnert zich vooral het idee: in je handen klappen en een lamp gaat aan. De originele Clapper uit de jaren 80 en 90 voelde destijds bijna futuristisch. Inmiddels is het concept technisch allang ingehaald, maar juist daardoor is het leuk om er een moderne smart-home versie van te bouwen.
+        </p>
 
-        <p>Met dit project maak je een geluidsgestuurde sensor die twee klappen herkent en die direct koppelt aan Homey. Daarmee bedien je niet alleen één lamp, maar kun je complete flows, scènes of meerdere apparaten tegelijk activeren.</p>
+        <p>
+          Met dit project maak je een geluidsgestuurde sensor die twee klappen herkent en die direct koppelt aan Homey. Daarmee bedien je niet alleen één lamp, maar kun je complete flows, scènes of meerdere apparaten tegelijk activeren.
+        </p>
 
         <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
         <p>Je bouwt een eenvoudige Homeyduino-opstelling die twee klappen achter elkaar detecteert. Op basis daarvan schakelt het systeem tussen twee toestanden:</p>
@@ -112,7 +207,9 @@
 
         <figure>
           <img src="assets/clapper-bedrading.png" alt="Schema of foto van de geluidssensor aangesloten op een Wemos D1 Mini">
-          <figcaption class="muted small">Een duidelijk bedradingsschema of een scherpe foto van de aansluiting maakt dit project veel toegankelijker voor beginners.</figcaption>
+          <figcaption class="muted small">
+            Een duidelijk bedradingsschema of een scherpe foto van de aansluiting maakt dit project veel toegankelijker voor beginners.
+          </figcaption>
         </figure>
 
         <h3>2. Installeer Arduino IDE en de benodigde libraries</h3>
@@ -138,7 +235,7 @@ void wifi() {
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
-      if (timeout&lt;1) break;
+      if (timeout &lt; 1) break;
     }
     if (WiFi.status() == WL_CONNECTED) {
       Serial.print("Connected to WiFi! (");
@@ -147,50 +244,43 @@ void wifi() {
     }
   }
 }
- 
+
 void setup() {
- Serial.begin(9600); 
+  Serial.begin(9600);
   Homey.begin("Sound sensor");
   Homey.setClass("sensor");
   pinMode(soundSensor, INPUT);
- }
- 
+}
+
 void loop() {
-   wifi();
+  wifi();
   Homey.loop();
- 
+
   int sensorState = digitalRead(soundSensor);
- 
-  if (sensorState == 0)
-  {
-    if (claps == 0)
-    {
+
+  if (sensorState == 0) {
+    if (claps == 0) {
       detectionSpanInitial = detectionSpan = millis();
       claps++;
     }
-    else if (claps &gt; 0 && millis()-detectionSpan &gt;= 50)
-    {
+    else if (claps &gt; 0 && millis() - detectionSpan &gt;= 50) {
       detectionSpan = millis();
       claps++;
     }
   }
- 
-  if (millis()-detectionSpanInitial &gt;= 400)
-  {
-    if (claps == 2)
-    {
-      if (!ClapState)
-        {
-          ClapState = true;
-          Serial.println("Licht aan");
-          Homey.trigger("clap_on",true);
-        }
-        else 
-        {
-          ClapState = false;
-          Serial.println("Licht uit");
-          Homey.trigger("clap_off",false);
-        }
+
+  if (millis() - detectionSpanInitial &gt;= 400) {
+    if (claps == 2) {
+      if (!ClapState) {
+        ClapState = true;
+        Serial.println("Licht aan");
+        Homey.trigger("clap_on", true);
+      }
+      else {
+        ClapState = false;
+        Serial.println("Licht uit");
+        Homey.trigger("clap_off", false);
+      }
     }
     claps = 0;
   }
@@ -204,7 +294,9 @@ void loop() {
 
         <figure>
           <img src="assets/clapper-serial-monitor.png" alt="Voorbeeld van seriële monitor-output bij een werkende clapper-switch">
-          <figcaption class="muted small">Een screenshot van de seriële monitor laat direct zien wat je mag verwachten tijdens het testen.</figcaption>
+          <figcaption class="muted small">
+            Een screenshot van de seriële monitor laat direct zien wat je mag verwachten tijdens het testen.
+          </figcaption>
         </figure>
 
         <h2 id="integratie">Integratie met Homey</h2>
@@ -218,7 +310,9 @@ void loop() {
 
         <figure>
           <img src="assets/clapper-homey-flow.png" alt="Voorbeeld van een Homey-flow die reageert op clap_on en clap_off">
-          <figcaption class="muted small">Een echte Homey-flow screenshot is hier waardevoller dan extra tekst, omdat lezers meteen zien hoe de trigger in de praktijk wordt gebruikt.</figcaption>
+          <figcaption class="muted small">
+            Een echte Homey-flow screenshot is hier waardevoller dan extra tekst, omdat lezers meteen zien hoe de trigger in de praktijk wordt gebruikt.
+          </figcaption>
         </figure>
 
         <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
@@ -226,7 +320,9 @@ void loop() {
 
         <figure>
           <img src="assets/clapper-opstelling.png" alt="Foto van de uiteindelijke Clapper-opstelling in een ruimte">
-          <figcaption class="muted small">Een foto van de definitieve opstelling vergroot het vertrouwen en laat zien dat het project ook buiten de werkbank bruikbaar is.</figcaption>
+          <figcaption class="muted small">
+            Een foto van de definitieve opstelling vergroot het vertrouwen en laat zien dat het project ook buiten de werkbank bruikbaar is.
+          </figcaption>
         </figure>
 
         <h2 id="aandachtspunten">Aandachtspunten</h2>

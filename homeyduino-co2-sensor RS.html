@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- PAGINATITEL -->
   <title>Bouw je eigen slimme CO₂ sensor met Homeyduino | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
   <meta name="description" content="Bouw een betaalbare CO₂ sensor met een MH-Z19B, Wemos D1 Mini en Homeyduino. Meet het binnenklimaat, bekijk waardes in Homey Insights en gebruik ze als trigger voor flows.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,6 +99,7 @@
 </header>
 
 <main>
+  <!-- HERO -->
   <section class="article-hero">
     <div class="container article-layout">
       <div>
@@ -111,7 +115,7 @@
         <h1>Bouw je eigen slimme CO₂ sensor met Homeyduino</h1>
 
         <p class="lead muted">
-          Met een MH-Z19B sensor, een Wemos D1 Mini en Homeyduino bouw je zelf een slimme CO₂ sensor die je binnenklimaat bewaakt en direct bruikbaar is in Homey-flows.
+          CO₂ is verraderlijk: je ziet het niet, je ruikt het niet, maar je voelt het vaak pas als de ruimte al te lang dicht zit. Met een MH-Z19B, een Wemos D1 Mini en Homeyduino bouw je een betaalbare sensor die van dat onzichtbare probleem iets meetbaars én bruikbaars maakt.
         </p>
 
         <div class="meta-list">
@@ -121,22 +125,23 @@
         </div>
       </div>
 
+      <!-- RECHTER INFOBLOK -->
       <div class="panel project-info-panel">
         <h3>Waarom dit project leuk én nuttig is</h3>
         <div class="check-list">
           <div class="check-item">
             <span class="check-mark">✓</span>
             <div>
-              <strong>Betaalbare zelfbouw</strong><br>
-              <span class="muted">Je bouwt deze CO₂ sensor met beperkte middelen, zonder meteen uit te komen op kant-en-klare meters van honderden euro’s.</span>
+              <strong>Goedkoop, maar slim gedrag</strong><br>
+              <span class="muted">Voor relatief weinig geld bouw je geen simpel metertje, maar een sensor die je huis helpt begrijpen wanneer ventileren verstandig wordt.</span>
             </div>
           </div>
 
           <div class="check-item">
             <span class="check-mark">✓</span>
             <div>
-              <strong>Nuttig in huis</strong><br>
-              <span class="muted">De sensor helpt om een te hoge CO₂-concentratie binnenshuis sneller op te merken en op tijd te ventileren.</span>
+              <strong>Je maakt het onzichtbare zichtbaar</strong><br>
+              <span class="muted">CO₂ is precies zo’n waarde die je meestal pas opmerkt als je je al loom of benauwd begint te voelen.</span>
             </div>
           </div>
 
@@ -144,7 +149,7 @@
             <span class="check-mark">✓</span>
             <div>
               <strong>Direct zichtbaar in Homey</strong><br>
-              <span class="muted">Je kunt het verloop van de metingen volgen via Homey Insights en de sensor gebruiken in flows.</span>
+              <span class="muted">Je volgt de metingen via Homey Insights en gebruikt ze direct als trigger voor flows.</span>
             </div>
           </div>
 
@@ -152,21 +157,22 @@
             <span class="check-mark">✓</span>
             <div>
               <strong>Praktische automatisering</strong><br>
-              <span class="muted">De gemeten CO₂-waarde kan dienen als trigger om bijvoorbeeld mechanische ventilatie automatisch aan te sturen.</span>
+              <span class="muted">De gemeten CO₂-waarde kan bijvoorbeeld automatisch ventilatie inschakelen nog voordat jij denkt: het voelt hier wat muf.</span>
             </div>
           </div>
 
           <div class="check-item">
             <span class="check-mark">✓</span>
             <div>
-              <strong>Makkelijk uit te breiden</strong><br>
-              <span class="muted">Wil je meer meten, dan kun je later ook kiezen voor een multi-sensor met extra metingen zoals temperatuur en luchtvochtigheid.</span>
+              <strong>Mooi startpunt voor meer</strong><br>
+              <span class="muted">Wie eenmaal gewend is aan dit soort slimme metingen, wil al snel ook temperatuur, luchtvochtigheid of licht meenemen.</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- HERO AFBEELDING -->
     <div class="container project-hero-media">
       <div class="panel">
         <figure>
@@ -179,16 +185,17 @@
     </div>
   </section>
 
+  <!-- CONTENT -->
   <section class="section-tight" style="padding-top: 14px;">
     <div class="container project-content-layout">
       <article class="article-body project-article">
 
         <p class="lead">
-          Een gezond binnenklimaat krijgt steeds meer aandacht, en dat is logisch. Zeker in goed geïsoleerde woningen blijft de lucht langer hangen, waardoor CO₂ zich binnenshuis kan ophopen. Juist daarom is het interessant om die waarde niet alleen af en toe te meten, maar continu te volgen.
+          Een gezond binnenklimaat krijgt steeds meer aandacht, en dat is logisch. Zeker in goed geïsoleerde woningen blijft lucht langer hangen, waardoor CO₂ binnenshuis ongemerkt kan oplopen. Juist dat maakt deze sensor interessant: hij meet iets wat je zelf vaak te laat opmerkt.
         </p>
 
         <p>
-          Met dit project bouw je zelf een slimme CO₂ sensor die meet, logt en samenwerkt met Homey. Daarmee zie je niet alleen hoe de luchtkwaliteit zich door de dag heen ontwikkelt, maar kun je ook automatiseren zodra ventileren echt nodig is.
+          Met dit project bouw je zelf een slimme CO₂ sensor die meet, logt en samenwerkt met Homey. Daarmee zie je niet alleen hoe de luchtkwaliteit zich door de dag heen ontwikkelt, maar kun je ook automatisch laten ingrijpen zodra ventileren echt verstandig wordt.
         </p>
 
         <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
@@ -197,7 +204,7 @@
           <li><strong>CO₂ meten</strong> → De MH-Z19B meet de concentratie koolstofdioxide in ppm en geeft die waarde door aan de microcontroller.</li>
           <li><strong>Automatiseren met Homey</strong> → De gemeten waarde wordt zichtbaar in Homey en kan daarna worden gebruikt als trigger voor flows en ventilatie-aansturing.</li>
         </ul>
-        <p>Het resultaat is een compacte en betaalbare sensoroplossing waarmee je jouw smart home niet alleen slimmer, maar ook praktischer maakt voor dagelijks gebruik.</p>
+        <p>Het resultaat is een compacte sensoroplossing die niet alleen meet, maar je woning ook een klein beetje vooruitziender maakt.</p>
 
         <h2 id="benodigdheden">Benodigdheden</h2>
         <ul>
@@ -207,8 +214,6 @@
           <li>Homey met de Homeyduino-app geïnstalleerd</li>
           <li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
         </ul>
-
-        <div id="affiliate-benodigdheden-co2"></div>
 
         <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 
@@ -242,15 +247,20 @@
 #include &lt;MHZ.h&gt;
 #include &lt;Homey.h&gt;
 
-#define CO2_IN D2
-#define MH_Z19_RX D6
-#define MH_Z19_TX D5
+// pin for pwm reading
+#define CO2_IN D2 // D2 19
+
+// pin for uart reading
+#define MH_Z19_RX D6 // RX 21 D6
+// In this sketch we will only be using the pwm reading, however when we delete
+// the uart part of the code, the sketch stops working, so leave it in.
+#define MH_Z19_TX D5 // TX 22 D5
 
 MHZ co2(MH_Z19_RX, MH_Z19_TX, CO2_IN, MHZ19B);
 
 void wifi() {
   if (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin(&quot;&lt;SSID&gt;&quot;, &quot;&lt;PASSWORD&gt;&quot;);
+    WiFi.begin(&quot;&lt;SSID&gt;&quot;, &quot;&lt;PASSWORD&gt;&quot;); // Fill in Wifi and password
     uint8_t timeout = 30;
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
@@ -399,16 +409,6 @@ void loop() {
   </div>
 </footer>
 
-<script src="affiliate-products-v2.js"></script>
-<script src="affiliate-products-v2-addons.js"></script>
-<script src="affiliate-components-v2.js"></script>
 <script src="script.js"></script>
-<script>
-  renderAffiliateRequirementsListV2("affiliate-benodigdheden-co2", {
-    title: "Benodigdheden met directe links",
-    intro: "Dit zijn de twee onderdelen waar dit project echt op draait. Slim kiezen scheelt zoektijd, twijfel en vaak ook geld.",
-    products: ["wemos_d1_mini", "mh_z19b"]
-  });
-</script>
 </body>
 </html>

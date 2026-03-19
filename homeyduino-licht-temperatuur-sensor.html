@@ -34,13 +34,9 @@
       <div class="meta-list"><span class="meta-pill">Moeilijkheid: beginner tot gemiddeld</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: licht en klimaat</span></div>
     </div>
     <div class="panel">
-      <h3>Waarom dit artikel de moeite waard is</h3>
-      <p class="muted">Niet alleen bouwen om het bouwen, maar een project of achtergrondverhaal met een duidelijke plek in een slim en betaalbaar huis.</p>
-      <div class="check-list">
-        <div class="check-item"><span class="check-mark">✓</span><div><strong>Praktisch</strong><br><span class="muted">Toegepast in een echt huis of gebaseerd op een concrete behoefte.</span></div></div>
-        <div class="check-item"><span class="check-mark">✓</span><div><strong>Toegankelijk</strong><br><span class="muted">Uitleg in duidelijke stappen, zonder onnodig technisch jargon.</span></div></div>
-        <div class="check-item"><span class="check-mark">✓</span><div><strong>Doorvertaald naar Homey</strong><br><span class="muted">Altijd gedacht vanuit automatisering, triggers en praktische flows.</span></div></div>
-      </div>
+      <h3>Wat je in dit artikel leert</h3>
+      <p class="muted">Hoe je met een LDR en een DHT11 een compacte licht- en temperatuursensor bouwt die Homey helpt slimmere keuzes te maken.</p>
+      <div class="chips"><span class="chip">Homeyduino</span><span class="chip">ESP8266</span><span class="chip">Contextsensor</span></div>
     </div>
   </div>
 </section>
@@ -59,11 +55,11 @@
   <li>Arduino IDE</li>
 </ul>
 <h2 id="software">Software en koppeling</h2>
-<p>In de aangeleverde tekst werd deze sensor al netjes opgezet als een combinatieproject waarbij meerdere capabilities naar Homey worden gestuurd. Dat maakt het niet alleen efficiënter qua hardware, maar ook aantrekkelijker voor de site: één artikel, meerdere toepassingen.</p>
+<p>Dit project combineert meerdere capabilities in één sensor: lichtsterkte, temperatuur en vochtigheid worden allemaal via Homeyduino naar Homey gestuurd. Zo bouw je niet alleen een sensor, maar een contextsensor die Homey helpt betere keuzes te maken.</p>
 <pre><code>Homey.addCapability(&quot;measure_temperature&quot;);
 Homey.addCapability(&quot;measure_humidity&quot;);
 Homey.addCapability(&quot;measure_luminance&quot;);</code></pre>
-<p>Voor de lezer is vooral belangrijk dat duidelijk wordt dat je hiermee geen losse gadget bouwt, maar een contextsensor die Homey helpt betere keuzes te maken.</p>
+<p>Je bouwt hiermee geen losse gadget, maar een contextsensor die Homey helpt betere keuzes te maken.</p>
 <h2 id="flows">Voorbeelden van flows</h2>
 <ul>
   <li>Laat hal- of buitenverlichting alleen aangaan als het daadwerkelijk donker genoeg is.</li>
@@ -71,7 +67,7 @@ Homey.addCapability(&quot;measure_luminance&quot;);</code></pre>
   <li>Koppel licht en temperatuur aan aanwezigheid voor slimmere comfortscènes.</li>
 </ul>
 <h2 id="conclusie">Conclusie</h2>
-<p>Dit artikel past logisch binnen de DIY-sectie als brug tussen simpele sensoren en uitgebreidere multisensor-projecten. Het laat goed zien hoe betaalbare onderdelen Homey merkbaar slimmer kunnen maken.</p>
+<p>Met betaalbare onderdelen maak je Homey merkbaar slimmer. Dit project past als brug tussen eenvoudige sensoren en uitgebreidere multisensor-projecten, en laat zien hoe context-informatie automatisering verbetert.</p>
 </article>
     <aside class="side-stack">
       <div class="toc">
