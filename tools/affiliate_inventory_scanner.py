@@ -9,12 +9,12 @@ from pathlib import Path
 from typing import Iterable
 
 SECTION_HEADING_PATTERN = re.compile(
-    r"<h([1-6])[^>]*>(.*?)</h\\1>",
+    r"<h([1-6])[^>]*>(.*?)</h\1>",
     re.IGNORECASE | re.DOTALL,
 )
-LIST_ITEM_PATTERN = re.compile(r"<li\\b[^>]*>(.*?)</li>", re.IGNORECASE | re.DOTALL)
+LIST_ITEM_PATTERN = re.compile(r"<li\b[^>]*>(.*?)</li>", re.IGNORECASE | re.DOTALL)
 TAG_PATTERN = re.compile(r"<[^>]+>")
-WHITESPACE_PATTERN = re.compile(r"\\s+")
+WHITESPACE_PATTERN = re.compile(r"\s+")
 HTML_FILES_GLOB = ("*.html", "*.htm")
 
 DEFAULT_PRODUCT_MAP = {
