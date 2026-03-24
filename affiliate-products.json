@@ -1,0 +1,91 @@
+{
+  "wemos_d1_mini": {
+    "name": "WeMos D1 Mini",
+    "description": "Compact ESP8266 ontwikkelbord voor Homeyduino, sensoren en DIY smart home projecten.",
+    "images": [
+      "assets/wemos-d1-mini-1.jpg",
+      "assets/wemos-d1-mini-2.jpg",
+      "assets/wemos-d1-mini-3.jpg",
+      "assets/wemos-d1-mini-4.jpg",
+      "assets/wemos-d1-mini-5.jpg",
+      "assets/wemos-d1-mini-6.jpg"
+    ],
+    "aliases": [
+      "wemos d1 mini",
+      "wemos d1 mini pro",
+      "wemod d1 mini",
+      "d1 mini",
+      "nodemcu",
+      "node mcu",
+      "esp8266",
+      "esp-8266"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c3O1etpl",
+        "label": "Goedkoopste optie",
+        "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
+      }
+    ]
+  },
+  "mh_z19b": {
+    "name": "MH-Z19B CO₂ sensor",
+    "description": "Veelgebruikte NDIR CO₂-sensor voor binnenluchtmetingen en Homeyduino-projecten.",
+    "images": [
+      "assets/mh-z19b-1.jpg",
+      "assets/mh-z19b-2.jpg",
+      "assets/mh-z19b-3.jpg",
+      "assets/mh-z19b-4.jpg",
+      "assets/mh-z19b-5.jpg"
+    ],
+    "aliases": [
+      "mh-z19b",
+      "mh z19b",
+      "mh-z19c",
+      "mh z19c",
+      "mhz19b",
+      "mhz19c",
+      "co2 sensor",
+      "co₂ sensor",
+      "co2-meter",
+      "co₂-meter",
+      "co2 meter",
+      "co₂ meter",
+      "infrared carbon dioxide sensor",
+      "ndir co2 sensor"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c3bDOH19",
+        "label": "Meest logische budgetoptie",
+        "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
+      }
+    ]
+  }
+}
