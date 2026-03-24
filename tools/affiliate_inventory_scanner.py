@@ -35,10 +35,30 @@ DEFAULT_PRODUCT_MAP = {
     ],
 }
 
+DEFAULT_EXCLUDED_DIR_NAMES = {
+    ".git",
+    ".github",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "node_modules",
+    "tools",
+}
+
+DEFAULT_DRAFT_FILENAME_PATTERNS = [
+    re.compile(r"^#", re.IGNORECASE),
+    re.compile(r"\bkopie\b", re.IGNORECASE),
+    re.compile(r"\bcopy\b", re.IGNORECASE),
+    re.compile(r"\brs\b", re.IGNORECASE),
+    re.compile(r"\bdefinitief\b", re.IGNORECASE),
+    re.compile(r"\bv\d+\b", re.IGNORECASE),
+]
+
 
 @dataclass
 class ArticleInventory:
     file: str
+    relative_path: str
     title: str | None
     benodigdheden_heading: str | None
     benodigdheden: list[str]
@@ -90,22 +110,21 @@ def match_products(benodigdheden: Iterable[str], product_map: dict[str, list[str
     normalized_items = [normalize_for_match(item) for item in benodigdheden]
 
     for product_key, aliases in product_map.items():
-        alias_hits = 0
         for alias in aliases:
             alias_normalized = normalize_for_match(alias)
             if any(alias_normalized in item for item in normalized_items):
-                alias_hits += 1
-        if alias_hits:
-            matched.append(product_key)
+                matched.append(product_key)
+                break
 
     return sorted(set(matched))
 
 
-def scan_html_file(path: Path, product_map: dict[str, list[str]]) -> ArticleInventory:
+def scan_html_file(path: Path, root: Path, product_map: dict[str, list[str]]) -> ArticleInventory:
     html = path.read_text(encoding="utf-8", errors="ignore")
     heading, benodigdheden = find_benodigdheden_section(html)
     return ArticleInventory(
         file=path.name,
+        relative_path=path.relative_to(root).as_posix(),
         title=extract_title(html),
         benodigdheden_heading=heading,
         benodigdheden=benodigdheden,
@@ -113,13 +132,35 @@ def scan_html_file(path: Path, product_map: dict[str, list[str]]) -> ArticleInve
     )
 
 
-def iter_html_files(root: Path) -> Iterable[Path]:
+def is_in_excluded_dir(path: Path, excluded_dir_names: set[str]) -> bool:
+    return any(part.lower() in excluded_dir_names for part in path.parts)
+
+
+def is_probable_draft_file(path: Path, draft_patterns: list[re.Pattern[str]]) -> bool:
+    stem = path.stem
+    return any(pattern.search(stem) for pattern in draft_patterns)
+
+
+def iter_html_files(
+    root: Path,
+    *,
+    include_drafts: bool,
+    excluded_dir_names: set[str],
+    draft_patterns: list[re.Pattern[str]],
+) -> Iterable[Path]:
     seen: set[Path] = set()
     for pattern in HTML_FILES_GLOB:
         for path in root.rglob(pattern):
-            if path.is_file() and path not in seen:
-                seen.add(path)
-                yield path
+            if not path.is_file():
+                continue
+            if path in seen:
+                continue
+            if is_in_excluded_dir(path.relative_to(root), excluded_dir_names):
+                continue
+            if not include_drafts and is_probable_draft_file(path, draft_patterns):
+                continue
+            seen.add(path)
+            yield path
 
 
 def load_product_map(path: Path | None) -> dict[str, list[str]]:
@@ -133,7 +174,7 @@ def load_product_map(path: Path | None) -> dict[str, list[str]]:
     validated: dict[str, list[str]] = {}
     for key, aliases in data.items():
         if not isinstance(key, str):
-            raise ValueError("Alle product keys moeten strings zijn.")
+            raise ValueError("Alle productkeys moeten strings zijn.")
         if not isinstance(aliases, list) or not all(isinstance(alias, str) for alias in aliases):
             raise ValueError(f"Product '{key}' moet een lijst met string-aliassen hebben.")
         validated[key] = aliases
@@ -150,7 +191,7 @@ def build_markdown_report(items: list[ArticleInventory]) -> str:
     ]
 
     for item in items:
-        lines.append(f"## {item.file}")
+        lines.append(f"## {item.relative_path}")
         if item.title:
             lines.append(f"- Titel: {item.title}")
         lines.append(f"- Benodigdheden-sectie gevonden: {'ja' if item.benodigdheden_heading else 'nee'}")
@@ -171,6 +212,13 @@ def build_markdown_report(items: list[ArticleInventory]) -> str:
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
+
+
+def parse_excluded_dirs(raw_values: list[str] | None) -> set[str]:
+    excluded = {name.lower() for name in DEFAULT_EXCLUDED_DIR_NAMES}
+    if raw_values:
+        excluded.update(value.strip().lower() for value in raw_values if value.strip())
+    return excluded
 
 
 def main() -> int:
@@ -201,6 +249,17 @@ def main() -> int:
         type=Path,
         help="Schrijf de scan ook naar Markdown.",
     )
+    parser.add_argument(
+        "--include-drafts",
+        action="store_true",
+        help="Neem ook concept-, kopie- en RS-bestanden mee in de scan.",
+    )
+    parser.add_argument(
+        "--exclude-dir",
+        action="append",
+        default=[],
+        help="Extra mapnaam om uit te sluiten. Kan meerdere keren gebruikt worden.",
+    )
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
@@ -208,7 +267,19 @@ def main() -> int:
         raise SystemExit(f"Map bestaat niet: {root}")
 
     product_map = load_product_map(args.product_map)
-    results = [scan_html_file(path, product_map) for path in sorted(iter_html_files(root))]
+    excluded_dir_names = parse_excluded_dirs(args.exclude_dir)
+
+    results = [
+        scan_html_file(path, root, product_map)
+        for path in sorted(
+            iter_html_files(
+                root,
+                include_drafts=args.include_drafts,
+                excluded_dir_names=excluded_dir_names,
+                draft_patterns=DEFAULT_DRAFT_FILENAME_PATTERNS,
+            )
+        )
+    ]
 
     payload = [asdict(item) for item in results]
     print(json.dumps(payload, ensure_ascii=False, indent=2))
