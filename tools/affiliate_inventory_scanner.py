@@ -17,24 +17,6 @@ TAG_PATTERN = re.compile(r"<[^>]+>")
 WHITESPACE_PATTERN = re.compile(r"\s+")
 HTML_FILES_GLOB = ("*.html", "*.htm")
 
-DEFAULT_PRODUCT_MAP = {
-    "wemos_d1_mini": [
-        "wemos d1 mini",
-        "wemos d1 mini pro",
-        "nodemcu",
-        "esp8266",
-    ],
-    "mh_z19b": [
-        "mh-z19b",
-        "mh z19b",
-        "mh-z19c",
-        "mh z19c",
-        "co₂ sensor",
-        "co2 sensor",
-        "infrared carbon dioxide sensor",
-    ],
-}
-
 DEFAULT_EXCLUDED_DIR_NAMES = {
     ".git",
     ".github",
@@ -105,6 +87,53 @@ def find_benodigdheden_section(html: str) -> tuple[str | None, list[str]]:
     return None, []
 
 
+def extract_aliases_from_product_data(product_data: dict[str, object], product_key: str) -> list[str]:
+    aliases_raw = product_data.get("aliases", [])
+    aliases: list[str] = []
+
+    if isinstance(aliases_raw, list):
+        aliases.extend(alias for alias in aliases_raw if isinstance(alias, str))
+
+    name = product_data.get("name")
+    if isinstance(name, str) and name.strip():
+        aliases.append(name.strip())
+
+    aliases.append(product_key)
+
+    deduped: list[str] = []
+    seen: set[str] = set()
+
+    for alias in aliases:
+        normalized = normalize_for_match(alias)
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            deduped.append(alias)
+
+    return deduped
+
+
+def build_product_map_from_affiliate_json(path: Path) -> dict[str, list[str]]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("affiliate-products.json moet een object/dictionary op rootniveau zijn.")
+
+    product_map: dict[str, list[str]] = {}
+
+    for product_key, product_data in data.items():
+        if not isinstance(product_key, str):
+            raise ValueError("Alle productkeys in affiliate-products.json moeten strings zijn.")
+        if not isinstance(product_data, dict):
+            raise ValueError(f"Product '{product_key}' moet een object zijn.")
+
+        aliases = extract_aliases_from_product_data(product_data, product_key)
+        if not aliases:
+            raise ValueError(f"Product '{product_key}' heeft geen bruikbare aliases of naam.")
+
+        product_map[product_key] = aliases
+
+    return product_map
+
+
 def match_products(benodigdheden: Iterable[str], product_map: dict[str, list[str]]) -> list[str]:
     matched: list[str] = []
     normalized_items = [normalize_for_match(item) for item in benodigdheden]
@@ -122,6 +151,7 @@ def match_products(benodigdheden: Iterable[str], product_map: dict[str, list[str
 def scan_html_file(path: Path, root: Path, product_map: dict[str, list[str]]) -> ArticleInventory:
     html = path.read_text(encoding="utf-8", errors="ignore")
     heading, benodigdheden = find_benodigdheden_section(html)
+
     return ArticleInventory(
         file=path.name,
         relative_path=path.relative_to(root).as_posix(),
@@ -149,6 +179,7 @@ def iter_html_files(
     draft_patterns: list[re.Pattern[str]],
 ) -> Iterable[Path]:
     seen: set[Path] = set()
+
     for pattern in HTML_FILES_GLOB:
         for path in root.rglob(pattern):
             if not path.is_file():
@@ -159,27 +190,9 @@ def iter_html_files(
                 continue
             if not include_drafts and is_probable_draft_file(path, draft_patterns):
                 continue
+
             seen.add(path)
             yield path
-
-
-def load_product_map(path: Path | None) -> dict[str, list[str]]:
-    if path is None:
-        return DEFAULT_PRODUCT_MAP
-
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise ValueError("Productmap JSON moet een object/dictionary zijn.")
-
-    validated: dict[str, list[str]] = {}
-    for key, aliases in data.items():
-        if not isinstance(key, str):
-            raise ValueError("Alle productkeys moeten strings zijn.")
-        if not isinstance(aliases, list) or not all(isinstance(alias, str) for alias in aliases):
-            raise ValueError(f"Product '{key}' moet een lijst met string-aliassen hebben.")
-        validated[key] = aliases
-
-    return validated
 
 
 def build_markdown_report(items: list[ArticleInventory]) -> str:
@@ -195,20 +208,24 @@ def build_markdown_report(items: list[ArticleInventory]) -> str:
         if item.title:
             lines.append(f"- Titel: {item.title}")
         lines.append(f"- Benodigdheden-sectie gevonden: {'ja' if item.benodigdheden_heading else 'nee'}")
+
         if item.benodigdheden_heading:
             lines.append(f"- Heading: {item.benodigdheden_heading}")
+
         if item.benodigdheden:
             lines.append("- Benodigdheden:")
             for benodigdheid in item.benodigdheden:
                 lines.append(f"  - {benodigdheid}")
         else:
             lines.append("- Benodigdheden: geen lijst gevonden")
+
         if item.matched_product_keys:
             lines.append("- Herkende productkeys:")
             for key in item.matched_product_keys:
                 lines.append(f"  - {key}")
         else:
             lines.append("- Herkende productkeys: geen")
+
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
@@ -221,9 +238,32 @@ def parse_excluded_dirs(raw_values: list[str] | None) -> set[str]:
     return excluded
 
 
+def resolve_affiliate_products_path(root: Path, provided_path: Path | None) -> Path:
+    if provided_path is not None:
+        resolved = provided_path if provided_path.is_absolute() else (Path.cwd() / provided_path).resolve()
+        if not resolved.exists():
+            raise FileNotFoundError(f"affiliate-products.json niet gevonden: {resolved}")
+        return resolved
+
+    candidates = [
+        root / "affiliate-products.json",
+        root / "data" / "affiliate-products.json",
+        root / "config" / "affiliate-products.json",
+        root / "tools" / "affiliate-products.json",
+    ]
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
+
+    raise FileNotFoundError(
+        "Geen affiliate-products.json gevonden. Verwacht op rootniveau of geef expliciet --affiliate-products op."
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Scan HTML-artikelen op een 'Benodigdheden'-sectie en maak een inventory voor affiliate mapping."
+        description="Scan HTML-artikelen op een 'Benodigdheden'-sectie en match producten via affiliate-products.json."
     )
     parser.add_argument(
         "root",
@@ -232,10 +272,10 @@ def main() -> int:
         help="Map waarin HTML-bestanden gescand moeten worden. Standaard: huidige map.",
     )
     parser.add_argument(
-        "--product-map",
-        dest="product_map",
+        "--affiliate-products",
+        dest="affiliate_products",
         type=Path,
-        help="Pad naar JSON-bestand met product aliases. Laat leeg om de standaardmap te gebruiken.",
+        help="Pad naar affiliate-products.json. Laat leeg om automatisch te zoeken.",
     )
     parser.add_argument(
         "--json-out",
@@ -266,7 +306,8 @@ def main() -> int:
     if not root.exists():
         raise SystemExit(f"Map bestaat niet: {root}")
 
-    product_map = load_product_map(args.product_map)
+    affiliate_products_path = resolve_affiliate_products_path(root, args.affiliate_products)
+    product_map = build_product_map_from_affiliate_json(affiliate_products_path)
     excluded_dir_names = parse_excluded_dirs(args.exclude_dir)
 
     results = [
@@ -281,7 +322,11 @@ def main() -> int:
         )
     ]
 
-    payload = [asdict(item) for item in results]
+    payload = {
+        "affiliate_products_source": affiliate_products_path.as_posix(),
+        "scanned_articles": [asdict(item) for item in results],
+    }
+
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
     if args.json_out:
