@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
 
   <style>
     .project-hero-media {
@@ -176,9 +177,9 @@
     <div class="container project-hero-media">
       <div class="panel">
         <figure>
-          <img src="assets/placeholder-co2-multisensor-hero.jpg" alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19B, DHT11 en LDR">
+          <img src="assets/homeyduino-multi-sensor-met-co2-hero.jpg" alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19B, DHT11 en LDR">
           <figcaption class="muted small">
-            Placeholder voor de uiteindelijke hero-afbeelding van de CO₂ multi-sensor.
+           Dit is geen smart home-project, dit is gedragstherapie. We hebben geen 'slimmer' huis nodig, we hebben een trigger nodig dat ons dwingt te doen wat we instinctief vergeten: een raam openzetten.
           </figcaption>
         </figure>
       </div>
@@ -215,14 +216,33 @@
 
         <h2 id="benodigdheden">Benodigdheden</h2>
         <ul>
-          <li>D1 Mini NodeMCU met wifi en 5V</li>
-          <li>Micro USB-oplader</li>
+          <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
+          <li>USB-C oplader</li>
           <li>MH-Z19B CO₂ sensor</li>
           <li>LDR sensor</li>
           <li>DHT11 sensor</li>
           <li>Homey met de Homeyduino-app geïnstalleerd</li>
           <li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
         </ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
+<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-1"></div>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-2"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-1", "mh_z19b");
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-2", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+
+
+
 
         <h2 id="prijsvergelijking">Waarom zelf bouwen?</h2>
         <p>Er zijn online veel kant-en-klare CO₂ meters te vinden, maar die lopen qua prijs al snel op. Volgens de aangeleverde informatie betaal je voor alleen een CO₂ meter al gauw tussen de € 100 en € 399. Er worden ook goedkopere opties genoemd, zoals een eenvoudige CO₂ meter rond de € 35 en een uitgebreidere luchtkwaliteitsmeter rond de € 73.</p>
@@ -466,11 +486,12 @@ void loop(){ // Beide
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 huisvanvandaag.nl</span>
-    <span>Gebouwd voor GitHub Pages</span>
+    <span>© huisvanvandaag.nl sinds 2018</span>
+    <span>Gebouwd door Mike</span>
   </div>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>

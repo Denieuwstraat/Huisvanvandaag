@@ -111,7 +111,7 @@
         <h1>Bouw je eigen deur- of raamsensor met Homeyduino</h1>
 
         <p class="lead muted">
-          Met een eenvoudige MC-38 deur- of raamsensor en een ESP8266-board bouw je zelf een bedrade sensor die direct bruikbaar is in Homey voor flows, meldingen en praktische automatiseringen in huis.
+          Voor een paar eenvoudige onderdelen bouw je geen “contactsensor”, maar iets veel interessanters: een huis dat merkt wanneer er iets gebeurt. Een deur open, een raam vergeten, een onverwachte beweging in je routine — en Homey kan daar direct op reageren.
         </p>
 
         <div class="meta-list">
@@ -127,8 +127,16 @@
           <div class="check-item">
             <span class="check-mark">✓</span>
             <div>
-              <strong>Klein project, veel toepassingen</strong><br>
-              <span class="muted">Een deur- of raamsensor lijkt simpel, maar is inzetbaar voor verlichting, meldingen, alarmscenario’s en energiebesparing.</span>
+              <strong>Klein onderdeel, groot effect</strong><br>
+              <span class="muted">Een simpele open/dicht-sensor blijkt ineens bruikbaar voor verlichting, meldingen, routines en een basisvorm van beveiliging.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Je huis wordt oplettender</strong><br>
+              <span class="muted">Niet jij hoeft overal aan te denken; je huis kan reageren op iets basaals als een deur die open gaat.</span>
             </div>
           </div>
 
@@ -136,7 +144,7 @@
             <span class="check-mark">✓</span>
             <div>
               <strong>Interessant alternatief voor batterijsensoren</strong><br>
-              <span class="muted">Deze opzet is vooral handig als je liever zo min mogelijk losse batterijsensoren in huis gebruikt.</span>
+              <span class="muted">Als je liever minder afhankelijk bent van batterijen, is een bedrade oplossing opvallend aantrekkelijk.</span>
             </div>
           </div>
 
@@ -144,23 +152,15 @@
             <span class="check-mark">✓</span>
             <div>
               <strong>Direct bruikbaar in Homey</strong><br>
-              <span class="muted">De sensorstatus wordt zichtbaar in Homey en kan meteen dienen als trigger voor je flows.</span>
+              <span class="muted">De sensorstatus wordt zichtbaar in Homey en is meteen te gebruiken als trigger voor slimme flows.</span>
             </div>
           </div>
 
           <div class="check-item">
             <span class="check-mark">✓</span>
             <div>
-              <strong>Betaalbaar om te bouwen</strong><br>
-              <span class="muted">Met een paar eenvoudige onderdelen maak je een werkende sensor zonder dure kant-en-klare oplossing.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Toegankelijk Homeyduino-project</strong><br>
-              <span class="muted">Weinig onderdelen, overzichtelijke code en snel resultaat maken dit een sterk instapproject.</span>
+              <strong>Perfect instapproject</strong><br>
+              <span class="muted">Weinig onderdelen, overzichtelijke code en snel resultaat maken dit een van de dankbaarste Homeyduino-projecten om mee te beginnen.</span>
             </div>
           </div>
         </div>
@@ -184,11 +184,11 @@
       <article class="article-body project-article">
 
         <p class="lead">
-          Een deur- of raamsensor is zo’n onderdeel dat eenvoudig oogt, maar in de praktijk verrassend veel toevoegt aan een smart home. Zodra je weet of een deur of raam open of dicht is, kun je daar allerlei logische acties aan koppelen.
+          Veel smart-home projecten beginnen bij comfort: lampen, scènes, spraakbediening. Maar de écht slimme projecten beginnen vaak met context. Want een huis dat weet of iets open of dicht is, kan zich ineens een stuk intelligenter gedragen.
         </p>
 
         <p>
-          Denk aan verlichting die automatisch aangaat, een melding wanneer een raam nog open staat terwijl het begint te regenen of een eenvoudige alarmfunctie wanneer een deur onverwacht wordt geopend. Met Homeyduino bouw je zo’n sensor zelf, tegen lage kosten en volledig geïntegreerd in Homey.
+          Dat is precies wat deze zelfbouw deur- of raamsensor interessant maakt. Je bouwt niet alleen een sensor; je voegt een klein stukje bewustzijn toe aan je woning. En dat blijkt in de praktijk veel waardevoller dan het op papier misschien klinkt.
         </p>
 
         <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
@@ -197,17 +197,17 @@
           <li><strong>Status meten</strong> → De sensor bepaalt of een deur of raam open of gesloten is.</li>
           <li><strong>Automatiseren met Homey</strong> → De status is te gebruiken als trigger voor verlichting, meldingen, alarmfuncties of andere flows.</li>
         </ul>
-        <p>Het resultaat is een eenvoudige maar praktische zelfbouwsensor die goed laat zien hoeveel je met een klein Homeyduino-project al kunt bereiken.</p>
+        <p>Het resultaat is een eenvoudig project met opvallend veel psychologische waarde: je huis reageert niet meer alleen op tijd of spraak, maar op wat er daadwerkelijk gebeurt.</p>
 
         <h2 id="kant-en-klaar-of-zelfbouw">Kant-en-klaar of zelf bouwen?</h2>
-        <p>Voor Homey zijn online genoeg kant-en-klare deur- en raamsensoren te vinden. Het grote voordeel daarvan is dat ze direct bruikbaar zijn en meestal draadloos werken. Dat kan juist handig zijn op plekken waar je geen voeding beschikbaar hebt.</p>
+        <p>Voor Homey zijn genoeg kant-en-klare deur- en raamsensoren te koop. Het voordeel daarvan is duidelijk: snel klaar, vaak draadloos en meteen inzetbaar. Zeker op plekken zonder voeding is dat nog steeds een heel logische keuze.</p>
 
-        <p>De keerzijde is dat veel van die sensoren op batterijen werken. Als je thuis al veel batterijsensoren gebruikt, kan dat op termijn minder praktisch worden. Juist daarom is een bedrade zelfbouwvariant interessant: je bouwt voor weinig geld een sensor op netspanning die je volledig naar eigen wens integreert met Homey.</p>
+        <p>Maar er zit ook een nadeel aan die elegantie: batterijen. En batterijen zijn zelden het romantische deel van een smart home. Ze werken prima, tot ze aandacht vragen. Juist daarom is een bedrade zelfbouwvariant interessant: je bouwt voor weinig geld een sensor op netspanning die je daarna grotendeels kunt vergeten.</p>
 
         <h2 id="benodigdheden">Benodigdheden</h2>
         <ul>
           <li>ESP8266 NodeMCU of Wemos D1 Mini</li>
-          <li>USB-C-oplader</li>
+          <li>USB-C oplader</li>
           <li>Breadboard</li>
           <li>MC-38 deur- of raamsensor</li>
           <li>Homey met de Homeyduino-app geïnstalleerd</li>
@@ -217,7 +217,7 @@
         <h2 id="betaalbare-onderdelen">Waarom dit project financieel interessant is</h2>
         <p>Wie deze sensor zelf wil bouwen, kan de benodigde onderdelen relatief goedkoop vinden. In de aangeleverde informatie worden onder meer een ESP8266 NodeMCU, een Wemos D1 Mini, een klein breadboard en een MC-38 deur- of raamcontact genoemd als voordelige onderdelen om mee te starten.</p>
 
-        <p>Daarmee blijft dit project niet alleen technisch overzichtelijk, maar ook financieel laagdrempelig. Juist voor dit soort eenvoudige sensoren is zelfbouw daardoor een interessante optie.</p>
+        <p>Dat maakt dit project aantrekkelijk op een manier die verder gaat dan alleen “goedkoop”. Voor weinig geld voeg je namelijk iets toe dat irritatie voorkomt, verspilling verkleint en gedrag in huis slimmer maakt. Dat is zelden een slechte investering.</p>
 
         <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 
@@ -406,8 +406,8 @@ void loop() {
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 huisvanvandaag.nl</span>
-    <span>Gebouwd voor GitHub Pages</span>
+    <span>© huisvanvandaag.nl sinds 2018</span>
+    <span>Gebouwd door Mike</span>
   </div>
 </footer>
 

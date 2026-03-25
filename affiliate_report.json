@@ -1,0 +1,194 @@
+{
+  "affiliate_products_source": "C:/Users/mikey/Huisvanvandaag/affiliate-products.json",
+  "scanned_articles": [
+    {
+      "file": "chriet-titulaer.html",
+      "relative_path": "chriet-titulaer.html",
+      "title": "Chriet Titulaer en het Huis van de Toekomst: waarom dit verhaal nog steeds relevant is",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "contact.html",
+      "relative_path": "contact.html",
+      "title": "Contact | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "deur-raamsensor-homeyduino.html",
+      "relative_path": "deur-raamsensor-homeyduino.html",
+      "title": "Bouw je eigen deur- of raamsensor met Homeyduino | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "ESP8266 NodeMCU of Wemos D1 Mini",
+        "USB-C oplader",
+        "Breadboard",
+        "MC-38 deur- of raamsensor",
+        "Homey met de Homeyduino-app geïnstalleerd",
+        "Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren"
+      ],
+      "matched_product_keys": [
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "diy.html",
+      "relative_path": "diy.html",
+      "title": "DIY & Homeyduino | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "homey.html",
+      "relative_path": "homey.html",
+      "title": "Homey | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "homeyduino-clapper-switch.html",
+      "relative_path": "homeyduino-clapper-switch.html",
+      "title": "Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of NodeMCU met wifi en 5V",
+        "Geluidssensor voor Arduino / ESP8266",
+        "USB-C-voeding",
+        "Homey met de Homeyduino app",
+        "Arduino IDE"
+      ],
+      "matched_product_keys": [
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "homeyduino-co2-multisensor.html",
+      "relative_path": "homeyduino-co2-multisensor.html",
+      "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "D1 Mini NodeMCU met wifi en 5V",
+        "USB-C oplader",
+        "MH-Z19B CO₂ sensor",
+        "LDR sensor",
+        "DHT11 sensor",
+        "Homey met de Homeyduino-app geïnstalleerd",
+        "Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren"
+      ],
+      "matched_product_keys": [
+        "mh_z19b",
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "homeyduino-co2-sensor.html",
+      "relative_path": "homeyduino-co2-sensor.html",
+      "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of NodeMCU met wifi en 5V",
+        "USB-C oplader",
+        "MH-Z19B CO₂ sensor",
+        "Homey met de Homeyduino-app geïnstalleerd",
+        "Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren"
+      ],
+      "matched_product_keys": [
+        "mh_z19b",
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "homeyduino-deur-raam-sensor.html",
+      "relative_path": "homeyduino-deur-raam-sensor.html",
+      "title": "Homeyduino deur- en raamsensor: eenvoudig, goedkoop en verrassend bruikbaar",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of NodeMCU met wifi en 5V",
+        "MC-38 deur- of raamcontact",
+        "USB-C voeding",
+        "Homey met de Homeyduino app",
+        "Arduino IDE voor de eerste configuratie"
+      ],
+      "matched_product_keys": [
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "homeyduino-licht-temperatuur-sensor.html",
+      "relative_path": "homeyduino-licht-temperatuur-sensor.html",
+      "title": "Homeyduino licht- en temperatuursensor: compacte context voor slimmere flows",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of NodeMCU met wifi en 5V",
+        "LDR of andere lichtsensor",
+        "DHT11 of vergelijkbare temperatuur-/vochtigheidssensor",
+        "Homey met Homeyduino",
+        "Arduino IDE"
+      ],
+      "matched_product_keys": [
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "homeyduino-relay.html",
+      "relative_path": "homeyduino-relay.html",
+      "title": "Homeyduino relay switch met Google Assistant ondersteuning",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of NodeMCU met wifi en 5V",
+        "1-kanaals relaymodule of relay shield voor de Wemos",
+        "USB-C voeding",
+        "Homey met Homeyduino",
+        "Arduino IDE"
+      ],
+      "matched_product_keys": [
+        "wemos_d1_mini"
+      ]
+    },
+    {
+      "file": "index.html",
+      "relative_path": "index.html",
+      "title": "huisvanvandaag.nl | Homey, Google Home en DIY smart-home projecten",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "over.html",
+      "relative_path": "over.html",
+      "title": "Over | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "reviews.html",
+      "relative_path": "reviews.html",
+      "title": "Reviews | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "tutorials.html",
+      "relative_path": "tutorials.html",
+      "title": "Tutorials | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "waarom-dit-blog-bestaat.html",
+      "relative_path": "waarom-dit-blog-bestaat.html",
+      "title": "Waarom dit blog bestaat | huisvanvandaag.nl",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    }
+  ]
+}

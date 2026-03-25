@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -35,26 +36,50 @@
     </div>
     <div class="panel">
       <h3>Wat je in dit artikel leert</h3>
-      <p class="muted">Hoe je met een MC-38 contactsensor en een ESP8266 een eenvoudige deur- of raamsensor bouwt die Homey gebruikt voor meldingen, verlichting en beveiliging.</p>
+      <p class="muted">Hoe je met een MC-38 contactsensor en een aESP8266 een eenvoudige deur- of raamsensor bouwt die Homey gebruikt voor meldingen, verlichting en beveiliging.</p>
       <div class="chips"><span class="chip">Homeyduino</span><span class="chip">ESP8266</span><span class="chip">Contactdetectie</span></div>
     </div>
   </div>
 </section>
+
+    <!-- HERO AFBEELDING -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="assets/homeyduino-deur-en-raamsensor-hero.jpg" alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19B, DHT11 en LDR">
+          <figcaption class="muted small">
+            Een zelfgebouwde deur en raamsensor sensor op basis van MC-38 bedrade deur en raamsensor en een Wemos D1 Mini, bedoeld om openstaande deuren en ramen te monitoren via Homey.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 <section class="section-tight">
   <div class="container article-layout">
     <article class="article-body">
 <p class="lead">Een deur- of raamsensor klinkt simpel, maar juist dit soort kleine signalen maken een smart home slim. Zodra Homey weet of een deur of raam open of dicht is, kun je veel meer automatiseren dan alleen een lamp laten aangaan.</p>
 <h2 id="waarom">Waarom deze sensor zo handig is</h2>
-<p>Met deze sensor kun je verlichting alleen inschakelen als een deur opent, Homey als alarmsysteem gebruiken of een melding krijgen wanneer een raam nog open staat terwijl het gaat regenen. Kleine signalen met grote praktische waarde.</p>
+<p>Met deze sensor kun je Homey als alarmsysteem gebruiken,  een melding krijgen wanneer een raam nog open staat terwijl het gaat regenen of toch de verlichting inschakelen als een deur opent. Kleine signalen met grote praktische waarde.</p>
 <p>Een extra voordeel is dat je zelf bepaalt of je op batterij of netspanning wilt werken. Voor wie al veel batterijgevoede sensoren heeft, is een bekabelde oplossing soms juist prettiger.</p>
 <h2 id="benodigd">Benodigdheden</h2>
 <ul>
-  <li>ESP8266 NodeMCU of Wemos D1 Mini</li>
+  <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
   <li>MC-38 deur- of raamcontact</li>
-  <li>Micro USB voeding</li>
+  <li>USB-C voeding</li>
   <li>Homey met de Homeyduino app</li>
   <li>Arduino IDE voor de eerste configuratie</li>
 </ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
+<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
+  <div id="affiliate-auto-homeyduino-deur-raam-sensor-html-1"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-1", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
 <h2 id="gebruik">Slimme toepassingen</h2>
 <ul>
   <li>Halverlichting inschakelen wanneer een buitendeur open gaat.</li>
@@ -117,10 +142,12 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 huisvanvandaag.nl</span>
-    <span>Gebouwd voor GitHub Pages</span>
+    <span>© huisvanvandaag.nl sinds 2018</span>
+    <span>Gebouwd door Mike</span>
   </div>
 </footer>
 <script src="script.js"></script>
+
+
 </body>
 </html>

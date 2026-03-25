@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -50,12 +51,24 @@
 <div class="warning"><strong>Werken met elektriciteit is gevaarlijk.</strong> Zorg dat je alleen met dit project aan de slag gaat als je weet wat je doet, nooit onder spanning werkt en behuizing, trekontlasting en aansluitingen deugdelijk uitvoert. Publiceer of gebruik dit project niet als losse proefopstelling wanneer er netspanning in het spel is.</div>
 <h2 id="benodigd">Benodigdheden</h2>
 <ul>
-  <li>Wemos D1 Mini</li>
+  <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
   <li>1-kanaals relaymodule of relay shield voor de Wemos</li>
-  <li>Micro USB voeding</li>
+  <li>USB-C voeding</li>
   <li>Homey met Homeyduino</li>
   <li>Arduino IDE</li>
 </ul>
+
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
+<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
+  <div id="affiliate-auto-homeyduino-relay-html-1"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-relay-html-1", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
 <h2 id="setup">Opzet en koppeling</h2>
 <p>Het mooie aan dit project is dat het technisch relatief overzichtelijk blijft: de Wemos stuurt het relay aan, Homey ziet het apparaat als schakelbare component en Google Assistant kan daar vervolgens bovenop komen als spraaklaag.</p>
 <p>Een praktijkvoorbeeld is een televisie in de tuin die op afstand en via spraak bediend wordt. Dat laat zien dat zelfbouw niet alleen goedkoper kan zijn, maar soms ook beter aansluit op hoe je een apparaat werkelijk gebruikt.</p>
@@ -112,10 +125,11 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 huisvanvandaag.nl</span>
-    <span>Gebouwd voor GitHub Pages</span>
+    <span>© huisvanvandaag.nl sinds 2018</span>
+    <span>Gebouwd door Mike</span>
   </div>
 </footer>
 <script src="script.js"></script>
+
 </body>
 </html>

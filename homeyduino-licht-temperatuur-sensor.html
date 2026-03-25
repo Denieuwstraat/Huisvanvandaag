@@ -10,8 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
 </head>
 <body>
+  
 <header class="site-header">
   <div class="container navbar">
     <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
@@ -40,6 +42,21 @@
     </div>
   </div>
 </section>
+
+    <!-- HERO AFBEELDING -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="assets/homeyduino-licht-en-temperatuursensor-hero.jpg" alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19B, DHT11 en LDR">
+          <figcaption class="muted small">
+            Een zelfgebouwde licht en temperatuursensor sensor op basis van LDR en DHT11 sensor en een Wemos D1 Mini, bedoeld om het binnenklimaat slim te monitoren via Homey.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  
+
 <section class="section-tight">
   <div class="container article-layout">
     <article class="article-body">
@@ -48,12 +65,25 @@
 <p>De meerwaarde van deze sensor zit niet in één spectaculaire meting, maar in de combinatie. Met lichtsterkte kun je voorkomen dat verlichting overdag onnodig aangaat. Met temperatuur kun je meldingen, ventilatie of comfortflows verfijnen. Samen zorgen ze ervoor dat automatisering minder star wordt.</p>
 <h2 id="benodigd">Benodigdheden</h2>
 <ul>
-  <li>ESP8266 of Wemos D1 Mini</li>
+  <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
   <li>LDR of andere lichtsensor</li>
   <li>DHT11 of vergelijkbare temperatuur-/vochtigheidssensor</li>
   <li>Homey met Homeyduino</li>
   <li>Arduino IDE</li>
 </ul>
+
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
+<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
+  <div id="affiliate-auto-homeyduino-licht-temperatuur-sensor-html-1"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-licht-temperatuur-sensor-html-1", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
 <h2 id="software">Software en koppeling</h2>
 <p>Dit project combineert meerdere capabilities in één sensor: lichtsterkte, temperatuur en vochtigheid worden allemaal via Homeyduino naar Homey gestuurd. Zo bouw je niet alleen een sensor, maar een contextsensor die Homey helpt betere keuzes te maken.</p>
 <pre><code>Homey.addCapability(&quot;measure_temperature&quot;);
@@ -119,10 +149,11 @@ Homey.addCapability(&quot;measure_luminance&quot;);</code></pre>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 huisvanvandaag.nl</span>
-    <span>Gebouwd voor GitHub Pages</span>
+    <span>© huisvanvandaag.nl sinds 2018</span>
+    <span>Gebouwd door Mike</span>
   </div>
 </footer>
 <script src="script.js"></script>
+
 </body>
 </html>

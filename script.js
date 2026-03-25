@@ -6,3 +6,4 @@ if (toggle && nav) {
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 }
+
