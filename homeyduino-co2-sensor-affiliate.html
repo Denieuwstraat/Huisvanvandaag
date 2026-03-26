@@ -4,10 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- PAGINATITEL -->
   <title>Bouw je eigen slimme CO₂ sensor met Homeyduino | huisvanvandaag.nl</title>
-
-  <!-- META DESCRIPTION -->
   <meta name="description" content="Bouw een betaalbare CO₂ sensor met een MH-Z19B, Wemos D1 Mini en Homeyduino. Meet het binnenklimaat, bekijk waardes in Homey Insights en gebruik ze als trigger voor flows.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,7 +96,6 @@
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="article-hero">
     <div class="container article-layout">
       <div>
@@ -125,7 +121,6 @@
         </div>
       </div>
 
-      <!-- RECHTER INFOBLOK -->
       <div class="panel project-info-panel">
         <h3>Waarom dit project leuk én nuttig is</h3>
         <div class="check-list">
@@ -172,7 +167,6 @@
       </div>
     </div>
 
-    <!-- HERO AFBEELDING -->
     <div class="container project-hero-media">
       <div class="panel">
         <figure>
@@ -185,7 +179,6 @@
     </div>
   </section>
 
-  <!-- CONTENT -->
   <section class="section-tight" style="padding-top: 14px;">
     <div class="container project-content-layout">
       <article class="article-body project-article">
@@ -209,11 +202,13 @@
         <h2 id="benodigdheden">Benodigdheden</h2>
         <ul>
           <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
-          <li>USB-C oplader</li>
+          <li>Micro USB-oplader</li>
           <li>MH-Z19B CO₂ sensor</li>
           <li>Homey met de Homeyduino-app geïnstalleerd</li>
           <li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
         </ul>
+
+        <div id="affiliate-benodigdheden-co2"></div>
 
         <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 
@@ -247,20 +242,15 @@
 #include &lt;MHZ.h&gt;
 #include &lt;Homey.h&gt;
 
-// pin for pwm reading
-#define CO2_IN D2 // D2 19
-
-// pin for uart reading
-#define MH_Z19_RX D6 // RX 21 D6
-// In this sketch we will only be using the pwm reading, however when we delete
-// the uart part of the code, the sketch stops working, so leave it in.
-#define MH_Z19_TX D5 // TX 22 D5
+#define CO2_IN D2
+#define MH_Z19_RX D6
+#define MH_Z19_TX D5
 
 MHZ co2(MH_Z19_RX, MH_Z19_TX, CO2_IN, MHZ19B);
 
 void wifi() {
   if (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin(&quot;&lt;SSID&gt;&quot;, &quot;&lt;PASSWORD&gt;&quot;); // Fill in Wifi and password
+    WiFi.begin(&quot;&lt;SSID&gt;&quot;, &quot;&lt;PASSWORD&gt;&quot;);
     uint8_t timeout = 30;
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
@@ -404,11 +394,21 @@ void loop() {
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
+    <span>© 2026 huisvanvandaag.nl</span>
+    <span>Gebouwd voor GitHub Pages</span>
   </div>
 </footer>
 
+<script src="affiliate-products-v2.js"></script>
+<script src="affiliate-products-v2-addons.js"></script>
+<script src="affiliate-components-v3.js"></script>
 <script src="script.js"></script>
+<script>
+  renderAffiliateRequirementsListV3("affiliate-benodigdheden-co2", {
+    title: "Voorkom opgruts: bestel meteen de juiste onderdelen",
+    intro: "Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.",
+    products: ["mh_z19b", "wemos_d1_mini"]
+  });
+</script>
 </body>
 </html>
