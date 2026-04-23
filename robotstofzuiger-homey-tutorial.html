@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Laat je robotstofzuiger slim schoonmaken met Homey | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Laat je robotstofzuiger automatisch starten wanneer niemand thuis is en stoppen bij thuiskomst. Praktische Homey tutorial met twee slimme flows op basis van aanwezigheid." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Robotstofzuiger automatiseren</span>
+</div>
+<span class="eyebrow">Tutorial</span>
+<h1>Laat je robotstofzuiger slim schoonmaken met Homey</h1>
+<p class="lead muted">
+          Laat je robotstofzuiger automatisch starten wanneer niemand thuis is en stoppen zodra iemand thuiskomt. Geen vaste tijden meer, maar automatisering die meebeweegt met jouw dag.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Automatisering</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Niveau: Beginner</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Nooit meer irritatie</strong><br/>
+<span class="muted">Je stofzuiger rijdt niet meer rond terwijl je thuis bent.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Altijd schoon bij thuiskomst</strong><br/>
+<span class="muted">Het werk is al gedaan zonder dat je eraan hoeft te denken.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Slimme timing</strong><br/>
+<span class="muted">Niet gebaseerd op tijd, maar op aanwezigheid.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Eenvoudig op te zetten</strong><br/>
+<span class="muted">Met twee duidelijke flows heb je direct resultaat.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct uitbreidbaar</strong><br/>
+<span class="muted">Je kunt later eenvoudig extra voorwaarden toevoegen zoals dagen of statuscontroles.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Homey die een robotstofzuiger automatisch aanstuurt op basis van aanwezigheid" src="assets/header/homey-roomba-hero.jpg"/>
+<figcaption class="muted small">
+            Een robotstofzuiger die alleen werkt wanneer het logisch is, maakt automatisering ineens echt waardevol.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Veel robotstofzuigers werken met vaste schema’s. Dat klinkt handig, maar sluit vaak slecht aan op hoe je dag daadwerkelijk verloopt.
+        </p>
+<p>
+          Met <a href="homey.html">Homey</a> kun je dat slimmer aanpakken. In plaats van een tijdstip, laat je je huis bepalen wanneer het moment goed is. Zo voorkom je irritatie én haal je meer uit je apparaat.
+        </p>
+<h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+<p>Je leert hoe je een robotstofzuiger aanstuurt op basis van aanwezigheid in plaats van tijd.</p>
+<ul>
+<li><strong>Starten op het juiste moment</strong> → de robot begint automatisch wanneer het huis leeg is</li>
+<li><strong>Stoppen bij thuiskomst</strong> → de robot stopt direct zodra iemand thuiskomt</li>
+</ul>
+<p>Na deze tutorial heb je een automatisering die logisch aanvoelt en direct waarde toevoegt in het dagelijks gebruik.</p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>Voor Homey-gebruikers die al met flows werken of daar net mee beginnen, en hun robotstofzuiger slimmer willen laten samenwerken met hun dagelijkse ritme.</p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Een Homey</li>
+<li>Een gekoppelde robotstofzuiger binnen Homey</li>
+<li>Presence of aanwezigheid correct ingesteld in Homey</li>
+<li>Een bestaande of nieuwe flow voor vertrek en thuiskomst</li>
+<li>Een paar minuten om de logica goed in te stellen en te testen</li>
+</ul>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Maak de start-flow om te stofzuigen in een leeg huis</h3>
+<p>
+De eerste (geavanceerde) flow zorgt ervoor dat de robotstofzuiger automatisch start zodra de laatste persoon het huis verlaat. 
+Door een tijdsvenster en vaste dagen toe te voegen, voorkom je dat de robot op ongewenste momenten begint.
+</p>
+<ul>
+<li>Als: de laatste persoon weggaat</li>
+<li>En: de tijd is tussen 07:00 en 15:00</li>
+<li>En: vandaag is bijvoorbeeld dinsdag, donderdag of zaterdag</li>
+<li>Dan: Start to clean </li>
+<li>Wacht: gebruik een timer van 480 minuten om te voorkomen dat de flow meerdere keren per dag wordt geactiveerd (dit komt overeen met het tijdsvenster van 07:00 tot 15:00)</li>
+</ul>
+<figure>
+<img alt="Flow waarbij robotstofzuiger start wanneer huis leeg is" src="assets/artikel/roomba-start-flow.png"/>
+<figcaption class="muted small">
+            De robot start alleen wanneer het huis leeg is en de omstandigheden kloppen. En slechts één keer per dag. 
+          </figcaption>
+</figure>
+<h3>2. Voeg de juiste actie toe</h3>
+<p>Voeg in het “Dan”-gedeelte de actie toe om de robotstofzuiger te starten. In jouw voorbeeld is dat de schoonmaakactie van de Roomba zelf.</p>
+<h3>3. Maak de stop-flow voor thuiskomst</h3>
+<p>De tweede flow zorgt ervoor dat de robot netjes stopt zodra de eerste persoon thuiskomt. Daarmee maak je de automatisering veel prettiger in gebruik.</p>
+<pre><code>Als: De eerste persoon thuiskomt
+En: De flow “Roomba start leeg huis” is ingeschakeld
+Dan: Dock</code></pre>
+<h3>4. Test beide flows bewust</h3>
+<p>Controleer of de start-flow alleen onder de juiste voorwaarden afgaat en of de robot bij thuiskomst inderdaad terugkeert naar het dock.</p>
+<h3>5. Pas de logica aan op jouw situatie</h3>
+<p>Je kunt tijden, dagen en voorwaarden aanpassen aan je eigen huishouden. Daardoor voelt de flow niet algemeen, maar echt van jou.</p>
+<figure>
+<img alt="Flow waarbij robotstofzuiger stopt bij thuiskomst" src="assets/artikel/roomba-stop-flow.png"/>
+<figcaption class="muted small">
+            Zodra iemand thuiskomt, stopt de robot automatisch en rijdt terug naar zijn dock. Hiervan wordt je via een bericht geinformeerd.
+          </figcaption>
+</figure>
+<h2 id="homey-integratie">Integratie met Homey</h2>
+<p>Homey maakt dit soort automatiseringen sterk omdat het niet alleen apparaten aanstuurt, maar ook context begrijpt. Aanwezigheid, tijd en apparaatacties komen samen in één logische flow.</p>
+<p>Dat maakt dit type automatisering interessant voor meerdere situaties:</p>
+<ul>
+<li>Je robot alleen laten rijden wanneer het huis echt leeg is</li>
+<li>Ongewenste schoonmaakmomenten voorkomen</li>
+<li>Je schoonmaakroutine laten aansluiten op je werkelijke dagindeling</li>
+</ul>
+<figure>
+<img alt="Roomba app overzicht met functies" src="assets/artikel/roomba-app.jpg"/>
+<figcaption class="muted small">
+            De robot zelf blijft hetzelfde, maar de logica erachter wordt met Homey een stuk slimmer.
+          </figcaption>
+</figure>
+<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<p>Als deze basis eenmaal goed werkt, kun je verder bouwen met extra voorwaarden, statusinformatie of andere slimme routines. Denk bijvoorbeeld aan meldingen, batterijstatus of combineren met andere aanwezigheidsscenario’s.</p>
+<figure>
+<img alt="Status van robotstofzuiger in app" src="assets/artikel/roomba-status.jpg"/>
+<figcaption class="muted small">
+            Door statusinformatie mee te nemen, kun je nog verfijndere automatiseringen maken.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Presence werkt alleen goed als alle betrokken gebruikers correct in Homey zijn ingesteld</li>
+<li>Controleer of je robotstofzuiger in Homey ook echt de juiste acties ondersteunt</li>
+<li>Voorkom dubbele of overlappende flows die elkaar ongewenst kunnen triggeren</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met twee relatief eenvoudige flows verander je een standaard robotstofzuiger in een apparaat dat veel beter aansluit op je dagelijkse leven. Dat is precies waar Homey sterk in is: niet alleen apparaten bedienen, maar ze laten reageren op wat er echt gebeurt.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#homey-integratie">Integratie met Homey</a>
+<a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+<a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="tools/arduino_ide_esp8266_tutorial.html">Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)</a><a href="Homeyscript.html">HomeyScript: stroomprijs vandaag en morgen ophalen</a><a href="wat-kun-je-doen-met-homey.html">Wat kun je doen met Homey? Praktische toepassingen en inspiratie</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

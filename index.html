@@ -6,255 +6,745 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>huisvanvandaag.nl | Homey, Google Home en DIY smart-home projecten</title>
   <meta name="description"
-    content="Praktische tutorials, overtuigende Homey flows en DIY Homeyduino projecten waarmee je vandaag je eigen Huis van de Toekomst bouwt.">
+    content="Praktische Homey tutorials, slimme flows en DIY Homeyduino projecten voor mensen die slimmer willen wonen zonder onnodig gedoe.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --bg: #f4f7f6;
+      --panel: #ffffff;
+      --panel-soft: #f8fbfa;
+      --text: #0f1720;
+      --muted: #5f6b76;
+      --line: #d8e2df;
+      --brand: #27c7a3;
+      --brand-dark: #119b7c;
+      --brand-soft: #dff5ef;
+      --hero-a: #081a2d;
+      --hero-b: #0d2a45;
+      --shadow: 0 10px 30px rgba(10, 22, 35, 0.08);
+      --radius: 20px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(39, 199, 163, 0.10), transparent 32%),
+        linear-gradient(135deg, var(--hero-a) 0%, var(--hero-b) 100%);
+      padding: 4.5rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .hero-copy {
+      color: #fff;
+      padding-top: .35rem;
+    }
+
+    .hero-copy h1 {
+      max-width: 10ch;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin: 0 0 1.1rem;
+      text-wrap: balance;
+      color: #fff;
+    }
+
+    .hero-copy p {
+      max-width: 62ch;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0 0 1.5rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: #0f6b58;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .hero-copy .eyebrow {
+      background: rgba(39, 199, 163, 0.16);
+      color: #dffcf5;
+    }
+
+    .hero-visual .eyebrow,
+    .showcase-card .eyebrow,
+    .hero-visual .panel .eyebrow {
+      background: var(--brand-soft);
+      color: #0f6b58;
+    }
+
+    .section-header .eyebrow,
+    .panel .eyebrow,
+    .card .eyebrow,
+    .showcase-card .eyebrow,
+    .newsletter .eyebrow {
+      margin-bottom: .85rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin: 1.6rem 0 1.8rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .hero-stats .stat {
+      padding: 1rem 1rem 1.05rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-stats .stat strong {
+      display: block;
+      font-size: .98rem;
+      margin-bottom: .45rem;
+      color: #fff;
+    }
+
+    .hero-stats .stat .muted {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.6;
+      font-size: .94rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .showcase-card {
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--text);
+      border: 1px solid rgba(10, 22, 35, 0.08);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+      border-radius: 24px;
+      padding: 1.1rem;
+    }
+
+    .showcase-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge,
+    .small-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .badge {
+      background: #e9fbf6;
+      color: #0b6d57;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .45rem .7rem;
+    }
+
+    .small-tag {
+      background: #eef4f7;
+      color: #52606d;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .42rem .62rem;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-visual .panel,
+    .story-grid .panel,
+    .card,
+    .newsletter,
+    .sidebar-card,
+    .toc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual .panel {
+      padding: 1.1rem 1.15rem;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 100%);
+    }
+
+    .hero-visual .panel h3 {
+      margin: 0 0 .5rem;
+      font-size: 1.12rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .hero-visual .panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: .95rem;
+    }
+
+    .section,
+    .section-tight,
+    .section-soft {
+      padding: 4.25rem 0;
+    }
+
+    .section-tight {
+      padding-top: 3.7rem;
+      padding-bottom: 3.9rem;
+    }
+
+    .section-soft {
+      background: #edf3f1;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+      gap: 1.8rem;
+      align-items: end;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      text-wrap: balance;
+      color: var(--text);
+    }
+
+    .section-header p {
+      margin: 0 0 .2rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .98rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .card {
+      padding: 1.35rem 1.25rem 1.2rem;
+    }
+
+    .card h3 {
+      margin: 0 0 .65rem;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .card p {
+      margin: 0 0 1rem;
+      line-height: 1.68;
+      color: var(--muted);
+    }
+
+    .card .muted {
+      color: var(--muted);
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #eefaf7;
+      margin-bottom: .9rem;
+      font-size: 1.1rem;
+    }
+
+    .link {
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .story-grid .panel {
+      padding: 1.6rem;
+    }
+
+    .story-grid .panel h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+
+    .story-grid .panel p {
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin: 1rem 0 1rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: #eefaf7;
+      color: #0b6d57;
+      padding: .5rem .8rem;
+      font-size: .84rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .newsletter {
+      padding: 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 1.6rem;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .newsletter h2 {
+      margin: 0 0 .65rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+
+    .newsletter p {
+      margin: 0;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .newsletter .eyebrow {
+      background: var(--brand-soft);
+      color: #0f6b58;
+    }
+
+    .newsletter-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .8rem;
+      align-items: center;
+    }
+
+    .newsletter-form input {
+      min-height: 52px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      padding: 0 1rem;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #7d8994;
+    }
+
+    .footer-grid {
+      gap: 1.5rem;
+    }
+
+    .footer-grid p,
+    .footer-links a,
+    .footer-bottom {
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-copy h1 {
+        max-width: 12ch;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 3.7rem 0 3rem;
+      }
+
+      .hero-grid,
+      .story-grid,
+      .newsletter,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy h1 {
+        max-width: none;
+      }
+
+      .newsletter-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section,
+      .section-tight,
+      .section-soft {
+        padding: 3rem 0;
+      }
+
+      .hero {
+        padding: 3rem 0 2.4rem;
+      }
+
+      .hero-copy p,
+      .story-grid .panel p,
+      .newsletter p,
+      .card p,
+      .section-header p {
+        line-height: 1.65;
+      }
+
+      .showcase-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container navbar">
-      <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-        <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-        <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-      </a>
-      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-      <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html" class="active">Home</a><a
-          href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html">DIY</a><a
-          href="tutorials.html">Tutorials</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
-    </div>
-  </header>
-  <main>
+  <div id="site-header"></div>
 
+  <main>
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Slimmer wonen zonder gedoe</span>
-          <h1>Het Huis van de Toekomst, maar dan vandaag.</h1>
-          <p>huisvanvandaag.nl laat zien hoe je met <strong>Homey</strong>, <strong>Google Home</strong> en betaalbare
-            <strong>DIY-projecten</strong> een huis bouwt dat slimmer, comfortabeler en leuker wordt om in te wonen.
-            Verwacht praktische tutorials, heldere automatiseringen en zelfgemaakte Homeyduino projecten — getest in een
-            echt huis.</p>
+          <span class="eyebrow">Het Huis van de Toekomst, maar dan zonder de sciencefiction</span>
+          <h1>Slimmer wonen met Homey, Google Home en DIY-projecten die je huis net iets slimmer maken.</h1>
+          <p>
+            Op huisvanvandaag.nl vind je praktische uitleg, slimme flows en zelfbouwprojecten die niet bedoeld zijn om
+            indruk te maken op visite, maar om thuis iets merkbaar beter te laten werken. Minder losse apps, minder
+            onhandige schakelmomenten en meer automatisering die aanvoelt alsof het eigenlijk altijd al zo had moeten
+            zijn.
+          </p>
+
           <div class="btn-row">
             <a class="btn btn-primary" href="homey.html">Begin met Homey</a>
-            <a class="btn btn-ghost" href="diy.html">Bekijk DIY projecten</a>
+            <a class="btn btn-ghost" href="diy.html">Bekijk DIY-projecten</a>
           </div>
+
           <div class="hero-stats">
-            <div class="stat"><strong>Praktisch</strong><span class="muted">Geen gadgetverzameling, maar oplossingen die
-                thuis echt iets opleveren.</span></div>
-            <div class="stat"><strong>Betaalbaar</strong><span class="muted">Slimme automatisering met haalbare hardware
-                en logische keuzes.</span></div>
-            <div class="stat"><strong>Zelfbouw</strong><span class="muted">Van Homey flows tot ESP8266 en ESP32
-                projecten met Homeyduino.</span></div>
+            <div class="stat">
+              <strong>Praktisch</strong>
+              <span class="muted">Geen technologie als hobbyhoekje, maar flows en projecten die dagelijks frictie uit je
+                huis halen.</span>
+            </div>
+            <div class="stat">
+              <strong>Betaalbaar</strong>
+              <span class="muted">Slim wonen hoeft niet te beginnen met dure ecosystemen. Vaak kom je verrassend ver met
+                logische hardware en een beetje nieuwsgierigheid.</span>
+            </div>
+            <div class="stat">
+              <strong>Getest in een echt huis</strong>
+              <span class="muted">Dus niet ontworpen voor een showroom, maar voor de rommelige werkelijkheid van licht,
+                routines, vergeten schakelaars en net-niet handige standaardoplossingen.</span>
+            </div>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
+
+        <div class="hero-visual">
           <div class="showcase-card">
             <div class="showcase-top">
-              <span class="badge">Live smart-home overzicht</span>
+              <span class="badge">Waar dit blog eigenlijk over gaat</span>
               <span class="small-tag">Homey + Google + DIY</span>
             </div>
-            <div class="mock-home">
-              <div class="home-grid-lines"></div>
-              <div class="room room-a" data-room="Woonkamer"><span class="device" style="left:22%;top:34%;"></span><span
-                  class="device" style="right:20%;bottom:26%;"></span></div>
-              <div class="room room-b" data-room="Keuken"><span class="device" style="left:26%;top:42%;"></span></div>
-              <div class="room room-c" data-room="Hal"><span class="device" style="right:22%;top:36%;"></span></div>
-              <div class="room room-d" data-room="Kantoor"><span class="device"
-                  style="left:22%;bottom:24%;"></span><span class="device" style="right:18%;top:28%;"></span></div>
-              <div class="room room-e" data-room="Slaapkamer"><span class="device"
-                  style="left:18%;top:34%;"></span><span class="device" style="right:20%;bottom:22%;"></span></div>
-              <div class="room room-f" data-room="Brievenbus"><span class="device" style="left:38%;top:44%;"></span>
+
+            <div class="side-stack" style="gap:1rem;">
+              <div class="panel">
+                <span class="eyebrow">Slimme timing</span>
+                <h3>Lampen die reageren op licht, niet op een gok</h3>
+                <p class="muted">Een lichtsensor voorkomt dat verlichting te vroeg, te laat of simpelweg om de verkeerde
+                  reden aangaat.</p>
+              </div>
+
+              <div class="panel">
+                <span class="eyebrow">Gezonder binnenklimaat</span>
+                <h3>CO₂ meten en pas ventileren wanneer het ertoe doet</h3>
+                <p class="muted">Zelfbouwsensoren maken luchtkwaliteit niet alleen zichtbaar, maar ook bruikbaar in
+                  flows.</p>
+              </div>
+
+              <div class="panel">
+                <span class="eyebrow">DIY waar standaard tekortschiet</span>
+                <h3>Projecten voor wie nét iets meer wil dan kant-en-klaar</h3>
+                <p class="muted">Van bewegingssensoren tot relais en multisensoren: betaalbaar, leerzaam en vooral
+                  praktisch genoeg om te blijven gebruiken.</p>
               </div>
             </div>
           </div>
-          <div class="floating-card flow-card">
-            <div class="label">Flow van vandaag</div>
-            <h3>Thuiskomst-modus</h3>
-            <p class="small muted">Telefoon gedetecteerd, verlichting aan en Google leest meldingen voor die er toe
-              doen.</p>
-          </div>
-          <div class="floating-card sensor-card">
-            <div class="label">DIY project</div>
-            <h3>CO₂ sensor met Homeyduino</h3>
-            <p class="small muted">Meet het binnenklimaat en schakel automatisch ventilatie of waarschuwingen in.</p>
-            <div class="chips"><span class="chip">ESP8266</span><span class="chip">MH-Z19B</span><span
-                class="chip">Praktisch</span></div>
-          </div>
-          <div class="metric-card">
-            <div class="label">Automatisering dekking</div>
-            <strong style="font-size:2rem; display:block; margin-top:.3rem;">87%</strong>
-            <span class="muted">Verlichting, meldingen, comfort en luchtkwaliteit automatisch geregeld.</span>
-            <div class="progress"><span style="width:87%"></span></div>
-          </div>
         </div>
       </div>
     </section>
+
     <section class="section-tight">
       <div class="container">
         <div class="section-header">
-          <div><span class="eyebrow">Start hier</span>
-            <h2>In drie stappen naar een slimmer huis</h2>
+          <div>
+            <span class="eyebrow">Start hier</span>
+            <h2>Kies de route die past bij hoe jij slim wilt wonen</h2>
           </div>
-          <p>Nieuwe bezoeker? Dit zijn de drie routes waar de meeste mensen mee beginnen.</p>
+          <p>Nieuwe bezoeker? Zie dit als de menukaart, niet als de technische handleiding.</p>
         </div>
+
         <div class="grid-3">
           <article class="card">
             <div class="card-icon">🏠</div>
-            <h3>Homey uitgelegd</h3>
-            <p class="muted">Wat is Homey precies, waarom is het zo geschikt als centrale hub en hoe begin je
-              verstandig?</p><a class="link" href="homey.html">Naar Homey basis →</a>
+            <h3>Ik wil begrijpen wat Homey is</h3>
+            <p class="muted">Wat Homey precies doet, waarom het zo’n sterke centrale hub is en waarom veel slimme huizen
+              pas echt slim worden zodra alles met elkaar praat.</p>
+            <a class="link" href="homey.html">Naar Homey basis →</a>
           </article>
+
           <article class="card">
             <div class="card-icon">⚡</div>
-            <h3>Eerste automatiseringen</h3>
-            <p class="muted">Flows en routines voor verlichting, thuiskomst, nachtmodus en energiebesparing.</p><a
-              class="link" href="tutorials.html">Bekijk tutorials →</a>
+            <h3>Ik wil meteen iets automatiseren</h3>
+            <p class="muted">Praktische tutorials voor verlichting, thuiskomst, nachtmodus, meldingen en
+              energiebesparing — oftewel de kleine ingrepen die verrassend veel opleveren.</p>
+            <a class="link" href="tutorials.html">Bekijk tutorials →</a>
           </article>
+
           <article class="card">
             <div class="card-icon">🔧</div>
-            <h3>Zelf bouwen met Homeyduino</h3>
-            <p class="muted">Van deurcontact tot CO₂ sensor: projecten die je huis slimmer maken dan standaardproducten.
-            </p><a class="link" href="diy.html">Ontdek DIY →</a>
+            <h3>Ik wil zelf iets bouwen</h3>
+            <p class="muted">DIY-projecten met Homeyduino voor sensoren en schakelingen die je niet zomaar in een nette
+              winkeldoos vindt, maar die vaak precies doen wat je wél nodig hebt.</p>
+            <a class="link" href="diy.html">Ontdek DIY →</a>
           </article>
         </div>
       </div>
     </section>
-    <section class="section">
-      <div class="container story-grid">
-        <div class="story-photo"></div>
-        <article class="card">
-          <h3>Waarom dit blog bestaat</h3>
-          <p class="muted">Het verhaal achter huisvanvandaag.nl en de link met het Huis van de Toekomst.</p>
-          <a class="link" href="waarom-dit-blog-bestaat.html">Lees artikel →</a>
-        </article>
-        <div class="panel">
-          <span class="eyebrow">Mijn verhaal</span>
-          <h2>Van het Huis van de Toekomst naar een huis dat vandaag met je meedenkt</h2>
-          <p>Als kind maakte het <strong>Huis van de Toekomst</strong> enorme indruk. Klimaatregeling, beeldbellen,
-            spraakherkenning en slimme toegang voelden toen haast buitenaards. Jaren later werd de vraag alleen maar
-            interessanter: <strong>hoeveel van die toekomst kun je vandaag al zelf bouwen?</strong></p>
-          <p>Dat is precies waar dit blog om draait. Niet om gadgets verzamelen, maar om technologie thuis echt nuttig
-            te maken — betaalbaar, praktisch en stap voor stap uitgelegd.</p>
-          <div class="chips"><span class="chip">Homey als hart van het huis</span><span class="chip">Google Home voor
-              routines</span><span class="chip">DIY waar standaard tekortschiet</span></div>
-          <a class="link" href="waarom-dit-blog-bestaat.html">Lees het volledige verhaal →</a>
-        </div>
-      </div>
-    </section>
-    <section class="section-tight">
-      <div class="container">
-        <div class="section-header">
-          <div><span class="eyebrow">Informatief</span>
-            <h2>Deze artikelen wil je niet missen</h2>
-          </div>
-        </div>
-        <div class="grid-3">
-          <article class="card">
-            <h3>CO₂ sensor met Homeyduino</h3>
-            <p class="muted">Een betaalbare zelfbouwsensor die luchtkwaliteit zichtbaar maakt en ventilatie kan
-              aansturen.</p><a class="link" href="homeyduino-co2-sensor.html">Lees artikel →</a>
-          </article>
-          <article class="card">
-            <h3>Relay switch met Homey en Google</h3>
-            <p class="muted">Slim schakelen met een Wemos D1 Mini en een relaymodule, inclusief duidelijke
-              veiligheidswaarschuwing.</p><a class="link" href="homeyduino-relay.html">Lees artikel →</a>
-          </article>
-          <article class="card">
-            <h3>Chriet Titulaer en het Huis van de Toekomst</h3>
-            <p class="muted">Het achtergrondverhaal dat de rode draad vormt van huisvanvandaag.nl.</p><a class="link"
-              href="chriet-titulaer.html">Lees artikel →</a>
-          </article>
-        </div>
-      </div>
-    </section>
+
     <section class="section-soft">
       <div class="container">
         <div class="section-header">
-          <div><span class="eyebrow">DIY projecten</span>
-            <h2>Homeyduino artikelen op hun logische plek</h2>
+          <div>
+            <span class="eyebrow">Waarom dit werkt</span>
+            <h2>Een slim huis draait zelden om méér technologie, maar bijna altijd om betere timing</h2>
           </div>
-          <p>Deze projecten horen thuis in de DIY-sectie: ze zijn uniek, praktisch en laten perfect zien waar het blog
-            zich mee onderscheidt.</p>
+          <p>De interessantste automatiseringen zijn meestal niet de meest spectaculaire, maar degene die op precies het
+            juiste moment één klein probleem uit je dag verwijderen.</p>
         </div>
+
         <div class="grid-3">
           <article class="card">
-            <div class="card-icon">🌡️</div>
-            <h3>Licht- en temperatuursensor</h3>
-            <p class="muted">Compact project voor klimaat en lichtgestuurde flows.</p><a class="link"
-              href="homeyduino-licht-temperatuur-sensor.html">Bekijk project →</a>
+            <h3>Minder handmatig ingrijpen</h3>
+            <p class="muted">Niet telkens zelf corrigeren wat je slimme huis eigenlijk al had moeten begrijpen.</p>
           </article>
+
           <article class="card">
-            <div class="card-icon">🚪</div>
-            <h3>Deur- en raamsensor</h3>
-            <p class="muted">Eenvoudige contactmelding voor beveiliging, verlichting of regenwaarschuwingen.</p><a
-              class="link" href="homeyduino-deur-raam-sensor.html">Bekijk project →</a>
+            <h3>Minder verspilling</h3>
+            <p class="muted">Verlichting, ventilatie en schakelingen pas activeren wanneer het echt nodig is, niet omdat
+              een klok toevallig iets besloten heeft.</p>
           </article>
+
           <article class="card">
-            <div class="card-icon">👏</div>
-            <h3>Clapper switch</h3>
-            <p class="muted">Een moderne knipoog naar een klassiek domotica-idee, nu gekoppeld aan Homey.</p><a
-              class="link" href="homeyduino-clapper-switch.html">Bekijk project →</a>
+            <h3>Meer controle</h3>
+            <p class="muted">Zelf kiezen waar standaardoplossingen goed genoeg zijn en waar zelfbouw ineens de
+              verstandigste optie blijkt.</p>
           </article>
         </div>
       </div>
     </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Beste eerste artikelen</span>
+            <h2>Dit zijn de slimste plekken om te beginnen</h2>
+          </div>
+          <p>Geen willekeurige selectie, maar drie artikelen die samen goed laten zien waar huisvanvandaag.nl voor
+            staat.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Wat is Homey en waarom kiezen zoveel mensen hiervoor?</h3>
+            <p class="muted">Een helder startartikel voor wie wil begrijpen waarom Homey zo vaak het hart van een slim
+              huis wordt — juist omdat het chaos vertaalt naar samenhang.</p>
+            <a class="link" href="homey.html">Lees artikel →</a>
+          </article>
+
+          <article class="card">
+            <h3>CO₂ sensor met Homeyduino</h3>
+            <p class="muted">Een van de beste voorbeelden van een DIY-project dat niet alleen leuk is om te bouwen, maar
+              thuis ook direct waarde toevoegt doordat het onzichtbare informatie bruikbaar maakt.</p>
+            <a class="link" href="homeyduino-co2-sensor.html">Lees artikel →</a>
+          </article>
+
+          <article class="card">
+            <h3>Chriet Titulaer en het Huis van de Toekomst</h3>
+            <p class="muted">Het verhaal achter de belofte van slim wonen — en waarom die toekomst vaak dichterbij is
+              dan de meeste mensen denken.</p>
+            <a class="link" href="chriet-titulaer.html">Lees artikel →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Uitgelichte DIY-projecten</span>
+            <h2>Zelfbouwprojecten die laten zien dat slim wonen niet altijd uit een winkel hoeft te komen</h2>
+          </div>
+          <p>Geen knutselen om het knutselen, maar projecten die iets oplossen, meten of slimmer maken op een manier die
+            standaardproducten vaak nét missen.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon">🌿</div>
+            <h3>CO₂ sensor</h3>
+            <p class="muted">Meet de luchtkwaliteit in huis en gebruik die data voor waarschuwingen of automatische
+              ventilatie — een prachtig voorbeeld van technologie die pas waarde krijgt zodra ze gedrag beïnvloedt.</p>
+            <a class="link" href="homeyduino-co2-sensor.html">Bekijk project →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🚶</div>
+            <h3>Bewegingssensor</h3>
+            <p class="muted">Een praktische sensor voor aanwezigheid, verlichting en slimme meldingen op precies de
+              juiste plek, zodat automatisering meer voelt als intuïtie dan als regelwerk.</p>
+            <a class="link" href="homeyduino-bewegingssensor.html">Bekijk project →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">👏</div>
+            <h3>Clapper switch</h3>
+            <p class="muted">Een speelser project, maar tegelijk een mooi bewijs dat slimme techniek vaak het leukst is
+              wanneer ze ook een glimlach oproept.</p>
+            <a class="link" href="homeyduino-clapper-switch.html">Bekijk project →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container">
+        <div class="story-grid">
+          <div class="panel">
+            <span class="eyebrow">Over huisvanvandaag.nl</span>
+            <h2>Niet méér technologie, maar een huis dat slimmer aanvoelt</h2>
+            <p>Als kind maakte het <strong>Huis van de Toekomst</strong> enorme indruk. Klimaatregeling, beeldbellen,
+              spraakherkenning en slimme toegang voelden toen bijna buitenaards.</p>
+            <p>Jaren later bleek de interessantste vraag niet óf die toekomst er komt, maar hoeveel ervan je vandaag al
+              zelf kunt bouwen — betaalbaar, praktisch en zonder van je huis een IT-project te maken. Want de beste
+              technologie is zelden de technologie waar je het meest over nadenkt, maar de technologie die op de juiste
+              momenten gewoon stilletjes haar werk doet.</p>
+            <div class="chips">
+              <span class="chip">Homey als centrale hub</span>
+              <span class="chip">Google Home voor routines</span>
+              <span class="chip">DIY waar standaard tekortschiet</span>
+            </div>
+            <a class="link" href="waarom-dit-blog-bestaat.html">Lees het volledige verhaal →</a>
+          </div>
+
+          <div class="panel">
+            <span class="eyebrow">Waar je op kunt rekenen</span>
+            <h2>Praktisch, getest en zonder onnodige show</h2>
+            <p>Dit blog draait niet om gadgets verzamelen, maar om toepassingen die thuis echt iets prettiger maken.
+              Soms is dat een simpele flow, soms een zelfgebouwde sensor en soms juist de conclusie dat iets niet de
+              moeite waard is.</p>
+            <p>Daarom ligt de nadruk hier op begrijpelijke uitleg, bruikbare voorbeelden en projecten die niet alleen
+              op papier slim klinken, maar ook in een echt huis logisch aanvoelen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- tijdelijk uitgeschakeld totdat ik een maillist heb  <section class="section-soft">
       <div class="container newsletter">
         <div>
-          <span class="eyebrow">Niets missen?</span>
-          <h2>Ontvang nieuwe flows, tutorials en DIY-projecten in je inbox</h2>
-          <p>Geen spam, wel slimme ideeën voor Homey, Google Home en zelfbouwprojecten die je huis echt beter maken.</p>
+          <span class="eyebrow">Op de hoogte blijven?</span>
+          <h2>Ontvang nieuwe tutorials, flows en DIY-projecten in je inbox</h2>
+          <p>Geen spam en geen eindeloze ruis, wel af en toe een mail met ideeën die je huis merkbaar slimmer,
+            comfortabeler of logischer maken.</p>
         </div>
         <form class="newsletter-form">
           <input type="email" placeholder="Je e-mailadres" aria-label="Je e-mailadres">
           <button class="btn btn-primary" type="button">Schrijf me in</button>
         </form>
       </div>
-    </section>
-
+    </section> -->
   </main>
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-        <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch,
-          getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-      </div>
-      <div>
-        <h4>Start hier</h4>
-        <div class="footer-links">
-          <a href="homey.html">Homey uitgelegd</a>
-          <a href="tutorials.html">Eerste flows en routines</a>
-          <a href="diy.html">DIY projecten</a>
-        </div>
-      </div>
-      <div>
-        <h4>Populaire onderwerpen</h4>
-        <div class="footer-links">
-          <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-          <a href="homeyduino-relay.html">Relay switch</a>
-          <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-        </div>
-      </div>
-      <div>
-        <h4>Praktisch</h4>
-        <div class="footer-links">
-          <a href="contact.html">Contact</a>
-          <a href="over.html">Over dit blog</a>
-          <a href="#">Privacy & disclaimer</a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© huisvanvandaag.nl sinds 2018</span>
-      <span>Gebouwd door Mike</span>
-    </div>
-  </footer>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
   <script src="script.js"></script>
 </body>
 

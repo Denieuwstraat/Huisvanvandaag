@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows</title>
+<meta content="Met een DHT11 sensor en een Wemos D1 Mini bouw je een eenvoudige Homeyduino klimaatsensor die temperatuur en luchtvochtigheid meet voor meldingen, inzichten en slimme flows." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><a href="diy.html">DIY</a><span>•</span><span>DHT11 sensor</span></div>
+<span class="eyebrow">DIY project • klimaatsensor</span>
+<h1>Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows</h1>
+<p class="lead muted">Met een DHT11 sensor en een Wemos D1 Mini bouw je een eenvoudige klimaatsensor die temperatuur en luchtvochtigheid meet en die je rechtstreeks in Homey kunt gebruiken voor inzichten, meldingen en flows.</p>
+<div class="meta-list"><span class="meta-pill">Moeilijkheid: beginner</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: temperatuur en luchtvochtigheid</span></div>
+</div>
+<div class="panel">
+<h3>Wat je in dit artikel leert</h3>
+<p class="muted">Hoe je met alleen een DHT11 en een Wemos D1 Mini een compacte Homeyduino klimaatsensor bouwt die temperatuur en luchtvochtigheid netjes doorstuurt naar Homey.</p>
+<div class="chips"><span class="chip">Homeyduino</span><span class="chip">ESP8266</span><span class="chip">DHT11</span></div>
+</div>
+</div>
+</section>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde DHT11 temperatuur- en luchtvochtigheidssensor met Wemos D1 Mini voor Homeyduino" src="assets/header/homeyduino-dht11-sensor-hero.jpg"/>
+<figcaption class="muted small">
+            Een zelfgebouwde DHT11 sensor op basis van een Wemos D1 Mini, bedoeld om temperatuur en luchtvochtigheid in huis slim te monitoren via Homey.
+          </figcaption>
+</figure>
+</div>
+</div>
+<section class="section-tight">
+<div class="container article-layout">
+<article class="article-body">
+<p class="lead">Een slim huis wordt pas echt handig wanneer het weet wat er in een ruimte gebeurt. Temperatuur en luchtvochtigheid zijn daarbij verrassend waardevolle signalen. Juist met die twee metingen kun je Homey veel slimmer laten reageren op comfort, ventilatie en dagelijkse routines.</p>
+<p>In dit project draait alles daarom om de DHT11. Geen extra lichtsensor, geen uitgebreide multisensor-opstelling, maar gewoon een eenvoudige en betaalbare klimaatsensor die precies doet wat voor veel Homey-flows al meer dan genoeg is.</p>
+<h2 id="waarom">Waarom een DHT11 sensor zo handig is</h2>
+<p>De kracht van dit project zit in de eenvoud. De DHT11 meet temperatuur en luchtvochtigheid en geeft die waarden door aan Homey. Daarmee kun je in één klap meer inzicht krijgen in ruimtes zoals de slaapkamer, zolder, werkkamer of berging.</p>
+<p>Denk bijvoorbeeld aan een melding wanneer de luchtvochtigheid te hoog oploopt, een waarschuwing als een kamer te warm wordt of een flow die ventilatie aanstuurt zodra het binnenklimaat daar om vraagt. Juist omdat temperatuur en vochtigheid vaak samen iets zeggen over comfort, voelt een DHT11 sensor in de praktijk meteen bruikbaar.</p>
+<h2 id="benodigd">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of NodeMCU met wifi</li>
+<li>DHT11 temperatuur- en luchtvochtigheidssensor</li>
+<li>USB-voeding voor de Wemos D1 Mini</li>
+<li>Homey met Homeyduino</li>
+<li>Arduino IDE</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-dht11-sensor-html-1"></div>
+<div id="affiliate-auto-homeyduino-dht11-sensor-html-2"></div>
+<div id="affiliate-auto-homeyduino-dht11-sensor-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-dht11-sensor-html-1", "dht11_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-dht11-sensor-html-2", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-dht11-sensor-html-3", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de DHT11 sensor aan op de Wemos D1 Mini</h3>
+<p>Voor deze opstelling gebruik je de DHT11 als losse temperatuur- en luchtvochtigheidssensor op pin <strong>D5</strong>. De aansluiting is overzichtelijk en daardoor ideaal voor een eerste Homeyduino-project.</p>
+<ul>
+<li><strong>VCC</strong> → <strong>3.3V</strong></li>
+<li><strong>GND</strong> → <strong>GND</strong></li>
+<li><strong>DATA</strong> → <strong>D5</strong></li>
+</ul>
+<p>Gebruik je een kale DHT11 zonder printplaatje, dan heb je meestal ook een pull-up weerstand nodig tussen VCC en de datapin. Werk je met een kant-en-klare DHT11 module, dan zit die vaak al op het printje verwerkt.</p>
+<figure>
+<img alt="Placeholder voor een Fritzing aansluitschema van een DHT11 sensor op een Wemos D1 Mini" src="assets/artikel/Wemos_D1_Mini_DHT11-sensor.png"/>
+<figcaption class="muted small">
+            Placeholder voor een later toe te voegen Fritzing aansluitschema van de DHT11 sensor op een Wemos D1 Mini.
+          </figcaption>
+</figure>
+<h3>2. Installeer Arduino IDE en de benodigde libraries</h3>
+<p>Zorg dat in Arduino IDE de <strong>ESP8266 board support</strong>, de <strong>Homeyduino-library</strong> en de library <strong>SimpleDHT</strong> zijn geïnstalleerd. Kies daarna via <strong>Hulpmiddelen → Board</strong> het juiste board voor je Wemos D1 Mini.</p>
+<h3>3. Vul je wifi-gegevens in en upload de code</h3>
+<p>Open de sketch, vul je eigen wifi-naam en wachtwoord in en upload de code naar je board. In deze versie stuurt de sensor temperatuur en luchtvochtigheid alleen door wanneer de waarden veranderen of wanneer een heartbeat nodig is. Daardoor blijft het netwerkverkeer beperkt en blijft de koppeling met Homey netjes werken.</p>
+<h3>4. Controleer de metingen via de seriële monitor</h3>
+<p>Open na het uploaden de seriële monitor in Arduino IDE en zet die op <strong>115200 baud</strong>. Je ziet daar of de wifi-verbinding goed tot stand komt en of temperatuur en luchtvochtigheid netjes worden uitgelezen. Juist bij een eerste test is dat handig, omdat je dan meteen ziet of de sensor stabiele waardes teruggeeft.</p>
+<h3>5. Voeg de sensor toe aan Homey</h3>
+<p>Zodra de code draait, kun je de DHT11 sensor koppelen via Homeyduino in Homey. Daarna verschijnen temperatuur en luchtvochtigheid als bruikbare meetwaarden in de app, in Insights en in je flows. Daarmee verandert deze eenvoudige zelfbouwsensor direct in een praktische bouwsteen voor comfort, ventilatie en meldingen.</p>
+<h2 id="software">Software en koppeling</h2>
+<p>Deze versie is volledig gericht op klimaatmetingen. In plaats van meerdere sensoren en capabilities gebruik je hier alleen de twee belangrijkste capabilities voor een DHT11: temperatuur en luchtvochtigheid. Daarmee blijft het project overzichtelijk, terwijl het in Homey meteen praktisch inzetbaar is.</p>
+<pre><code>Homey.addCapability("measure_temperature");
+Homey.addCapability("measure_humidity");</code></pre>
+<p>Dat maakt dit project ideaal als eerste kennismaking met Homeyduino. Je bouwt geen ingewikkelde multisensor, maar een duidelijke basis die je later altijd nog kunt uitbreiden.</p>
+<h2 id="code">Code voor de DHT11 sensor</h2>
+<p>Onderstaande sketch gebruikt een DHT11 op pin <code>D5</code> en stuurt temperatuur en luchtvochtigheid door naar Homey. De code controleert de wifi-verbinding, filtert ongeldige waarden eruit en synchroniseert gemiste updates opnieuw zodra de verbinding terugkomt. Vul alleen nog je eigen wifi-gegevens in.</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;Homey.h&gt;
+#include &lt;SimpleDHT.h&gt;
+
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = "&lt;SSID&gt;&gt;";
+  constexpr const char* WIFI_PASSWORD = "&lt;PASSWORD&gt;";
+
+  constexpr uint8_t DHT_PIN = D5;
+
+  constexpr unsigned long SENSOR_UPDATE_INTERVAL_MS = 30000;
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 300000; // 5 minuten
+
+  constexpr const char* HOMEY_DEVICE_NAME = "DHT11 Sensor";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+  constexpr const char* CAPABILITY_TEMP = "measure_temperature";
+  constexpr const char* CAPABILITY_HUMIDITY = "measure_humidity";
+}
+
+// =========================
+// Datamodellen &amp; State
+// =========================
+struct ClimateReading {
+  int temperature = 0;
+  int humidity = 0;
+};
+
+struct ClimateState {
+  ClimateReading currentReading;
+  ClimateReading lastPublishedReading;
+
+  bool hasReading = false;
+  bool hasPublished = false;
+  bool dirty = false;
+
+  unsigned long lastSampleAt = 0;
+  unsigned long lastPublishAt = 0;
+};
+
+struct WifiState {
+  unsigned long lastCheckAt = 0;
+  bool wasConnected = false;
+  bool reconnectedEvent = false;
+};
+
+ClimateState climateState;
+WifiState wifiState;
+SimpleDHT11 dht11;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void connectToWifiWithTimeout();
+void maintainWifi(unsigned long currentMillis);
+bool canPublishToHomey();
+
+void initializeHomey();
+
+void processClimateSensor(unsigned long currentMillis);
+bool readClimate(ClimateReading&amp; reading);
+bool isValidClimateReading(const ClimateReading&amp; reading);
+
+void markLatestClimateReading(const ClimateReading&amp; reading);
+bool shouldPublishClimateReading(unsigned long currentMillis);
+void publishLatestClimateToHomey(unsigned long currentMillis);
+void syncClimateIfDirty(unsigned long currentMillis);
+
+void logClimateReading(const ClimateReading&amp; reading);
+
+// =========================
+// Setup &amp; Loop
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println(F("--- Klimaat Sensor Systeem Gestart ---"));
+
+  connectToWifiWithTimeout();
+  initializeHomey();
+
+  // Zorg dat eerste sample direct kan plaatsvinden
+  climateState.lastSampleAt = millis() - Config::SENSOR_UPDATE_INTERVAL_MS;
+}
+
+void loop() {
+  Homey.loop();
+  yield();
+
+  const unsigned long currentMillis = millis();
+
+  maintainWifi(currentMillis);
+
+  if (wifiState.reconnectedEvent) {
+    wifiState.reconnectedEvent = false;
+    syncClimateIfDirty(currentMillis);
+  }
+
+  processClimateSensor(currentMillis);
+}
+
+// =========================
+// WiFi-beheer
+// =========================
+void connectToWifiWithTimeout() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  Serial.print(F("Verbinden met WiFi..."));
+
+  const unsigned long startAttemptTime = millis();
+
+  while (WiFi.status() != WL_CONNECTED &amp;&amp;
+         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    Serial.print(F("."));
+  }
+
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
+    Serial.println(WiFi.localIP());
+    wifiState.wasConnected = true;
+  } else {
+    Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
+    wifiState.wasConnected = false;
+  }
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - wifiState.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  wifiState.lastCheckAt = currentMillis;
+  wifiState.reconnectedEvent = false;
+
+  Serial.print(F("[DEBUG] WiFi status: "));
+  Serial.print(WiFi.status());
+  Serial.print(F(" | IP: "));
+  Serial.println(WiFi.localIP());
+
+  const wl_status_t status = WiFi.status();
+
+  if (status == WL_CONNECTED) {
+    if (!wifiState.wasConnected) {
+      Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
+      Serial.println(WiFi.localIP());
+      wifiState.wasConnected = true;
+      wifiState.reconnectedEvent = true;
+    }
+    return;
+  }
+
+  if (wifiState.wasConnected) {
+    Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
+    wifiState.wasConnected = false;
+  } else {
+    Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
+  }
+
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED;
+}
+
+// =========================
+// Homey initialisatie
+// =========================
+void initializeHomey() {
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_TEMP);
+  Homey.addCapability(Config::CAPABILITY_HUMIDITY);
+}
+
+// =========================
+// Klimaatlogica
+// =========================
+void processClimateSensor(unsigned long currentMillis) {
+  if (currentMillis - climateState.lastSampleAt &lt; Config::SENSOR_UPDATE_INTERVAL_MS) {
+    return;
+  }
+
+  climateState.lastSampleAt = currentMillis;
+
+  ClimateReading reading;
+  if (!readClimate(reading)) {
+    return;
+  }
+
+  if (!isValidClimateReading(reading)) {
+    Serial.println(F("[FOUT] Ongeldige klimaatwaarde ontvangen."));
+    return;
+  }
+
+  logClimateReading(reading);
+  markLatestClimateReading(reading);
+
+  if (shouldPublishClimateReading(currentMillis)) {
+    publishLatestClimateToHomey(currentMillis);
+  }
+}
+
+bool readClimate(ClimateReading&amp; reading) {
+  byte temperature = 0;
+  byte humidity = 0;
+  const int err = dht11.read(Config::DHT_PIN, &amp;temperature, &amp;humidity, NULL);
+
+  if (err != SimpleDHTErrSuccess) {
+    Serial.print(F("[FOUT] DHT11 uitlezen mislukt, err="));
+    Serial.println(err);
+    return false;
+  }
+
+  reading.temperature = static_cast&lt;int&gt;(temperature);
+  reading.humidity = static_cast&lt;int&gt;(humidity);
+  return true;
+}
+
+bool isValidClimateReading(const ClimateReading&amp; reading) {
+  const bool validTemperature = (reading.temperature &gt;= 0 &amp;&amp; reading.temperature &lt;= 50);
+  const bool validHumidity = (reading.humidity &gt;= 0 &amp;&amp; reading.humidity &lt;= 100);
+
+  return validTemperature &amp;&amp; validHumidity;
+}
+
+void markLatestClimateReading(const ClimateReading&amp; reading) {
+  climateState.currentReading = reading;
+  climateState.hasReading = true;
+
+  if (!climateState.hasPublished) {
+    climateState.dirty = true;
+    return;
+  }
+
+  const bool temperatureChanged =
+      reading.temperature != climateState.lastPublishedReading.temperature;
+
+  const bool humidityChanged =
+      reading.humidity != climateState.lastPublishedReading.humidity;
+
+  climateState.dirty = temperatureChanged || humidityChanged;
+}
+
+bool shouldPublishClimateReading(unsigned long currentMillis) {
+  if (!climateState.hasReading) {
+    return false;
+  }
+
+  const bool heartbeatReached =
+      (currentMillis - climateState.lastPublishAt) &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS;
+
+  return climateState.dirty || heartbeatReached;
+}
+
+void publishLatestClimateToHomey(unsigned long currentMillis) {
+  if (!climateState.hasReading) {
+    return;
+  }
+
+  if (!canPublishToHomey()) {
+    climateState.dirty = true;
+    Serial.println(F("[WAARSCHUWING] Laatste klimaatstatus lokaal bewaard (Geen WiFi)."));
+    return;
+  }
+
+  Homey.setCapabilityValue(Config::CAPABILITY_TEMP, static_cast&lt;float&gt;(climateState.currentReading.temperature));
+  Homey.setCapabilityValue(Config::CAPABILITY_HUMIDITY, static_cast&lt;float&gt;(climateState.currentReading.humidity));
+
+  climateState.lastPublishedReading = climateState.currentReading;
+  climateState.lastPublishAt = currentMillis;
+  climateState.hasPublished = true;
+  climateState.dirty = false;
+
+  Serial.println(F("[HOMEY] Klimaatgegevens verzonden."));
+}
+
+void syncClimateIfDirty(unsigned long currentMillis) {
+  if (!climateState.dirty) {
+    return;
+  }
+
+  Serial.println(F("[HOMEY] Laatste klimaatstatus synchroniseren..."));
+  publishLatestClimateToHomey(currentMillis);
+}
+
+void logClimateReading(const ClimateReading&amp; reading) {
+  Serial.print(F("Klimaat: "));
+  Serial.print(reading.temperature);
+  Serial.print(F(" C | "));
+  Serial.print(reading.humidity);
+  Serial.println(F(" % vochtigheid"));
+}</code></pre>
+<h2 id="flows">Voorbeelden van flows</h2>
+<ul>
+<li>Laat Homey een melding sturen wanneer de luchtvochtigheid in de badkamer te hoog oploopt.</li>
+<li>Gebruik temperatuur als trigger om een ventilator of slimme stekker in te schakelen.</li>
+<li>Maak een comfortflow voor de slaapkamer wanneer de temperatuur boven een bepaalde grens uitkomt.</li>
+<li>Gebruik luchtvochtigheid en temperatuur als extra inzicht in ruimtes waar je schimmel of condens wilt voorkomen.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een DHT11 sensor en een Wemos D1 Mini bouw je voor weinig geld een verrassend bruikbare Homeyduino sensor. Juist doordat dit project zich volledig richt op temperatuur en luchtvochtigheid blijft het overzichtelijk, betaalbaar en praktisch. Een ideaal instapprogramma dus, maar ook gewoon een handige bouwsteen voor een slimmer en comfortabeler smart home.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#waarom">Waarom een DHT11 sensor zo handig is</a>
+<a href="#benodigd">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#software">Software en koppeling</a>
+<a href="#code">Code voor de DHT11 sensor</a>
+<a href="#flows">Voorbeelden van flows</a>
+<a href="#conclusie">Conclusie</a>
+
+
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-multisensor.html">Bouw je eigen CO₂ multi-sensor met Homeyduino</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

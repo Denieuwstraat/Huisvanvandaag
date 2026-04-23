@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Arduino IDE instellen voor ESP8266 (Wemos D1 Mini) | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Leer stap voor stap hoe je Arduino IDE instelt voor ESP8266 (Wemos D1 Mini), inclusief board support, libraries en veelgemaakte fouten." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Arduino IDE ESP8266</span>
+</div>
+<span class="eyebrow">Tutorial • Homeyduino • Basis</span>
+<h1>Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)</h1>
+<p class="lead muted">
+          Werk je met een Wemos D1 Mini of andere ESP8266? In deze tutorial stel je Arduino IDE correct in, voorkom je bekende fouten en zorg je dat je Homeyduino-projecten direct werken.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Tutorial</span>
+<span class="meta-pill">Platform: Arduino / Homey</span>
+<span class="meta-pill">Niveau: Beginner</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Voorkomt frustratie</strong><br/>
+<span class="muted">Je voorkomt veelvoorkomende compile- en libraryfouten.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct werkende setup</strong><br/>
+<span class="muted">Na deze stappen kun je meteen beginnen met je eerste project.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Basis voor alle projecten</strong><br/>
+<span class="muted">Deze setup heb je nodig voor vrijwel elk Homeyduino-project.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Helder en praktisch</strong><br/>
+<span class="muted">Geen onnodige theorie, alleen wat je echt nodig hebt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Inclusief valkuilen</strong><br/>
+<span class="muted">Je leert waar het meestal misgaat en hoe je dat voorkomt.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Als je voor het eerst met een Wemos D1 Mini werkt, loop je bijna altijd tegen hetzelfde probleem aan: Arduino IDE begrijpt het board simpelweg nog niet.
+        </p>
+<p>
+          Dat zorgt voor fouten die verwarrend aanvoelen, terwijl de oplossing eigenlijk vrij simpel is. In deze tutorial zet je Arduino IDE goed neer, zodat je daarna probleemloos met ESP8266-projecten en Homeyduino kunt werken.
+        </p>
+<h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+<p>Na deze tutorial heb je een volledig werkende ontwikkelomgeving voor ESP8266.</p>
+<ul>
+<li><strong>Board support installeren</strong> → Arduino IDE geschikt maken voor ESP8266</li>
+<li><strong>Libraries beheren</strong> → de juiste libraries installeren en fouten voorkomen</li>
+</ul>
+<p>Daarmee kun je direct verder met Homeyduino projecten.</p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>Deze tutorial is bedoeld voor iedereen die begint met een Wemos D1 Mini, ESP8266 of Homeyduino en nog geen werkende Arduino setup heeft.</p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Computer met Arduino IDE</li>
+<li>Wemos D1 Mini of ESP8266-board</li>
+<li>USB-kabel</li>
+<li>Internetverbinding</li>
+</ul>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Voeg ESP8266 board support toe</h3>
+<p>Arduino IDE ondersteunt ESP8266 niet standaard. Daarom moet je dit eerst toevoegen.</p>
+<ol>
+<li>Open Arduino IDE</li>
+<li>Ga naar <strong>Bestand → Voorkeuren</strong></li>
+<li>Voeg deze URL toe bij Additional Boards Manager URLs:</li>
+</ol>
+<pre><code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code></pre>
+<h3>2. Installeer het ESP8266 board</h3>
+<p>Ga daarna naar de Boards Manager en installeer de ESP8266 support.</p>
+<ul>
+<li>Tools → Board → Boards Manager</li>
+<li>Zoek op <strong>esp8266</strong></li>
+<li>Installeer <strong>ESP8266 by ESP8266 Community</strong></li>
+<li>Selecteer: <strong>LOLIN(WEMOS) D1 R2 &amp; mini</strong></li>
+</ul>
+<div class="panel">
+<strong>Veelgemaakte fout</strong><br/>
+          Staat er een verkeerd board geselecteerd? Dan krijg je onlogische fouten die niets met je code te maken hebben.
+        </div>
+<h3>3. Installeer de juiste libraries</h3>
+<p>Voor Homeyduino-projecten heb je minimaal deze library nodig:</p>
+<ul>
+<li><strong>Homeyduino</strong> van Athom</li>
+</ul>
+<p>Afhankelijk van je project voeg je extra libraries toe, zoals sensoren.</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;</code></pre>
+<h3>4. Controleer je instellingen</h3>
+<p>Controleer altijd:</p>
+<ul>
+<li>Correct board geselecteerd</li>
+<li>Juiste COM-poort</li>
+<li>Goede library geïnstalleerd</li>
+</ul>
+<h3>5. Test je setup</h3>
+<p>Upload een simpele sketch om te controleren of alles werkt. Zie je output in de seriële monitor? Dan is je setup correct.</p>
+<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<p>Je bent nu klaar om te starten met Homeyduino-projecten.</p>
+<ul>
+<li>Bouw een CO₂ sensor</li>
+<li>Maak een bewegingssensor</li>
+<li>Start met een relais project</li>
+</ul>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Verkeerd board geselecteerd</li>
+<li>Verkeerde WiFi library gebruikt</li>
+<li>Dubbele libraries geïnstalleerd</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met deze setup voorkom je de meeste problemen en kun je direct aan de slag met ESP8266 en Homeyduino projecten.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+<a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="robotstofzuiger-homey-tutorial.html">Laat je robotstofzuiger slim schoonmaken met Homey</a><a href="homeyduino-relay.html">Homeyduino Relay met Google Assistent ondersteuning</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</body></html>

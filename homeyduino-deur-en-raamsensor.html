@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bouw je eigen deur- en raamsensor met Homeyduino | huisvanvandaag.nl</title>
+<meta content="Bouw zelf een betaalbare deur- of raamsensor met een MC-38 contactsensor en een Wemos D1 Mini. Deze vernieuwde Homeyduino-versie werkt met debounce, heartbeat, wifi-herstel en een failsafe voor stabieler dagelijks gebruik." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><a href="diy.html">DIY</a><span>•</span><span>Deur- en raamsensor</span></div>
+<span class="eyebrow">DIY project • Homeyduino • contactdetectie</span>
+<h1>Bouw je eigen deur- en raamsensor met Homeyduino</h1>
+<p class="lead muted">Met een MC-38 contactsensor en een Wemos D1 Mini bouw je zelf een eenvoudige maar verrassend bruikbare deur- of raamsensor die je via Homey kunt inzetten voor meldingen, verlichting en slimme flows. In deze vernieuwde versie is de code bovendien beter voorbereid op dagelijks gebruik dankzij debounce, automatische wifi-herstelpogingen, periodieke heartbeat-updates en een failsafe herstart wanneer Homey te lang stil lijkt te vallen.</p>
+<div class="meta-list"><span class="meta-pill">Moeilijkheid: beginner</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: meldingen, verlichting en flows</span></div>
+</div>
+<div class="panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct praktisch toepasbaar</strong><br/>
+<span class="muted">Je ziet meteen of een deur of raam open staat en gebruikt die status direct in je Homey flows.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Betrouwbaarder in dagelijks gebruik</strong><br/>
+<span class="muted">De sketch verwerkt contactschommelingen, bewaart statuswijzigingen lokaal en synchroniseert ze opnieuw zodra wifi of Homey weer beschikbaar is.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Geen batterijen nodig</strong><br/>
+<span class="muted">Door de bedrade opzet werk je met een stabiele voeding en hoef je niet steeds batterijen te vervangen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Heartbeat en failsafe ingebouwd</strong><br/>
+<span class="muted">De sensor stuurt periodiek opnieuw zijn status door en kan zichzelf herstarten als de Homey-communicatie te lang stilvalt.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde deur en raamsensor met MC-38 en Wemos D1 Mini voor Homeyduino" src="assets/header/homeyduino-deur-en-raamsensor-hero.jpg"/>
+<figcaption class="muted small">
+            Een zelfgebouwde deur- en raamsensor op basis van een MC-38 magneetcontact en een Wemos D1 Mini, bedoeld om openstaande deuren en ramen slim te monitoren via Homey.
+          </figcaption>
+</figure>
+</div>
+</div>
+<section class="section-tight">
+<div class="container article-layout">
+<article class="article-body">
+<p class="lead">Soms zijn het juist de kleinste signalen die een smart home echt slim maken. Een deur die open gaat, een raam dat nog open staat of een kastdeur die wordt gebruikt: het lijken simpele gebeurtenissen, maar in Homey kun je er verrassend veel mee doen.</p>
+<p>In dit project combineer je een bedrade MC-38 contactsensor met een Wemos D1 Mini en Homeyduino. Het resultaat is een betaalbare sensor die je direct kunt gebruiken voor meldingen, verlichting en eenvoudige beveiligingsflows. Dankzij de vernieuwde sketch voelt dit project bovendien niet meer als alleen een leuk experiment, maar als een nette basis die ook op langere termijn stabieler blijft werken.</p>
+<h2 id="waarom">Waarom deze sensor zo handig is</h2>
+<p>Een deur- of raamsensor is misschien niet het meest spectaculaire smart-home project, maar wel eentje waar je in de praktijk echt iets aan hebt. Je kunt Homey bijvoorbeeld laten melden dat een raam nog open staat, automatisch verlichting inschakelen zodra een deur opent of een alarmflow activeren wanneer er iemand binnenkomt terwijl je niet thuis bent.</p>
+<p>Juist omdat het signaal zo eenvoudig is, is deze sensor breed inzetbaar. En dat maakt hem meteen een sterke basis voor verdere automatisering in huis. In deze versie komt daar nog iets belangrijks bij: de code is zo opgezet dat tijdelijke verbindingsproblemen minder snel leiden tot gemiste statussen of een sensor die stilletjes niets meer doorgeeft.</p>
+<h2 id="zelfbouw-of-kant-en-klaar">Zelfbouw of toch kant-en-klaar?</h2>
+<p>Uiteraard zijn er genoeg kant-en-klare deur- en raamsensoren te koop. Die zijn vaak draadloos en snel te plaatsen, wat vooral handig is op plekken waar je geen voeding in de buurt hebt.</p>
+<p>Zelfbouw is vooral interessant wanneer je de kosten laag wilt houden, meer uit Homeyduino wilt halen of liever geen extra batterijsensoren toevoegt aan je woning. Voor vaste plekken, zoals een achterdeur, schuurdeur of raamkozijn, is een bedrade oplossing vaak juist verrassend praktisch. Zeker als je het leuk vindt om ook de achterliggende logica zelf te begrijpen en aan te passen.</p>
+<h2 id="benodigd">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of vergelijkbaar ESP8266-board</li>
+<li>MC-38 deur- of raamcontact</li>
+<li>Micro USB-voeding of andere passende USB-voeding</li>
+<li>Breadboard of nette vaste bekabeling</li>
+<li>Homey met de Homeyduino app</li>
+<li>Computer of laptop voor de eerste configuratie</li>
+<li>Arduino IDE</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-1"></div>
+<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-2"></div>
+<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-2", "reed_contact_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-3", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+<h2 id="opbouw">Hoe deze sensor werkt</h2>
+<p>De kracht van dit project zit in de eenvoud. Het MC-38 contact geeft simpelweg door of het magneetcontact gesloten of onderbroken is. De Wemos D1 Mini leest die status uit op een digitale pin en stuurt die vervolgens als capability door naar Homey.</p>
+<p>In deze vernieuwde versie gebeurt dat netter dan in een snelle basisopzet. De code werkt met debounce, controleert periodiek de wifi-verbinding, initialiseert Homey opnieuw als dat nodig is en bewaart de laatst bekende deurstatus lokaal zolang publiceren niet mogelijk is. Daarnaast wordt de actuele status ook periodiek opnieuw verstuurd via een heartbeat, zodat Homey niet alleen afhankelijk is van echte statuswisselingen.</p>
+<h2 id="aansluiten">Aansluitschema en hardware</h2>
+<p>De MC-38 wordt in deze opstelling aangesloten op <strong>D2</strong> van de Wemos D1 Mini. Omdat de code gebruikmaakt van <code>INPUT_PULLUP</code>, heb je geen extra externe pull-up weerstand nodig. Dat houdt de bedrading lekker overzichtelijk.</p>
+<ul>
+<li><strong>MC-38 sensor</strong> → <strong>D2</strong></li>
+<li><strong>Andere draad sensor</strong> → <strong>GND</strong></li>
+<li><strong>Board</strong> → <strong>Wemos D1 Mini</strong></li>
+<li><strong>Ingestelde modus</strong> → <strong>INPUT_PULLUP</strong></li>
+</ul>
+<p>Het maakt daarbij in de praktijk meestal niet uit welke van de twee sensoraders je op D2 of GND zet, zolang het contact maar correct wordt uitgelezen. In de sketch staat <code>DOOR_OPEN_PIN_STATE</code> op <code>HIGH</code>. Mocht jouw sensor in Homey precies omgekeerd reageren, dan is dat de instelling om als eerste te controleren.</p>
+<figure>
+<img alt="Schema of foto van de deur- en raamsensor MC-38 aangesloten op een Wemos D1 Mini" src="assets/artikel/Wemos_D1_Mini_MC-38-deur-raam-sensor.png"/>
+<figcaption class="muted small">
+            De deur- en raamsensor wordt in deze opstelling met twee verbindingen aangesloten op de Wemos D1 Mini.
+          </figcaption>
+</figure>
+<h2 id="software">Software voorbereiden</h2>
+<p>Voor dit project heb je Arduino IDE nodig, samen met de juiste ondersteuning voor ESP8266-boards en natuurlijk de Homeyduino-library. Controleer voor het uploaden altijd even of je het juiste board hebt geselecteerd in Arduino IDE.</p>
+<p>Vul daarna in de code je eigen wifi-gegevens in en pas eventueel ook de apparaatnaam aan. In het voorbeeld staat die nu ingesteld op <code>Keuken deursensor</code>, maar je kunt daar natuurlijk iedere naam aan geven die voor jouw Homey-opstelling logisch is. Wil je tijdens het testen meer inzicht in wat er gebeurt, dan kun je <code>DEBUG</code> tijdelijk op <code>1</code> zetten. Dan zie je extra meldingen over ruwe pinstatussen en wifi-controles in de seriële monitor.</p>
+<h2 id="code">Code voor de deur- en raamsensor</h2>
+<p>Onderstaande sketch gebruikt debounce, bewaakt de wifi-verbinding, initialiseert Homey opnieuw na verbindingsproblemen en verstuurt periodiek een heartbeat. Daarnaast zit er een failsafe in die de ESP kan herstarten als de Homey-communicatie te lang stilvalt. Daardoor is deze versie beter voorbereid op dagelijks gebruik dan een heel eenvoudige basiscode.</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;Homey.h&gt;
+
+// =========================
+// Debug instellingen
+// =========================
+#define DEBUG 0   // 1 = debug aan, 0 = debug uit
+
+#if DEBUG
+  #define DBG_PRINT(x) Serial.print(x)
+  #define DBG_PRINTLN(x) Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = &quot;&lt;SSID&gt;&quot;;
+  constexpr const char* WIFI_PASSWORD = &quot;&lt;PASSWORD&gt;&quot;;
+
+  constexpr uint8_t DOOR_SENSOR_PIN = D2;
+  constexpr uint8_t DOOR_OPEN_PIN_STATE = HIGH;
+
+  constexpr unsigned long SENSOR_CHECK_INTERVAL_MS = 50;
+  constexpr unsigned long DOOR_DEBOUNCE_MS = 250;
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 15000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr unsigned long HOMEY_REINIT_COOLDOWN_MS = 60000;
+  constexpr unsigned long HOMEY_STALE_TIMEOUT_MS = 300000;
+  constexpr unsigned long FAILSAFE_RESTART_COOLDOWN_MS = 900000;
+
+  constexpr const char* HOMEY_DEVICE_NAME = &quot;Keuken deursensor&quot;;
+  constexpr const char* HOMEY_DEVICE_CLASS = &quot;sensor&quot;;
+  constexpr const char* CAPABILITY_CONTACT = &quot;alarm_contact&quot;;
+}
+
+// =========================
+// State
+// =========================
+struct DoorState {
+  int stableDoorPinState = LOW;
+  int lastRawDoorPinState = LOW;
+  bool hasKnownDoorState = false;
+
+  bool currentDoorOpen = false;
+  bool lastPublishedDoorOpen = false;
+  bool hasPublishedDoorState = false;
+  bool dirty = false;
+
+  unsigned long lastSensorCheckAt = 0;
+  unsigned long lastDoorStateChangeAt = 0;
+  unsigned long lastPublishAt = 0;
+};
+
+struct WifiState {
+  unsigned long lastWifiCheckAt = 0;
+  bool wasConnected = false;
+  bool reconnectedEvent = false;
+};
+
+struct HomeyState {
+  bool initialized = false;
+  bool reinitRequested = false;
+  unsigned long lastActivityAt = 0;
+  unsigned long lastInitAt = 0;
+  unsigned long lastRestartAt = 0;
+};
+
+DoorState doorState;
+WifiState wifiState;
+HomeyState homeyState;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void connectToWifiWithTimeout();
+void maintainWifi(unsigned long currentMillis);
+bool canPublishToHomey();
+
+void initializeHomey(unsigned long currentMillis);
+void requestHomeyReinitialize();
+void maintainHomey(unsigned long currentMillis);
+void markHomeyActivity(unsigned long currentMillis);
+void runFailsafeRestartCheck(unsigned long currentMillis);
+
+void processDoorSensor(unsigned long currentMillis);
+void initializeDoorState(int currentRawPinState, unsigned long currentMillis);
+void handleStableDoorStateChange(int newPinState, unsigned long currentMillis);
+
+bool isDoorOpenFromPinState(int pinState);
+
+void markDoorState(bool isOpen);
+bool shouldPublishDoorState(unsigned long currentMillis);
+void publishLatestDoorStateToHomey(unsigned long currentMillis);
+void syncDoorStateIfDirty(unsigned long currentMillis);
+
+// =========================
+// Setup
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println(F(&quot;--- Deursensor Systeem Gestart ---&quot;));
+
+  pinMode(Config::DOOR_SENSOR_PIN, INPUT_PULLUP);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.setAutoReconnect(true);
+  WiFi.persistent(true);
+
+  connectToWifiWithTimeout();
+  initializeHomey(millis());
+}
+
+// =========================
+// Main loop
+// =========================
+void loop() {
+  const unsigned long currentMillis = millis();
+
+  maintainWifi(currentMillis);
+  maintainHomey(currentMillis);
+
+  if (homeyState.initialized &amp;&amp; WiFi.status() == WL_CONNECTED) {
+    Homey.loop();
+  }
+
+  yield();
+
+  if (wifiState.reconnectedEvent) {
+    wifiState.reconnectedEvent = false;
+    syncDoorStateIfDirty(currentMillis);
+  }
+
+  processDoorSensor(currentMillis);
+  runFailsafeRestartCheck(currentMillis);
+}
+
+// =========================
+// WiFi
+// =========================
+void connectToWifiWithTimeout() {
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  Serial.print(F(&quot;Verbinden met WiFi...&quot;));
+
+  const unsigned long startAttemptTime = millis();
+
+  while (WiFi.status() != WL_CONNECTED &amp;&amp;
+         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    Serial.print(F(&quot;.&quot;));
+  }
+
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print(F(&quot;[SUCCES] Verbonden! IP-adres: &quot;));
+    Serial.println(WiFi.localIP());
+    wifiState.wasConnected = true;
+  } else {
+    Serial.println(F(&quot;[WIFI] Timeout bereikt. Sensor start zonder wifi.&quot;));
+    wifiState.wasConnected = false;
+  }
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - wifiState.lastWifiCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  wifiState.lastWifiCheckAt = currentMillis;
+  wifiState.reconnectedEvent = false;
+
+  DBG_PRINT(F(&quot;[DEBUG] WiFi status: &quot;));
+  DBG_PRINT(WiFi.status());
+  DBG_PRINT(F(&quot; | IP: &quot;));
+  DBG_PRINTLN(WiFi.localIP());
+
+  const wl_status_t status = WiFi.status();
+
+  if (status == WL_CONNECTED) {
+    if (!wifiState.wasConnected) {
+      Serial.print(F(&quot;[WIFI] Opnieuw verbonden! IP-adres: &quot;));
+      Serial.println(WiFi.localIP());
+      wifiState.wasConnected = true;
+      wifiState.reconnectedEvent = true;
+      requestHomeyReinitialize();
+    }
+    return;
+  }
+
+  if (wifiState.wasConnected) {
+    Serial.println(F(&quot;[WIFI] Verbinding kwijt. Herstellen...&quot;));
+    wifiState.wasConnected = false;
+    homeyState.initialized = false;
+    requestHomeyReinitialize();
+  } else {
+    Serial.println(F(&quot;[WIFI] Nog niet verbonden. Nieuwe poging...&quot;));
+  }
+
+  WiFi.disconnect();
+  delay(100);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED &amp;&amp; homeyState.initialized;
+}
+
+// =========================
+// Homey
+// =========================
+void initializeHomey(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    homeyState.initialized = false;
+    return;
+  }
+
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_CONTACT);
+
+  homeyState.initialized = true;
+  homeyState.reinitRequested = false;
+  homeyState.lastInitAt = currentMillis;
+  markHomeyActivity(currentMillis);
+
+  Serial.println(F(&quot;[HOMEY] Homey geïnitialiseerd.&quot;));
+}
+
+void requestHomeyReinitialize() {
+  homeyState.reinitRequested = true;
+}
+
+void maintainHomey(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    homeyState.initialized = false;
+    return;
+  }
+
+  if (!homeyState.initialized) {
+    initializeHomey(currentMillis);
+    return;
+  }
+
+  if (!homeyState.reinitRequested) {
+    return;
+  }
+
+  if (currentMillis - homeyState.lastInitAt &lt; Config::HOMEY_REINIT_COOLDOWN_MS) {
+    return;
+  }
+
+  initializeHomey(currentMillis);
+}
+
+void markHomeyActivity(unsigned long currentMillis) {
+  homeyState.lastActivityAt = currentMillis;
+}
+
+void runFailsafeRestartCheck(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED || !homeyState.initialized) {
+    return;
+  }
+
+  const bool homeyLooksStale =
+      (currentMillis - homeyState.lastActivityAt) &gt;= Config::HOMEY_STALE_TIMEOUT_MS;
+
+  const bool restartCooldownPassed =
+      (currentMillis - homeyState.lastRestartAt) &gt;= Config::FAILSAFE_RESTART_COOLDOWN_MS;
+
+  if (homeyLooksStale &amp;&amp; restartCooldownPassed) {
+    Serial.println(F(&quot;[FAILSAFE] Te lang geen Homey-activiteit. Herstart ESP...&quot;));
+    homeyState.lastRestartAt = currentMillis;
+    delay(250);
+    ESP.restart();
+  }
+}
+
+// =========================
+// Deursensorlogica
+// =========================
+void processDoorSensor(unsigned long currentMillis) {
+  if (currentMillis - doorState.lastSensorCheckAt &lt; Config::SENSOR_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  doorState.lastSensorCheckAt = currentMillis;
+
+  const int currentRawPinState = digitalRead(Config::DOOR_SENSOR_PIN);
+
+  if (currentRawPinState != doorState.lastRawDoorPinState) {
+    DBG_PRINT(F(&quot;[DEBUG] Raw pin state gewijzigd naar: &quot;));
+    DBG_PRINTLN(currentRawPinState);
+  }
+
+  if (!doorState.hasKnownDoorState) {
+    initializeDoorState(currentRawPinState, currentMillis);
+    return;
+  }
+
+  if (currentRawPinState != doorState.lastRawDoorPinState) {
+    doorState.lastRawDoorPinState = currentRawPinState;
+    doorState.lastDoorStateChangeAt = currentMillis;
+    return;
+  }
+
+  const bool debouncePassed =
+      (currentMillis - doorState.lastDoorStateChangeAt) &gt;= Config::DOOR_DEBOUNCE_MS;
+
+  if (!debouncePassed) {
+    return;
+  }
+
+  if (currentRawPinState != doorState.stableDoorPinState) {
+    handleStableDoorStateChange(currentRawPinState, currentMillis);
+    return;
+  }
+
+  if (shouldPublishDoorState(currentMillis)) {
+    publishLatestDoorStateToHomey(currentMillis);
+  }
+}
+
+void initializeDoorState(int currentRawPinState, unsigned long currentMillis) {
+  doorState.lastRawDoorPinState = currentRawPinState;
+  doorState.stableDoorPinState = currentRawPinState;
+  doorState.lastDoorStateChangeAt = currentMillis;
+  doorState.hasKnownDoorState = true;
+
+  const bool isOpen = isDoorOpenFromPinState(currentRawPinState);
+
+  Serial.print(F(&quot;[INIT] Deurstatus bij opstart: &quot;));
+  Serial.println(isOpen ? F(&quot;OPEN&quot;) : F(&quot;DICHT&quot;));
+
+  markDoorState(isOpen);
+
+  if (shouldPublishDoorState(currentMillis)) {
+    publishLatestDoorStateToHomey(currentMillis);
+  }
+}
+
+void handleStableDoorStateChange(int newPinState, unsigned long currentMillis) {
+  doorState.stableDoorPinState = newPinState;
+
+  const bool isOpen = isDoorOpenFromPinState(newPinState);
+
+  Serial.print(F(&quot;[EVENT] Deur is nu: &quot;));
+  Serial.println(isOpen ? F(&quot;OPEN&quot;) : F(&quot;DICHT&quot;));
+
+  markDoorState(isOpen);
+
+  if (shouldPublishDoorState(currentMillis)) {
+    publishLatestDoorStateToHomey(currentMillis);
+  }
+}
+
+bool isDoorOpenFromPinState(int pinState) {
+  return pinState == Config::DOOR_OPEN_PIN_STATE;
+}
+
+// =========================
+// Publicatielogica
+// =========================
+void markDoorState(bool isOpen) {
+  doorState.currentDoorOpen = isOpen;
+
+  if (!doorState.hasPublishedDoorState) {
+    doorState.dirty = true;
+    return;
+  }
+
+  doorState.dirty = (doorState.currentDoorOpen != doorState.lastPublishedDoorOpen);
+}
+
+bool shouldPublishDoorState(unsigned long currentMillis) {
+  if (!doorState.hasKnownDoorState) {
+    return false;
+  }
+
+  if (!doorState.hasPublishedDoorState) {
+    return true;
+  }
+
+  const bool heartbeatReached =
+      (currentMillis - doorState.lastPublishAt) &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS;
+
+  return doorState.dirty || heartbeatReached;
+}
+
+void publishLatestDoorStateToHomey(unsigned long currentMillis) {
+  if (!doorState.hasKnownDoorState) {
+    return;
+  }
+
+  if (!canPublishToHomey()) {
+    doorState.dirty = true;
+    Serial.println(F(&quot;[WAARSCHUWING] Laatste deurstatus lokaal bewaard (Geen WiFi/Homey).&quot;));
+    return;
+  }
+
+  Homey.setCapabilityValue(Config::CAPABILITY_CONTACT, doorState.currentDoorOpen);
+
+  doorState.lastPublishedDoorOpen = doorState.currentDoorOpen;
+  doorState.hasPublishedDoorState = true;
+  doorState.dirty = false;
+  doorState.lastPublishAt = currentMillis;
+
+  markHomeyActivity(currentMillis);
+
+  Serial.println(F(&quot;[HOMEY] Deurstatus succesvol bijgewerkt.&quot;));
+}
+
+void syncDoorStateIfDirty(unsigned long currentMillis) {
+  if (!doorState.hasKnownDoorState) {
+    return;
+  }
+
+  if (!doorState.dirty &amp;&amp; doorState.hasPublishedDoorState) {
+    return;
+  }
+
+  Serial.println(F(&quot;[HOMEY] Laatste deurstatus synchroniseren...&quot;));
+  publishLatestDoorStateToHomey(currentMillis);
+}</code></pre>
+<h2 id="testen">Testen via de seriële monitor</h2>
+<p>Na het uploaden open je de seriële monitor in Arduino IDE. Deze sketch gebruikt <strong>115200 baud</strong>. Daar zie je direct wat de sensor doet bij het openen en sluiten van het contact.</p>
+<p>Bij het opstarten meldt de code eerst welke deurstatus er is gedetecteerd en of de wifi-verbinding tot stand komt. Daarna verschijnt bij iedere stabiele wijziging een nieuwe statusregel. Bij verbindingsproblemen zie je bovendien of de laatste status lokaal wordt bewaard, of Homey opnieuw wordt geïnitialiseerd en of een heartbeat of synchronisatie opnieuw wordt uitgevoerd. Juist daardoor is deze versie ook prettiger te debuggen wanneer je hem langere tijd wilt laten draaien.</p>
+<figure>
+<img alt="Zelfgebouwde deur en raamsensor met MC-38 en Wemos D1 Mini voor Homeyduino" src="assets/artikel/deur-en-raam-sensor_serial_monitor.jpg"/>
+<figcaption class="muted small">
+            Test je zelfgebouwde deur- en raamsensor via de seriële monitor in Arduino IDE. Zo controleer je of de sensorstatus correct verandert bij het openen en sluiten van het contact en zie je meteen hoe wifi- en Homey-herstel verlopen.
+          </figcaption>
+</figure>
+<h2 id="gebruik">Slimme toepassingen</h2>
+<ul>
+<li>Halverlichting inschakelen zodra een buitendeur open gaat.</li>
+<li>Een melding sturen wanneer een raam nog open staat terwijl het gaat regenen.</li>
+<li>Een alarmflow activeren als een deur opent terwijl je niet thuis bent.</li>
+<li>Verwarming of ventilatie aanpassen wanneer een raam langere tijd open blijft staan.</li>
+</ul>
+<h2 id="homey">Koppelen aan Homey</h2>
+<p>Zodra de sensor correct uitleest, kun je hem koppelen aan Homey via Homeyduino. De status wordt daarbij gepubliceerd als <code>alarm_contact</code>, waardoor Homey precies weet of het contact open of dicht staat.</p>
+<p>En daar zit meteen de echte meerwaarde van dit project. Op zichzelf is het slechts een eenvoudige contactsensor, maar in combinatie met Homey wordt het een slimme bouwsteen waarmee je allerlei handige flows kunt maken. Doordat deze sketch ook periodiek een heartbeat verstuurt en na wifi-herstel opnieuw kan synchroniseren, voelt de koppeling bovendien robuuster dan bij een heel minimale implementatie.</p>
+<h2 id="praktisch">Praktisch gebruik en grenzen</h2>
+<p>Deze sensor is vooral interessant op vaste plekken waar voeding geen probleem is. Denk aan een achterdeur, schuurdeur, meterkast, kastdeur of raamkozijn. Juist op dat soort plekken is een eenvoudige bedrade sensor vaak stabiel, goedkoop en verrassend handig.</p>
+<p>Wel blijft het zo dat je niet voor ieder raam in huis een apart board wilt ophangen. Zie dit project daarom vooral als een slimme en leerzame basis: een mooi instapprogramma in Homeyduino én een sensor waar je thuis direct iets aan hebt. Zoek je maximale eenvoud zonder bekabeling, dan is een kant-en-klare draadloze sensor logischer. Zoek je juist controle, lage kosten en inzicht in hoe alles werkt, dan is dit project erg leuk om te bouwen.</p>
+<h2 id="conclusie">Conclusie</h2>
+<p>Van alle Homeyduino-projecten is dit misschien wel een van de toegankelijkste. Niet ingewikkeld, niet duur, maar wel direct bruikbaar. Met een MC-38 sensor, een Wemos D1 Mini en deze vernieuwde sketch bouw je een deur- of raamsensor die Homey kan gebruiken voor meldingen, verlichting en eenvoudige beveiliging.</p>
+<p>De extra logica voor debounce, wifi-herstel, heartbeat en failsafe herstart maakt het verschil tussen een leuk proefproject en een sensor die ook in de praktijk net wat betrouwbaarder aanvoelt. En precies dat maakt dit zo’n leuk project: met beperkte middelen voeg je toch weer een praktisch stukje intelligentie toe aan je smart home.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#waarom">Waarom deze sensor zo handig is</a>
+<a href="#zelfbouw-of-kant-en-klaar">Zelfbouw of toch kant-en-klaar?</a>
+<a href="#benodigd">Benodigdheden</a>
+<a href="#opbouw">Hoe deze sensor werkt</a>
+<a href="#aansluiten">Aansluitschema en hardware</a>
+<a href="#software">Software voorbereiden</a>
+<a href="#code">Code voor de deur- en raamsensor</a>
+<a href="#testen">Testen via de seriële monitor</a>
+<a href="#gebruik">Slimme toepassingen</a>
+<a href="#homey">Koppelen aan Homey</a>
+<a href="#praktisch">Praktisch gebruik en grenzen</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a><a href="multi-sensor-homeyduino.html">Bouw je eigen slimme CO₂ multisensor met Homeyduino</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

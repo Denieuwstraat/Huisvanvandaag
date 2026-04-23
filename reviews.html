@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reviews | huisvanvandaag.nl</title>
-  <meta name="description" content="Reviews van smart-home producten met focus op Homey, gebruiksgemak en toegevoegde waarde.">
+  <meta name="description" content="Reviews van smart-home producten die hier thuis dagelijks gebruikt worden, met focus op Homey, gebruiksgemak, betrouwbaarheid en echte toegevoegde waarde.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,58 +12,48 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html">Home</a><a href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html">DIY</a><a href="tutorials.html">Tutorials</a><a href="reviews.html" class="active">Reviews</a><a href="contact.html">Contact</a></nav>
-  </div>
-</header>
+<div id="site-header"></div>
 <main>
 
-<section class="page-hero"><div class="container two-col"><div class="hero-copy" style="color:var(--text); padding-top:0;"><div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><span>Reviews</span></div><span class="eyebrow">Eerlijk en praktisch</span><h1 style="color:var(--text);">Reviews die kijken naar compatibiliteit en nut</h1><p style="color:var(--muted);">Voor een smart-home blog heeft een review pas waarde als duidelijk wordt of een product ook echt goed werkt met Homey, routines en je dagelijkse gebruik.</p></div><div class="panel"><h3>Waar reviews hier op worden beoordeeld</h3><div class="check-list"><div class="check-item"><span class="check-mark">✓</span><div><strong>Werkt het goed met Homey?</strong></div></div><div class="check-item"><span class="check-mark">✓</span><div><strong>Voegt het echt iets toe?</strong></div></div><div class="check-item"><span class="check-mark">✓</span><div><strong>Is het logisch geprijsd?</strong></div></div></div></div></div></section>
-<section class="section-tight"><div class="container review-grid"><article class="review-card card"><div class="score">8,6</div><h3>Wat toekomstige reviews moeten laten zien</h3><p class="muted">Geen algemene marketingtekst, maar een helder oordeel over compatibiliteit, gebruiksgemak en automatiseringspotentieel.</p></article><article class="review-card card"><div class="score">Focus</div><h3>Homey-compatibel, betaalbaar en praktisch</h3><p class="muted">Dat is de rode draad die reviews geloofwaardig maakt en later ook monetization ondersteunt.</p></article></div></section>
+<section class="page-hero">
+  <div class="container two-col">
+    <div class="hero-copy" style="color:var(--text); padding-top:0;">
+      <div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><span>Reviews</span></div>
+      <span class="eyebrow">Eerlijk en praktisch</span>
+      <h1 style="color:var(--text);">Reviews van producten die hun plek in huis echt hebben verdiend</h1>
+      <p style="color:var(--muted);">Een review is pas interessant als hij niet geschreven is vanuit een bureau, maar vanuit een huishouden. Daarom worden op huisvanvandaag.nl alleen producten besproken die hier thuis daadwerkelijk dagelijks gebruikt worden.</p>
+      <p style="color:var(--muted);">Dat verandert de vraag namelijk volledig. Niet alleen: welke functies zitten erop? Maar vooral: maakt het iets makkelijker, slimmer of prettiger? En misschien nog belangrijker: blijft dat gevoel ook overeind zodra de nieuwigheid eraf is?</p>
+    </div>
+    <div class="panel">
+      <h3>Waar reviews hier op worden beoordeeld</h3>
+      <div class="check-list">
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Werkt het goed met Homey of Google Home?</strong><br><span class="muted">Geen losse specificaties, maar kijken naar de praktijk en naar integratie die ook echt bruikbaar is.</span></div></div>
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Voegt het echt iets toe?</strong><br><span class="muted">Slimme techniek is alleen waardevol als ze thuis ook merkbaar nuttig is.</span></div></div>
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Blijft het prettig in gebruik?</strong><br><span class="muted">De beste producten zijn vaak niet de indrukwekkendste, maar degene waar je zonder nadenken op blijft vertrouwen.</span></div></div>
+        <div class="check-item"><span class="check-mark">✓</span><div><strong>Is het logisch geprijsd?</strong><br><span class="muted">De prijs moet passen bij wat een product in de praktijk daadwerkelijk toevoegt.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</main>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
+<section class="section-tight">
+  <div class="container">
+    <div class="panel" style="margin-bottom:1.25rem;">
+      <h2 style="margin-top:0;">Geen showroom, maar een echt huishouden</h2>
+      <p class="muted">De reviews op deze pagina zijn bedoeld voor mensen die weinig hebben aan gladde marketingtaal of eindeloze specificatielijsten zonder context. Een product kan op papier fantastisch ogen, maar thuis alsnog tegenvallen. Juist daarom draait het hier om producten die in een normaal huishouden echt mee moeten draaien.</p>
+      <p class="muted">Dat betekent: apparaten die dagelijks aanstaan, onderdeel zijn van vaste routines of vaak genoeg gebruikt worden om er een eerlijk oordeel over te kunnen vormen. Niet op basis van een eerste indruk van twintig minuten, maar op basis van hoe iets zich houdt tussen werk, gezin, automatiseringen en gewoon dagelijks gebruik.</p>
+      <p class="muted">Daardoor ligt de nadruk hier minder op spectaculaire beloften en meer op de dingen die er thuis echt toe doen: betrouwbaarheid, gemak, integratie met andere apparaten en de vraag of een product na verloop van tijd nog steeds logisch voelt. Dat levert misschien minder hype op, maar wel reviews waar je daadwerkelijk iets aan hebt.</p>
     </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="homeyduino-relay.html">Relay switch</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
-<script src="script.js"></script>
+
+   
+  <div id="reviews-overview"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+  <script src="reviews-index.js"></script>
+  <script src="reviews-overview.js"></script>
 </body>
 </html>

@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl</title>
-  <meta name="description" content="Bouw een moderne Clapper switch met Homeyduino, een Wemos D1 Mini en een geluidssensor. Herken twee klappen en gebruik die als trigger voor slimme Homey-flows.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl</title>
+<meta content="Bouw een moderne Clapper switch met Homeyduino, een Wemos D1 Mini en een geluidssensor. Herken een dubbele klap op een stabiele manier en gebruik die als slimme trigger in Homey." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
     .clapper-hero-media {
       margin-top: 1.25rem;
     }
@@ -75,342 +75,500 @@
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie">
-      <a href="index.html">Home</a>
-      <a href="over.html">Over</a>
-      <a href="homey.html">Homey</a>
-      <a href="diy.html" class="active">DIY</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
+<div id="site-header"></div>
 <main>
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="diy.html">DIY</a>
-          <span>•</span>
-          <span>Clapper switch</span>
-        </div>
-
-        <span class="eyebrow">DIY project • Homeyduino</span>
-        <h1>Bouw je eigen ‘Clapper’ switch met Homeyduino</h1>
-        <p class="lead muted">
-          De originele Clapper was ooit een bijna futuristische huiskamergadget. Met een Wemos D1 Mini, een geluidssensor en Homeyduino bouw je een moderne versie die twee klappen herkent en die direct inzetbaar is als trigger voor slimme Homey-flows.
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>Clapper switch</span>
+</div>
+<span class="eyebrow">DIY project • Homeyduino</span>
+<h1>Bouw je eigen ‘Clapper’ switch met Homeyduino</h1>
+<p class="lead muted">
+          De originele Clapper was ooit zo’n typisch gadget waarvan je meteen dacht: dit is domotica uit de toekomst. Met een Wemos D1 Mini, een eenvoudige geluidssensor en Homeyduino bouw je zelf een moderne variant die een dubbele klap herkent en die je direct in Homey kunt gebruiken.
         </p>
-
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: DIY</span>
-          <span class="meta-pill">Platform: Homey</span>
-          <span class="meta-pill">Hardware: Wemos D1 Mini + geluidssensor</span>
-        </div>
-      </div>
-
-      <div class="panel clapper-info-panel">
-        <h3>Waarom dit project leuk én nuttig is</h3>
-        <div class="check-list">
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Snel zichtbaar resultaat</strong><br>
-              <span class="muted">Je bouwt een simpele maar verrassend leuke trigger die meteen reageert op twee klappen.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Budgetvriendelijk project</strong><br>
-              <span class="muted">Met een paar goedkope onderdelen bouw je een werkende smart-home schakelaar zonder ingewikkelde hardware.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Direct bruikbaar in huis</strong><br>
-              <span class="muted">Gebruik twee klappen bijvoorbeeld om verlichting uit te zetten of een avondroutine te starten.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Perfect als instapprogramma</strong><br>
-              <span class="muted">Weinig onderdelen, overzichtelijke code en meteen een leuk eindresultaat maken dit een ideaal beginnersproject.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container clapper-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="assets/clapper-switch-homey.jpg" alt="Illustratie van de originele Clapper naast een moderne smart-home speaker en lamp">
-          <figcaption class="muted small">
-            De originele Clapper was ooit een opvallend stukje huisautomatisering. Dit project vertaalt dat idee naar een moderne Homey-opstelling.
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Hardware: Wemos D1 Mini + geluidssensor</span>
+</div>
+</div>
+<div class="panel clapper-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Betrouwbaardere klapdetectie</strong><br/>
+<span class="muted">De nieuwe code werkt met pulsduur, debounce en een klapvenster, zodat korte ruis minder snel als echte klap wordt gezien.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Nettere Homey-koppeling</strong><br/>
+<span class="muted">De sensor publiceert een status naar Homey en bewaart die lokaal wanneer wifi tijdelijk wegvalt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Eenvoudig DIY-project</strong><br/>
+<span class="muted">Met weinig onderdelen maak je een project dat leuk is om te bouwen en meteen bruikbaar is in je smart home.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Leuk als trigger voor flows</strong><br/>
+<span class="muted">Gebruik een dubbele klap bijvoorbeeld om verlichting, een scène of een avondroutine te schakelen.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container clapper-hero-media">
+<div class="panel">
+<figure>
+<img alt="Illustratie van de originele Clapper naast een moderne smart-home speaker en lamp" src="assets/header/clapper-switch-homey.jpg"/>
+<figcaption class="muted small">
+            De bekende Clapper voelde vroeger bijna futuristisch aan. Met Homeyduino geef je dat oude idee vandaag een verrassend leuke smart-home update.
           </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container clapper-content-layout">
-      <article class="article-body clapper-article">
-        <p class="lead">
-          Wie hem nog kent, herinnert zich vooral het idee: in je handen klappen en een lamp gaat aan. De originele Clapper uit de jaren 80 en 90 voelde destijds bijna als sciencefiction voor de woonkamer. Juist daarom is het zo leuk om dat oude concept opnieuw tot leven te brengen met moderne smart-home techniek.
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container clapper-content-layout">
+<article class="article-body clapper-article">
+<p class="lead">
+          Sommige oude gadgets blijven leuk, juist omdat het idee zo simpel is. In je handen klappen en er gebeurt iets in huis. De originele Clapper was daar misschien wel het bekendste voorbeeld van en voelde destijds als pure toekomstmuziek.
         </p>
-
-        <p>
-          Met dit project maak je een geluidsgestuurde sensor die twee klappen herkent en die direct koppelt aan Homey. Daarmee bedien je niet alleen één lamp, maar kun je complete flows, scènes of meerdere apparaten tegelijk activeren.
+<p>
+          Precies daarom is dit zo’n mooi project om opnieuw tot leven te wekken. Niet als gimmick voor in de vitrinekast, maar als echte trigger binnen je smart home. Met een Wemos D1 Mini, een geluidssensor en Homeyduino bouw je een moderne klapschakelaar die een dubbele klap herkent en die daarna een status in Homey omzet.
         </p>
-
-        <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
-        <p>Je bouwt een eenvoudige Homeyduino-opstelling die twee klappen achter elkaar detecteert. Op basis daarvan schakelt het systeem tussen twee toestanden:</p>
-        <ul>
-          <li><strong>clap_on</strong> → bij twee klappen wordt de eerste trigger geactiveerd</li>
-          <li><strong>clap_off</strong> → bij de volgende twee klappen wordt de tweede trigger geactiveerd</li>
-        </ul>
-        <p>Daardoor is deze Clapper niet alleen een speelse schakelaar, maar ook een verrassend praktische ingang voor slimme automatisering in huis.</p>
-
-        <h2 id="benodigdheden">Benodigdheden</h2>
-        <ul>
-          <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
-          <li>Geluidssensor voor Arduino / ESP8266</li>
-          <li>USB-C-voeding</li>
-          <li>Homey met de Homeyduino app</li>
-          <li>Arduino IDE</li>
-        </ul>
+<p>
+          De code in deze versie is bovendien een stuk netter opgezet. In plaats van alleen maar zo snel mogelijk reageren op ieder geluid, wordt nu gekeken naar pulsduur, debounce en een duidelijk tijdvenster voor de tweede klap. Daardoor werkt de detectie in de praktijk vaak rustiger en betrouwbaarder, zeker in ruimtes waar echo, tikgeluiden of ander achtergrondgeluid een rol spelen.
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een zelfgemaakte Clapper switch die via een geluidssensor twee klappen achter elkaar herkent. Zodra die dubbele klap geldig is, wisselt de sensor van status en wordt die wijziging naar Homey gestuurd.</p>
+<ul>
+<li><strong>Dubbele klap als bediening</strong> → Je gebruikt een fysiek geluidssignaal als simpele, tastbare trigger.</li>
+<li><strong>alarm_generic in Homey</strong> → De status is direct te gebruiken in flows, meldingen of andere automatiseringen.</li>
+</ul>
+<p>Daarmee is dit project meer dan alleen een leuke knipoog naar vroeger. Het is een verrassend praktische manier om een slimme actie te starten zonder app, knop of stemcommando.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of vergelijkbaar ESP8266-board</li>
+<li>Geluidssensor (zoals een KY-37 of vergelijkbaar model)</li>
+<li>USB-voeding voor de Wemos D1 Mini</li>
+<li>Homey met de Homeyduino app</li>
+<li>Arduino IDE met ESP8266 board support en Homeyduino-library</li>
+</ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
-<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
-<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
-<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
-  <div id="affiliate-auto-homeyduino-clapper-switch-html-1"></div>
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-clapper-switch-html-1"></div>
+<div id="affiliate-auto-homeyduino-clapper-switch-html-2"></div>
+<div id="affiliate-auto-homeyduino-clapper-switch-html-3"></div>
 </section>
 <script>
-  renderAffiliateProduct("affiliate-auto-homeyduino-clapper-switch-html-1", "wemos_d1_mini");
+  renderAffiliateProduct("affiliate-auto-homeyduino-clapper-switch-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-clapper-switch-html-2", "sound_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-clapper-switch-html-3", "wemos_d1_mini");
 </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
-
+<h2 id="waarom-dit-nuttig-is">Waarom is dit nuttig?</h2>
+<p>Een klapschakelaar klinkt misschien als iets grappigs voor erbij, maar juist dat maakt hem interessant. Je hebt een heel eenvoudige fysieke trigger die je overal kunt inzetten waar een knop onhandig is of waar je snel een flow wilt starten zonder je telefoon erbij te pakken.</p>
+<p>Denk bijvoorbeeld aan een slaapkamer, hobbyruimte of werkkamer. Twee klappen kunnen dan een lamp schakelen, een avondroutine activeren of juist alles weer uitschakelen. Zeker in combinatie met Homey voelt dat ineens een stuk slimmer dan alleen een nostalgische gimmick.</p>
+<p>Ook technisch is dit een leuk project. Je werkt met timing, filtering, wifi-herstel en statuspublicatie naar Homey. Daardoor leer je niet alleen iets bouwen, maar ook meteen hoe je zo’n sensor net wat robuuster maakt voor dagelijks gebruik.</p>
 <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
-
-        <h3>1. Sluit de geluidssensor aan</h3>
-        <p>Sluit de geluidssensor aan op de Wemos D1 Mini met deze verbindingen:</p>
-        <ul>
-          <li><strong>OUT</strong> → <strong>D2</strong></li>
-          <li><strong>VCC</strong> → <strong>5V</strong></li>
-          <li><strong>GND</strong> → <strong>GND</strong></li>
-        </ul>
-
-        <figure>
-          <img src="assets/clapper-bedrading.png" alt="Schema of foto van de geluidssensor aangesloten op een Wemos D1 Mini">
-          <figcaption class="muted small">
-            De geluidssensor wordt in deze opstelling met drie verbindingen aangesloten op de Wemos D1 Mini.
+<h3>1. Sluit de geluidssensor aan</h3>
+<p>Sluit de geluidssensor aan op de Wemos D1 Mini met deze verbindingen:</p>
+<ul>
+<li><strong>OUT</strong> → <strong>D2</strong></li>
+<li><strong>VCC</strong> → <strong>3.3V</strong></li>
+<li><strong>GND</strong> → <strong>GND</strong></li>
+</ul>
+<p>De code gebruikt <strong>INPUT_PULLUP</strong>, waardoor de sensorpin normaal hoog is en een puls naar laag als detectie wordt gezien. Dat is handig om de ingang stabieler uit te lezen.</p>
+<figure>
+<img alt="Schema of foto van de geluidssensor KY-37 aangesloten op een Wemos D1 Mini" src="assets/artikel/Wemos_D1_Mini_Clapper_switch.png"/>
+<figcaption class="muted small">
+            Met slechts drie verbindingen heb je de basis al klaar. Juist daardoor is dit een ideaal project om snel mee te starten.
           </figcaption>
-        </figure>
-
-        <h3>2. Installeer Arduino IDE en de benodigde libraries</h3>
-        <p>Installeer Arduino IDE en voeg de libraries <strong>Homeyduino</strong> en <strong>ESP8266</strong> toe. Kies daarna via <strong>Hulpmiddelen → Board → Board Beheer</strong> het juiste board voor de Wemos D1 Mini.</p>
-
-        <h3>3. Upload de code</h3>
-        <p>Gebruik onderstaande code als basis. Vul eerst je eigen wifi-gegevens in bij <strong>&lt;SSID&gt;</strong> en <strong>&lt;PASSWORD&gt;</strong>. De code detecteert twee klappen binnen een korte tijdspanne en wisselt daarna tussen een aan- en uitstatus.</p>
-
-        <pre><code>#include &lt;ESP8266WiFi.h&gt;
-#include &lt;WiFiClient.h&gt;
+</figure>
+<h3>2. Installeer Arduino IDE en de benodigde libraries</h3>
+<p>Installeer Arduino IDE en zorg dat de <strong>ESP8266 board support</strong> en de <strong>Homeyduino-library</strong> aanwezig zijn. Controleer daarna via <strong>Hulpmiddelen → Board</strong> of je het juiste board voor de Wemos D1 Mini hebt geselecteerd.</p>
+<h3>3. Upload de code</h3>
+<p>Vul in onderstaande sketch eerst je eigen wifi-naam en wachtwoord in. De code is nu modulair opgezet en controleert niet alleen op dubbele klappen, maar houdt ook rekening met te korte pulsen, debounce en wifi-herstel. Daarnaast wordt de laatste status lokaal bewaard wanneer Homey tijdelijk niet bereikbaar is, zodat deze later alsnog kan worden gesynchroniseerd.</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;Homey.h&gt;
 
-int soundSensor = D2;
-int claps = 0;
-long detectionSpanInitial = 0;
-long detectionSpan = 0;
-boolean ClapState = false;
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = "&lt;SSID&gt;";
+  constexpr const char* WIFI_PASSWORD = "&lt;PASSWORD&gt;";
 
-void wifi() {
-  if (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin("&lt;SSID&gt;", "&lt;PASSWORD&gt;");
-    uint8_t timeout = 30;
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-      if (timeout &lt; 1) break;
-    }
-    if (WiFi.status() == WL_CONNECTED) {
-      Serial.print("Connected to WiFi! (");
-      Serial.print(WiFi.localIP());
-      Serial.println(")");
-    }
-  }
+  constexpr uint8_t SOUND_PIN = D2;
+
+  constexpr unsigned long CLAP_WINDOW_MS = 1000;
+  constexpr unsigned long CLAP_DEBOUNCE_MS = 250;
+  constexpr unsigned long MIN_CLAP_LOW_MS = 20;
+
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  constexpr const char* HOMEY_NAME = "Klapschakelaar";
+  constexpr const char* HOMEY_CLASS = "sensor";
+  constexpr const char* HOMEY_CAPABILITY = "alarm_generic";
 }
 
+// =========================
+// State
+// =========================
+struct ClapState {
+  int count = 0;
+  unsigned long lastDetectedAt = 0;
+  bool lastPinState = HIGH;
+  bool pulseActive = false;
+  unsigned long pulseStartAt = 0;
+};
+
+struct AlarmState {
+  bool currentAlarmStatus = false;
+  bool lastPublishedAlarmStatus = false;
+  bool hasPublishedState = false;
+  bool dirty = false;
+};
+
+struct WifiState {
+  unsigned long lastCheckAt = 0;
+  bool wasConnected = false;
+  bool reconnectedEvent = false;
+};
+
+ClapState clapState;
+AlarmState alarmState;
+WifiState wifiState;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void connectToWifiWithTimeout();
+void maintainWifi(unsigned long currentMillis);
+bool canPublishToHomey();
+
+void initializeHomey();
+
+void processSoundInput(unsigned long currentMillis);
+void handleCompletedClapWindow(unsigned long currentMillis);
+
+void toggleAlarmStatus();
+void markAlarmState(bool newStatus);
+bool shouldPublishAlarmState();
+void publishLatestAlarmStatusToHomey();
+void syncAlarmStateIfDirty();
+
+// =========================
+// Setup
+// =========================
 void setup() {
-  Serial.begin(9600);
-  Homey.begin("Sound sensor");
-  Homey.setClass("sensor");
-  pinMode(soundSensor, INPUT);
+  Serial.begin(115200);
+  pinMode(Config::SOUND_PIN, INPUT_PULLUP);
+
+  Serial.println();
+  Serial.println(F("--- Clapper Systeem Gestart ---"));
+
+  connectToWifiWithTimeout();
+  initializeHomey();
 }
 
+// =========================
+// Main loop
+// =========================
 void loop() {
-  wifi();
   Homey.loop();
+  yield();
 
-  int sensorState = digitalRead(soundSensor);
+  const unsigned long currentMillis = millis();
 
-  if (sensorState == 0) {
-    if (claps == 0) {
-      detectionSpanInitial = detectionSpan = millis();
-      claps++;
-    }
-    else if (claps &gt; 0 && millis() - detectionSpan &gt;= 50) {
-      detectionSpan = millis();
-      claps++;
-    }
+  maintainWifi(currentMillis);
+
+  if (wifiState.reconnectedEvent) {
+    wifiState.reconnectedEvent = false;
+    syncAlarmStateIfDirty();
   }
 
-  if (millis() - detectionSpanInitial &gt;= 400) {
-    if (claps == 2) {
-      if (!ClapState) {
-        ClapState = true;
-        Serial.println("Licht aan");
-        Homey.trigger("clap_on", true);
-      }
-      else {
-        ClapState = false;
-        Serial.println("Licht uit");
-        Homey.trigger("clap_off", false);
-      }
-    }
-    claps = 0;
+  processSoundInput(currentMillis);
+  handleCompletedClapWindow(currentMillis);
+}
+
+// =========================
+// WiFi
+// =========================
+void connectToWifiWithTimeout() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  Serial.print(F("Verbinden met WiFi..."));
+
+  const unsigned long startAttemptTime = millis();
+
+  while (WiFi.status() != WL_CONNECTED &&
+         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    Serial.print(F("."));
   }
+
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
+    Serial.println(WiFi.localIP());
+    wifiState.wasConnected = true;
+  } else {
+    Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
+    wifiState.wasConnected = false;
+  }
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - wifiState.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  wifiState.lastCheckAt = currentMillis;
+  wifiState.reconnectedEvent = false;
+
+  Serial.print(F("[DEBUG] WiFi status: "));
+  Serial.print(WiFi.status());
+  Serial.print(F(" | IP: "));
+  Serial.println(WiFi.localIP());
+
+  const wl_status_t status = WiFi.status();
+
+  if (status == WL_CONNECTED) {
+    if (!wifiState.wasConnected) {
+      Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
+      Serial.println(WiFi.localIP());
+      wifiState.wasConnected = true;
+      wifiState.reconnectedEvent = true;
+    }
+    return;
+  }
+
+  if (wifiState.wasConnected) {
+    Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
+    wifiState.wasConnected = false;
+  } else {
+    Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
+  }
+
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED;
+}
+
+// =========================
+// Homey
+// =========================
+void initializeHomey() {
+  Homey.begin(Config::HOMEY_NAME);
+  Homey.setClass(Config::HOMEY_CLASS);
+  Homey.addCapability(Config::HOMEY_CAPABILITY);
+}
+
+// =========================
+// Klapdetectie
+// =========================
+void processSoundInput(unsigned long currentMillis) {
+  const bool currentPinState = digitalRead(Config::SOUND_PIN);
+
+  // Start mogelijke puls
+  if (clapState.lastPinState == HIGH && currentPinState == LOW) {
+    clapState.pulseActive = true;
+    clapState.pulseStartAt = currentMillis;
+  }
+
+  // Einde puls
+  if (clapState.pulseActive && clapState.lastPinState == LOW && currentPinState == HIGH) {
+    const unsigned long pulseDuration = currentMillis - clapState.pulseStartAt;
+    const bool pulseLongEnough = pulseDuration &gt;= Config::MIN_CLAP_LOW_MS;
+    const bool debouncePassed =
+        (currentMillis - clapState.lastDetectedAt) &gt; Config::CLAP_DEBOUNCE_MS;
+
+    if (pulseLongEnough && debouncePassed) {
+      clapState.count++;
+      clapState.lastDetectedAt = currentMillis;
+
+      Serial.print(F("[DEBUG] Geldige klap! (Aantal: "));
+      Serial.print(clapState.count);
+      Serial.println(F(")"));
+    } else if (!pulseLongEnough) {
+      Serial.print(F("[RUIS] Puls te kort genegeerd ("));
+      Serial.print(pulseDuration);
+      Serial.println(F(" ms)"));
+    }
+
+    clapState.pulseActive = false;
+  }
+
+  clapState.lastPinState = currentPinState;
+}
+
+void handleCompletedClapWindow(unsigned long currentMillis) {
+  if (clapState.count == 0) {
+    return;
+  }
+
+  const bool clapWindowExpired =
+      (currentMillis - clapState.lastDetectedAt) &gt; Config::CLAP_WINDOW_MS;
+
+  if (!clapWindowExpired) {
+    return;
+  }
+
+  if (clapState.count == 2) {
+    Serial.println(F("&gt;&gt;&gt; [ACTIE] Dubbele klap! Status omzetten."));
+    toggleAlarmStatus();
+  } else {
+    Serial.print(F("[INFO] "));
+    Serial.print(clapState.count);
+    Serial.println(F(" klap(pen) genegeerd."));
+  }
+
+  clapState.count = 0;
+}
+
+// =========================
+// Status en publicatie
+// =========================
+void toggleAlarmStatus() {
+  const bool newStatus = !alarmState.currentAlarmStatus;
+  markAlarmState(newStatus);
+
+  if (shouldPublishAlarmState()) {
+    publishLatestAlarmStatusToHomey();
+  }
+}
+
+void markAlarmState(bool newStatus) {
+  alarmState.currentAlarmStatus = newStatus;
+
+  if (!alarmState.hasPublishedState) {
+    alarmState.dirty = true;
+    return;
+  }
+
+  alarmState.dirty = (alarmState.currentAlarmStatus != alarmState.lastPublishedAlarmStatus);
+}
+
+bool shouldPublishAlarmState() {
+  return alarmState.dirty;
+}
+
+void publishLatestAlarmStatusToHomey() {
+  if (!canPublishToHomey()) {
+    alarmState.dirty = true;
+    Serial.println(F("[WAARSCHUWING] Laatste status lokaal bewaard (Geen WiFi)."));
+    return;
+  }
+
+  Homey.setCapabilityValue(Config::HOMEY_CAPABILITY, alarmState.currentAlarmStatus);
+
+  alarmState.lastPublishedAlarmStatus = alarmState.currentAlarmStatus;
+  alarmState.hasPublishedState = true;
+  alarmState.dirty = false;
+
+  Serial.print(F("[HOMEY] Status naar "));
+  Serial.print(alarmState.currentAlarmStatus ? F("true") : F("false"));
+  Serial.println(F(" verstuurd."));
+}
+
+void syncAlarmStateIfDirty() {
+  if (!alarmState.dirty) {
+    return;
+  }
+
+  Serial.println(F("[HOMEY] Laatste status synchroniseren..."));
+  publishLatestAlarmStatusToHomey();
 }</code></pre>
-
-        <h3>4. Selecteer het juiste board en upload</h3>
-        <p>Kies in Arduino IDE het board <strong>LOLIN (Wemos) D1 R2 &amp; Mini</strong> en upload daarna de code naar de Wemos D1 Mini.</p>
-
-        <h3>5. Test de detectie via de seriële monitor</h3>
-        <p>Open de seriële monitor en klap twee keer achter elkaar. Als alles goed werkt, zie je afwisselend <strong>“Licht aan”</strong> en <strong>“Licht uit”</strong>. Test ook bewust met één of drie klappen om te zien hoe stabiel de detectie reageert.</p>
-
-        <figure>
-          <img src="assets/clapper-serial-monitor.png" alt="Voorbeeld van seriële monitor-output bij een werkende clapper-switch">
-          <figcaption class="muted small">
-            In de seriële monitor kun je direct controleren of de dubbele klap correct wordt herkend.
+<h3>4. Selecteer het juiste board en upload</h3>
+<p>Kies in Arduino IDE het board <strong>LOLIN (Wemos) D1 R2 &amp; Mini</strong> en upload daarna de code naar de Wemos D1 Mini.</p>
+<h3>5. Test de detectie via de seriële monitor</h3>
+<p>Open daarna de seriële monitor op <strong>115200 baud</strong>. Klap twee keer achter elkaar en controleer of je in de output ziet dat er twee geldige klappen worden geregistreerd en dat daarna de status wordt omgezet. Test ook bewust met losse tikken, achtergrondgeluid of drie snelle klappen, zodat je goed ziet hoe streng de detectie in jouw ruimte staat afgesteld.</p>
+<figure>
+<img alt="Voorbeeld van seriële monitor-output bij een werkende clapper-switch" src="assets/artikel/clapper-serial-monitor.jpg"/>
+<figcaption class="muted small">
+            De seriële monitor is hier extra handig, omdat je direct ziet of geluid als echte klap of juist als ruis wordt beoordeeld.
           </figcaption>
-        </figure>
-
-        <h2 id="integratie">Integratie met Homey</h2>
-        <p>Voeg het apparaat toe via de Homeyduino app in Homey. Gebruik daarna de triggers <strong>clap_on</strong> en <strong>clap_off</strong> in je flows om acties te koppelen.</p>
-        <p>Denk bijvoorbeeld aan:</p>
-        <ul>
-          <li>verlichting in de slaapkamer aan of uit</li>
-          <li>een avondmodus activeren</li>
-          <li>meerdere lampen of apparaten tegelijk schakelen</li>
-        </ul>
-
-        <figure>
-          <img src="assets/clapper-homey-flow.png" alt="Voorbeeld van een Homey-flow die reageert op clap_on en clap_off">
-          <figcaption class="muted small">
-            Met de triggers clap_on en clap_off koppel je de Clapper eenvoudig aan je eigen Homey-flows.
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>Voeg het apparaat daarna toe via de Homeyduino app in Homey. De Clapper gebruikt de capability <strong>alarm_generic</strong> en schakelt die bij iedere geldige dubbele klap om van <strong>true</strong> naar <strong>false</strong> of andersom.</p>
+<p>Dat klinkt eenvoudig, maar is in de praktijk juist erg bruikbaar. Je kunt die status namelijk in Homey gebruiken als trigger, voorwaarde of controlepunt binnen flows.</p>
+<ul>
+<li>schakel verlichting in of uit met een dubbele klap</li>
+<li>start een avondroutine of stille modus</li>
+<li>gebruik de status als simpele toggle voor andere automatiseringen</li>
+</ul>
+<p>Doordat de code de laatste status lokaal bewaart wanneer wifi tijdelijk uitvalt, blijft het project ook bruikbaar in een situatie waarin je netwerk niet altijd perfect stabiel is.</p>
+<figure>
+<img alt="Voorbeeld van een Homey-flow die reageert op de alarm_generic status van de clapper" src="assets/clapper-homey-flow.png"/>
+<figcaption class="muted small">
+            Door <strong>alarm_generic</strong> te gebruiken, neem je de Clapper in Homey op alsof het een gewone sensorstatus is.
           </figcaption>
-        </figure>
-
-        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
-        <p>Een voor de hand liggende toepassing is de slaapkamer: twee klappen en alle verlichting gaat uit. Maar juist de koppeling met Homey maakt dit project interessanter dan de originele Clapper. In plaats van één apparaat kun je een complete flow starten die meerdere acties tegelijk uitvoert.</p>
-
-        <figure>
-          <img src="assets/clapper-opstelling.png" alt="Foto van de uiteindelijke Clapper-opstelling in een ruimte">
-          <figcaption class="muted small">
-            De Clapper komt het best tot zijn recht als simpele, fysieke trigger op een vaste plek in huis.
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>De leukste plek voor dit project is vaak een ruimte waar je snel iets wilt kunnen schakelen. Denk aan de slaapkamer, werkkamer, hobbyruimte of zolder. Twee klappen en je zet een lamp, scène of flow aan. Nog eens twee klappen en je zet alles weer terug.</p>
+<p>Juist omdat de status wordt omgeschakeld, voelt deze Clapper minder als een grapje en meer als een simpele fysieke bediening voor je smart home. En misschien is dat wel precies waarom dit soort projecten zo leuk blijven: oud idee, nieuwe techniek, verrassend bruikbaar resultaat.</p>
+<figure>
+<img alt="Foto van de uiteindelijke Clapper-opstelling in een ruimte" src="assets/artikel/clapper-opstelling.jpg"/>
+<figcaption class="muted small">
+            Kies bij voorkeur een plek waar het geluidsniveau redelijk voorspelbaar is. Dan haal je het meeste uit de klapdetectie.
           </figcaption>
-        </figure>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>Gebruik duidelijke en unieke namen als je meerdere geluidssensoren inzet.</li>
-          <li>Test de gevoeligheid van de sensor zorgvuldig om ongewenste detecties te beperken.</li>
-          <li>Houd rekening met omgevingsgeluid, omdat dat invloed kan hebben op de werking.</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>De originele Clapper was ooit een opvallend stukje huisautomatisering. Met deze Homeyduino-versie geef je dat idee een moderne update: eenvoudig om te bouwen, leuk om te testen en direct bruikbaar binnen je smart home. Juist door de koppeling met Homey wordt het meer dan een gimmick en verandert het in een praktische trigger voor automatisering.</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In dit artikel</h3>
-          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
-          <a href="#benodigdheden">Benodigdheden</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#integratie">Integratie met Homey</a>
-          <a href="#praktisch-gebruik">Praktisch gebruik</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="diy.html">Meer DIY projecten</a>
-            <a href="tutorials.html">Tutorials en flows</a>
-            <a href="homey.html">Homey als centrale hub</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Een geluidssensor blijft gevoelig voor omgevingsgeluid, tikken en echo. Test daarom altijd op de plek waar je hem echt wilt gebruiken.</li>
+<li>De combinatie van <strong>MIN_CLAP_LOW_MS</strong>, <strong>CLAP_DEBOUNCE_MS</strong> en <strong>CLAP_WINDOW_MS</strong> bepaalt hoe soepel of streng de detectie werkt.</li>
+<li>Controleer goed of je sensor probleemloos op 3.3V werkt en stem de gevoeligheid indien mogelijk af met het trimpotmetertje op de module.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>De Clapper is zo’n klassiek idee dat nog steeds leuk is, juist omdat het zo direct werkt. Met deze Homeyduino-versie geef je dat concept een moderne upgrade die niet alleen grappig is om te bouwen, maar ook echt bruikbaar wordt in huis. Dankzij de nettere code, betere filtering en de koppeling met Homey heb je een DIY-project dat weinig kost, snel resultaat geeft en verrassend veel mogelijkheden biedt.</p>
+<p>En eerlijk is eerlijk: een lamp of flow schakelen door in je handen te klappen blijft gewoon leuk. Heb je de smaak te pakken? Dan is dit een mooi opstapje naar meer zelfbouw sensoren en slimme automatiseringen in Homey.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#waarom-dit-nuttig-is">Waarom is dit nuttig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
+</div>
+</aside>
+</div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-    </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="waarom-dit-blog-bestaat.html">Waarom dit blog bestaat</a>
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="include.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>

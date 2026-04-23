@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Bouw je eigen Bewegingssensor (PIR + Arduino) | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Bouw zelf een betaalbare PIR bewegingssensor met ESP8266 en Homeyduino. Koppel beweging via wifi aan Homey en gebruik hem voor verlichting, automatisering of slimme meldingen." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>Bewegingssensor</span>
+</div>
+<span class="eyebrow">DIY project</span>
+<h1>Bouw je eigen Bewegingssensor (PIR + Arduino)</h1>
+<p class="lead muted">
+          Met een eenvoudige PIR sensor, een ESP8266-board en Homeyduino bouw je voor weinig geld een bewegingssensor die via wifi beweging doorgeeft aan Homey.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Sensoren</span>
+<span class="meta-pill">Platform: Homey / Homeyduino</span>
+<span class="meta-pill">Hardware: ESP8266 + PIR sensor</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Goedkoop te bouwen</strong><br/>
+<span class="muted">De totale kosten blijven laag, terwijl je toch een bruikbare wifi-bewegingssensor maakt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct te koppelen aan Homey</strong><br/>
+<span class="muted">De sensor meldt beweging via Homeyduino en is daardoor meteen inzetbaar in flows en automatiseringen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Praktisch in huis</strong><br/>
+<span class="muted">Gebruik hem bijvoorbeeld voor verlichting, meldingen of als basis voor een eenvoudige alarmering.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Leerzaam project</strong><br/>
+<span class="muted">Je leert niet alleen aansluiten, maar ook hoe een sensorstatus via code naar Homey wordt gestuurd.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Mooie opstap naar meer</strong><br/>
+<span class="muted">Dit project vormt een logische basis voor uitgebreidere zelfbouwsensoren, zoals een multi-sensor.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde PIR bewegingssensor met ESP8266 voor Homeyduino" src="assets/header/homeyduino-bewegingssensor-hero.jpg"/>
+<figcaption class="muted small">
+            Een eenvoudige zelfbouw bewegingssensor op basis van een PIR sensor en ESP8266, bedoeld om beweging via wifi door te geven aan Homey.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Bewegingssensoren kom je overal tegen: in alarmsystemen, bij automatische verlichting en in allerlei slimme toepassingen in huis. Met een losse PIR sensor en een ESP8266-board maak je zelf een betaalbaar alternatief dat je rechtstreeks aan Homey kunt koppelen.
+        </p>
+<p>
+          Het leuke aan dit project is dat het klein en overzichtelijk blijft, maar in de praktijk toch meteen bruikbaar is. Zodra de sensor beweging detecteert, wordt dat als status naar Homey gestuurd. Daarmee kun je flows bouwen voor lampen, meldingen of andere automatiseringen die alleen actief worden als er echt iemand aanwezig is.
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een wifi-bewegingssensor op basis van een PIR sensor en een ESP8266-board, zoals een NodeMCU of Wemos D1 Mini. De sensor detecteert beweging en zet die status door naar Homey via Homeyduino.</p>
+<ul>
+<li><strong>Bewegingsdetectie</strong> → de PIR sensor meet of er beweging aanwezig is en geeft dat digitaal door aan het board.</li>
+<li><strong>Homey-integratie</strong> → via Homeyduino verschijnt de sensor in Homey als apparaat met de capability <em>alarm_motion</em>.</li>
+</ul>
+<p>In de basis is dit dus een compacte bewegingssensor voor wifi, maar wel eentje waar je zelf de controle over hebt. Je kunt hem eenvoudig testen via de seriële monitor en daarna opnemen in je eigen flows.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>ESP8266 board, bijvoorbeeld een NodeMCU of Wemos D1 Mini</li>
+<li>Passive Infrared Sensor (PIR)</li>
+<li>Micro USB oplader</li>
+<li>Breadboard</li>
+<li>Homey met de Homeyduino app geïnstalleerd</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-bewegingssensor-homeyduino-html-1"></div>
+<div id="affiliate-auto-bewegingssensor-homeyduino-html-2"></div>
+<div id="affiliate-auto-bewegingssensor-homeyduino-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-bewegingssensor-homeyduino-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-bewegingssensor-homeyduino-html-2", "pir_sensor_module");
+  renderAffiliateProduct("affiliate-auto-bewegingssensor-homeyduino-html-3", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de PIR sensor aan op je board</h3>
+<p>Begin met het opbouwen van de basisopstelling. Volgens de oorspronkelijke opzet werkt de aansluiting op een Arduino Uno, maar voor dit project gebruik je een ESP8266-board. Dat is qua aansluiting grotendeels vergelijkbaar en werkt ook op 3.3V. In de gebruikte code is de PIR sensor gekoppeld aan D7 en een optionele status-led aan D6.</p>
+<ul>
+<li><strong>PIR uitgang</strong> → <strong>D7</strong></li>
+<li><strong>Status LED</strong> → <strong>D6</strong></li>
+<li><strong>Voeding sensor</strong> → <strong>3.3V</strong></li>
+</ul>
+<figure>
+<img alt="Aansluitschema van een PIR sensor op een ESP8266 board voor Homeyduino" src="assets/header/homeyduino-bewegingssensor-aansluitschema.jpg"/>
+<figcaption class="muted small">
+            De basis van dit project is eenvoudig: een PIR sensor op een ESP8266-board, eventueel aangevuld met een status-led om beweging direct zichtbaar te maken.
+          </figcaption>
+</figure>
+<h3>2. Bereid Arduino IDE voor</h3>
+<p>Uploaden doe je via Arduino IDE. Kies daar het juiste board en upload de code op 9600 baud. Werkt je ESP8266-board niet meteen zoals verwacht, dan kun je het eerst opnieuw flashen met NodeMCU Flasher. Vul in de code daarna je eigen wifi-naam, wachtwoord en de gewenste naam van je PIR sensor in.</p>
+<h3>3. Upload de code voor Homeyduino</h3>
+<p>De onderstaande code maakt verbinding met wifi, start Homeyduino op als sensor en geeft beweging door via de capability <em>alarm_motion</em>. In deze variant is ook een status-led opgenomen, zodat je lokaal kunt zien of er beweging is gedetecteerd.</p>
+<pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl.
+// Kijk op de site voor meer Homeyduino en andere Smart Home gerelateerde posts.
+// Originele code zie: https://www.instructables.com/id/Interface-PIR-Sensor-With-NodeMCU/
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+#include &lt;Homey.h&gt;
+
+int Status = 12; //D6
+int sensor = 13; //D7
+
+void wifi() {
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.begin("SSID", "PASSWORD");
+    uint8_t timeout = 30;
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+      if (timeout&lt;1) break;
+    }
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.print("Verbonden met WiFi! (");
+      Serial.print(WiFi.localIP());
+      Serial.println(")");
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(9600);
+  Homey.begin("PIR sensor");
+  Homey.setClass("sensor");
+  Homey.addCapability("alarm_motion");
+  pinMode(sensor, INPUT); // declare sensor as input
+  pinMode(Status, OUTPUT); // declare LED as output
+}
+
+void loop() {
+  wifi();
+  Homey.loop();
+  long state = digitalRead(sensor);
+  delay(5000); // was 1000
+  if (state == HIGH) {
+    digitalWrite(Status, HIGH);
+    Homey.setCapabilityValue("alarm_motion", true);
+    Serial.println("Motion detected!");
+  } else {
+    digitalWrite(Status, LOW);
+    Homey.setCapabilityValue("alarm_motion", false);
+    Serial.println("Motion absent!");
+  }
+}</code></pre>
+<h3>4. Test of de sensor goed werkt</h3>
+<p>Open in Arduino IDE de Seriële Monitor via <em>Hulpmiddelen &gt; Seriële Monitor</em> of gebruik de sneltoets <em>CTRL+SHIFT+M</em>. Wanneer de sensor beweging detecteert, verschijnt de melding <em>Motion detected!</em>. Wordt er niets waargenomen, dan zie je <em>Motion absent!</em>. Gebruik je de variant met led, dan zie je dat ook direct aan het lampje.</p>
+<h3>5. Voeg de sensor toe aan Homey</h3>
+<p>Werkt de sensor lokaal goed, dan kun je hem toevoegen in Homey via de Homeyduino app. Daarna verschijnt hij als bewegingssensor met twee duidelijke statussen: wel of geen beweging. In Homey Inzichten kun je vervolgens terugzien wanneer er beweging is waargenomen.</p>
+<figure>
+<img alt="Zelfgebouwde PIR bewegingssensor zichtbaar in Homey via Homeyduino" src="assets/header/homeyduino-bewegingssensor-homey.jpg"/>
+<figcaption class="muted small">
+            Zodra de koppeling gelukt is, verschijnt de PIR sensor in Homey en kun je de bewegingsstatus gebruiken in flows en inzichten.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De Homey-integratie is in dit project de stap die losse elektronica omzet in iets echt bruikbaars. Door de capability <em>alarm_motion</em> toe te voegen, herkent Homey het project als bewegingssensor. Daardoor kun je de sensor net zo gebruiken als andere bewegingsmelders binnen je slimme woning.</p>
+<p>Dat opent meteen veel praktische toepassingen. Denk bijvoorbeeld aan:</p>
+<ul>
+<li>Lampen inschakelen wanneer er beweging wordt gedetecteerd</li>
+<li>Een melding sturen wanneer er op een bepaalde plek activiteit is</li>
+<li>Beweging loggen in Homey Inzichten om patronen of aanwezigheid te volgen</li>
+</ul>
+<figure>
+<img alt="Homey Inzichten met bewegingsdetectie van een zelfgebouwde PIR sensor" src="assets/header/homeyduino-bewegingssensor-inzichten.jpg"/>
+<figcaption class="muted small">
+            In Homey Inzichten kun je controleren of de sensor op de juiste momenten beweging registreert.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Juist omdat dit project eenvoudig is, kun je het op veel plekken toepassen. Gebruik de sensor bijvoorbeeld als betaalbare bewegingsmelder voor een gang, berging of werkkamer. Je kunt hem ook inzetten als onderdeel van een simpele alarmering of om energie te besparen door alleen te schakelen wanneer iemand daadwerkelijk aanwezig is. En wil je later verder bouwen, dan is dit een logisch vertrekpunt voor een uitgebreidere multi-sensor waarin je meerdere metingen combineert.</p>
+<figure>
+<img alt="Praktische toepassing van een zelfgebouwde PIR bewegingssensor in huis" src="assets/header/homeyduino-bewegingssensor-praktijk.jpg"/>
+<figcaption class="muted small">
+            Een eenvoudige bewegingssensor als deze is vooral interessant op plekken waar je slimme verlichting of aanwezigheidsschakeling wilt toevoegen zonder hoge kosten.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Vergeet niet in de code je eigen wifi-gegevens en apparaatnaam in te vullen voordat je uploadt.</li>
+<li>Kies in Arduino IDE het juiste ESP8266-board en upload op 9600 baud om onnodig zoekwerk te voorkomen.</li>
+<li>Test eerst via de seriële monitor voordat je de sensor in Homey toevoegt, zodat je zeker weet dat de basis goed werkt.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met dit project bouw je voor weinig geld een verrassend bruikbare bewegingssensor die via wifi samenwerkt met Homey. De combinatie van een PIR sensor, ESP8266 en Homeyduino maakt het laagdrempelig om zelf slimme automatiseringen toe te voegen. Zoek je een volgende stap, dan ligt uitbreiding naar een multi-sensor of een andere zelfbouwsensor voor de hand.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a><a href="homeyduino-clapper-switch.html">Bouw je eigen ‘Clapper’ switch met Homeyduino</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+Vul onderstaand HTML-sjabloon in voor een informatieve pagina op huisvanvandaag.nl.
+
+DOEL:
+Maak een volledig publiceerbaar informatief artikel dat organisch verkeer aantrekt, autoriteit opbouwt en waar logisch doorverwijst naar relevante DIY-, tutorial- of reviewpagina’s.
+
+REGELS:
+- behoud de HTML-structuur exact
+- vervang alleen de [[PLACEHOLDERS]]
+- verzin geen feiten
+- feitelijke claims moeten gecontroleerd zijn
+- schrijf professioneel, toegankelijk, concreet en prettig leesbaar
+- optimaliseer op zoekintentie, maar schrijf altijd eerst voor de lezer
+- gebruik een natuurlijke opbouw die past bij het onderwerp
+- voeg interne links alleen toe waar ze logisch en functioneel zijn
+- forceer geen affiliate insteek
+- geen AI-uitleg
+- geen interne notities
+- geen meta-tekst
+
+OUTPUT:
+alleen de ingevulde HTML
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PAGINATITEL -->
+  <title>[[ARTIKEL_TITEL]] | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="[[META_DESCRIPTION]]">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+
+<section class="article-hero">
+  <div class="container article-layout">
+    <div>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>•</span>
+        <a href="homey.html">Kennisbank</a>
+        <span>•</span>
+        <span>[[KORTE_ARTIKELNAAM]]</span>
+      </div>
+
+      <span class="eyebrow">[[EYEBROW]]</span>
+      <h1>[[ARTIKEL_TITEL]]</h1>
+
+      <p class="lead muted">
+        [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
+      </p>
+
+      <div class="meta-list">
+        <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
+        <span class="meta-pill">Onderwerp: [[ONDERWERP]]</span>
+        <span class="meta-pill">Voor: [[DOELGROEP]]</span>
+      </div>
+    </div>
+
+    <div class="panel project-info-panel">
+      <h3>Waarom dit artikel de moeite waard is</h3>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>[[USP_1_TITEL]]</strong><br>
+            <span class="muted">[[USP_1_TEKST]]</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>[[USP_2_TITEL]]</strong><br>
+            <span class="muted">[[USP_2_TEKST]]</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>[[USP_3_TITEL]]</strong><br>
+            <span class="muted">[[USP_3_TEKST]]</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>[[USP_4_TITEL]]</strong><br>
+            <span class="muted">[[USP_4_TEKST]]</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>[[USP_5_TITEL]]</strong><br>
+            <span class="muted">[[USP_5_TEKST]]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container project-hero-media">
+    <div class="panel">
+      <figure>
+        <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]">
+        <figcaption class="muted small">
+          [[HERO_AFBEELDING_BIJSCHRIFT]]
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top: 14px;">
+  <div class="container project-content-layout">
+    <article class="article-body project-article">
+
+      <p class="lead">
+        [[OPENINGSALINEA]]
+      </p>
+
+      <p>
+        [[TWEEDE_ALINEA]]
+      </p>
+
+      <div class="insight-panel">
+        <h3>Kort samengevat</h3>
+        <p class="muted">[[KORTE_SAMENVATTING_OF_BELANGRIJKSTE_INZICHT]]</p>
+      </div>
+
+      <h2 id="wat-is-het">[[H2_1_TITEL]]</h2>
+      <p>[[H2_1_ALINEA_1]]</p>
+      <p>[[H2_1_ALINEA_2]]</p>
+
+      <ul>
+        <li><strong>[[PUNT_1_TITEL]]</strong> → [[PUNT_1_UITLEG]]</li>
+        <li><strong>[[PUNT_2_TITEL]]</strong> → [[PUNT_2_UITLEG]]</li>
+        <li><strong>[[PUNT_3_TITEL]]</strong> → [[PUNT_3_UITLEG]]</li>
+      </ul>
+
+      <figure>
+        <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]">
+        <figcaption class="muted small">
+          [[AFBEELDING_1_BIJSCHRIFT]]
+        </figcaption>
+      </figure>
+
+      <h2 id="waarom-relevant">[[H2_2_TITEL]]</h2>
+      <p>[[H2_2_ALINEA_1]]</p>
+      <p>[[H2_2_ALINEA_2]]</p>
+
+      <h2 id="praktijk">[[H2_3_TITEL]]</h2>
+      <p>[[H2_3_ALINEA_1]]</p>
+      <p>[[H2_3_ALINEA_2]]</p>
+
+      <h2 id="waar-let-je-op">[[H2_4_TITEL]]</h2>
+      <p>[[H2_4_ALINEA_1]]</p>
+
+      <ul>
+        <li>[[AANDACHTSPUNT_1]]</li>
+        <li>[[AANDACHTSPUNT_2]]</li>
+        <li>[[AANDACHTSPUNT_3]]</li>
+      </ul>
+
+      <p>[[H2_4_ALINEA_2]]</p>
+
+      <h2 id="verdieping">[[H2_5_TITEL]]</h2>
+      <p>[[H2_5_ALINEA_1]]</p>
+      <p>[[H2_5_ALINEA_2]]</p>
+
+      <h2 id="volgende-stap">Volgende stap</h2>
+      <p>[[VOLGENDE_STAP_TEKST]]</p>
+
+      <ul>
+        <li>[[TOEPASSING_OF_LINK_1]]</li>
+        <li>[[TOEPASSING_OF_LINK_2]]</li>
+        <li>[[TOEPASSING_OF_LINK_3]]</li>
+      </ul>
+
+      <h2 id="conclusie">Conclusie</h2>
+      <p>[[CONCLUSIE_TEKST]]</p>
+
+    </article>
+
+    <aside class="side-stack">
+      <div class="toc">
+        <h3>In dit artikel</h3>
+        <a href="#wat-is-het">[[TOC_1]]</a>
+        <a href="#waarom-relevant">[[TOC_2]]</a>
+        <a href="#praktijk">[[TOC_3]]</a>
+        <a href="#waar-let-je-op">[[TOC_4]]</a>
+        <a href="#verdieping">[[TOC_5]]</a>
+        <a href="#volgende-stap">Volgende stap</a>
+        <a href="#conclusie">Conclusie</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Gerelateerd</h3>
+        <div class="footer-links">
+          <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
+          <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
+          <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</body>
+</html>

@@ -1,20 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Bouw je eigen slimme CO₂ sensor met Homeyduino | huisvanvandaag.nl</title>
-  <meta name="description" content="Bouw een betaalbare CO₂ sensor met een MH-Z19B, Wemos D1 Mini en Homeyduino. Meet het binnenklimaat, bekijk waardes in Homey Insights en gebruik ze als trigger voor flows.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bouw je eigen slimme CO₂ sensor met Homeyduino (UART) | huisvanvandaag.nl</title>
+<meta content="Bouw een slimme CO₂ sensor met een MH-Z19B, Wemos D1 Mini en Homeyduino. Inclusief UART-aansluiting, non-blocking WiFi-herstel, diagnostische temperatuurmeting en slimme update-logica die alleen relevante CO₂-wijzigingen naar Homey stuurt." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
     .project-hero-media {
       margin-top: 1.25rem;
     }
@@ -69,6 +66,26 @@
       border-radius: 18px;
     }
 
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.98rem;
+    }
+
+    .spec-table th,
+    .spec-table td {
+      border: 1px solid rgba(20, 33, 43, 0.12);
+      padding: 0.8rem 0.85rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .spec-table th {
+      background: rgba(20, 33, 43, 0.04);
+      font-weight: 700;
+    }
+
     @media (max-width: 980px) {
       .project-content-layout {
         grid-template-columns: 1fr;
@@ -77,440 +94,560 @@
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie">
-      <a href="index.html">Home</a>
-      <a href="over.html">Over</a>
-      <a href="homey.html">Homey</a>
-      <a href="diy.html" class="active">DIY</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <nav class="nav-links" aria-label="Hoofdnavigatie">
-      <a href="index.html">Home</a>
-      <a href="over.html">Over</a>
-      <a href="homey.html">Homey</a>
-      <a href="diy.html" class="active">DIY</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-
+<div id="site-header"></div>
 <main>
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="diy.html">DIY</a>
-          <span>•</span>
-          <span>CO₂ sensor</span>
-        </div>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>CO₂ sensor</span>
+</div>
+<span class="eyebrow">DIY • Homeyduino • Binnenklimaat</span>
+<h1>Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</h1>
+<p class="lead muted">
+            Met een MH-Z19B, een Wemos D1 Mini en Homeyduino bouw je zelf een slimme CO₂ sensor die de CO₂-concentratie én de interne sensortemperatuur uitleest en alleen relevante updates naar Homey stuurt.
+          </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Binnenklimaat</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Hardware: MH-Z19B + Wemos D1 Mini</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Betaalbare zelfbouw</strong><br/>
+<span class="muted">Je bouwt voor relatief weinig geld een CO₂ sensor die prima inzetbaar is in je slimme woning.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct bruikbaar in Homey</strong><br/>
+<span class="muted">Je ziet de metingen terug in Homey en kunt ze meteen gebruiken in flows en inzichten.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Slimmere update-logica</strong><br/>
+<span class="muted">De sketch publiceert alleen bij de eerste meting, bij een verschil van 30 ppm of via een heartbeat van 60 seconden.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Non-blocking WiFi-herstel</strong><br/>
+<span class="muted">De Wemos blijft doorwerken en probeert wifi op de achtergrond te herstellen zonder de hoofdloop onnodig te blokkeren.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Diagnostische temperatuurwaarde</strong><br/>
+<span class="muted">Je leest ook de interne temperatuur van de MH-Z19 uit, handig als extra referentie maar niet bedoeld als nauwkeurige kamertemperatuur.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde CO₂ sensor met MH-Z19B en Wemos D1 Mini voor Homeyduino" src="assets/header/homeyduino-co2-sensor-hero.jpg"/>
+<figcaption class="muted small">
+              Een zelfgebouwde CO₂ sensor op basis van de MH-Z19B of MH-Z19C koppel je eenvoudig aan aan Homey via Homeyduino.
+            </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+            Een gezond binnenklimaat krijgt steeds meer aandacht, en dat is niet voor niets. Zeker in goed geïsoleerde woningen kan de CO₂-waarde binnenshuis ongemerkt oplopen. Juist daarom is het interessant om die concentratie niet af en toe, maar continu te meten en slim te koppelen aan je automatiseringen.
+          </p>
+<p>
+            Met dit project bouw je zelf een compacte CO₂ sensor op basis van de MH-Z19B en een Wemos D1 Mini. De sensor leest iedere vijf seconden de actuele waarde uit, toont die via de seriële monitor en publiceert alleen naar Homey wanneer dat echt zinvol is. Dat houdt je flows netjes, beperkt onnodige updates en maakt deze versie van de sketch technisch een stuk slimmer dan een simpele “alles altijd versturen”-aanpak.
+          </p>
 
-        <span class="eyebrow">DIY • Homeyduino • Binnenklimaat</span>
-        <h1>Bouw je eigen slimme CO₂ sensor met Homeyduino</h1>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een slimme CO₂ sensor die via UART communiceert met de MH-Z19B en zijn metingen doorstuurt naar Homey met behulp van Homeyduino.</p>
+<ul>
+<li><strong>CO₂ meten</strong> → De sensor leest de actuele CO₂-concentratie uit in ppm.</li>
+<li><strong>Temperatuur uitlezen</strong> → Je leest ook de interne temperatuur van de MH-Z19 uit als extra diagnosewaarde.</li>
+<li><strong>Gericht publiceren</strong> → De waarde wordt alleen naar Homey gestuurd bij de eerste geldige meting, bij een verschil van minimaal 30 ppm of na een heartbeat van 60 seconden.</li>
+<li><strong>WiFi slim onderhouden</strong> → De sketch controleert de wifi periodiek en probeert de verbinding op de achtergrond te herstellen.</li>
+</ul>
+<p>
+            Het resultaat is een betaalbare sensor die niet alleen inzicht geeft in de luchtkwaliteit, maar ook direct bruikbaar is in Homey flows. Denk aan meldingen bij slechte luchtkwaliteit of het automatisch opschakelen van mechanische ventilatie.
+          </p>
 
-        <p class="lead muted">
-          Met een MH-Z19B sensor, een Wemos D1 Mini en Homeyduino bouw je zelf een slimme CO₂ sensor die je binnenklimaat bewaakt en direct bruikbaar is in Homey-flows.
-        </p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of vergelijkbare ESP8266-board</li>
+<li>MH-Z19B CO₂ sensor</li>
+<li>Jumper wires</li>
+<li>Micro-USB kabel</li>
+<li>Homey met de Homeyduino-app geïnstalleerd</li>
+<li>Arduino IDE op je computer</li>
+</ul>
 
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: Binnenklimaat</span>
-          <span class="meta-pill">Platform: Homey</span>
-          <span class="meta-pill">Hardware: MH-Z19B + Wemos D1 Mini</span>
-        </div>
-      </div>
-
-      <div class="panel project-info-panel">
-        <h3>Waarom dit project leuk én nuttig is</h3>
-        <div class="check-list">
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Betaalbare zelfbouw</strong><br>
-              <span class="muted">Je bouwt deze CO₂ sensor met beperkte middelen, zonder meteen uit te komen op kant-en-klare meters van honderden euro’s.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Nuttig in huis</strong><br>
-              <span class="muted">De sensor helpt om een te hoge CO₂-concentratie binnenshuis sneller op te merken en op tijd te ventileren.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Direct zichtbaar in Homey</strong><br>
-              <span class="muted">Je kunt het verloop van de metingen volgen via Homey Insights en de sensor gebruiken in flows.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Praktische automatisering</strong><br>
-              <span class="muted">De gemeten CO₂-waarde kan dienen als trigger om bijvoorbeeld mechanische ventilatie automatisch aan te sturen.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Makkelijk uit te breiden</strong><br>
-              <span class="muted">Wil je meer meten, dan kun je later ook kiezen voor een multi-sensor met extra metingen zoals temperatuur en luchtvochtigheid.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container project-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="assets/homeyduino-co2-sensor-hero.jpg" alt="Zelfgebouwde CO₂ sensor met MH-Z19B en Wemos D1 Mini voor Homeyduino">
-          <figcaption class="muted small">
-            Een zelfgebouwde CO₂ sensor op basis van de MH-Z19B en een Wemos D1 Mini, bedoeld om het binnenklimaat slim te monitoren via Homey.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container project-content-layout">
-      <article class="article-body project-article">
-
-        <p class="lead">
-          Een gezond binnenklimaat krijgt steeds meer aandacht, en dat is logisch. Zeker in goed geïsoleerde woningen blijft de lucht langer hangen, waardoor CO₂ zich binnenshuis kan ophopen. Juist daarom is het interessant om die waarde niet alleen af en toe te meten, maar continu te volgen.
-        </p>
-
-        <p>
-          Met dit project bouw je zelf een slimme CO₂ sensor die meet, logt en samenwerkt met Homey. Daarmee zie je niet alleen hoe de luchtkwaliteit zich door de dag heen ontwikkelt, maar kun je ook automatiseren zodra ventileren echt nodig is.
-        </p>
-
-        <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
-        <p>Je bouwt een CO₂ sensor op basis van de MH-Z19B en koppelt die via Homeyduino aan Homey. De sensor leest de CO₂-waarde uit via PWM en stuurt die door als meetwaarde, zodat je de concentratie kunt volgen en gebruiken in automatiseringen.</p>
-        <ul>
-          <li><strong>CO₂ meten</strong> → De MH-Z19B meet de concentratie koolstofdioxide in ppm en geeft die waarde door aan de microcontroller.</li>
-          <li><strong>Automatiseren met Homey</strong> → De gemeten waarde wordt zichtbaar in Homey en kan daarna worden gebruikt als trigger voor flows en ventilatie-aansturing.</li>
-        </ul>
-        <p>Het resultaat is een compacte en betaalbare sensoroplossing waarmee je jouw smart home niet alleen slimmer, maar ook praktischer maakt voor dagelijks gebruik.</p>
-
-        <h2 id="benodigdheden">Benodigdheden</h2>
-        <ul>
-          <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
-          <li>USB-C oplader</li>
-          <li>MH-Z19B CO₂ sensor</li>
-          <li>Homey met de Homeyduino-app geïnstalleerd</li>
-          <li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
-        </ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
-<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
-<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
-<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
-  <div id="affiliate-auto-homeyduino-co2-sensor-html-1"></div>
-  <div id="affiliate-auto-homeyduino-co2-sensor-html-2"></div>
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-co2-sensor-uart-1"></div>
+<div id="affiliate-auto-homeyduino-co2-sensor-uart-2"></div>
+<div id="affiliate-auto-homeyduino-co2-sensor-uart-3"></div>
 </section>
 <script>
-  renderAffiliateProduct("affiliate-auto-homeyduino-co2-sensor-html-1", "mh_z19b");
-  renderAffiliateProduct("affiliate-auto-homeyduino-co2-sensor-html-2", "wemos_d1_mini");
-</script>
+            renderAffiliateProduct("affiliate-auto-homeyduino-co2-sensor-uart-1", "homey");
+            renderAffiliateProduct("affiliate-auto-homeyduino-co2-sensor-uart-2", "mh_z19b");
+            renderAffiliateProduct("affiliate-auto-homeyduino-co2-sensor-uart-3", "wemos_d1_mini");
+          </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
+<div id="affiliate-benodigdheden-co2"></div>
 
-        <div id="affiliate-benodigdheden-co2"></div>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 
-        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Installeer Arduino IDE en voeg ESP8266 board support toe</h3>
+<p>
+            De Wemos D1 Mini is gebaseerd op de ESP8266. Dat betekent dat Arduino IDE eerst moet weten hoe het met dit board moet omgaan. Is dat nog niet goed ingesteld, dan loop je al snel tegen foutmeldingen aan zoals <code>ESP8266WiFi.h: No such file or directory</code>.
+          </p>
+<p>Voeg daarom eerst de juiste board support toe:</p>
+<ol>
+<li>Open Arduino IDE</li>
+<li>Ga naar <strong>Bestand → Voorkeuren</strong></li>
+<li>Zoek het veld <strong>Additional Boards Manager URLs</strong></li>
+<li>Voeg deze URL toe:</li>
+</ol>
+<pre><code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code></pre>
+<p>Ga daarna naar:</p>
+<ul>
+<li><strong>Tools → Board → Boards Manager</strong></li>
+<li>Zoek op <strong>esp8266</strong></li>
+<li>Installeer <strong>ESP8266 by ESP8266 Community</strong></li>
+<li>Selecteer vervolgens als board: <strong>LOLIN(WEMOS) D1 R2 &amp; mini</strong> of een vergelijkbare Wemos D1 Mini-optie</li>
+</ul>
+<div class="panel">
+<strong>Veelgemaakte fout</strong><br/>
+            Heb je per ongeluk een ESP32-board of Arduino Uno geselecteerd, dan krijg je foutmeldingen die op het eerste gezicht op je code lijken te wijzen, terwijl de oorzaak simpelweg de verkeerde boardkeuze is.
+          </div>
 
-        <h3>1. Sluit de sensor aan</h3>
-        <p>Volg het aansluitschema en verbind de MH-Z19B met de Wemos D1 Mini. In deze opstelling wordt de sensor uitgelezen via PWM. In de sketch staat ook de UART-aansluiting, maar in deze situatie wordt die niet gebruikt voor de meting zelf.</p>
-        <ul>
-          <li><strong>PWM</strong> → <strong>D2</strong></li>
-          <li><strong>5V</strong> → <strong>5V</strong></li>
-          <li><strong>G</strong> → <strong>G</strong></li>
-        </ul>
-
-        <figure>
-          <img src="assets/mh-z19b-wemos-d1-mini-schema.jpg" alt="Aansluitschema van de MH-Z19B op de Wemos D1 Mini">
-          <figcaption class="muted small">
-            Volg het aansluitschema zorgvuldig, zodat de sensor correct wordt uitgelezen via PWM.
-          </figcaption>
-        </figure>
-
-        <h3>2. Bereid de software voor</h3>
-        <p>Installeer Arduino IDE, NodeMCU Flasher en Homeyduino op je computer. Controleer daarna of in Arduino IDE het juiste board is geselecteerd voordat je begint met uploaden.</p>
-
-        <h3>3. Upload de code</h3>
-        <p>Vul in de sketch je eigen wifi-gegevens in en upload de code op 9600 baud naar de Wemos D1 Mini. De sensor wordt vervolgens als Homeyduino-sensor aangemeld met de capability <code>measure_co2</code>.</p>
-
-        <pre><code>// Code for Homeyduino made by Smart Home Blog https://huisvanvandaag.nl.
-// Take a look at my site for more Homeyduino en other Smart Home projects.
-
-#include &lt;ESP8266WiFi.h&gt;
-#include &lt;WiFiClient.h&gt;
+<h3>2. Installeer de juiste libraries in Arduino IDE</h3>
+<p>
+            Deze sketch gebruikt de libraries <strong>MH-Z19</strong> en <strong>Homeyduino</strong>. Werk bij voorkeur met één juiste versie per library, zodat Arduino IDE niet per ongeluk een verouderde of dubbele installatie kiest.
+          </p>
+<p>Open in Arduino IDE:</p>
+<p><strong>Schets → Bibliotheek gebruiken → Bibliotheken beheren…</strong></p>
+<p>Zoek vervolgens op naam en installeer:</p>
+<ul>
+<li><strong>MH-Z19</strong></li>
+<li><strong>Homeyduino</strong> van <strong>Athom B.V.</strong></li>
+</ul>
+<p>
+            Controleer daarna of je sketch onder andere deze includes gebruikt:
+          </p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
-#include &lt;MHZ.h&gt;
+#include &lt;MHZ19.h&gt;
+#include &lt;Homey.h&gt;</code></pre>
+<p>
+            Gebruik je bijvoorbeeld <code>&lt;WiFi.h&gt;</code> in plaats van <code>&lt;ESP8266WiFi.h&gt;</code>, dan zit je in de praktijk in ESP32-land en gaat het project niet goed compileren.
+          </p>
+
+<h3>3. Sluit de sensor correct aan via UART</h3>
+<p>
+            In deze versie lezen we de MH-Z19B uit via UART. Daarbij is één regel echt belangrijk: <strong>TX en RX worden gekruist aangesloten</strong>. De zender van het ene apparaat gaat dus naar de ontvanger van het andere apparaat.
+          </p>
+<table class="spec-table">
+<thead>
+<tr>
+<th>MH-Z19B pin</th>
+<th>Wemos D1 Mini pin</th>
+<th>Uitleg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vin</td>
+<td>5V</td>
+<td>Voeding. De MH-Z19B werkt op 5V en niet op 3.3V.</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>G</td>
+<td>Massa.</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>D2</td>
+<td>De sensor verzendt data naar de Wemos.</td>
+</tr>
+<tr>
+<td>RX</td>
+<td>D1</td>
+<td>De sensor ontvangt data van de Wemos.</td>
+</tr>
+</tbody>
+</table>
+<p>In de code zie je dat terug in deze configuratie:</p>
+<pre><code>constexpr uint8_t MH_Z19_RX_PIN = D2;
+constexpr uint8_t MH_Z19_TX_PIN = D1;</code></pre>
+<p>
+            Dat lijkt misschien verwarrend, maar is logisch bekeken vanuit de Wemos. De Wemos ontvangt namelijk data van de sensor op D2, dus daar hoort de <strong>TX van de sensor</strong> op. Omgekeerd ontvangt de sensor data van de Wemos via zijn RX-pin, dus die sluit je aan op <strong>D1</strong>.
+          </p>
+<div class="panel">
+<strong>Veelgemaakte fout</strong><br/>
+            Sluit TX niet op TX en RX niet op RX aan. UART werkt juist met een gekruiste verbinding: <strong>TX → RX</strong> en <strong>RX → TX</strong>.
+          </div>
+<figure>
+<img alt="Aansluitschema van de MH-Z19B op de Wemos D1 Mini via UART" src="assets/artikel/mh-z19b-wemos-d1-mini-schema.png"/>
+<figcaption class="muted small">
+              Let bij UART vooral op dat TX en RX gekruist worden aangesloten.
+            </figcaption>
+</figure>
+
+<h3>4. Upload de code</h3>
+<p>
+            Vul in de configuratie je eigen wifi-gegevens in en upload daarna de sketch naar je Wemos D1 Mini. Deze versie is overzichtelijker opgezet dan een eenvoudige testsketch, doordat de code werkt met een aparte configuratie-namespace, gescheiden functies en een eigen state-model.
+          </p>
+<p>
+            De belangrijkste verbeteringen in deze versie:
+          </p>
+<ul>
+<li>de eerste geldige meting wordt direct gepubliceerd</li>
+<li>CO₂ wordt daarna alleen opnieuw verstuurd bij een verschil van 30 ppm of na 60 seconden</li>
+<li>de temperatuur wordt wel meegestuurd, maar telt niet mee in de publish-beslissing</li>
+<li>de wifi-verbinding wordt periodiek gecontroleerd en hersteld zonder de hoofdloop te blokkeren</li>
+<li>ongeldige sensormetingen worden afgevangen voordat er iets naar Homey gaat</li>
+</ul>
+<p>Controleer vóór het uploaden altijd nog even of:</p>
+<ul>
+<li>het juiste board geselecteerd is</li>
+<li>de juiste COM-poort actief is</li>
+<li>je wifi-gegevens zijn ingevuld</li>
+<li>de juiste MH-Z19 library is geïnstalleerd</li>
+</ul>
+
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;SoftwareSerial.h&gt;
+#include &lt;MHZ19.h&gt;
 #include &lt;Homey.h&gt;
 
-#define CO2_IN D2
-#define MH_Z19_RX D6
-#define MH_Z19_TX D5
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
 
-MHZ co2(MH_Z19_RX, MH_Z19_TX, CO2_IN, MHZ19B);
+  constexpr uint8_t MH_Z19_RX_PIN = D2;
+  constexpr uint8_t MH_Z19_TX_PIN = D1;
 
-void wifi() {
-  if (WiFi.status() != WL_CONNECTED) {
-    WiFi.begin(&quot;&lt;SSID&gt;&quot;, &quot;&lt;PASSWORD&gt;&quot;);
-    uint8_t timeout = 30;
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(&quot;.&quot;);
-      if (timeout &lt; 1) break;
+  constexpr unsigned long SENSOR_SAMPLE_INTERVAL_MS = 5000;
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
+
+  constexpr int CO2_PUBLISH_THRESHOLD_PPM = 30;
+
+  constexpr const char* HOMEY_DEVICE_NAME = "CO2 sensor";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+  constexpr const char* CAPABILITY_CO2 = "measure_co2";
+  constexpr const char* CAPABILITY_TEMPERATURE = "measure_temperature";
+}
+
+// =========================
+// Datamodellen &amp; State
+// =========================
+struct SensorReading {
+  int co2 = 0;
+  int temperature = 0;
+};
+
+struct DeviceState {
+  int lastPublishedCo2 = 0;
+  unsigned long lastPublishAt = 0;
+  bool hasPublished = false;
+
+  unsigned long lastSensorSampleAt = 0;
+  unsigned long lastWifiCheckAt = 0;
+  bool wifiWasConnected = false;
+};
+
+DeviceState state;
+SoftwareSerial mhzSerial(Config::MH_Z19_RX_PIN, Config::MH_Z19_TX_PIN);
+MHZ19 mhzSensor;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void startWifi();
+void maintainWifi(unsigned long currentMillis);
+void processSensorLogic(unsigned long currentMillis);
+bool readSensor(SensorReading&amp; reading);
+bool shouldPublish(const SensorReading&amp; reading, unsigned long currentMillis);
+void publishToHomey(const SensorReading&amp; reading, unsigned long currentMillis);
+
+// =========================
+// Setup
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial.println(F("\\n--- CO2 Systeem: Non-Blocking Start ---"));
+
+  mhzSerial.begin(9600);
+  mhzSensor.begin(mhzSerial);
+  mhzSensor.autoCalibration(false);
+
+  startWifi();
+
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_CO2);
+  Homey.addCapability(Config::CAPABILITY_TEMPERATURE);
+
+  state.lastSensorSampleAt = millis() - Config::SENSOR_SAMPLE_INTERVAL_MS;
+}
+
+// =========================
+// Main Loop
+// =========================
+void loop() {
+  Homey.loop();
+  yield();
+
+  const unsigned long currentMillis = millis();
+
+  maintainWifi(currentMillis);
+  processSensorLogic(currentMillis);
+}
+
+// =========================
+// WiFi-beheer
+// =========================
+void startWifi() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+  Serial.println(F("[WIFI] Verbindingspoging gestart op de achtergrond..."));
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - state.lastWifiCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  state.lastWifiCheckAt = currentMillis;
+
+  if (WiFi.status() == WL_CONNECTED) {
+    if (!state.wifiWasConnected) {
+      Serial.print(F("[WIFI] Verbonden! IP: "));
+      Serial.println(WiFi.localIP());
+      state.wifiWasConnected = true;
     }
-    if (WiFi.status() == WL_CONNECTED) {
-      Serial.print(&quot;Verbonden met WiFi! (&quot;);
-      Serial.print(WiFi.localIP());
-      Serial.println(&quot;)&quot;);
-    }
+    return;
+  }
+
+  state.wifiWasConnected = false;
+  Serial.println(F("[WIFI] Geen verbinding. ESP probeert te herstellen..."));
+
+  if (WiFi.status() == WL_IDLE_STATUS || WiFi.status() == WL_DISCONNECTED) {
+    WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
   }
 }
 
-void setup() {
-  Serial.begin(9600);
-  Homey.begin(&quot;Co2 sensor&quot;);
-  Homey.setClass(&quot;sensor&quot;);
-  Homey.addCapability(&quot;measure_co2&quot;);
-  pinMode(CO2_IN, INPUT);
-  delay(100);
+// =========================
+// Kernlogica
+// =========================
+void processSensorLogic(unsigned long currentMillis) {
+  if (currentMillis - state.lastSensorSampleAt &lt; Config::SENSOR_SAMPLE_INTERVAL_MS) {
+    return;
+  }
+
+  state.lastSensorSampleAt = currentMillis;
+
+  SensorReading currentReading;
+  if (readSensor(currentReading)) {
+    Serial.printf("CO2: %d ppm | Temp: %d C\\n", currentReading.co2, currentReading.temperature);
+
+    if (shouldPublish(currentReading, currentMillis)) {
+      publishToHomey(currentReading, currentMillis);
+    }
+  } else {
+    Serial.println(F("[FOUT] Sensoruitlezing ongeldig."));
+  }
 }
 
-void loop() {
-  wifi();
-  Homey.loop();
+bool readSensor(SensorReading&amp; reading) {
+  const int co2 = mhzSensor.getCO2();
+  const int temp = mhzSensor.getTemperature();
 
-  int ppm_pwm = co2.readCO2PWM();
-  Serial.print(&quot;PPMpwm: &quot;);
-  Serial.print(ppm_pwm);
-  Homey.setCapabilityValue(&quot;measure_co2&quot;, (int) ppm_pwm);
+  if (co2 &gt; 0 &amp;&amp; temp &gt; -40 &amp;&amp; temp &lt; 85) {
+    reading.co2 = co2;
+    reading.temperature = temp;
+    return true;
+  }
 
-  Serial.println(&quot;\n------------------------------&quot;);
-  delay(5000);
+  return false;
+}
+
+bool shouldPublish(const SensorReading&amp; reading, unsigned long currentMillis) {
+  if (!state.hasPublished) {
+    return true;
+  }
+
+  const bool thresholdMet =
+      abs(reading.co2 - state.lastPublishedCo2) &gt;= Config::CO2_PUBLISH_THRESHOLD_PPM;
+
+  const bool heartbeatMet =
+      (currentMillis - state.lastPublishAt) &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS;
+
+  return thresholdMet || heartbeatMet;
+}
+
+void publishToHomey(const SensorReading&amp; reading, unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println(F("[HOMEY] Publicatie overgeslagen: Geen WiFi."));
+    return;
+  }
+
+  Homey.setCapabilityValue(Config::CAPABILITY_CO2, reading.co2);
+  Homey.setCapabilityValue(Config::CAPABILITY_TEMPERATURE, static_cast&lt;float&gt;(reading.temperature));
+
+  state.lastPublishedCo2 = reading.co2;
+  state.lastPublishAt = currentMillis;
+  state.hasPublished = true;
+
+  Serial.println(F("[HOMEY] Data succesvol verstuurd."));
 }</code></pre>
 
-        <h3>4. Test de metingen via de seriële monitor</h3>
-        <p>Open in Arduino IDE de seriële monitor via Hulpmiddelen → Seriële Monitor of met CTRL+SHIFT+M. Houd er rekening mee dat de sensor bij de eerste start enkele minuten nodig kan hebben om op te warmen. Verschijnt er niet direct een waarde, wacht dan nog even.</p>
+<h3>5. Test de sensor via de seriële monitor</h3>
+<p>
+            Open in Arduino IDE de seriële monitor via <strong>Tools → Serial Monitor</strong>. Na het opstarten kan de MH-Z19B in het begin nog even 0 of een ongeldige waarde teruggeven. Dat is normaal. De sensor heeft doorgaans een paar minuten nodig om stabiel te worden.
+          </p>
+<p>
+            Zodra alles goed werkt, zie je regels zoals:
+          </p>
+<pre><code>CO2: 823 ppm | Temp: 24 C</code></pre>
+<p>
+            En wanneer de meting daadwerkelijk naar Homey wordt gepubliceerd, verschijnt ook:
+          </p>
+<pre><code>[HOMEY] Data succesvol verstuurd.</code></pre>
+<p>
+            Heb je tijdelijk geen wifi, dan blijft de sensor wel uitlezen maar slaat hij het publiceren over. In dat geval zie je een melding zoals:
+          </p>
+<pre><code>[HOMEY] Publicatie overgeslagen: Geen WiFi.</code></pre>
+<p>
+            Zie je helemaal niets of krijg je alleen fouten terug, controleer dan eerst de boardkeuze, daarna de gebruikte library en vervolgens de TX/RX-aansluitingen. In de praktijk zit de fout vaak in één van die drie punten.
+          </p>
+<figure>
+<img alt="Uitlezen van de CO₂ sensor via de seriële monitor in Arduino IDE" src="assets/artikel/homeyduino-co2-serial-monitor.jpg"/>
+<figcaption class="muted small">
+              In de seriële monitor zie je snel of de sensor correct communiceert en bruikbare waarden teruggeeft.
+            </figcaption>
+</figure>
 
-        <h3>5. Controleer en kalibreer je gevoel voor de waardes</h3>
-        <p>Een praktische controle is om de sensor ook even buiten te laten meten wanneer het ruim boven het vriespunt is. In de broninformatie wordt een buitenconcentratie van 417 ppm genoemd voor 2020, terwijl in de eigen metingen buiten ongeveer 530 ppm werd afgelezen. Zo krijg je een eerste indruk of jouw waardes logisch ogen.</p>
+<h3>6. Voeg de sensor toe in Homey</h3>
+<p>
+            Zodra de code draait en de Wemos met je netwerk verbonden is, kun je het apparaat via de Homeyduino-app in Homey toevoegen. Daarna verschijnt de sensor als apparaat met in ieder geval de capabilities <code>measure_co2</code> en <code>measure_temperature</code>.
+          </p>
+<p>Daarmee kun je bijvoorbeeld:</p>
+<ul>
+<li>een flow starten wanneer de CO₂-waarde boven een grens uitkomt</li>
+<li>een melding sturen wanneer het tijd is om te ventileren</li>
+<li>de sensor volgen via Homey Insights</li>
+<li>de temperatuurwaarde als extra diagnose laten meelopen</li>
+</ul>
 
-        <figure>
-          <img src="assets/homeyduino-co2-serial-monitor.jpg" alt="Uitlezen van de CO₂ sensor via de seriële monitor in Arduino IDE">
-          <figcaption class="muted small">
-            Via de seriële monitor zie je direct of de sensor meet en of de waardes binnen een logisch bereik vallen.
-          </figcaption>
-        </figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>
+            Juist de koppeling met Homey maakt dit project extra interessant. Het blijft dan niet bij een leuk elektronica-experiment, maar wordt een praktisch onderdeel van je slimme huis. Homey kan de CO₂-waarde immers gebruiken als trigger voor flows, notificaties of de aansturing van andere apparaten.
+          </p>
+<p>
+            Denk bijvoorbeeld aan een flow die de mechanische ventilatie opschakelt zodra de CO₂-concentratie te hoog wordt. De temperatuurwaarde van de MH-Z19 kun je daarbij vooral zien als een extra controlewaarde. Deze is handig voor diagnose of trendvergelijking, maar niet bedoeld als vervanging van een echte kamertemperatuursensor.
+          </p>
+<figure>
+<img alt="CO₂ metingen zichtbaar in Homey Insights" src="assets/artikel/homey-insights-en-co2-sensor-ppm.jpg"/>
+<figcaption class="muted small">
+              Eenmaal gekoppeld aan Homey kun je de CO₂-waarden en temperatuur volgen en gebruiken in flows.
+            </figcaption>
+</figure>
 
-        <h2 id="integratie">Integratie met Homey</h2>
-        <p>Zodra de sensor actief is, kun je de CO₂-waarde in Homey gebruiken als gewone meetwaarde. Daardoor wordt de sensor zichtbaar in Homey en kun je het verloop van de metingen volgen via Homey Insights.</p>
-        <p>Dat maakt deze zelfbouwsensor direct bruikbaar in praktische automatiseringen, zoals:</p>
-        <ul>
-          <li>een flow starten zodra de CO₂-waarde boven een zelfgekozen grens komt</li>
-          <li>het verloop van de luchtkwaliteit per dag volgen via Homey Insights</li>
-          <li>mechanische ventilatie automatisch naar een hogere stand schakelen bij een te hoge CO₂-concentratie</li>
-        </ul>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>
+            In de praktijk is deze sensor vooral interessant in ruimtes waar mensen langere tijd aanwezig zijn, zoals de woonkamer, werkkamer of slaapkamer. Zeker in goed geïsoleerde huizen kan de luchtkwaliteit ongemerkt achteruitgaan terwijl je daar zelf pas laat iets van merkt.
+          </p>
+<p>
+            Door de sensor aan Homey te koppelen kun je veel gerichter ventileren. In plaats van op vaste tijden of op gevoel, laat je ventilatie reageren op de werkelijke situatie in huis. Zo houd je het binnenklimaat comfortabeler én slimmer geregeld.
+          </p>
+<p>
+            Een logische toepassing is een pushbericht naar je telefoon zodra de CO₂-waarde boven bijvoorbeeld 1000 ppm komt. Nog mooier is een automatische flow die je mechanische ventilatie of een slimme stekker voor een ventilator inschakelt.
+          </p>
+<p>
+            Je kunt zelfs de LED-ring van Homey gebruiken als soort stoplicht: groen bij goede luchtkwaliteit, oranje bij een oplopende waarde en rood zodra ventileren echt wenselijk is.
+          </p>
+<figure>
+<img alt="Mechanische ventilatie van Itho Daalderop gekoppeld aan Homey" src="assets/itho-spider-homey-ventilatie.jpg"/>
+<figcaption class="muted small">
+              Een praktisch voorbeeld: Homey laat je ventilatie reageren op de gemeten CO₂-waarde.
+            </figcaption>
+</figure>
 
-        <figure>
-          <img src="assets/homey-insights-co2-sensor.jpg" alt="CO₂ metingen zichtbaar in Homey Insights">
-          <figcaption class="muted small">
-            Door de koppeling met Homey kun je de CO₂-concentratie over tijd volgen en gebruiken in flows.
-          </figcaption>
-        </figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>De MH-Z19B werkt op <strong>5V</strong> en niet op 3.3V.</li>
+<li>Na het opstarten heeft de sensor meestal een paar minuten nodig voordat de waardes stabiel zijn.</li>
+<li>De temperatuurmeting van de MH-Z19 is vooral diagnostisch en geen nauwkeurige kamertemperatuurmeting.</li>
+<li>Met <code>autoCalibration(false)</code> schakel je automatische kalibratie uit; doe dat dus bewust en alleen wanneer dat bij jouw toepassing past.</li>
+<li>De sketch controleert wifi periodiek, dus herstel van de verbinding gebeurt niet elke seconde maar volgens het ingestelde interval.</li>
+<li>Bij communicatieproblemen is het altijd slim om als eerste te controleren of TX en RX gekruist zijn aangesloten.</li>
+</ul>
 
-        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
-        <p>In de beschreven setup thuis is de CO₂ sensor gekoppeld aan de mechanische ventilatie van Itho Daalderop via de Spider thermostaat en gateway. De ventilatie draait daar al op gezette tijden, maar als de CO₂-waarde boven 1000 ppm uitkomt terwijl de ventilatie niet actief is, schakelt Homey alsnog de booststand in voor 30 minuten. Daarmee wordt ventileren niet alleen slimmer, maar ook veel gerichter.</p>
+<h2 id="conclusie">Conclusie</h2>
+<p>
+            Met deze versie bouw je een slimme CO₂ sensor die niet alleen netjes via UART uitleest, maar ook veel volwassener met wifi, timing en publicaties omgaat. Je leest iedere vijf seconden uit, filtert ongeldige metingen weg en stuurt alleen relevante wijzigingen naar Homey. Dat maakt het project niet alleen betaalbaar en leerzaam, maar ook gewoon prettig bruikbaar in het dagelijks leven.
+          </p>
+<p>
+            Zoek je een relatief voordelige manier om je binnenklimaat slimmer te maken en direct te koppelen aan Homey flows, dan is dit een project waar je verrassend veel aan hebt. En precies dat maakt Homeyduino zo leuk: je bouwt iets zelf, leert er onderweg van én houdt er een sensor aan over die echt iets toevoegt aan je smart home.
+          </p>
+<p>
+            Enthousiast geworden? Bestel je onderdelen, bouw je eigen CO₂ sensor en laat Homey voortaan automatisch een seintje geven zodra het tijd is om te ventileren.
+          </p>
+</article>
 
-        <figure>
-          <img src="assets/itho-spider-homey-ventilatie.jpg" alt="Mechanische ventilatie van Itho Daalderop gekoppeld aan Homey">
-          <figcaption class="muted small">
-            Een praktisch voorbeeld: automatisch extra ventileren wanneer de gemeten CO₂-waarde te hoog oploopt.
-          </figcaption>
-        </figure>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>De sensor kan bij de eerste start drie minuten of langer nodig hebben voordat er bruikbare waardes verschijnen.</li>
-          <li>In deze opstelling wordt de meting via PWM uitgelezen, ook al staan de UART-aansluitingen wel in de sketch vermeld.</li>
-          <li>Controleer altijd of in Arduino IDE het juiste board is geselecteerd en upload de code op 9600 baud.</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>Met een MH-Z19B, een Wemos D1 Mini en Homeyduino bouw je een verrassend bruikbare CO₂ sensor voor een relatief laag bedrag. Je krijgt inzicht in je binnenklimaat, kunt metingen terugzien in Homey en voegt direct een slimme trigger toe voor ventilatie of andere flows. Juist die combinatie van lage kosten, praktische inzet en Homey-integratie maakt dit een sterk DIY-project voor iedereen die slimmer wil wonen.</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In dit artikel</h3>
-          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
-          <a href="#benodigdheden">Benodigdheden</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#integratie">Integratie met Homey</a>
-          <a href="#praktisch-gebruik">Praktisch gebruik</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="homey.html">Homey uitgelegd</a>
-            <a href="tutorials.html">Homeyduino sensoren koppelen in Homey</a>
-            <a href="diy.html">Multi-sensor met CO₂, LDR en DHT11</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-  int ppm_pwm = co2.readCO2PWM();
-  Serial.print(&quot;PPMpwm: &quot;);
-  Serial.print(ppm_pwm);
-  Homey.setCapabilityValue(&quot;measure_co2&quot;, (int) ppm_pwm);
-
-  Serial.println(&quot;\n------------------------------&quot;);
-  delay(5000);
-}</code></pre>
-
-        <h3>4. Test de metingen via de seriële monitor</h3>
-        <p>Open in Arduino IDE de seriële monitor via Hulpmiddelen → Seriële Monitor of met CTRL+SHIFT+M. Houd er rekening mee dat de sensor bij de eerste start enkele minuten nodig kan hebben om op te warmen. Verschijnt er niet direct een waarde, wacht dan nog even.</p>
-
-        <h3>5. Controleer en kalibreer je gevoel voor de waardes</h3>
-        <p>Een praktische controle is om de sensor ook even buiten te laten meten wanneer het ruim boven het vriespunt is. In de broninformatie wordt een buitenconcentratie van 417 ppm genoemd voor 2020, terwijl in de eigen metingen buiten ongeveer 530 ppm werd afgelezen. Zo krijg je een eerste indruk of jouw waardes logisch ogen.</p>
-
-        <figure>
-          <img src="assets/homeyduino-co2-serial-monitor.jpg" alt="Uitlezen van de CO₂ sensor via de seriële monitor in Arduino IDE">
-          <figcaption class="muted small">
-            Via de seriële monitor zie je direct of de sensor meet en of de waardes binnen een logisch bereik vallen.
-          </figcaption>
-        </figure>
-
-        <h2 id="integratie">Integratie met Homey</h2>
-        <p>Zodra de sensor actief is, kun je de CO₂-waarde in Homey gebruiken als gewone meetwaarde. Daardoor wordt de sensor zichtbaar in Homey en kun je het verloop van de metingen volgen via Homey Insights.</p>
-        <p>Dat maakt deze zelfbouwsensor direct bruikbaar in praktische automatiseringen, zoals:</p>
-        <ul>
-          <li>een flow starten zodra de CO₂-waarde boven een zelfgekozen grens komt</li>
-          <li>het verloop van de luchtkwaliteit per dag volgen via Homey Insights</li>
-          <li>mechanische ventilatie automatisch naar een hogere stand schakelen bij een te hoge CO₂-concentratie</li>
-        </ul>
-
-        <figure>
-          <img src="assets/homey-insights-co2-sensor.jpg" alt="CO₂ metingen zichtbaar in Homey Insights">
-          <figcaption class="muted small">
-            Door de koppeling met Homey kun je de CO₂-concentratie over tijd volgen en gebruiken in flows.
-          </figcaption>
-        </figure>
-
-        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
-        <p>In de beschreven setup thuis is de CO₂ sensor gekoppeld aan de mechanische ventilatie van Itho Daalderop via de Spider thermostaat en gateway. De ventilatie draait daar al op gezette tijden, maar als de CO₂-waarde boven 1000 ppm uitkomt terwijl de ventilatie niet actief is, schakelt Homey alsnog de booststand in voor 30 minuten. Daarmee wordt ventileren niet alleen slimmer, maar ook veel gerichter.</p>
-
-        <figure>
-          <img src="assets/itho-spider-homey-ventilatie.jpg" alt="Mechanische ventilatie van Itho Daalderop gekoppeld aan Homey">
-          <figcaption class="muted small">
-            Een praktisch voorbeeld: automatisch extra ventileren wanneer de gemeten CO₂-waarde te hoog oploopt.
-          </figcaption>
-        </figure>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>De sensor kan bij de eerste start drie minuten of langer nodig hebben voordat er bruikbare waardes verschijnen.</li>
-          <li>In deze opstelling wordt de meting via PWM uitgelezen, ook al staan de UART-aansluitingen wel in de sketch vermeld.</li>
-          <li>Controleer altijd of in Arduino IDE het juiste board is geselecteerd en upload de code op 9600 baud.</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>Met een MH-Z19B, een Wemos D1 Mini en Homeyduino bouw je een verrassend bruikbare CO₂ sensor voor een relatief laag bedrag. Je krijgt inzicht in je binnenklimaat, kunt metingen terugzien in Homey en voegt direct een slimme trigger toe voor ventilatie of andere flows. Juist die combinatie van lage kosten, praktische inzet en Homey-integratie maakt dit een sterk DIY-project voor iedereen die slimmer wil wonen.</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In dit artikel</h3>
-          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
-          <a href="#benodigdheden">Benodigdheden</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#integratie">Integratie met Homey</a>
-          <a href="#praktisch-gebruik">Praktisch gebruik</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="homey.html">Homey uitgelegd</a>
-            <a href="tutorials.html">Homeyduino sensoren koppelen in Homey</a>
-            <a href="diy.html">Multi-sensor met CO₂, LDR en DHT11</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="multi-sensor-homeyduino.html">Bouw je eigen slimme CO₂ sensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-ldr-lichtsensor.html">Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)</a></div>
+</div>
+</aside>
+</div>
+</section>
 </main>
-
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-    </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="waarom-dit-blog-bestaat.html">Waarom dit blog bestaat</a>
-        <a href="waarom-dit-blog-bestaat.html">Waarom dit blog bestaat</a>
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
 <script src="affiliate-products-v2.js"></script>
 <script src="affiliate-products-v2-addons.js"></script>
 <script src="affiliate-components-v3.js"></script>
+<script src="include.js"></script>
 <script src="script.js"></script>
-
-
 </body>
 </html>

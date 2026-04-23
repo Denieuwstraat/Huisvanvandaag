@@ -1,146 +1,238 @@
 <!doctype html>
 <html lang="nl">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DIY & Homeyduino | huisvanvandaag.nl</title>
-  <meta name="description"
-    content="DIY smart-home projecten met ESP32, ESP8266 en Homeyduino voor een slimmer huis dat verder gaat dan standaardproducten.">
+  <title>DIY &amp; Homeyduino | huisvanvandaag.nl</title>
+  <meta name="description" content="Overzicht van DIY smart-home projecten met Homeyduino, ESP8266 en ESP32 op huisvanvandaag.nl.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+    }
+
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.04);
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      height: 100%;
+    }
+
+    .article-card-image img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-card-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      height: 100%;
+    }
+
+    .article-card h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .article-card h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .article-card .meta-list {
+      gap: .5rem;
+    }
+
+    .article-card .button-secondary {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+  </style>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container navbar">
-      <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-        <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-        <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-      </a>
-      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-      <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html">Home</a><a href="over.html">Over</a><a
-          href="homey.html">Homey</a><a href="diy.html" class="active">DIY</a><a href="tutorials.html">Tutorials</a><a
-          href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
-    </div>
-  </header>
-  <main>
+  <div id="site-header"></div>
 
+  <main>
     <section class="page-hero">
       <div class="container two-col">
-        <div class="hero-copy" style="color:var(--text); padding-top:0;">
-          <div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><span>DIY</span></div>
-          <span class="eyebrow">DIY & Homeyduino</span>
-          <h1 style="color:var(--text);">De plek voor zelfbouwprojecten die echt iets toevoegen</h1>
-          <p style="color:var(--muted);">Projecten met betaalbare hardware, Homeyduino en een beetje creativiteit — voor
-            oplossingen die je niet zomaar in de winkel vindt.</p>
+        <div>
+          <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span>•</span>
+            <span>DIY</span>
+          </div>
+          <span class="eyebrow">DIY</span>
+          <h1>DIY &amp; Homeyduino</h1>
+         <p class="lead muted">
+  Zelf slimme sensoren en schakelaars bouwen die precies doen wat jij wilt — niet wat een fabrikant ooit als ‘goed genoeg voor de massa’ heeft bedacht. 
+  Want standaard smart-home producten werken vaak prima, tot je nét iets anders wilt. 
+  Een melding op het juiste moment, een lamp die alleen onder specifieke omstandigheden aangaat, of een sensor die precies meet wat voor jouw huis relevant is. 
+  Met DIY bepaal jij wat er gebeurt, wanneer en waarom, en dat maakt je slimme huis pas echt slim. 
+  <br><br>
+  Nog nooit iets zelf gebouwd? Begin gewoon met één project hieronder en ontdek hoe snel je meer controle krijgt over je eigen huis.
+</p>
         </div>
+
         <div class="panel">
           <h3>Wat je hier vindt</h3>
-          <div class="chips"><span class="chip">ESP8266 &amp; ESP32</span><span class="chip">Homeyduino</span><span
-              class="chip">Zelfbouw sensoren</span></div>
-          <p class="muted" style="margin-top:.8rem;">Van CO₂ meting tot deurcontact: projecten die Homey slimmer maken
-            en thuis echt iets toevoegen.</p>
+          <div class="check-list">
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div><strong>DIY-projecten</strong><br><span class="muted">Een overzicht van alle DIY-projecten met Homeyduino, ESP8266 en ESP32.</span></div>
+            </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div><strong>Praktische projecten</strong><br><span class="muted">Van sensoren tot slimme automatisering voor Homey.</span></div>
+            </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div><strong>Snel doorzoekbaar</strong><br><span class="muted">Met titel, intro, platform en hardware direct zichtbaar.</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
     <section class="section-tight">
       <div class="container">
-        <div class="section-header">
-          <div><span class="eyebrow">Homeyduino projecten</span>
-            <h2>Zelfbouwprojecten voor een slimmer huis</h2>
-          </div>
-          <p>Stap-voor-stap uitgelegd, getest in de praktijk en direct koppelbaar aan Homey.</p>
-        </div>
-        <div class="grid-3">
-          <article class="card">
-            <div class="card-icon">🌬️</div>
-            <h3>CO₂ sensor met Homeyduino</h3>
-            <p class="muted">Een van de meest praktische projecten: luchtkwaliteit meten en ventilatie slimmer maken.
-            </p><a class="link" href="homeyduino-co2-sensor.html">Lees artikel →</a>
+        <div class="article-grid">
+          <!-- AUTO-GENERATED-DIY-CARDS:START -->
+<article class="article-card">
+            
+            <a class="article-card-image" href="bewegingssensor_homeyduino.html">
+              <img src="assets/header/homeyduino-bewegingssensor-hero.jpg" alt="Zelfgebouwde PIR bewegingssensor met ESP8266 voor Homeyduino" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY project</span>
+              <h2><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a></h2>
+              <p class="muted">Met een eenvoudige PIR sensor, een ESP8266-board en Homeyduino bouw je voor weinig geld een bewegingssensor die via wifi beweging doorgeeft aan Homey.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: Sensoren</span>
+                <span class="meta-pill">Platform: Homey / Homeyduino</span>
+                <span class="meta-pill">Hardware: ESP8266 + PIR sensor</span>
+              </div>
+              <a class="button-secondary" href="bewegingssensor_homeyduino.html">Bekijk project</a>
+            </div>
           </article>
-          <article class="card">
-            <div class="card-icon">💡</div>
-            <h3>Licht- en temperatuursensor</h3>
-            <p class="muted">Compact en betaalbaar project voor contextgevoelige flows in huis.</p><a class="link"
-              href="homeyduino-licht-temperatuur-sensor.html">Lees artikel →</a>
+<article class="article-card">
+            
+            <a class="article-card-image" href="homeyduino-co2-multisensor.html">
+              <img src="assets/header/homeyduino-multi-sensor-met-co2-hero.jpg" alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19B, DHT11 en LDR" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY • Homeyduino • Binnenklimaat</span>
+              <h2><a href="homeyduino-co2-multisensor.html">Bouw je eigen CO₂ multi-sensor met Homeyduino</a></h2>
+              <p class="muted">Met een MH-Z19B, DHT11, LDR en een Wemos D1 Mini bouw je zelf een betaalbare multi-sensor die CO₂, temperatuur, luchtvochtigheid en licht meet en die je meteen kunt gebruiken in Homey.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: Binnenklimaat</span>
+                <span class="meta-pill">Platform: Homey</span>
+                <span class="meta-pill">Hardware: MH-Z19B + DHT11 + LDR + Wemos D1 Mini</span>
+              </div>
+              <a class="button-secondary" href="homeyduino-co2-multisensor.html">Bekijk project</a>
+            </div>
           </article>
-          <article class="card">
-            <div class="card-icon">🚪</div>
-            <h3>Deur- en raamsensor</h3>
-            <p class="muted">Perfect voor meldingen, verlichting, beveiliging en slimme regenwaarschuwingen.</p><a
-              class="link" href="homeyduino-deur-raam-sensor.html">Lees artikel →</a>
-          </article>
-          <article class="card">
-            <div class="card-icon">👏</div>
-            <h3>Clapper switch</h3>
-            <p class="muted">Een modern retro-project dat laat zien hoe leuk slimme automatisering ook kan zijn.</p><a
-              class="link" href="homeyduino-clapper-switch.html">Lees artikel →</a>
-          </article>
-          <article class="card">
-            <div class="card-icon">🔌</div>
-            <h3>Relay switch</h3>
-            <p class="muted">Schakel apparatuur slim met Homey en Google, met duidelijke aandacht voor veiligheid.</p><a
-              class="link" href="homeyduino-relay.html">Lees artikel →</a>
+<article class="article-card">
+            
+            <a class="article-card-image" href="deur-raamsensor-homeyduino.html">
+              <img src="assets/header/homeyduino-deur-en-raamsensor-hero.jpg" alt="Placeholder voor zelfgebouwde deur- of raamsensor met Homeyduino" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY • Homeyduino • Automatisering</span>
+              <h2><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></h2>
+              <p class="muted">Met een eenvoudige MC-38 deur- of raamsensor, een ESP8266 of Wemos D1 Mini en Homeyduino bouw je zelf een bedrade sensor die direct bruikbaar is in Homey voor flows, meldingen en slimme automatiseringen.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: Beveiliging &amp; automatisering</span>
+                <span class="meta-pill">Platform: Homey</span>
+                <span class="meta-pill">Hardware: MC-38 + ESP8266 / Wemos D1 Mini</span>
+              </div>
+              <a class="button-secondary" href="deur-raamsensor-homeyduino.html">Bekijk project</a>
+            </div>
           </article>
 
+            
+
+<article class="article-card">
+            
+            <a class="article-card-image" href="homeyduino-co2-sensor.html">
+              <img src="assets/header/homeyduino-co2-sensor-hero.jpg" alt="Zelfgebouwde CO₂ sensor met MH-Z19B en Wemos D1 Mini voor Homeyduino" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY • Homeyduino • Binnenklimaat</span>
+              <h2><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></h2>
+              <p class="muted">Met een MH-Z19B, een Wemos D1 Mini en Homeyduino bouw je zelf een slimme CO₂ sensor die de CO₂-concentratie en interne temperatuur uitleest en alleen zinvolle updates naar Homey doorstuurt.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: Binnenklimaat</span>
+                <span class="meta-pill">Platform: Homey</span>
+                <span class="meta-pill">Hardware: MH-Z19B + Wemos D1 Mini</span>
+              </div>
+              <a class="button-secondary" href="homeyduino-co2-sensor.html">Bekijk project</a>
+            </div>
+          </article>
+<article class="article-card">
+            
+            <a class="article-card-image" href="homeyduino-clapper-switch.html">
+              <img src="assets/header/clapper-switch-homey.jpg" alt="Illustratie van de originele Clapper naast een moderne smart-home speaker en lamp" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY project • Homeyduino</span>
+              <h2><a href="homeyduino-clapper-switch.html">Bouw je eigen ‘Clapper’ switch met Homeyduino</a></h2>
+              <p class="muted">De originele Clapper was ooit een bijna futuristische huiskamergadget. Met een Wemos D1 Mini, een geluidssensor (KY-37) en Homeyduino bouw je een moderne versie die een dubbele klap herkent en die direct bruikbaar is binnen Homey.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: DIY</span>
+                <span class="meta-pill">Platform: Homey</span>
+                <span class="meta-pill">Hardware: Wemos D1 Mini + geluidssensor</span>
+              </div>
+              <a class="button-secondary" href="homeyduino-clapper-switch.html">Bekijk project</a>
+            </div>
+          </article>
+
+<article class="article-card">
+            
+            <a class="article-card-image" href="homeyduino-ldr-lichtsensor.html">
+              <img src="assets/header/homeyduino-ldr-sensor-header.jpg" alt="Zelfgebouwde digitale lichtsensor met LDR-module en Homeyduino" loading="lazy">
+            </a>
+            
+            <div class="article-card-body">
+              <span class="eyebrow">DIY project</span>
+              <h2><a href="homeyduino-ldr-lichtsensor.html">Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)</a></h2>
+              <p class="muted">Met een eenvoudige LDR-module, een ESP8266-board en Homeyduino bouw je zelf een lichtsensor die niet langer onhandige ruwe meetwaarden naar Homey stuurt, maar gewoon één duidelijke status: donker of licht.</p>
+              <div class="meta-list">
+                <span class="meta-pill">Categorie: Sensoren</span>
+                <span class="meta-pill">Platform: Homey / Homeyduino</span>
+                <span class="meta-pill">Hardware: ESP8266 + LDR-module</span>
+              </div>
+              <a class="button-secondary" href="homeyduino-ldr-lichtsensor.html">Bekijk project</a>
+            </div>
+          </article>
+          <!-- AUTO-GENERATED-DIY-CARDS:END -->
         </div>
       </div>
     </section>
-    <section class="section-soft">
-      <div class="container cta-banner">
-        <div><span class="eyebrow">Slimme route</span>
-          <h3>Gebruik DIY nooit op zichzelf, maar altijd in combinatie met een Homey-flow</h3>
-          <p style="margin:0;">Zo wordt een leuk project ook echt nuttig in het dagelijks gebruik.</p>
-        </div>
-        <div class="btn-row"><a class="btn btn-primary" href="tutorials.html">Naar tutorials</a><a
-            class="btn btn-secondary" href="contact.html">Projectidee delen</a></div>
-      </div>
-    </section>
-
   </main>
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-        <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch,
-          getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-      </div>
-      <div>
-        <h4>Start hier</h4>
-        <div class="footer-links">
-          <a href="homey.html">Homey uitgelegd</a>
-          <a href="tutorials.html">Eerste flows en routines</a>
-          <a href="diy.html">DIY projecten</a>
-        </div>
-      </div>
-      <div>
-        <h4>Populaire onderwerpen</h4>
-        <div class="footer-links">
-          <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-          <a href="homeyduino-relay.html">Relay switch</a>
-          <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-        </div>
-      </div>
-      <div>
-        <h4>Praktisch</h4>
-        <div class="footer-links">
-          <a href="contact.html">Contact</a>
-          <a href="over.html">Over dit blog</a>
-          <a href="#">Privacy & disclaimer</a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© huisvanvandaag.nl sinds 2018</span>
-      <span>Gebouwd door Mike</span>
-    </div>
-  </footer>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>

@@ -8,6 +8,7 @@ from html import unescape
 from pathlib import Path
 from typing import Iterable
 
+
 SECTION_HEADING_PATTERN = re.compile(
     r"<h([1-6])[^>]*>(.*?)</h\1>",
     re.IGNORECASE | re.DOTALL,
@@ -47,11 +48,16 @@ class ArticleInventory:
     matched_product_keys: list[str]
 
 
+def clean_text(value: str) -> str:
+    """Maak tekst compact, éénregelig en veilig voor JSON-output."""
+    return " ".join(value.split()).strip()
+
+
 def strip_html(value: str) -> str:
     text = TAG_PATTERN.sub(" ", value)
     text = unescape(text)
-    text = WHITESPACE_PATTERN.sub(" ", text)
-    return text.strip()
+    text = clean_text(text)
+    return text
 
 
 def normalize_for_match(value: str) -> str:
@@ -81,7 +87,7 @@ def find_benodigdheden_section(html: str) -> tuple[str | None, list[str]]:
         section_html = html[section_start:section_end]
 
         items = [strip_html(item) for item in LIST_ITEM_PATTERN.findall(section_html)]
-        items = [item for item in items if item]
+        items = [clean_text(item) for item in items if clean_text(item)]
         return strip_html(match.group(2)), items
 
     return None, []
@@ -107,7 +113,7 @@ def extract_aliases_from_product_data(product_data: dict[str, object], product_k
         normalized = normalize_for_match(alias)
         if normalized and normalized not in seen:
             seen.add(normalized)
-            deduped.append(alias)
+            deduped.append(clean_text(alias))
 
     return deduped
 
@@ -261,6 +267,13 @@ def resolve_affiliate_products_path(root: Path, provided_path: Path | None) -> P
     )
 
 
+def resolve_output_path(root: Path, output_path: Path) -> Path:
+    """Maak relatieve outputpaden standaard relatief aan de rootmap."""
+    if output_path.is_absolute():
+        return output_path
+    return (root / output_path).resolve()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Scan HTML-artikelen op een 'Benodigdheden'-sectie en match producten via affiliate-products.json."
@@ -281,13 +294,15 @@ def main() -> int:
         "--json-out",
         dest="json_out",
         type=Path,
-        help="Schrijf de scan ook naar JSON.",
+        default=Path("affiliate_report.json"),
+        help="Schrijf de scan naar JSON. Standaard: affiliate_report.json",
     )
     parser.add_argument(
         "--md-out",
         dest="md_out",
         type=Path,
-        help="Schrijf de scan ook naar Markdown.",
+        default=Path("affiliate_report.md"),
+        help="Schrijf de scan naar Markdown. Standaard: affiliate_report.md",
     )
     parser.add_argument(
         "--include-drafts",
@@ -327,13 +342,27 @@ def main() -> int:
         "scanned_articles": [asdict(item) for item in results],
     }
 
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    json_out_path = resolve_output_path(root, args.json_out)
+    md_out_path = resolve_output_path(root, args.md_out)
 
-    if args.json_out:
-        args.json_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    json_out_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    md_out_path.write_text(
+        build_markdown_report(results),
+        encoding="utf-8",
+    )
 
-    if args.md_out:
-        args.md_out.write_text(build_markdown_report(results), encoding="utf-8")
+    matched_article_count = sum(1 for item in results if item.matched_product_keys)
+    total_matches = sum(len(item.matched_product_keys) for item in results)
+
+    print(f"Affiliate inventory scan voltooid.")
+    print(f"Gescande HTML-bestanden: {len(results)}")
+    print(f"Artikelen met matches: {matched_article_count}")
+    print(f"Totaal gevonden productmatches: {total_matches}")
+    print(f"JSON report saved to: {json_out_path}")
+    print(f"Markdown report saved to: {md_out_path}")
 
     return 0
 

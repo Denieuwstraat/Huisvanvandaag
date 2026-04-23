@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Bouw je eigen NFC-lezer met Homeyduino en RC522 | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Bouw een compacte NFC-lezer met een NodeMCU en RC522, koppel hem aan Homey en gebruik RFID-kaarten of tags als trigger in je flows." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+<div class="container navbar">
+<a aria-label="huisvanvandaag.nl home" class="logo" href="index.html">
+<img alt="Huis van Vandaag" class="logo-image logo-header" src="assets/logo-white.png"/>
+<span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
+</a>
+<button aria-expanded="false" aria-label="Menu openen" class="nav-toggle"><span></span></button>
+<nav aria-label="Hoofdnavigatie" class="nav-links">
+<a href="index.html">Home</a>
+<a href="over.html">Over</a>
+<a href="homey.html">Homey</a>
+<a class="active" href="diy.html">DIY</a>
+<a href="tutorials.html">Tutorials</a>
+<a href="reviews.html">Reviews</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>NFC-lezer</span>
+</div>
+<span class="eyebrow">DIY project</span>
+<h1>Bouw je eigen NFC-lezer met Homeyduino en RC522</h1>
+<p class="lead muted">
+          Laat Homey reageren op een RFID-kaart of NFC-tag zonder dat je naast Homey hoeft te staan. Met een NodeMCU en RC522 bouw je een losse lezer die je precies kunt plaatsen waar hij handig is.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY</span>
+<span class="meta-pill">Platform: Homeyduino / Homey</span>
+<span class="meta-pill">Hardware: NodeMCU ESP8266 + RFID-RC522</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>NFC op de plek waar jij hem wilt</strong><br/>
+<span class="muted">Je bent niet meer afhankelijk van de ingebouwde NFC-functionaliteit van Homey zelf.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Eenvoudige hardwarecombinatie</strong><br/>
+<span class="muted">Het project gebruikt maar twee hoofdonderdelen: een ESP8266-bord en een RC522-lezer.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct bruikbaar in flows</strong><br/>
+<span class="muted">De kaart-ID wordt als teksttrigger naar Homey gestuurd en kan daar je automatisering starten.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Compact te bouwen</strong><br/>
+<span class="muted">Na het testen op breadboard kun je de schakeling kleiner maken en in een behuizing verwerken.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Goede opstap voor Homeyduino</strong><br/>
+<span class="muted">Je werkt tegelijk met SPI, wifi, Homey-triggers en een praktische toepassing in huis.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Prototype van een Homeyduino NFC-lezer met RC522 en NodeMCU op breadboard" src="prototype.png"/>
+<figcaption class="muted small">
+            Het prototype gebruikt een NodeMCU ESP8266, een RC522 RFID-module en een breadboard met enkele dupontdraden.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          NFC op Homey is handig, maar in de praktijk wil je een kaartlezer vaak juist op een andere plek in huis hebben. Denk aan een vaste plek bij een deur, kast of andere logische locatie waar een scan echt onderdeel van je routine wordt.
+        </p>
+<p>
+          Precies daarvoor is dit project interessant. Je bouwt een losse NFC/RFID-lezer die via Homeyduino met Homey praat. Zodra een compatibele kaart wordt gescand, stuurt de lezer de kaart-ID door naar Homey als teksttrigger. Daarmee leg je de basis voor praktische flows zonder ingewikkelde extra hardware.
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een compacte NFC/RFID-lezer op basis van een NodeMCU ESP8266 en een RFID-RC522-module. De lezer scant een kaart of tag en stuurt de uitgelezen identificatie direct door naar Homey.</p>
+<ul>
+<li><strong>Losse NFC-lezer</strong> → een zelfstandig apparaat dat je niet naast Homey hoeft te plaatsen.</li>
+<li><strong>Homey-trigger op kaart-ID</strong> → Homey ontvangt de gescande kaart als tekst en kan daar een flow op starten.</li>
+</ul>
+<p>Het resultaat is een praktische bouwsteen voor automatisering: niet omdat de hardware ingewikkeld is, maar juist omdat je een simpele handeling op een vaste plek in huis bruikbaar maakt in je flows.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Een NodeMCU ESP8266-bord</li>
+<li>Een RFID-RC522-module</li>
+<li>Een breadboard</li>
+<li>Prototyping wires / dupontdraden</li>
+<li>Arduino IDE met ESP8266-ondersteuning, de MFRC522-library en de Homeyduino-library</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-homeyduino-nfc-reader-html-1"></div>
+  <div id="affiliate-auto-homeyduino-nfc-reader-html-2"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-nfc-reader-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-nfc-reader-html-2", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+
+
+
+
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de RC522 aan op de NodeMCU</h3>
+<p>De lezer en de ESP8266 worden via SPI gekoppeld. Volgens het voorbeeldproject worden deze pinnen gebruikt: SDA naar D8, SCL naar D5, MOSI naar D7, MISO naar D6, GND naar GND, RST naar D3 en 3V3 naar 3.3V. De IRQ-pin blijft ongebruikt. Bouw eerst op breadboard zodat je eenvoudig kunt testen en corrigeren.</p>
+<ul>
+<li><strong>SDA</strong> → <strong>D8</strong></li>
+<li><strong>RST</strong> → <strong>D3</strong></li>
+<li><strong>3.3V</strong> → <strong>3V3</strong></li>
+</ul>
+<figure>
+<img alt="Fritzing schema van de RC522 gekoppeld aan een NodeMCU ESP8266" src="fritzing.png"/>
+<figcaption class="muted small">
+            In het schema zie je de kernverbindingen tussen de RC522-module en de NodeMCU. De communicatie loopt via SPI.
+          </figcaption>
+</figure>
+<h3>2. Installeer de softwareomgeving</h3>
+<p>Zorg dat de Arduino IDE klaar is voor de ESP8266. Installeer daarna de MFRC522-library via de bibliotheekbeheerder en voeg ook de Homeyduino-library toe. In het voorbeeld wordt expliciet genoemd dat de boardinstelling op <em>NodeMCU 1.0</em> moet staan, anders compileert de sketch niet door ontbrekende definities voor D3 en D8.</p>
+<h3>3. Upload de sketch naar je board</h3>
+<p>Vul in de sketch eerst je wifi-gegevens in. Daarna upload je de code naar de NodeMCU. De sketch maakt verbinding met wifi, initialiseert Homeyduino en leest vervolgens steeds of er een nieuwe kaart aanwezig is. Bij een nieuwe scan wordt de kaart-ID opgebouwd en als trigger naar Homey gestuurd.</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+#include &lt;Homey.h&gt;
+#include &lt;SPI.h&gt;
+#include "MFRC522.h"
+
+/* PIN CONFIG */
+#define MFRC522_RESET D3
+#define MFRC522_SS    D8
+
+/* OBJECTS */
+MFRC522 mfrc522(MFRC522_SS, MFRC522_RESET);
+
+/* GLOBAL VARIABLES */
+unsigned long previousMillis = 0;
+const unsigned long interval = 100;
+String oldCardId = "";
+uint8_t timeout = 0;
+
+void wifi() {
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.begin("&lt;SSID&gt;", "&lt;PASSWORD&gt;");
+    uint8_t timeout = 30;
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+      if (timeout &lt; 1) break;
+    }
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.print("Connected to WiFi! (");
+      Serial.print(WiFi.localIP());
+      Serial.println(")");
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  Homey.begin("RFID");
+  Homey.setClass("sensor");
+  SPI.begin();
+  mfrc522.PCD_Init();
+}
+
+void loop() {
+  wifi();
+  Homey.loop();
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis &gt; interval) {
+    previousMillis = currentMillis;
+    if (mfrc522.PICC_IsNewCardPresent()) {
+      mfrc522.PICC_ReadCardSerial();
+      String cardId = "";
+      for (uint8_t i = 0; i &lt; mfrc522.uid.size; i++) {
+        if (mfrc522.uid.uidByte[i] &lt; 0x10) cardId += "0";
+        cardId += String(mfrc522.uid.uidByte[i], HEX);
+      }
+      if (cardId != oldCardId) {
+        oldCardId = cardId;
+        Serial.println(cardId);
+        Homey.trigger("card", cardId);
+        timeout = 50;
+      }
+    } else {
+      if (timeout &gt; 0) {
+        timeout--;
+        if (timeout == 0) oldCardId = "";
+      }
+    }
+  }
+}</code></pre>
+<h3>4. Test het uitlezen van een kaart</h3>
+<p>Open de seriële monitor en scan een compatibele RFID-kaart. Bij een succesvolle scan verschijnt de kaart-ID in beeld. De sketch voorkomt dat dezelfde kaart voortdurend opnieuw wordt getriggerd zolang hij nog op de lezer ligt, en maakt dezelfde kaart na een korte timeout weer opnieuw scanbaar.</p>
+<h3>5. Maak het project compacter</h3>
+<p>Werkt alles goed op breadboard, dan kun je het project kleiner bouwen. In het voorbeeld is de breadboardopstelling uiteindelijk vervangen door een compactere variant waarbij de RC522 op een kleiner ESP8266-bord is gesoldeerd. Daardoor wordt het makkelijker om de lezer in een behuizing weg te werken en permanent te monteren.</p>
+<figure>
+<img alt="Werkende breadboardopstelling van een NFC-lezer met RC522 en NodeMCU" src="prototype.png"/>
+<figcaption class="muted small">
+            Eerst testen op breadboard is hier de slimste route: pas daarna wordt een compactere definitieve bouw echt interessant.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>In Homey wordt de identificatie van de gescande kaart als tekst naar het apparaat gestuurd. Volgens het voorbeeldproject gebruik je daarvoor in een flow de actiekaart met teksttrigger en kies of typ je de triggernaam <em>card</em>. Die trigger verschijnt pas automatisch in autocomplete nadat er minstens één keer succesvol is gescand.</p>
+<p>Daarmee verandert deze lezer van een losse sensor in een praktische input voor Homey. Je kunt er geen complexe toegangscontrole van verwachten, maar wel een nette en flexibele manier om een scan als startsein voor automatisering te gebruiken.</p>
+<ul>
+<li>Gebruik een RFID-scan als handmatige trigger voor een Homey-flow.</li>
+<li>Plaats de lezer op een logische plek in huis in plaats van naast Homey.</li>
+<li>Werk met verschillende kaarten of tags die elk een eigen flow kunnen starten op basis van hun ID.</li>
+</ul>
+<figure>
+<img alt="Homey flowkaart met de teksttrigger card voor de NFC-lezer" src="flowcard.png"/>
+<figcaption class="muted small">
+            De kaart-ID komt in Homey binnen als teksttrigger. Zodra een kaart één keer is gelezen, kun je die trigger in je flow gebruiken.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>De kracht van dit project zit vooral in de plaatsing. Een NFC-scanner is pas echt handig als hij hangt waar de handeling logisch voelt. Omdat deze lezer los van Homey werkt, kun je hem dicht bij het gebruiksmoment zetten. Juist dat maakt dit een mooi Homeyduino-project: niet de kaartscan zelf is bijzonder, maar de vrijheid om die scan op de juiste plek in huis in te zetten.</p>
+<figure>
+<img alt="Schema van de Homeyduino NFC-lezer als basis voor een vaste opstelling" src="fritzing.png"/>
+<figcaption class="muted small">
+            Van breadboard naar vaste montage: het schema blijft hetzelfde, alleen de uitvoering wordt netter en compacter.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Stel in de Arduino IDE het boardtype in op <strong>NodeMCU 1.0</strong>, anders compileert de voorbeeldcode niet correct.</li>
+<li>De RC522 werkt in deze opstelling op <strong>3.3V</strong>; sluit hem dus niet aan alsof het een 5V-module is.</li>
+<li>De trigger <strong>card</strong> wordt in Homey pas zichtbaar in autocomplete nadat er minimaal één succesvolle scan is geweest.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Dit is een sterk Homeyduino-project voor wie NFC of RFID praktisch wil inzetten zonder vast te zitten aan de plek van Homey zelf. De hardware is overzichtelijk, de voorbeeldcode is duidelijk en de koppeling met Homey is direct bruikbaar. Eerst testen op breadboard, daarna eventueel compacter bouwen: precies die aanpak maakt dit project laagdrempelig én bruikbaar. Vanuit hier kun je verder bouwen aan een vaste lezer op de plek waar een scan in jouw huis echt logisch is.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-nfc-reader-rs.html">Bouw je eigen NFC-lezer met Homeyduino en RC522</a><a href="homeyduino-co2-multisensor.html">Bouw je eigen CO₂ multi-sensor met Homeyduino</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<img alt="Huis van Vandaag" class="footer-logo" src="assets/logo-white.png"/>
+<p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
+</div>
+<div>
+<h4>Start hier</h4>
+<div class="footer-links">
+<a href="homey.html">Homey uitgelegd</a>
+<a href="tutorials.html">Eerste flows en routines</a>
+<a href="diy.html">DIY projecten</a>
+</div>
+</div>
+<div>
+<h4>Populaire onderwerpen</h4>
+<div class="footer-links">
+<a href="waarom-dit-blog-bestaat.html">Waarom dit blog bestaat</a>
+<a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
+<a href="chriet-titulaer.html">Huis van de Toekomst</a>
+</div>
+</div>
+<div>
+<h4>Praktisch</h4>
+<div class="footer-links">
+<a href="contact.html">Contact</a>
+<a href="over.html">Over dit blog</a>
+<a href="#">Privacy &amp; disclaimer</a>
+</div>
+</div>
+</div>
+<div class="container footer-bottom">
+<span>© 2026 huisvanvandaag.nl</span>
+<span>Gebouwd voor GitHub Pages</span>
+</div>
+</footer>
+<script src="script.js"></script>
+<script src="affiliate-products.js"></script>
+</body>
+</html>

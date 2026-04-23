@@ -15,3 +15,4 @@ Dit is een statische site die direct gehost kan worden via GitHub Pages.
 
 - Het contactformulier en de nieuwsbrief zijn in deze versie visuele placeholders. Koppel later bijvoorbeeld Formspree, Basin of een andere formulierdienst.
 - De site wordt nog sterker zodra je eigen foto's, Homey-flow screenshots en projectafbeeldingen toevoegt.
+

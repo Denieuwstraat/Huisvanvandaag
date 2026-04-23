@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Homeyduino LDR lichtsensor: simpele basis voor slimmere flows</title>
+<meta content="Met een LDR en een Wemos D1 Mini bouw je een eenvoudige lichtsensor die Homey helpt om verlichting en andere flows slimmer en logischer aan te sturen." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><a href="diy.html">DIY</a><span>•</span><span>LDR lichtsensor</span></div>
+<span class="eyebrow">DIY project • lichtsensor</span>
+<h1>Homeyduino LDR lichtsensor: simpele basis voor slimmere flows</h1>
+<p class="lead muted">Met een LDR en een Wemos D1 Mini bouw je een eenvoudige lichtsensor die Homey helpt om verlichting en andere flows slimmer en logischer aan te sturen.</p>
+<div class="meta-list"><span class="meta-pill">Moeilijkheid: beginner tot gemiddeld</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: lichtmeting en flows</span></div>
+</div>
+<div class="panel">
+<h3>Wat je in dit artikel leert</h3>
+<p class="muted">Hoe je met alleen een LDR een compacte lichtsensor bouwt die via Homeyduino de lichtsterkte doorgeeft aan Homey, zodat je automatiseringen beter reageren op de werkelijke situatie in huis.</p>
+<div class="chips"><span class="chip">Homeyduino</span><span class="chip">ESP8266</span><span class="chip">LDR</span></div>
+</div>
+</div>
+</section>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde LDR lichtsensor met Wemos D1 Mini voor Homeyduino" src="assets/header/homeyduino-licht-sensor-hero.jpg"/>
+<figcaption class="muted small">
+            Een zelfgebouwde LDR lichtsensor op basis van een Wemos D1 Mini, bedoeld om lichtsterkte slim te monitoren en te gebruiken binnen Homey.
+          </figcaption>
+</figure>
+</div>
+</div>
+<section class="section-tight">
+<div class="container article-layout">
+<article class="article-body">
+<p class="lead">Een slim huis wordt pas echt slim wanneer het weet of het daadwerkelijk donker genoeg is om iets te doen. Juist daar komt een LDR lichtsensor goed van pas. Met zo'n simpele sensor geef je Homey extra context, zodat lampen en flows niet alleen op tijd of aanwezigheid reageren, maar ook op de hoeveelheid licht in een ruimte.</p>
+<h2 id="waarom">Waarom een LDR sensor / lichtsensorzo handig is</h2>
+<p>De kracht van een LDR project zit in de eenvoud. Je meet geen complete klimaatset of ingewikkelde luchtkwaliteit, maar één waarde waar je in de praktijk verrassend veel aan hebt: lichtsterkte. Daarmee voorkom je bijvoorbeeld dat lampen midden op de dag onnodig aangaan of dat een flow start terwijl er nog genoeg daglicht binnenkomt.</p>
+<p>Juist die eenvoud maakt dit project ook zo aantrekkelijk. Met weinig onderdelen bouw je een sensor die direct bruikbaar is in Homey en die prima past als instapproject voor wie met Homeyduino aan de slag wil.</p>
+<h2 id="benodigd">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of NodeMCU met wifi</li>
+<li>LDR of vergelijkbare lichtsensor</li>
+<li>Homey met Homeyduino</li>
+<li>Arduino IDE</li>
+<li>USB-voeding voor de Wemos D1 Mini</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-licht-temperatuur-sensor-html-1"></div>
+<div id="affiliate-auto-homeyduino-licht-temperatuur-sensor-html-2"></div>
+<div id="affiliate-auto-homeyduino-licht-temperatuur-sensor-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-licht-temperatuur-sensor-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-licht-temperatuur-sensor-html-2", "ldr_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-licht-temperatuur-sensor-html-3", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de LDR-module aan op je board</h3>
+<p>Bij deze aanpak gebruik je de analoge uitgang van de module. Daarmee kun je via Homey de exacte lichtwaarde lezen en op basis daarvan acties, zoals licht in of uitschakelen uitvoeren. Daarna sluit je de module als volgt aan op je NodeMCU of vergelijkbaar ESP8266-board.</p>
+<ul>
+<li><strong>VCC van de module</strong> → <strong>3V</strong> of <strong>VIN</strong></li>
+<li><strong>GND van de module</strong> → <strong>G</strong> of <strong>GND</strong></li>
+<li><strong>AO (Analog Out)</strong> → <strong>AO</strong></li>
+</ul>
+<figure>
+<img alt="Aansluitschema van een LDR-module op een ESP8266 of NodeMCU via de digitale uitgang" src="assets/artikel/Wemos_D1_Mini_LDR-sensor_AO.png"/>
+<figcaption class="muted small">
+            In deze opstelling gebruik je de digitale uitgang van de LDR-module. Daardoor stuur je geen ruwe lichtwaarde naar Homey, maar een duidelijke donker/licht-status.
+          </figcaption>
+</figure>
+<h3>2. Bereid Arduino IDE voor</h3>
+<p>Zorg dat je ESP8266-board correct is ingesteld in Arduino IDE en selecteer het juiste board voordat je gaat uploaden. Voor dit project is het handig om de Seriële Monitor later op 115200 baud te openen, zodat je direct kunt zien wanneer de sensor omschakelt van licht naar donker of andersom.</p>
+<h3>3. Upload de Homeyduino code</h3>
+
+<h2 id="software">Software en koppeling</h2>
+<p>In deze versie draait het volledig om de capability <code>measure_luminance</code>. De LDR wordt via de analoge ingang uitgelezen, gefilterd met een eenvoudige gemiddelde-berekening en alleen naar Homey gestuurd wanneer de waarde voldoende verandert of wanneer een heartbeat nodig is. Dat zorgt voor een rustiger en netter geheel in Homey.</p>
+<pre><code>// Code for Homeyduino made by Smart Home Blog https://huisvanvandaag.nl
+// Improved version with current architecture standard, preserving measure_luminance.
+
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;Homey.h&gt;
+
+// =========================
+// Debug instellingen
+// =========================
+#define DEBUG 0   // 1 = debug aan, 0 = debug uit
+
+#if DEBUG
+  #define DBG_PRINT(x) Serial.print(x)
+  #define DBG_PRINTLN(x) Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = &quot;SSID&quot;;
+  constexpr const char* WIFI_PASSWORD = &quot;PASSWORD&quot;;
+
+  constexpr uint8_t LDR_PIN = A0;
+
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  constexpr unsigned long SENSOR_SAMPLE_INTERVAL_MS = 1000;
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+
+  // Alleen publiceren als de waarde voldoende wijzigt
+  constexpr int LUMINANCE_PUBLISH_THRESHOLD = 10;
+
+  // Filtering: 0.05 = rustig, 0.3 = sneller
+  constexpr float EMA_ALPHA = 0.15f;
+
+  constexpr const char* HOMEY_DEVICE_NAME = &quot;LDR Lichtsensor LUX&quot;;
+  constexpr const char* HOMEY_DEVICE_CLASS = &quot;sensor&quot;;
+  constexpr const char* CAPABILITY_LUMINANCE = &quot;measure_luminance&quot;;
+}
+
+// =========================
+// State
+// =========================
+struct LuminanceState {
+  int rawValue = 0;
+  float filteredValue = 0.0f;
+  bool hasReading = false;
+
+  int currentLuminance = 0;
+  int lastPublishedLuminance = 0;
+  bool hasPublished = false;
+  bool dirty = false;
+
+  unsigned long lastSampleAt = 0;
+  unsigned long lastPublishAt = 0;
+};
+
+struct WifiState {
+  unsigned long lastCheckAt = 0;
+  bool wasConnected = false;
+  bool reconnectedEvent = false;
+};
+
+LuminanceState luminanceState;
+WifiState wifiState;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void connectToWifiWithTimeout();
+void maintainWifi(unsigned long currentMillis);
+bool canPublishToHomey();
+
+void initializeHomey();
+
+void processLuminanceSensor(unsigned long currentMillis);
+int readRawLuminance();
+void updateFilteredLuminance(int rawValue);
+void markLatestLuminance();
+bool shouldPublishLuminance(unsigned long currentMillis);
+void publishLatestLuminanceToHomey(unsigned long currentMillis);
+void syncLuminanceIfDirty(unsigned long currentMillis);
+
+// =========================
+// Setup
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println(F(&quot;--- LDR Luminance Sensor Gestart ---&quot;));
+
+  connectToWifiWithTimeout();
+  initializeHomey();
+
+  // Zorg dat eerste sample direct kan plaatsvinden
+  luminanceState.lastSampleAt = millis() - Config::SENSOR_SAMPLE_INTERVAL_MS;
+}
+
+// =========================
+// Main loop
+// =========================
+void loop() {
+  Homey.loop();
+  yield();
+
+  const unsigned long currentMillis = millis();
+
+  maintainWifi(currentMillis);
+
+  if (wifiState.reconnectedEvent) {
+    wifiState.reconnectedEvent = false;
+    syncLuminanceIfDirty(currentMillis);
+  }
+
+  processLuminanceSensor(currentMillis);
+}
+
+// =========================
+// WiFi
+// =========================
+void connectToWifiWithTimeout() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  Serial.print(F(&quot;Verbinden met WiFi...&quot;));
+
+  const unsigned long startAttemptTime = millis();
+
+  while (WiFi.status() != WL_CONNECTED &amp;&amp;
+         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    Serial.print(F(&quot;.&quot;));
+  }
+
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print(F(&quot;[SUCCES] Verbonden! IP-adres: &quot;));
+    Serial.println(WiFi.localIP());
+    wifiState.wasConnected = true;
+  } else {
+    Serial.println(F(&quot;[WIFI] Timeout bereikt. Sensor start zonder wifi.&quot;));
+    wifiState.wasConnected = false;
+  }
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - wifiState.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  wifiState.lastCheckAt = currentMillis;
+  wifiState.reconnectedEvent = false;
+
+  DBG_PRINT(F(&quot;[DEBUG] WiFi status: &quot;));
+  DBG_PRINT(WiFi.status());
+  DBG_PRINT(F(&quot; | IP: &quot;));
+  DBG_PRINTLN(WiFi.localIP());
+
+  const wl_status_t status = WiFi.status();
+
+  if (status == WL_CONNECTED) {
+    if (!wifiState.wasConnected) {
+      Serial.print(F(&quot;[WIFI] Opnieuw verbonden! IP-adres: &quot;));
+      Serial.println(WiFi.localIP());
+      wifiState.wasConnected = true;
+      wifiState.reconnectedEvent = true;
+    }
+    return;
+  }
+
+  if (wifiState.wasConnected) {
+    Serial.println(F(&quot;[WIFI] Verbinding kwijt. Herstellen...&quot;));
+    wifiState.wasConnected = false;
+  } else {
+    Serial.println(F(&quot;[WIFI] Nog niet verbonden. Nieuwe poging...&quot;));
+  }
+
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED;
+}
+
+// =========================
+// Homey
+// =========================
+void initializeHomey() {
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_LUMINANCE);
+}
+
+// =========================
+// Sensorlogica
+// =========================
+void processLuminanceSensor(unsigned long currentMillis) {
+  if (currentMillis - luminanceState.lastSampleAt &lt; Config::SENSOR_SAMPLE_INTERVAL_MS) {
+    return;
+  }
+
+  luminanceState.lastSampleAt = currentMillis;
+
+  const int rawValue = readRawLuminance();
+  updateFilteredLuminance(rawValue);
+  markLatestLuminance();
+
+  DBG_PRINT(F(&quot;[DEBUG] LDR raw=&quot;));
+  DBG_PRINT(luminanceState.rawValue);
+  DBG_PRINT(F(&quot; | filtered=&quot;));
+  DBG_PRINTLN(luminanceState.currentLuminance);
+
+  if (shouldPublishLuminance(currentMillis)) {
+    publishLatestLuminanceToHomey(currentMillis);
+  }
+}
+
+int readRawLuminance() {
+  return analogRead(Config::LDR_PIN);
+}
+
+void updateFilteredLuminance(int rawValue) {
+  luminanceState.rawValue = rawValue;
+
+  if (!luminanceState.hasReading) {
+    luminanceState.filteredValue = static_cast&lt;float&gt;(rawValue);
+    luminanceState.hasReading = true;
+    return;
+  }
+
+  luminanceState.filteredValue =
+      (Config::EMA_ALPHA * rawValue) +
+      ((1.0f - Config::EMA_ALPHA) * luminanceState.filteredValue);
+}
+
+void markLatestLuminance() {
+  luminanceState.currentLuminance = static_cast&lt;int&gt;(luminanceState.filteredValue);
+
+  if (!luminanceState.hasPublished) {
+    luminanceState.dirty = true;
+    return;
+  }
+
+  luminanceState.dirty =
+      abs(luminanceState.currentLuminance - luminanceState.lastPublishedLuminance) &gt;=
+      Config::LUMINANCE_PUBLISH_THRESHOLD;
+}
+
+bool shouldPublishLuminance(unsigned long currentMillis) {
+  if (!luminanceState.hasReading) {
+    return false;
+  }
+
+  const bool heartbeatReached =
+      (currentMillis - luminanceState.lastPublishAt) &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS;
+
+  return luminanceState.dirty || heartbeatReached;
+}
+
+void publishLatestLuminanceToHomey(unsigned long currentMillis) {
+  if (!luminanceState.hasReading) {
+    return;
+  }
+
+  if (!canPublishToHomey()) {
+    luminanceState.dirty = true;
+    Serial.println(F(&quot;[WAARSCHUWING] Laatste luminance lokaal bewaard (Geen WiFi).&quot;));
+    return;
+  }
+
+  Homey.setCapabilityValue(
+      Config::CAPABILITY_LUMINANCE,
+      static_cast&lt;float&gt;(luminanceState.currentLuminance));
+
+  luminanceState.lastPublishedLuminance = luminanceState.currentLuminance;
+  luminanceState.lastPublishAt = currentMillis;
+  luminanceState.hasPublished = true;
+  luminanceState.dirty = false;
+
+  Serial.println(F(&quot;[HOMEY] Luminance succesvol bijgewerkt.&quot;));
+}
+
+void syncLuminanceIfDirty(unsigned long currentMillis) {
+  if (!luminanceState.dirty) {
+    return;
+  }
+
+  Serial.println(F(&quot;[HOMEY] Laatste luminance synchroniseren...&quot;));
+  publishLatestLuminanceToHomey(currentMillis);
+}</code></pre>
+
+
+<h3>4. Test de metingen</h3>
+<p>Open na het uploaden de Seriële Monitor. Let goed op dat deze sketch op 115200 baud draait en dus niet op 9600. Daar kun je meteen controleren of de wifi netjes verbindt en of de metingen goed binnenkomen. Wil je extra informatie zien, zet DEBUG dan tijdelijk op 1.</p>
+<h3>5. Koppel de sensor aan Homey</h3>
+<p>Voeg de sensor daarna toe via Homeyduino. Zodra de koppeling gelukt is, zie je in Homey de capabilitie helderheid in lx.</p>
+<figure>
+<img alt="Placeholder voor de LDR-sensor zichtbaar in Homey" src="assets/artikel/LDR_sensor_uitlezen_in_homey.png"/>
+<figcaption class="muted small">Plaatsaanduiding voor een screenshot van de sensor of de meetwaarden in Homey.</figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De koppeling met Homey doet hier meer dan alleen wat cijfers tonen. De code registreert de capabilitie en probeert gemiste updates opnieuw te synchroniseren zodra de wifi terugkomt. Dat maakt deze sensor ook in dagelijks gebruik een stuk bruikbaarder.</p>
+<p>In de praktijk kun je deze metingen bijvoorbeeld inzetten als:</p>
+<ul>
+<li>een lichtwaarde als extra voorwaarde voor andere slimme flows</li>
+</ul>
+<figure>
+<img alt="Homey-flow op basis van lux-waarden" src="assets/artikel/ldr-sensor-homey-flow-licht-inschakelen.jpg"/>
+<figcaption class="muted small">Voorbeeldflow die reageert op veranderingen in licht.</figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Deze sensor komt vooral tot zijn recht in ruimtes waar je langere tijd verblijft, zoals de woonkamer, slaapkamer of thuiswerkplek. Juist daar levert de combinatie van CO₂, temperatuur en luchtvochtigheid vaak meteen bruikbare inzichten op.</p>
+
+<p>Je bouwt hiermee geen overvolle multisensor, maar juist een overzichtelijke en praktische lichtsensor die zich volledig richt op één taak: meten hoe licht of donker het is en die informatie netjes doorgeven aan Homey.</p>
+<h2 id="flows">Voorbeelden van flows</h2>
+<ul>
+<li>Laat hal- of buitenverlichting alleen aangaan als het daadwerkelijk donker genoeg is.</li>
+<li>Gebruik de lichtwaarde als extra voorwaarde bij bewegingssensoren, zodat lampen overdag uit blijven.</li>
+<li>Start een avondroutine pas wanneer de gemeten lichtsterkte onder een bepaalde grens komt.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een LDR en een Wemos D1 Mini bouw je voor weinig geld een verrassend bruikbare sensor. Juist omdat lichtsterkte zo'n praktische rol speelt in slimme automatiseringen, is dit project een mooie en toegankelijke basis voor een slimmer huis. Simpel, betaalbaar en direct inzetbaar: precies het soort DIY-project waar Homeyduino sterk in is.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#waarom">Waarom een LDR sensor / lichtsensor/ lichtsensorzo handig is</a><a href="#benodigd">Benodigdheden</a><a href="#software">Software en koppeling</a><a href="#flows">Voorbeelden van flows</a><a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-multisensor.html">Bouw je eigen CO₂ multi-sensor met Homeyduino</a><a href="homeyduino-ldr-lichtsensor.html">Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

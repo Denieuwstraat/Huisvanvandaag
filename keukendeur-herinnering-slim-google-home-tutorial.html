@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PAGINATITEL -->
+  <title>Keukendeur herinnering slim maken in Google Home Script Editor | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Leer stap voor stap hoe je in Google Home Script Editor een slimme herinnering maakt die omroept als je keukendeur open blijft staan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
+
+  <style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="container article-layout">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>•</span>
+          <span>Keukendeur herinnering</span>
+        </div>
+
+        <span class="eyebrow">Google Home tutorial</span>
+        <h1>Keukendeur herinnering slim maken in Google Home Script Editor</h1>
+
+        <p class="lead muted">
+          Wil je dat Google Home een gesproken reminder geeft als je keukendeur open blijft staan? In deze tutorial bouw je een script met meerdere herinneringsmomenten, zodat de melding alleen afgaat als de deur echt nog open staat.
+        </p>
+
+        <div class="meta-list">
+          <span class="meta-pill">Categorie: Automatisering</span>
+          <span class="meta-pill">Platform: Google Home</span>
+          <span class="meta-pill">Niveau: Gemiddeld</span>
+        </div>
+      </div>
+
+      <!-- RECHTER INFOBLOK -->
+      <div class="panel project-info-panel">
+        <h3>Waarom deze tutorial handig is</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Praktische automatisering</strong><br>
+              <span class="muted">Je lost een herkenbaar probleem op: een deur die open blijft staan zonder dat iemand het merkt.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Werkt in stappen</strong><br>
+              <span class="muted">De herinneringen bouwen rustig op, van een eerste seintje tot een duidelijkere follow-up.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Geen onnodige omroepen</strong><br>
+              <span class="muted">Door de extra conditie controleert het script opnieuw of de deur nog open staat voordat er iets wordt omgeroepen.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Goede kennismaking met YAML</strong><br>
+              <span class="muted">Je leert meteen hoe starters, conditions en actions in de Google Home Script Editor samenwerken.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Makkelijk aan te passen</strong><br>
+              <span class="muted">Heb je straks liever andere tijdsintervallen of een andere speaker? Dan hoef je alleen een paar regels te wijzigen.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO AFBEELDING -->
+    <!-- Gebruik dit blok alleen als er echt een passende hero-afbeelding is -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23eaf3ff%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%221440%22%20height%3D%22740%22%20rx%3D%2228%22%20fill%3D%22white%22%20opacity%3D%220.92%22/%3E%0A%3Crect%20x%3D%22130%22%20y%3D%22150%22%20width%3D%22520%22%20height%3D%22520%22%20rx%3D%2222%22%20fill%3D%22%23d9e8ff%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22180%22%20width%3D%22640%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22280%22%20width%3D%22530%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22340%22%20width%3D%22470%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22400%22%20width%3D%22590%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22520%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EKeukendeur%20herinnering%20slim%3C/text%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22580%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20in%20Google%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22455%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23111827%22%3EGoogle%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22505%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20%E2%80%A2%20YAML%20%E2%80%A2%20Deursensor%3C/text%3E%0A%3C/svg%3E" alt="Schematische weergave van een Google Home-automatisering voor een open keukendeur">
+          <figcaption class="muted small">
+            Een eenvoudige maar nuttige automatisering: zodra de deursensor open blijft staan, laat Google Home een gesproken herinnering horen op je speakers.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section-tight" style="padding-top: 14px;">
+    <div class="container project-content-layout">
+      <article class="article-body project-article">
+
+        <p class="lead">
+          De standaard automatiseringen in Google Home zijn voor veel taken prima, maar soms wil je nét wat meer controle. Een open deur die eerst na een paar seconden een melding geeft, daarna nog eens na dertig seconden en later nog een keer na een minuut, is daar een goed voorbeeld van.
+        </p>
+
+        <p>
+          Met de Script Editor kun je zulke huishoudautomatiseringen zelf opbouwen in YAML. Google beschrijft hiervoor een vaste structuur met <em>metadata</em>, <em>starters</em>, <em>condition</em> en <em>actions</em>. In deze tutorial gebruiken we die opzet om van een losse deursensor en een paar Nest-speakers een bruikbare herinnering in huis te maken.
+        </p>
+
+        <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+        <p>Je leert hoe je een geavanceerde huishoudautomatisering in Google Home opzet met de Script Editor, gericht op een open keukendeur die niet direct weer wordt gesloten.</p>
+        <ul>
+          <li><strong>Script logisch opbouwen</strong> → Je ziet hoe meerdere automations in één script samen een trapsgewijze herinnering vormen.</li>
+          <li><strong>Fouten en misverstanden voorkomen</strong> → Je leert wanneer je <code>for</code> gebruikt, waarom een aparte <code>condition</code> nuttig is en waar je op moet letten bij apparaatnamen.</li>
+        </ul>
+        <p>Na afloop heb je niet alleen een werkend script, maar ook een beter gevoel voor hoe je vergelijkbare Google Home-automatiseringen zelf kunt aanpassen of uitbreiden.</p>
+
+        <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+        <p>Deze tutorial is geschikt voor wie al een deursensor in Google Home heeft staan en iets meer wil dan de standaard automatiseringsopties. Je hoeft geen programmeur te zijn, maar het helpt wel als je rustig regels kunt nalopen en kleine aanpassingen durft te doen in YAML.</p>
+
+        <h2 id="benodigdheden">Wat heb je nodig?</h2>
+        <ul>
+          <li>Een Google Home-huishouden met toegang tot de Script Editor</li>
+          <li>Een deursensor die in Google Home zichtbaar is</li>
+          <li>Minimaal één speaker of display waarop je een broadcast wilt afspelen</li>
+          <li>De exacte apparaatnamen zoals ze in Google Home staan, inclusief kamernaam</li>
+          <li>Je script voor de automatisering</li>
+        </ul>
+
+        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+
+        <h3>1. Open de Script Editor</h3>
+        <p>Google biedt de Script Editor aan voor geavanceerde huishoudautomatiseringen. Je kunt scripted automations maken via Google Home voor web en in de mobiele app. Gebruik je een iPhone of iPad, dan kun je volgens Google bestaande scripts wel bekijken en aanpassen, maar nieuwe scripted automations maak je het best via Google Home voor web.</p>
+        <ul>
+          <li>Open <code>home.google.com/automations</code> of ga in de Google Home-app naar Automations.</li>
+          <li>Kies <em>Add new</em> of <em>Script editor</em>.</li>
+          <li>Werk bij voorkeur op een groter scherm als je voor het eerst met YAML werkt.</li>
+        </ul>
+
+        <!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
+        <figure>
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23eefbf1%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%221440%22%20height%3D%22740%22%20rx%3D%2228%22%20fill%3D%22white%22%20opacity%3D%220.92%22/%3E%0A%3Crect%20x%3D%22130%22%20y%3D%22150%22%20width%3D%22520%22%20height%3D%22520%22%20rx%3D%2222%22%20fill%3D%22%23d9e8ff%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22180%22%20width%3D%22640%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22280%22%20width%3D%22530%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22340%22%20width%3D%22470%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22400%22%20width%3D%22590%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22520%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EStap%201%3A%20Script%20editor%20openen%3C/text%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22580%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EOpen%20Google%20Home%20voor%20web%20of%20de%20app%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22455%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23111827%22%3EGoogle%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22505%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20%E2%80%A2%20YAML%20%E2%80%A2%20Deursensor%3C/text%3E%0A%3C/svg%3E" alt="Schematische afbeelding van het openen van de Google Home Script Editor">
+          <figcaption class="muted small">
+            De Script Editor is bedoeld voor geavanceerdere huishoudautomatiseringen waarbij je starters, conditions en actions zelf uitschrijft.
+          </figcaption>
+        </figure>
+
+        <h3>2. Begrijp de basis van je script</h3>
+        <p>Een Google Home-script bestaat uit vaste bouwstenen. <code>metadata</code> bevat de naam en omschrijving, <code>automations</code> bevat het gedrag, <code>starters</code> bepalen wanneer iets begint, <code>condition</code> controleert of het nog steeds mag doorgaan en <code>actions</code> voert de opdracht uit. In jouw script gebruik je drie losse automations met elk een eigen wachttijd en gesproken melding.</p>
+
+        <h3>3. Plak het script in de editor</h3>
+        <p>Plak onderstaande YAML in de editor. Dit script luistert naar de status van de keukendeur en roept op meerdere momenten iets om. De aparte <code>condition</code> controleert vlak voor de broadcast nogmaals of de deur nog open staat. Dat is handig, omdat <code>for</code> alleen bij starters gebruikt mag worden en niet bij conditions.</p>
+
+        <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
+        <pre><code>metadata:
+  name: Keukendeur herinnering slim
+  description: &gt;
+    Roept in stappen om als de keukendeur open blijft staan.
+
+automations:
+  - starters:
+      - type: device.state.OpenClose
+        device: "Deur sensor v3 - Keuken"
+        state: openPercent
+        is: 100
+        for: 5sec
+        suppressFor: 2min
+
+    condition:
+      type: device.state.OpenClose
+      device: "Deur sensor v3 - Keuken"
+      state: openPercent
+      is: 100
+
+    actions:
+      - type: assistant.command.Broadcast
+        devices:
+          - "Nest audio thuis - Woonkamer"
+          - "Nest woonkamer - Woonkamer"
+        message: "De keukendeur staat nog open, wil je deze even dicht doen alstublieft"
+
+  - starters:
+      - type: device.state.OpenClose
+        device: "Deur sensor v3 - Keuken"
+        state: openPercent
+        is: 100
+        for: 30sec
+        suppressFor: 3min
+
+    condition:
+      type: device.state.OpenClose
+      device: "Deur sensor v3 - Keuken"
+      state: openPercent
+      is: 100
+
+    actions:
+      - type: assistant.command.Broadcast
+        devices:
+          - "Nest audio thuis - Woonkamer"
+          - "Nest woonkamer - Woonkamer"
+        message: "Even een reminder: de keukendeur staat nog steeds open"
+
+  - starters:
+      - type: device.state.OpenClose
+        device: "Deur sensor v3 - Keuken"
+        state: openPercent
+        is: 100
+        for: 1min
+        suppressFor: 10min
+
+    condition:
+      type: device.state.OpenClose
+      device: "Deur sensor v3 - Keuken"
+      state: openPercent
+      is: 100
+
+    actions:
+      - type: assistant.command.Broadcast
+        devices:
+          - "Nest audio thuis - Woonkamer"
+          - "Nest woonkamer - Woonkamer"
+        message: "De keukendeur staat al een tijdje open. Zou iemand deze even dicht willen doen?"</code></pre>
+
+        <h3>4. Controleer apparaatnamen en valideer</h3>
+        <p>Voordat je opslaat, controleer je of de apparaatnamen exact overeenkomen met de namen in Google Home. Google geeft daarbij expliciet aan dat je de naam gebruikt in het formaat <code>Device name - Room name</code>. Klik daarna op <em>Validate</em>. De automatisering kan pas actief worden als de editor geen fouten meer ziet.</p>
+
+        <h3>5. Sla op en test in de praktijk</h3>
+        <p>Sla het script op en laat de deur bewust even open staan om het gedrag te testen. Luister of de melding na ongeveer 5 seconden klinkt, controleer of de tweede melding pas later komt en kijk of de reminders stoppen zodra je de deur eerder sluit. Gebruik zo nodig de automation logs in Google Home voor web om te zien wat er precies is gebeurd.</p>
+
+        <!-- Tweede afbeelding optioneel -->
+        <figure>
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23fff7e8%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%221440%22%20height%3D%22740%22%20rx%3D%2228%22%20fill%3D%22white%22%20opacity%3D%220.92%22/%3E%0A%3Crect%20x%3D%22130%22%20y%3D%22150%22%20width%3D%22520%22%20height%3D%22520%22%20rx%3D%2222%22%20fill%3D%22%23d9e8ff%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22180%22%20width%3D%22640%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22280%22%20width%3D%22530%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22340%22%20width%3D%22470%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22400%22%20width%3D%22590%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22520%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EStap%204%3A%20Valideren%20en%20opslaan%3C/text%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22580%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EControleer%20fouten%20voordat%20je%20activeert%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22455%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23111827%22%3EGoogle%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22505%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20%E2%80%A2%20YAML%20%E2%80%A2%20Deursensor%3C/text%3E%0A%3C/svg%3E" alt="Schematische afbeelding van valideren en opslaan in Google Home">
+          <figcaption class="muted small">
+            Na het valideren kun je de automatisering opslaan en activeren. Foutmeldingen gaan vaak over apparaatnamen, inspringing of een niet-ondersteunde actie.
+          </figcaption>
+        </figure>
+
+        <!-- Gebruik dit blok alleen als Homey of een vergelijkbare integratie echt onderdeel is van de tutorial -->
+        <h2 id="homey-integratie">Integratie met Homey</h2>
+        <p>Deze tutorial draait volledig om Google Home en de Script Editor. De kern is dat een deursensor de status doorgeeft, waarna Google Home via <code>assistant.command.Broadcast</code> een gesproken bericht op compatibele speakers of displays afspeelt. Je hebt hier dus geen Homey voor nodig.</p>
+        <p>Dezelfde denkwijze kun je wel breder toepassen in je slimme huis, bijvoorbeeld voor andere open/dicht-statussen of stapsgewijze herinneringen.</p>
+        <ul>
+          <li>Een reminder als een achterdeur of schuurdeur open blijft staan</li>
+          <li>Een melding bij een raam dat te lang openstaat</li>
+          <li>Een huishoudmelding die je eerst subtiel en later nadrukkelijker laat afspelen</li>
+        </ul>
+
+        <!-- Derde afbeelding optioneel -->
+        <figure>
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23f4efff%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%221440%22%20height%3D%22740%22%20rx%3D%2228%22%20fill%3D%22white%22%20opacity%3D%220.92%22/%3E%0A%3Crect%20x%3D%22130%22%20y%3D%22150%22%20width%3D%22520%22%20height%3D%22520%22%20rx%3D%2222%22%20fill%3D%22%23d9e8ff%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22180%22%20width%3D%22640%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22280%22%20width%3D%22530%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22340%22%20width%3D%22470%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22400%22%20width%3D%22590%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22520%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EIntegratie%20met%20Google%20Home%3C/text%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22580%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EDeursensor%20%2B%20speakers%20%2B%20broadcasts%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22455%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23111827%22%3EGoogle%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22505%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20%E2%80%A2%20YAML%20%E2%80%A2%20Deursensor%3C/text%3E%0A%3C/svg%3E" alt="Schematische weergave van deursensor en Google Home speakers">
+          <figcaption class="muted small">
+            De automatisering koppelt de status van een open/dicht-apparaat aan een gesproken broadcast op één of meer Google Home-speakers.
+          </figcaption>
+        </figure>
+
+        <h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+        <p>Als dit script goed werkt, kun je het verder verfijnen. Denk aan andere intervallen, een andere boodschap per ruimte of extra logica zodra je meer ervaring hebt met scripted automations. Ook kun je vergelijkbare scripts bouwen voor ramen, garagedeuren of meldingen op basis van andere apparaatstatussen.</p>
+
+        <!-- Vierde afbeelding optioneel -->
+        <figure>
+          <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%221600%22%20height%3D%22900%22%20viewBox%3D%220%200%201600%20900%22%3E%0A%3Crect%20width%3D%221600%22%20height%3D%22900%22%20fill%3D%22%23eef7fb%22/%3E%0A%3Crect%20x%3D%2280%22%20y%3D%2280%22%20width%3D%221440%22%20height%3D%22740%22%20rx%3D%2228%22%20fill%3D%22white%22%20opacity%3D%220.92%22/%3E%0A%3Crect%20x%3D%22130%22%20y%3D%22150%22%20width%3D%22520%22%20height%3D%22520%22%20rx%3D%2222%22%20fill%3D%22%23d9e8ff%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22180%22%20width%3D%22640%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22280%22%20width%3D%22530%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22340%22%20width%3D%22470%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Crect%20x%3D%22720%22%20y%3D%22400%22%20width%3D%22590%22%20height%3D%2234%22%20rx%3D%2210%22%20fill%3D%22%231f2937%22%20opacity%3D%220.08%22/%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22520%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EPraktisch%20gebruik%3C/text%3E%0A%3Ctext%20x%3D%22720%22%20y%3D%22580%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EHerinneringen%20in%20oplopende%20stappen%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22455%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23111827%22%3EGoogle%20Home%3C/text%3E%0A%3Ctext%20x%3D%22160%22%20y%3D%22505%22%20font-family%3D%22Inter%2CArial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234b5563%22%3EScript%20editor%20%E2%80%A2%20YAML%20%E2%80%A2%20Deursensor%3C/text%3E%0A%3C/svg%3E" alt="Schematische afbeelding van praktisch gebruik van de keukendeur-automatisering">
+          <figcaption class="muted small">
+            Juist in alledaagse situaties komt dit soort automatisering goed tot zijn recht: weinig spectaculair, maar wel direct bruikbaar.
+          </figcaption>
+        </figure>
+
+        <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+        <ul>
+          <li><code>for</code> gebruik je bij een starter om te bepalen hoelang een toestand al actief moet zijn; volgens Google kun je dit niet gebruiken binnen een condition.</li>
+          <li>Controleer altijd of je apparaatnaam exact klopt, inclusief kamernaam, anders zal validatie of uitvoering mislukken.</li>
+          <li>Zie deze automatisering als gemak en niet als beveiligingsoplossing; Google waarschuwt zelf dat scripted automations niet bedoeld zijn voor safety- of security-kritische toepassingen.</li>
+        </ul>
+
+        <h2 id="conclusie">Conclusie</h2>
+        <p>Met een paar overzichtelijke regels YAML maak je in Google Home een nette, trapsgewijze herinnering voor een open keukendeur. De combinatie van een starter met <code>for</code>, een aparte condition en een broadcast-actie maakt deze automatisering praktisch, goed leesbaar en eenvoudig uit te breiden. Het is bovendien een mooie eerste stap als je meer uit de Google Home Script Editor wilt halen dan met de standaard automatiseringen mogelijk is.</p>
+      </article>
+
+      <aside class="side-stack">
+        <div class="toc">
+          <h3>In deze tutorial</h3>
+          <a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+          <a href="#voor-wie">Voor wie is deze tutorial?</a>
+          <a href="#benodigdheden">Wat heb je nodig?</a>
+          <a href="#stappenplan">Stap-voor-stap uitleg</a>
+          <a href="#homey-integratie">Integratie met Homey</a>
+          <a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+          <a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+          <a href="#conclusie">Conclusie</a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Gerelateerd</h3>
+          <div class="footer-links">
+            <a href="tutorials.html">Meer tutorials over slimme automatiseringen</a>
+            <a href="diy.html">Bekijk DIY-projecten voor sensoren en slimme triggers</a>
+            <a href="index.html">Terug naar huisvanvandaag.nl</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</body>
+</html>

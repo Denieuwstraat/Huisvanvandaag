@@ -12,58 +12,131 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html">Home</a><a href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html">DIY</a><a href="tutorials.html" class="active">Tutorials</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
-  </div>
-</header>
+
+<div id="site-header"></div>
+
 <main>
+  <section class="page-hero">
+    <div class="container two-col">
+      <div class="hero-copy" style="color:var(--text); padding-top:0;">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <span>Tutorials</span>
+        </div>
 
-<section class="page-hero"><div class="container two-col"><div class="hero-copy" style="color:var(--text); padding-top:0;"><div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><span>Tutorials</span></div><span class="eyebrow">Stap voor stap</span><h1 style="color:var(--text);">Tutorials die techniek begrijpelijk maken</h1><p style="color:var(--muted);">De tutorialsectie is bedoeld als laagdrempelige ingang voor Homey, Google Home en praktische automatisering. Geen wollige productteksten, maar duidelijke stappen met een concreet doel.</p></div><div class="panel"><h3>Waar goede tutorials aan voldoen</h3><div class="check-list"><div class="check-item"><span class="check-mark">✓</span><div><strong>Eerst het doel</strong><br><span class="muted">Waarom zou je dit eigenlijk willen instellen?</span></div></div><div class="check-item"><span class="check-mark">✓</span><div><strong>Dan pas de techniek</strong><br><span class="muted">Stap voor stap, zonder overbodige omwegen.</span></div></div><div class="check-item"><span class="check-mark">✓</span><div><strong>Altijd met praktijkvoorbeeld</strong><br><span class="muted">Zodat lezers meteen snappen wat het in huis oplevert.</span></div></div></div></div></div></section>
-<section class="section-tight"><div class="container grid-3"><article class="card"><div class="card-icon">1</div><h3>Homey voor beginners</h3><p class="muted">Wat Homey is, wanneer het zinvol is en hoe je een goede basis legt.</p></article><article class="card"><div class="card-icon">2</div><h3>Flows die echt nuttig zijn</h3><p class="muted">Thuiskomst, nachtmodus, meldingen en energiebesparing.</p></article><article class="card"><div class="card-icon">3</div><h3>Google Home routines</h3><p class="muted">Niet alleen praten tegen je huis, maar routines maken die context toevoegen.</p></article></div></section>
+        <span class="eyebrow">Stap voor stap</span>
+        <h1 style="color:var(--text);">Tutorials die techniek eindelijk logisch maken</h1>
 
+        <p style="color:var(--muted);">
+          De meeste smart-home functies zijn op papier simpel, maar in de praktijk nét ingewikkeld genoeg om het te laten liggen.
+          Je weet dat het slimmer kan — automatische verlichting, meldingen die wél kloppen, flows die écht iets toevoegen, maar waar begin je?
+          <br><br>
+          Deze tutorials zijn er om die drempel weg te halen. Geen abstracte uitleg of marketingpraat, maar concrete stappen die je direct kunt toepassen.
+          Zodat je niet alleen begrijpt hoe het werkt, maar vooral merkt wat het je oplevert in je dagelijks gebruik.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Wat deze tutorials jou opleveren</h3>
+        <div class="check-list">
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Je snapt waarom je iets instelt</strong><br>
+              <span class="muted">Niet zomaar stappen volgen, maar begrijpen wat het oplevert in jouw situatie.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Je krijgt het in één keer werkend</strong><br>
+              <span class="muted">Zonder eindeloos zoeken of instellingen proberen die nergens toe leiden.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Je huis gaat merkbaar slimmer reageren</strong><br>
+              <span class="muted">Van kleine automatiseringen tot flows die echt verschil maken in je dagelijks gebruik.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Je houdt controle over je eigen setup</strong><br>
+              <span class="muted">Geen afhankelijkheid van standaardinstellingen, maar oplossingen die passen bij jouw manier van wonen.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container grid-3">
+      <!-- AUTO-GENERATED-TUTORIAL-CARDS:START -->
+      <article class="article-card">
+        <div class="card-icon">🧩</div>
+        <div class="article-card-body">
+          <span class="eyebrow">Tutorial • Homeyduino • Basis</span>
+          <h2><a href="arduino_ide_esp8266_tutorial.html">Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)</a></h2>
+          <p class="muted">Werk je met een Wemos D1 Mini of andere ESP8266? In deze tutorial stel je Arduino IDE correct in, voorkom je bekende fouten en zorg je dat je Homeyduino-projecten direct werken.</p>
+          <div class="meta-list">
+            <span class="meta-pill">Categorie: Tutorial</span>
+            <span class="meta-pill">Platform: Arduino / Homey</span>
+            <span class="meta-pill">Niveau: Beginner</span>
+          </div>
+          <a class="button-secondary" href="arduino_ide_esp8266_tutorial.html">Bekijk tutorial</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <a class="article-card-image" href="Homeyscript.html">
+          <img src="assets/header/homeyscript-stroomprijs-vandaag-morgen-hero.jpg" alt="HomeyScript voor het ophalen van stroomprijzen van vandaag en morgen" loading="lazy">
+        </a>
+        <div class="article-card-body">
+          <span class="eyebrow">Tutorial</span>
+          <h2><a href="Homeyscript.html">HomeyScript: stroomprijs vandaag en morgen ophalen</a></h2>
+          <p class="muted">Met dit HomeyScript haal je de laagste en hoogste stroomprijs van vandaag én morgen op, inclusief de bijbehorende uren, zodat je ze direct kunt gebruiken in Homey flows en tags.</p>
+          <div class="meta-list">
+            <span class="meta-pill">Categorie: HomeyScript</span>
+            <span class="meta-pill">Platform: Homey</span>
+            <span class="meta-pill">Niveau: Basis / licht gevorderd</span>
+          </div>
+          <a class="button-secondary" href="Homeyscript.html">Bekijk tutorial</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <a class="article-card-image" href="robotstofzuiger-homey-tutorial.html">
+          <img src="assets/header/homey-roomba-hero.jpg" alt="Homey die een robotstofzuiger automatisch aanstuurt op basis van aanwezigheid" loading="lazy">
+        </a>
+        <div class="article-card-body">
+          <span class="eyebrow">Tutorial</span>
+          <h2><a href="robotstofzuiger-homey-tutorial.html">Laat je robotstofzuiger slim schoonmaken met Homey</a></h2>
+          <p class="muted">Laat je robotstofzuiger automatisch starten wanneer niemand thuis is en stoppen zodra iemand thuiskomt. Geen vaste tijden meer, maar automatisering die meebeweegt met jouw dag.</p>
+          <div class="meta-list">
+            <span class="meta-pill">Categorie: Automatisering</span>
+            <span class="meta-pill">Platform: Homey</span>
+            <span class="meta-pill">Niveau: Beginner</span>
+          </div>
+          <a class="button-secondary" href="robotstofzuiger-homey-tutorial.html">Bekijk tutorial</a>
+        </div>
+      </article>
+      <!-- AUTO-GENERATED-TUTORIAL-CARDS:END -->
+    </div>
+  </section>
 </main>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-    </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="homeyduino-relay.html">Relay switch</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
+
+<div id="site-footer"></div>
+
+<script src="include.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

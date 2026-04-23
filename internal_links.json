@@ -1,0 +1,1208 @@
+[
+  {
+    "file": "bewegingssensor_homeyduino.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen ‘Clapper’ switch met Homeyduino",
+        "url": "homeyduino-clapper-switch.html",
+        "type": "diy",
+        "score_terms": [
+          "clapper",
+          "homeyduino",
+          "switch",
+          "upload",
+          "geluidssensor",
+          "board"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "chriet-titulaer.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      },
+      {
+        "title": "Waarom dit blog bestaat",
+        "url": "waarom-dit-blog-bestaat.html",
+        "type": "informatief",
+        "score_terms": [
+          "waarom",
+          "blog",
+          "bestaat",
+          "eigen",
+          "toekomst",
+          "vooral"
+        ]
+      },
+      {
+        "title": "Wat is het verschil tussen Matter en Thread?",
+        "url": "matter-en-thread-uitgelegd.html",
+        "type": "informatief",
+        "score_terms": [
+          "matter",
+          "thread",
+          "wat",
+          "tussen",
+          "verschil",
+          "werken"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "deur-raamsensor-homeyduino.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Homeyduino deur- en raamsensor: eenvoudig, goedkoop en verrassend bruikbaar",
+        "url": "homeyduino-deur-en-raamsensor.html",
+        "type": "diy",
+        "score_terms": [
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "sensor",
+          "project",
+          "monitor"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino",
+        "url": "multi-sensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "homeyduino",
+          "co2",
+          "via",
+          "homey",
+          "bouw"
+        ]
+      },
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "gemini-voor-home.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "HomeyScript: stroomprijs vandaag en morgen ophalen",
+        "url": "Homeyscript.html",
+        "type": "tutorial",
+        "score_terms": [
+          "wat",
+          "script",
+          "homeyscript",
+          "morgen",
+          "ophalen",
+          "tutorial"
+        ]
+      },
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      },
+      {
+        "title": "Wat is het verschil tussen Matter en Thread?",
+        "url": "matter-en-thread-uitgelegd.html",
+        "type": "informatief",
+        "score_terms": [
+          "matter",
+          "thread",
+          "wat",
+          "tussen",
+          "verschil",
+          "werken"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homey copy.html",
+    "status": "skipped_no_sidebar",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "no_sidebar_found",
+    "related": [
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino",
+        "url": "multi-sensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "homeyduino",
+          "co2",
+          "via",
+          "homey",
+          "bouw"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-clapper-switch.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen Bewegingssensor (PIR + Arduino)",
+        "url": "bewegingssensor_homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "bewegingssensor",
+          "pir",
+          "arduino",
+          "homeyduino",
+          "homey"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-co2-multisensor.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino",
+        "url": "multi-sensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "homeyduino",
+          "co2",
+          "via",
+          "homey",
+          "bouw"
+        ]
+      },
+      {
+        "title": "Bouw je eigen Bewegingssensor (PIR + Arduino)",
+        "url": "bewegingssensor_homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "bewegingssensor",
+          "pir",
+          "arduino",
+          "homeyduino",
+          "homey"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-co2-sensor.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino",
+        "url": "multi-sensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "homeyduino",
+          "co2",
+          "via",
+          "homey",
+          "bouw"
+        ]
+      },
+      {
+        "title": "Bouw je eigen Bewegingssensor (PIR + Arduino)",
+        "url": "bewegingssensor_homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "bewegingssensor",
+          "pir",
+          "arduino",
+          "homeyduino",
+          "homey"
+        ]
+      },
+      {
+        "title": "Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)",
+        "url": "homeyduino-ldr-lichtsensor.html",
+        "type": "diy",
+        "score_terms": [
+          "homeyduino",
+          "lichtsensor",
+          "ldr",
+          "sensor",
+          "homey",
+          "gebruik"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-deur-en-raamsensor.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino",
+        "url": "multi-sensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "homeyduino",
+          "co2",
+          "via",
+          "homey",
+          "bouw"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-ldr-lichtsensor.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Bouw je eigen Bewegingssensor (PIR + Arduino)",
+        "url": "bewegingssensor_homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "bewegingssensor",
+          "pir",
+          "arduino",
+          "homeyduino",
+          "homey"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-licht-temperatuur-sensor.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      },
+      {
+        "title": "Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)",
+        "url": "homeyduino-ldr-lichtsensor.html",
+        "type": "diy",
+        "score_terms": [
+          "homeyduino",
+          "lichtsensor",
+          "ldr",
+          "sensor",
+          "homey",
+          "gebruik"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-nfc-reader-rs.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen NFC-lezer met Homeyduino en RC522",
+        "url": "homeyduino-nfc-reader.html",
+        "type": "diy",
+        "score_terms": [
+          "project",
+          "homeyduino",
+          "rc522",
+          "nodemcu",
+          "kaart",
+          "homey"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-nfc-reader.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen NFC-lezer met Homeyduino en RC522",
+        "url": "homeyduino-nfc-reader-rs.html",
+        "type": "diy",
+        "score_terms": [
+          "homeyduino",
+          "rc522",
+          "nodemcu",
+          "kaart",
+          "homey",
+          "nfc"
+        ]
+      },
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "homeyduino-relay.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Bouw je eigen Bewegingssensor (PIR + Arduino)",
+        "url": "bewegingssensor_homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "bewegingssensor",
+          "pir",
+          "arduino",
+          "homeyduino",
+          "homey"
+        ]
+      },
+      {
+        "title": "Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)",
+        "url": "homeyduino-ldr-lichtsensor.html",
+        "type": "diy",
+        "score_terms": [
+          "homeyduino",
+          "lichtsensor",
+          "ldr",
+          "sensor",
+          "homey",
+          "gebruik"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "Homeyscript.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "tutorial",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Laat je robotstofzuiger slim schoonmaken met Homey",
+        "url": "robotstofzuiger-homey-tutorial.html",
+        "type": "tutorial",
+        "score_terms": [
+          "homey",
+          "robotstofzuiger",
+          "wat",
+          "tutorial",
+          "maak",
+          "leeg"
+        ]
+      },
+      {
+        "title": "Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)",
+        "url": "tools/arduino_ide_esp8266_tutorial.html",
+        "type": "tutorial",
+        "score_terms": [
+          "esp8266",
+          "tutorial",
+          "arduino",
+          "ide",
+          "wat",
+          "board"
+        ]
+      },
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "matter-en-thread-uitgelegd.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      },
+      {
+        "title": "Gemini voor Home: wat verandert er ten opzichte van Google Assistant?",
+        "url": "gemini-voor-home.html",
+        "type": "informatief",
+        "score_terms": [
+          "gemini",
+          "wat",
+          "nieuwe",
+          "google",
+          "assistant",
+          "eerste"
+        ]
+      },
+      {
+        "title": "HomeyScript: stroomprijs vandaag en morgen ophalen",
+        "url": "Homeyscript.html",
+        "type": "tutorial",
+        "score_terms": [
+          "wat",
+          "script",
+          "homeyscript",
+          "morgen",
+          "ophalen",
+          "tutorial"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "multi-sensor-homeyduino.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "over-mij.html",
+    "status": "skipped_no_matches",
+    "article_type": "informatief",
+    "links_added": 0
+  },
+  {
+    "file": "review-hue-st64-edison.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "review",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Nest Wifi Pro review: snel, stabiel en gezinsvriendelijk mesh wifi",
+        "url": "review-nest-wifi-pro.html",
+        "type": "review",
+        "score_terms": [
+          "wifi",
+          "nest",
+          "pro",
+          "review",
+          "mesh",
+          "snel"
+        ]
+      },
+      {
+        "title": "iRobot Roomba i7+ review: nog steeds de moeite waard?",
+        "url": "review-roomba-irobot-i7.html",
+        "type": "review",
+        "score_terms": [
+          "roomba",
+          "irobot",
+          "i7+",
+          "review",
+          "steeds",
+          "keuze"
+        ]
+      },
+      {
+        "title": "Homeyduino Relay met Google Assistent ondersteuning",
+        "url": "homeyduino-relay.html",
+        "type": "diy",
+        "score_terms": [
+          "relay",
+          "homeyduino",
+          "homey",
+          "google",
+          "assistent",
+          "project"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "review-nest-wifi-pro.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "review",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "iRobot Roomba i7+ review: nog steeds de moeite waard?",
+        "url": "review-roomba-irobot-i7.html",
+        "type": "review",
+        "score_terms": [
+          "roomba",
+          "irobot",
+          "i7+",
+          "review",
+          "steeds",
+          "keuze"
+        ]
+      },
+      {
+        "title": "Philips Hue ST64 Edison E27 review",
+        "url": "review-hue-st64-edison.html",
+        "type": "review",
+        "score_terms": [
+          "hue",
+          "st64",
+          "edison",
+          "review",
+          "philips",
+          "e27"
+        ]
+      },
+      {
+        "title": "Gemini voor Home: wat verandert er ten opzichte van Google Assistant?",
+        "url": "gemini-voor-home.html",
+        "type": "informatief",
+        "score_terms": [
+          "gemini",
+          "wat",
+          "nieuwe",
+          "google",
+          "assistant",
+          "eerste"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "review-roomba-irobot-i7.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "review",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Nest Wifi Pro review: snel, stabiel en gezinsvriendelijk mesh wifi",
+        "url": "review-nest-wifi-pro.html",
+        "type": "review",
+        "score_terms": [
+          "wifi",
+          "nest",
+          "pro",
+          "review",
+          "mesh",
+          "snel"
+        ]
+      },
+      {
+        "title": "Philips Hue ST64 Edison E27 review",
+        "url": "review-hue-st64-edison.html",
+        "type": "review",
+        "score_terms": [
+          "hue",
+          "st64",
+          "edison",
+          "review",
+          "philips",
+          "e27"
+        ]
+      },
+      {
+        "title": "Gemini voor Home: wat verandert er ten opzichte van Google Assistant?",
+        "url": "gemini-voor-home.html",
+        "type": "informatief",
+        "score_terms": [
+          "gemini",
+          "wat",
+          "nieuwe",
+          "google",
+          "assistant",
+          "eerste"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "robotstofzuiger-homey-tutorial.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "tutorial",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)",
+        "url": "tools/arduino_ide_esp8266_tutorial.html",
+        "type": "tutorial",
+        "score_terms": [
+          "esp8266",
+          "tutorial",
+          "arduino",
+          "ide",
+          "wat",
+          "board"
+        ]
+      },
+      {
+        "title": "HomeyScript: stroomprijs vandaag en morgen ophalen",
+        "url": "Homeyscript.html",
+        "type": "tutorial",
+        "score_terms": [
+          "wat",
+          "script",
+          "homeyscript",
+          "morgen",
+          "ophalen",
+          "tutorial"
+        ]
+      },
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "sjabloon-homeyduino-projecten.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "diy",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      },
+      {
+        "title": "Bouw je eigen deur- of raamsensor met Homeyduino",
+        "url": "deur-raamsensor-homeyduino.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "deur",
+          "raamsensor",
+          "homeyduino",
+          "homey",
+          "bouwen"
+        ]
+      },
+      {
+        "title": "Bouw je eigen NFC-lezer met Homeyduino en RC522",
+        "url": "homeyduino-nfc-reader-rs.html",
+        "type": "diy",
+        "score_terms": [
+          "homeyduino",
+          "rc522",
+          "nodemcu",
+          "kaart",
+          "homey",
+          "nfc"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "tools/arduino_ide_esp8266_tutorial.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "tutorial",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)",
+        "url": "homeyduino-co2-sensor.html",
+        "type": "diy",
+        "score_terms": [
+          "sensor",
+          "co2",
+          "uart",
+          "homeyduino",
+          "arduino",
+          "ide"
+        ]
+      },
+      {
+        "title": "Laat je robotstofzuiger slim schoonmaken met Homey",
+        "url": "robotstofzuiger-homey-tutorial.html",
+        "type": "tutorial",
+        "score_terms": [
+          "homey",
+          "robotstofzuiger",
+          "wat",
+          "tutorial",
+          "maak",
+          "leeg"
+        ]
+      },
+      {
+        "title": "Homeyduino Relay met Google Assistent ondersteuning",
+        "url": "homeyduino-relay.html",
+        "type": "diy",
+        "score_terms": [
+          "relay",
+          "homeyduino",
+          "homey",
+          "google",
+          "assistent",
+          "project"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "waarom-dit-blog-bestaat.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Bouw je eigen CO₂ multi-sensor met Homeyduino",
+        "url": "homeyduino-co2-multisensor.html",
+        "type": "diy",
+        "score_terms": [
+          "co2",
+          "homeyduino",
+          "homey",
+          "multi-sensor",
+          "bouwen",
+          "waarom"
+        ]
+      },
+      {
+        "title": "Chriet Titulaer en het Huis van de Toekomst",
+        "url": "chriet-titulaer.html",
+        "type": "informatief",
+        "score_terms": [
+          "titulaer",
+          "chriet",
+          "toekomst",
+          "relevant",
+          "waarom",
+          "hij"
+        ]
+      },
+      {
+        "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie",
+        "url": "wat-kun-je-doen-met-homey.html",
+        "type": "informatief",
+        "score_terms": [
+          "homey",
+          "wat",
+          "praktische",
+          "toepassingen",
+          "waar",
+          "echt"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "wat-kun-je-doen-met-homey.html",
+    "status": "skipped_existing_sidebar_links",
+    "article_type": "informatief",
+    "links_added": 0,
+    "placement": "sidebar_already_up_to_date",
+    "related": [
+      {
+        "title": "Wat is het verschil tussen Matter en Thread?",
+        "url": "matter-en-thread-uitgelegd.html",
+        "type": "informatief",
+        "score_terms": [
+          "matter",
+          "thread",
+          "wat",
+          "tussen",
+          "verschil",
+          "werken"
+        ]
+      },
+      {
+        "title": "Laat je robotstofzuiger slim schoonmaken met Homey",
+        "url": "robotstofzuiger-homey-tutorial.html",
+        "type": "tutorial",
+        "score_terms": [
+          "homey",
+          "robotstofzuiger",
+          "wat",
+          "tutorial",
+          "maak",
+          "leeg"
+        ]
+      },
+      {
+        "title": "Chriet Titulaer en het Huis van de Toekomst",
+        "url": "chriet-titulaer.html",
+        "type": "informatief",
+        "score_terms": [
+          "titulaer",
+          "chriet",
+          "toekomst",
+          "relevant",
+          "waarom",
+          "hij"
+        ]
+      }
+    ]
+  }
+]

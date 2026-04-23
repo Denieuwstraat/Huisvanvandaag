@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>HomeyScript: stroomprijs vandaag en morgen ophalen | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Gebruik dit HomeyScript om de laagste en hoogste stroomprijzen van vandaag en morgen op te halen en als Homey-tags beschikbaar te maken voor flows en automatiseringen." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Stroomprijs script</span>
+</div>
+<span class="eyebrow">Tutorial</span>
+<h1>HomeyScript: stroomprijs vandaag en morgen ophalen</h1>
+<p class="lead muted">
+          Met dit HomeyScript haal je de laagste en hoogste stroomprijs van vandaag én morgen op, inclusief de bijbehorende uren, zodat je ze direct kunt gebruiken in Homey flows en tags.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: HomeyScript</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Niveau: Basis / licht gevorderd</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct bruikbaar in flows</strong><br/>
+<span class="muted">Het script zet de uitkomsten als tags in Homey, zodat je ze meteen in automatiseringen kunt gebruiken.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Vandaag én morgen</strong><br/>
+<span class="muted">Je ziet niet alleen de uitersten van vandaag, maar ook alvast die van morgen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Niet alleen prijs, maar ook tijd</strong><br/>
+<span class="muted">Het script bewaart ook op welke uren de minimum- en maximumprijs gelden.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Eenvoudig aan te passen</strong><br/>
+<span class="muted">Je hoeft vooral je API-key en eventueel de aanbieder aan te passen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Goede basis voor uitbreidingen</strong><br/>
+<span class="muted">Dit script vormt een logisch vertrekpunt voor slimmere energiesturing binnen Homey.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="HomeyScript voor het ophalen van stroomprijzen van vandaag en morgen" src="assets/header/homeyscript-stroomprijs-vandaag-morgen-hero.jpg"/>
+<figcaption class="muted small">
+            Dit HomeyScript haalt stroomprijzen op voor vandaag en morgen en zet de belangrijkste uitkomsten om naar bruikbare Homey-tags.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Wie iets slimmer met dynamische stroomprijzen wil doen in Homey, heeft meestal niet genoeg aan alleen een losse prijswaarde. Juist de laagste en hoogste momenten van de dag zijn interessant, omdat je daar automatiseringen op kunt baseren.
+        </p>
+<p>
+          Dit HomeyScript haalt daarom zowel voor vandaag als voor morgen de stroomprijzen op, zoekt de minimum- en maximumwaarde en zet ook de bijbehorende uren klaar als tags. Daardoor kun je in een flow niet alleen werken met een prijs, maar ook met het moment waarop die prijs geldt.
+        </p>
+<h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+<p>In deze tutorial leer je hoe je een HomeyScript gebruikt om gegevens van een externe bron op te halen, te verwerken en daarna als tags in Homey beschikbaar te maken. De nadruk ligt op praktische inzet: het script moet niet alleen draaien, maar ook meteen bruikbaar zijn binnen je eigen flows.</p>
+<ul>
+<li><strong>Stroomprijzen verwerken</strong> → je leert hoe het script minimum- en maximumprijzen uit de opgehaalde gegevens filtert.</li>
+<li><strong>Tags voor Homey maken</strong> → je ziet hoe de uitkomsten worden opgeslagen als tags die je elders in Homey kunt gebruiken.</li>
+</ul>
+<p>Daarmee is dit niet alleen een script om te kopiëren, maar ook een goed voorbeeld van hoe je HomeyScript kunt inzetten als brug tussen data ophalen en automatiseren.</p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>Deze tutorial is bedoeld voor Homey-gebruikers die al met flows werken en nu een stap verder willen gaan met HomeyScript. Je hoeft geen ervaren programmeur te zijn, maar het helpt wel als je weet waar je in HomeyScript code plaatst en hoe je een script vanuit een flow start.</p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Een werkende Homey-omgeving met HomeyScript</li>
+<li>Een API-key voor de gebruikte stroomprijsbron</li>
+<li>Een aanbieder-naam die past bij jouw gebruik, bijvoorbeeld <code>prijsANWB</code></li>
+<li>Een flow of Advanced Flow van waaruit je het script kunt starten</li>
+<li>Basiskennis van Homey-tags en hoe je die in flows gebruikt</li>
+</ul>
+<div class="panel" style="margin-top:1.2rem;">
+<h3>Gratis API-sleutel ophalen</h3>
+<p class="muted">
+    Om dit script te laten werken heb je een API-sleutel nodig. Gelukkig is dat eenvoudiger dan het klinkt — en gratis.
+  </p>
+<ol style="margin-top:.6rem; padding-left:1.2rem;">
+<li>Ga naar <a href="https://enever.nl/prijzenfeeds/" rel="noopener" target="_blank">www.enever.nl/prijzenfeeds</a></li>
+<li>Voer je e-mailadres in bij <strong>“Token aanmaken”</strong></li>
+<li>Je ontvangt een e-mail met een unieke tekenreeks (je API-sleutel)</li>
+<li>Plaats deze sleutel in de code op de plek waar <code>API_KEY</code> staat</li>
+</ol>
+<p class="muted" style="margin-top:.8rem;">
+    Wil je een andere energieaanbieder gebruiken dan in het voorbeeld? 
+    Bekijk dan de <a href="https://enever.nl/prijzenfeeds/" rel="noopener" target="_blank"><strong>legenda met beschikbare aanbieders</strong></a> en pas de waarde van <code>AANBIEDER</code> in de code aan.
+  </p>
+<p class="muted small" style="margin-top:.6rem;">
+    Zie de API-sleutel als een toegangssleutel: zonder deze sleutel weet de server niet dat jij de data mag ophalen.
+  </p>
+</div>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Vul je instellingen bovenin het script in</h3>
+<p>Bovenaan het script staan twee instellingen die je zelf moet nalopen: de API-key en de aanbieder. De API-key is nodig om de gegevens op te halen. De aanbieder bepaalt welke prijswaarde uit de ontvangen data wordt gebruikt. In het voorbeeld staat <code>prijsANWB</code> ingevuld.</p>
+<ul>
+<li>Vervang <code>API_KEY_NUMBER</code> door je eigen API-key</li>
+<li>Pas <code>AANBIEDER</code> aan als je een andere prijsbron wilt gebruiken</li>
+<li>Laat de rest van de opbouw in eerste instantie ongemoeid</li>
+</ul>
+<figure>
+<img alt="De instellingen bovenin het HomeyScript voor stroomprijzen" src="assets/artikel/homeyscript-stroomprijs-instellingen.jpg"/>
+<figcaption class="muted small">
+            Bovenin het script pas je vooral je API-key en de gebruikte aanbieder aan.
+          </figcaption>
+</figure>
+<h3>2. Begrijp wat de functie precies doet</h3>
+<p>De functie <code>getMinMaxTijden(url)</code> vormt het hart van het script. Eerst wordt de JSON opgehaald. Daarna wordt gekeken of in <code>data.data</code> daadwerkelijk een array met uurwaarden staat. Vervolgens loopt het script twee keer door die gegevens heen: eerst om de minimum- en maximumprijs te vinden, daarna om te verzamelen op welke uren die waarden voorkomen.</p>
+<h3>3. Gebruik het script om prijzen van vandaag en morgen op te halen</h3>
+<p>Na de functie worden twee URL’s opgebouwd: één voor vandaag en één voor morgen. Het script roept de functie daarna twee keer aan. Dat levert vier kernwaarden op per dag: minimumprijs, maximumprijs, uren van het minimum en uren van het maximum.</p>
+<pre><code>// HomeyScript: stroomprijs_vandaag_morgen.js
+//
+// 1. Vul je eigen API key in bij API_KEY
+// 2. Pas eventueel AANBIEDER aan naar jouw energieleverancier 
+//    (bijv. "prijsANWB", "prijsFR", "prijsEE", etc.)
+// 3. Start het script vanuit een Flow (of Advanced Flow) 
+//    om de waardes in HomeyScript-tags te zetten.
+// 
+// Script haalt zowel vandaag als morgen op, zoekt de min/max en 
+// maakt een lijstje van alle uren waar de min of max geldt.
+//
+
+// === Instellingen ===
+const API_KEY   = "API_KEY_NUMBER";   // &lt;--- pas aan
+const AANBIEDER = "prijsANWB";        // prijsFR prijsANWB // &lt;--- pas aan
+
+// === Functie om min/max + bijbehorende uren op te halen ===
+async function getMinMaxTijden(url) {
+  // 1) Ophalen JSON
+  let response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Fout: ontvangen status ${response.status}`);
+  }
+  let data = await response.json();
+
+  // 2) Uuritems uitlezen. Meestal in data.data
+  let arr = data.data;
+  if (!Array.isArray(arr)) {
+    throw new Error("JSON bevat geen array in data.data");
+  }
+
+  // 3) Eerste pass om min/max-waarde te vinden
+  let minVal = Infinity;
+  let maxVal = -Infinity;
+  for (let item of arr) {
+    let val = parseFloat(item[AANBIEDER]);
+    if (!isNaN(val)) {
+      if (val &lt; minVal) minVal = val;
+      if (val &gt; maxVal) maxVal = val;
+    }
+  }
+
+  // 4) Tweede pass om te verzamelen op welke uren min of max zijn
+  let minUren = [];
+  let maxUren = [];
+  for (let item of arr) {
+    let val = parseFloat(item[AANBIEDER]);
+    if (isNaN(val)) continue;
+
+    let datumStr = item.datum || "";
+    let uur = datumStr.substring(11, 13);
+
+    if (val === minVal) {
+      minUren.push(uur);
+    }
+    if (val === maxVal) {
+      maxUren.push(uur);
+    }
+  }
+
+  // 5) Klaarmaken voor return
+  let minUrenString = minUren.map(u =&gt; `${u}:00`).join(", ");
+  let maxUrenString = maxUren.map(u =&gt; `${u}:00`).join(", ");
+
+  return {
+    minVal,
+    maxVal,
+    minUrenString,
+    maxUrenString
+  };
+}
+
+// === URLs voor 'vandaag' en 'morgen' ===
+let urlVandaag = `https://enever.nl/api/stroomprijs_vandaag.php?token=${API_KEY}`;
+let urlMorgen  = `https://enever.nl/api/stroomprijs_morgen.php?token=${API_KEY}`;
+
+try {
+  // Ophalen min/max/tijden voor vandaag
+  let {
+    minVal: minVandaag,
+    maxVal: maxVandaag,
+    minUrenString: minVandaagTijden,
+    maxUrenString: maxVandaagTijden
+  } = await getMinMaxTijden(urlVandaag);
+
+  // Ophalen min/max/tijden voor morgen
+  let {
+    minVal: minMorgen,
+    maxVal: maxMorgen,
+    minUrenString: minMorgenTijden,
+    maxUrenString: maxMorgenTijden
+  } = await getMinMaxTijden(urlMorgen);
+
+  // In HomeyScript-tags zetten
+  await tag("minVandaag", minVandaag);
+  await tag("maxVandaag", maxVandaag);
+  await tag("minVandaagTijden", minVandaagTijden);
+  await tag("maxVandaagTijden", maxVandaagTijden);
+
+  await tag("minMorgen", minMorgen);
+  await tag("maxMorgen", maxMorgen);
+  await tag("minMorgenTijden", minMorgenTijden);
+  await tag("maxMorgenTijden", maxMorgenTijden);
+
+  // Eventueel in het script-resultaat een samenvatting teruggeven
+  return `
+============== STROOMPRIJZEN =============
+Vandaag:
+  Min = ${minVandaag} (uren: ${minVandaagTijden})
+  Max = ${maxVandaag} (uren: ${maxVandaagTijden})
+
+Morgen:
+  Min = ${minMorgen} (uren: ${minMorgenTijden})
+  Max = ${maxMorgen} (uren: ${maxMorgenTijden})
+===========================================
+`;
+
+} catch (err) {
+  // Foutafhandeling
+  return "Fout: " + err.message;
+}</code></pre>
+<h3>4. Laat het script de resultaten als tags opslaan</h3>
+<p>Een belangrijk onderdeel van dit script is dat de uitkomsten niet alleen in de script-uitvoer terechtkomen, maar ook als tags worden opgeslagen. Daardoor kun je ze later in flows opnieuw gebruiken zonder dat je de parsing zelf nog eens hoeft te doen. De tags die worden gezet zijn onder meer <code>minVandaag</code>, <code>maxVandaag</code>, <code>minVandaagTijden</code> en dezelfde varianten voor morgen.</p>
+<h3>5. Start het script vanuit een flow en gebruik de uitkomsten</h3>
+<p>De bedoeling van dit script is dat je het laat draaien vanuit een Flow of Advanced Flow. Zodra het script is uitgevoerd, kun je de aangemaakte tags gebruiken in je logica. Denk bijvoorbeeld aan meldingen, beslismomenten of schakelingen op basis van goedkope of dure uren.</p>
+<figure>
+<img alt="Homey-tags met minimum en maximum stroomprijs van vandaag en morgen" src="assets/artikel/homeyscript-stroomprijs-tags.jpg"/>
+<figcaption class="muted small">
+            Zodra de tags beschikbaar zijn, kun je ze opnemen in gewone flows of complexere Advanced Flows.
+          </figcaption>
+</figure>
+<h2 id="homey-integratie">Integratie met Homey</h2>
+<p>Deze tutorial draait volledig om integratie met Homey. De opgehaalde waarden worden niet alleen verwerkt, maar bewust omgezet naar tags die in Homey blijven hangen. Daardoor kun je ze elders in je slimme huis inzetten zonder steeds opnieuw externe data te hoeven ontleden.</p>
+<p>Praktische toepassingen binnen Homey zijn bijvoorbeeld:</p>
+<ul>
+<li>Een flow die je waarschuwt wanneer morgen een piekprijs wordt verwacht</li>
+<li>Een flow die juist kijkt naar de goedkoopste uren van vandaag of morgen</li>
+<li>Een Advanced Flow die beslissingen maakt op basis van prijs én tijd</li>
+</ul>
+<figure>
+<img alt="Gebruik van stroomprijs-tags in een Homey flow" src="assets/artikel/homeyscript-stroomprijs-flow.png"/>
+<figcaption class="muted small">  
+            Ontvang bijvoorbeeld dagelijks een bericht met de goedkoopste en duurste uren van de dag, zodat je weet wanneer je slimme apparaten het beste aan of uit kunt zetten.
+          </figcaption>
+</figure>
+<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<p>Als dit script eenmaal werkt, kun je het verder uitbreiden op een manier die past bij jouw energiegebruik. Je kunt bijvoorbeeld extra tags maken, de uitvoer anders formatteren of het script combineren met andere Homey-logica. De grootste winst zit meestal niet in nóg meer data ophalen, maar in slimmer kiezen wat je met die data doet.</p>
+<figure>
+<img alt="Samenvatting van de stroomprijzen voor vandaag en morgen in HomeyScript" src="assets/artikel/homeyscript-stroomprijs-resultaat.jpg"/>
+<figcaption class="muted small">
+            Het script geeft ook een leesbare samenvatting terug, zodat je meteen ziet of de data goed is opgehaald.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Vergeet niet je eigen API-key in te vullen voordat je het script test.</li>
+<li>Controleer of de gekozen aanbieder overeenkomt met een veld dat in de ontvangen data beschikbaar is.</li>
+<li>Hou er rekening mee dat het script een foutmelding teruggeeft als de JSON-structuur niet overeenkomt met wat het script verwacht.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Dit HomeyScript is een praktische bouwsteen voor iedereen die dynamische stroomprijzen wil vertalen naar bruikbare Homey-logica. Het script haalt niet alleen prijzen op, maar maakt meteen het onderscheid tussen goedkoopste en duurste uren van vandaag en morgen. Juist doordat die uitkomsten als tags beschikbaar komen, wordt het script interessant: niet als losse code, maar als functioneel onderdeel van je automatiseringen.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#homey-integratie">Integratie met Homey</a>
+<a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+<a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="robotstofzuiger-homey-tutorial.html">Laat je robotstofzuiger slim schoonmaken met Homey</a><a href="tools/arduino_ide_esp8266_tutorial.html">Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)</a><a href="wat-kun-je-doen-met-homey.html">Wat kun je doen met Homey? Praktische toepassingen en inspiratie</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script src="include.js"></script>
+</body>
+</html>

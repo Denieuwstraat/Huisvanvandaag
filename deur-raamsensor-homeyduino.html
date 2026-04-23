@@ -1,19 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Bouw je eigen deur- of raamsensor met Homeyduino | huisvanvandaag.nl</title>
-  <meta name="description" content="Bouw een betaalbare bedrade deur- of raamsensor met een MC-38, ESP8266 of Wemos D1 Mini en Homeyduino. Gebruik de sensor als trigger voor Homey-flows, meldingen en slimme automatiseringen.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bouw je eigen deur- of raamsensor met Homeyduino | huisvanvandaag.nl</title>
+<meta content="Bouw een betaalbare bedrade deur- of raamsensor met een MC-38, ESP8266 of Wemos D1 Mini en Homeyduino. Gebruik de sensor als trigger voor Homey-flows, meldingen en slimme automatiseringen." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
     .project-hero-media {
       margin-top: 1.25rem;
     }
@@ -76,198 +75,146 @@
   </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie">
-      <a href="index.html">Home</a>
-      <a href="over.html">Over</a>
-      <a href="homey.html">Homey</a>
-      <a href="diy.html" class="active">DIY</a>
-      <a href="tutorials.html">Tutorials</a>
-      <a href="reviews.html">Reviews</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
+<div id="site-header"></div>
 <main>
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="diy.html">DIY</a>
-          <span>•</span>
-          <span>Deur- of raamsensor</span>
-        </div>
-
-        <span class="eyebrow">DIY • Homeyduino • Automatisering</span>
-        <h1>Bouw je eigen deur- of raamsensor met Homeyduino</h1>
-
-        <p class="lead muted">
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>Deur- of raamsensor</span>
+</div>
+<span class="eyebrow">DIY • Homeyduino • Automatisering</span>
+<h1>Bouw je eigen deur- of raamsensor met Homeyduino</h1>
+<p class="lead muted">
           Met een eenvoudige MC-38 deur- of raamsensor, een ESP8266 of Wemos D1 Mini en Homeyduino bouw je zelf een bedrade sensor die direct bruikbaar is in Homey voor flows, meldingen en slimme automatiseringen.
         </p>
-
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: Beveiliging & automatisering</span>
-          <span class="meta-pill">Platform: Homey</span>
-          <span class="meta-pill">Hardware: MC-38 + ESP8266 / Wemos D1 Mini</span>
-        </div>
-      </div>
-
-      <div class="panel project-info-panel">
-        <h3>Waarom dit project leuk én nuttig is</h3>
-        <div class="check-list">
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Eenvoudig maar veelzijdig</strong><br>
-              <span class="muted">Een deur- of raamsensor lijkt simpel, maar is inzetbaar voor verlichting, meldingen, alarmscenario’s en energiebesparing.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Bedraad in plaats van op batterijen</strong><br>
-              <span class="muted">Deze opzet is interessant als je liever zo min mogelijk losse batterijsensoren in huis gebruikt.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Direct bruikbaar in Homey</strong><br>
-              <span class="muted">De sensorstatus wordt zichtbaar in Homey en kan meteen dienen als trigger voor je flows.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Goedkoop om te bouwen</strong><br>
-              <span class="muted">Met een paar betaalbare onderdelen maak je een werkende sensor zonder dure kant-en-klare oplossing.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Ideaal als basisproject</strong><br>
-              <span class="muted">Weinig onderdelen, eenvoudige code en snel resultaat maken dit een toegankelijk Homeyduino-project.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container project-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="assets/placeholder-deur-raamsensor-hero.jpg" alt="Placeholder voor zelfgebouwde deur- of raamsensor met Homeyduino">
-          <figcaption class="muted small">
+<div class="meta-list">
+<span class="meta-pill">Categorie: Beveiliging &amp; automatisering</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Hardware: MC-38 + ESP8266 / Wemos D1 Mini</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Eenvoudig maar veelzijdig</strong><br/>
+<span class="muted">Een deur- of raamsensor lijkt simpel, maar is inzetbaar voor verlichting, meldingen, alarmscenario’s en energiebesparing.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Bedraad in plaats van op batterijen</strong><br/>
+<span class="muted">Deze opzet is interessant als je liever zo min mogelijk losse batterijsensoren in huis gebruikt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct bruikbaar in Homey</strong><br/>
+<span class="muted">De sensorstatus wordt zichtbaar in Homey en kan meteen dienen als trigger voor je flows.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Goedkoop om te bouwen</strong><br/>
+<span class="muted">Met een paar betaalbare onderdelen maak je een werkende sensor zonder dure kant-en-klare oplossing.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Ideaal als basisproject</strong><br/>
+<span class="muted">Weinig onderdelen, eenvoudige code en snel resultaat maken dit een toegankelijk Homeyduino-project.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Placeholder voor zelfgebouwde deur- of raamsensor met Homeyduino" src="assets/header/homeyduino-deur-en-raamsensor-hero.jpg"/>
+<figcaption class="muted small">
             Placeholder voor de uiteindelijke hero-afbeelding van de deur- of raamsensor.
           </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container project-content-layout">
-      <article class="article-body project-article">
-
-        <p class="lead">
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
           Een deur- of raamsensor is zo’n onderdeel dat in eerste instantie eenvoudig lijkt, maar in de praktijk verrassend veel toevoegt aan je smart home. Zodra je weet of een deur of raam open of dicht is, kun je daar allerlei logische acties aan koppelen.
         </p>
-
-        <p>
+<p>
           Denk aan verlichting die automatisch aangaat, een melding wanneer een raam nog open staat terwijl het gaat regenen of een eenvoudige alarmfunctie wanneer een deur onverwacht wordt geopend. Met Homeyduino bouw je zo’n sensor zelf, tegen lage kosten en volledig geïntegreerd in Homey.
         </p>
-
-        <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
-        <p>Je bouwt een bedrade deur- of raamsensor op basis van een MC-38 contactsensor en een ESP8266-board, zoals een NodeMCU of Wemos D1 Mini. Via Homeyduino stuur je de open/dicht-status door naar Homey, zodat de sensor gebruikt kan worden in flows en zichtbaar wordt in Homey.</p>
-        <ul>
-          <li><strong>Status meten</strong> → De sensor bepaalt of een deur of raam open of gesloten is.</li>
-          <li><strong>Automatiseren met Homey</strong> → De status is te gebruiken als trigger voor verlichting, meldingen, alarmfuncties of andere flows.</li>
-        </ul>
-        <p>Het resultaat is een eenvoudige maar praktische zelfbouwsensor die goed laat zien hoe krachtig Homeyduino kan zijn in alledaagse automatiseringen.</p>
-
-        <h2 id="kant-en-klaar-of-zelfbouw">Kant-en-klaar of zelf bouwen?</h2>
-        <p>Voor Homey zijn online genoeg kant-en-klare deur- en raamsensoren te vinden. Het grote voordeel daarvan is dat ze direct bruikbaar zijn en meestal draadloos werken. Dat kan juist handig zijn op plekken waar je geen voeding beschikbaar hebt.</p>
-
-        <p>De keerzijde is dat veel van die sensoren op batterijen werken. Als je thuis al veel batterijsensoren gebruikt, kan dat op termijn minder praktisch worden. Juist daarom is een bedrade zelfbouwvariant interessant: je bouwt voor weinig geld een sensor op netspanning die je volledig naar eigen wens integreert met Homey.</p>
-
-        <h2 id="benodigdheden">Benodigdheden</h2>
-        <ul>
-          <li>ESP8266 NodeMCU of Wemos D1 Mini</li>
-          <li>USB-C oplader</li>
-          <li>Breadboard</li>
-          <li>MC-38 deur- of raamsensor</li>
-          <li>Homey met de Homeyduino-app geïnstalleerd</li>
-          <li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
-        </ul>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een bedrade deur- of raamsensor op basis van een MC-38 contactsensor en een ESP8266-board, zoals een NodeMCU of Wemos D1 Mini. Via Homeyduino stuur je de open/dicht-status door naar Homey, zodat de sensor gebruikt kan worden in flows en zichtbaar wordt in Homey.</p>
+<ul>
+<li><strong>Status meten</strong> → De sensor bepaalt of een deur of raam open of gesloten is.</li>
+<li><strong>Automatiseren met Homey</strong> → De status is te gebruiken als trigger voor verlichting, meldingen, alarmfuncties of andere flows.</li>
+</ul>
+<p>Het resultaat is een eenvoudige maar praktische zelfbouwsensor die goed laat zien hoe krachtig Homeyduino kan zijn in alledaagse automatiseringen.</p>
+<h2 id="kant-en-klaar-of-zelfbouw">Kant-en-klaar of zelf bouwen?</h2>
+<p>Voor Homey zijn online genoeg kant-en-klare deur- en raamsensoren te vinden. Het grote voordeel daarvan is dat ze direct bruikbaar zijn en meestal draadloos werken. Dat kan juist handig zijn op plekken waar je geen voeding beschikbaar hebt.</p>
+<p>De keerzijde is dat veel van die sensoren op batterijen werken. Als je thuis al veel batterijsensoren gebruikt, kan dat op termijn minder praktisch worden. Juist daarom is een bedrade zelfbouwvariant interessant: je bouwt voor weinig geld een sensor op netspanning die je volledig naar eigen wens integreert met Homey.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>ESP8266 NodeMCU of Wemos D1 Mini</li>
+<li>USB kabel</li>
+<li>Breadboard</li>
+<li>MC-38 deur- of raamsensor</li>
+<li>Homey met de Homeyduino-app geïnstalleerd</li>
+<li>Een computer of laptop met Arduino IDE, NodeMCU Flasher en Homeyduino om alles eenmalig te configureren</li>
+</ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
-<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
-<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
-<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
-  <div id="affiliate-auto-deur-raamsensor-homeyduino-html-1"></div>
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-deur-raamsensor-homeyduino-html-1"></div>
+<div id="affiliate-auto-deur-raamsensor-homeyduino-html-2"></div>
+<div id="affiliate-auto-deur-raamsensor-homeyduino-html-3"></div>
 </section>
 <script>
-  renderAffiliateProduct("affiliate-auto-deur-raamsensor-homeyduino-html-1", "wemos_d1_mini");
+  renderAffiliateProduct("affiliate-auto-deur-raamsensor-homeyduino-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-deur-raamsensor-homeyduino-html-2", "reed_contact_sensor");
+  renderAffiliateProduct("affiliate-auto-deur-raamsensor-homeyduino-html-3", "wemos_d1_mini");
 </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <h2 id="betaalbare-onderdelen">Betaalbare onderdelen</h2>
-        <p>Wie deze sensor zelf wil bouwen, kan de benodigde onderdelen relatief goedkoop vinden. In de aangeleverde informatie worden onder meer een ESP8266 NodeMCU, een Wemos D1 mini, een klein breadboard en een MC-38 deur- of raamcontact genoemd als voordelige onderdelen om mee te starten.</p>
-
-        <p>Daarmee blijft dit project niet alleen technisch overzichtelijk, maar ook financieel laagdrempelig. Juist voor dit soort eenvoudige sensoren is zelfbouw daardoor een interessante optie.</p>
-
-        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
-
-        <h3>1. Sluit de sensor aan</h3>
-        <p>Volg het aansluitschema om de MC-38 sensor op je board aan te sluiten. In de broninformatie wordt een ESP8266 NodeMCU als voorbeeld genoemd, maar op een Wemos D1 Mini werkt dit nagenoeg hetzelfde. In de code wordt de sensor aangesloten op pin D2.</p>
-        <ul>
-          <li><strong>MC-38 sensor</strong> → <strong>D2</strong></li>
-          <li><strong>Board</strong> → <strong>ESP8266 NodeMCU of Wemos D1 Mini</strong></li>
-          <li><strong>Ingestelde modus</strong> → <strong>INPUT_PULLUP</strong></li>
-        </ul>
-
-        <figure>
-          <img src="assets/placeholder-deur-raamsensor-schema.jpg" alt="Placeholder voor aansluitschema van de MC-38 deur- of raamsensor op een ESP8266 of Wemos D1 Mini">
-          <figcaption class="muted small">
+<h2 id="betaalbare-onderdelen">Betaalbare onderdelen</h2>
+<p>Wie deze sensor zelf wil bouwen, kan de benodigde onderdelen relatief goedkoop vinden. In de aangeleverde informatie worden onder meer een ESP8266 NodeMCU, een Wemos D1 mini, een klein breadboard en een MC-38 deur- of raamcontact genoemd als voordelige onderdelen om mee te starten.</p>
+<p>Daarmee blijft dit project niet alleen technisch overzichtelijk, maar ook financieel laagdrempelig. Juist voor dit soort eenvoudige sensoren is zelfbouw daardoor een interessante optie.</p>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de sensor aan</h3>
+<p>Volg het aansluitschema om de MC-38 sensor op je board aan te sluiten. In de broninformatie wordt een ESP8266 NodeMCU als voorbeeld genoemd, maar op een Wemos D1 Mini werkt dit nagenoeg hetzelfde. In de code wordt de sensor aangesloten op pin D2.</p>
+<ul>
+<li><strong>MC-38 sensor</strong> → <strong>D2</strong></li>
+<li><strong>Board</strong> → <strong>ESP8266 NodeMCU of Wemos D1 Mini</strong></li>
+<li><strong>Ingestelde modus</strong> → <strong>INPUT_PULLUP</strong></li>
+</ul>
+<figure>
+<img alt="Placeholder voor aansluitschema van de MC-38 deur- of raamsensor op een ESP8266 of Wemos D1 Mini" src="assets/placeholder-deur-raamsensor-schema.jpg"/>
+<figcaption class="muted small">
             Placeholder voor het uiteindelijke aansluitschema van de deur- of raamsensor.
           </figcaption>
-        </figure>
-
-        <h3>2. Bereid de software voor</h3>
-        <p>Installeer Arduino IDE, NodeMCU Flasher en Homeyduino op je computer. Controleer daarna of in Arduino IDE het juiste board is geselecteerd. Werkt je ESP8266-board niet goed, dan kun je volgens de aangeleverde informatie proberen het eerst te flashen met NodeMCU Flasher.</p>
-
-        <h3>3. Upload de code</h3>
-        <p>Vul in de sketch je eigen wifi-gegevens in en upload de code op 9600 baud. De sensor wordt in Homey aangemeld met de capability <code>alarm_contact</code>, zodat de open- of dichtstatus zichtbaar en bruikbaar wordt in flows.</p>
-
-        <pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl. 
+</figure>
+<h3>2. Bereid de software voor</h3>
+<p>Installeer Arduino IDE, NodeMCU Flasher op je computer en voeg ook de Homeyduino-library toe. 
+ je computer. Controleer daarna of in Arduino IDE het juiste board is geselecteerd. Werkt je ESP8266-board niet goed, dan kun je volgens de aangeleverde informatie proberen het eerst te flashen met NodeMCU Flasher.</p>
+<h3>3. Upload de code</h3>
+<p>Vul in de sketch je eigen wifi-gegevens in en upload de code op 9600 baud. De sensor wordt in Homey aangemeld met de capability <code>alarm_contact</code>, zodat de open- of dichtstatus zichtbaar en bruikbaar wordt in flows.</p>
+<pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl. 
 // Kijk op de site voor meer Homeyduino en andere Smart Home gerelateerde posts.
 
 #include &lt;ESP8266WiFi.h&gt;
@@ -301,7 +248,7 @@ void setup() {
   Homey.begin("Deur sensor"); // Naam van je sensor zoals deze in Homey Weergegeven word
   Homey.setClass("sensor");
   Homey.addCapability("alarm_contact");
-  pinMode(DOOR_SENSOR_PIN, INPUT_PULLUP); // set arduino pin to input pull-up mode << oorspronkelijke code
+  pinMode(DOOR_SENSOR_PIN, INPUT_PULLUP); // set arduino pin to input pull-up mode &lt;&lt; oorspronkelijke code
 }
 
 void loop() {
@@ -317,127 +264,73 @@ void loop() {
     Homey.setCapabilityValue("alarm_contact", (false)); 
   }
 }</code></pre>
-
-        <h3>4. Test de sensor via de seriële monitor</h3>
-        <p>Open na het uploaden de Seriële Monitor in Arduino IDE via Hulpmiddelen en daarna Seriële Monitor, of gebruik de sneltoets CTRL+SHIFT+M. Vervolgens kun je direct zien welke status de sensor uitleest.</p>
-
-        <p>Zitten de twee delen van de sensor tegen elkaar, dan toont de monitor volgens de aangeleverde informatie <strong>“The door is open”</strong>. Haal je ze uit elkaar, dan verschijnt <strong>“The door is closed”</strong>.</p>
-
-        <figure>
-          <img src="assets/placeholder-deur-raamsensor-serial-monitor.jpg" alt="Placeholder voor seriële monitor-output van de deur- of raamsensor">
-          <figcaption class="muted small">
+<h3>4. Test de sensor via de seriële monitor</h3>
+<p>Open na het uploaden de Seriële Monitor in Arduino IDE via Hulpmiddelen en daarna Seriële Monitor, of gebruik de sneltoets CTRL+SHIFT+M. Vervolgens kun je direct zien welke status de sensor uitleest.</p>
+<p>Zitten de twee delen van de sensor tegen elkaar, dan toont de monitor volgens de aangeleverde informatie <strong>“The door is open”</strong>. Haal je ze uit elkaar, dan verschijnt <strong>“The door is closed”</strong>.</p>
+<figure>
+<img alt="Placeholder voor seriële monitor-output van de deur- of raamsensor" src="assets/placeholder-deur-raamsensor-serial-monitor.jpg"/>
+<figcaption class="muted small">
             Placeholder voor een screenshot van de seriële monitor tijdens het testen van de sensor.
           </figcaption>
-        </figure>
-
-        <h3>5. Koppel de sensor aan Homey</h3>
-        <p>Daarna kun je het Homeyduino-project koppelen aan Homey. De handleiding daarvoor komt als apart tutorial-artikel beschikbaar. Zodra de sensor in Homey staat, kun je de status gebruiken in flows en meldingen.</p>
-
-        <figure>
-          <img src="assets/placeholder-deur-raamsensor-homey.jpg" alt="Placeholder voor deur- of raamsensor zichtbaar in Homey">
-          <figcaption class="muted small">
+</figure>
+<h3>5. Koppel de sensor aan Homey</h3>
+<p>Daarna kun je het Homeyduino-project koppelen aan Homey. De handleiding daarvoor komt als apart tutorial-artikel beschikbaar. Zodra de sensor in Homey staat, kun je de status gebruiken in flows en meldingen.</p>
+<figure>
+<img alt="Placeholder voor deur- of raamsensor zichtbaar in Homey" src="assets/placeholder-deur-raamsensor-homey.jpg"/>
+<figcaption class="muted small">
             Placeholder voor een screenshot van de sensorstatus in Homey.
           </figcaption>
-        </figure>
-
-        <h2 id="integratie">Integratie met Homey</h2>
-        <p>Door de deur- of raamsensor aan Homey te koppelen kun je meer doen dan alleen de status uitlezen. De sensor wordt een praktisch startpunt voor allerlei slimme scenario’s in huis.</p>
-        <p>Denk bijvoorbeeld aan:</p>
-        <ul>
-          <li>verlichting automatisch inschakelen wanneer een deur of raam wordt geopend</li>
-          <li>een melding krijgen wanneer een raam nog open staat terwijl het gaat regenen</li>
-          <li>Homey gebruiken als eenvoudig persoonlijk alarmsysteem</li>
-        </ul>
-
-        <figure>
-          <img src="assets/placeholder-deur-raamsensor-flow.jpg" alt="Placeholder voor Homey-flow op basis van deur- of raamsensor">
-          <figcaption class="muted small">
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>Door de deur- of raamsensor aan Homey te koppelen kun je meer doen dan alleen de status uitlezen. De sensor wordt een praktisch startpunt voor allerlei slimme scenario’s in huis.</p>
+<p>Denk bijvoorbeeld aan:</p>
+<ul>
+<li>verlichting automatisch inschakelen wanneer een deur of raam wordt geopend</li>
+<li>een melding krijgen wanneer een raam nog open staat terwijl het gaat regenen</li>
+<li>Homey gebruiken als eenvoudig persoonlijk alarmsysteem</li>
+</ul>
+<figure>
+<img alt="Placeholder voor Homey-flow op basis van deur- of raamsensor" src="assets/placeholder-deur-raamsensor-flow.jpg"/>
+<figcaption class="muted small">
             Placeholder voor een voorbeeldflow die reageert op de open- of dichtstatus van de sensor.
           </figcaption>
-        </figure>
-
-        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
-        <p>Juist omdat deze sensor zo eenvoudig is, zijn er veel praktische toepassingen te bedenken. Denk aan een kastdeur, schuurdeur, raam of buitendeur. De status alleen al is waardevol, maar in combinatie met Homey wordt zo’n eenvoudige contactsensor ineens een nuttig onderdeel van je bredere automatisering.</p>
-
-        <p>Tegelijkertijd zit daar ook meteen de praktische grens: het is niet heel handig om voor ieder raam of iedere deur een apart Arduino-board te plaatsen. Juist daarom is dit project vooral interessant als losse sensor, als leerproject of als basis voor een latere gecombineerde oplossing.</p>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>Gebruik in de sketch je eigen wifi-gegevens voordat je de code uploadt.</li>
-          <li>Controleer in Arduino IDE altijd of het juiste board is geselecteerd.</li>
-          <li>Een bedrade oplossing is niet in elke situatie de meest praktische keuze; soms blijft een draadloze sensor logischer.</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>Met een MC-38 sensor, een ESP8266-board en Homeyduino bouw je met beperkte middelen een goed werkende bedrade deur- of raamsensor. Het project is eenvoudig, goedkoop en direct bruikbaar in Homey. Juist doordat je er zoveel verschillende flows aan kunt koppelen, is dit een klein project met verrassend veel praktische waarde.</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In dit artikel</h3>
-          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
-          <a href="#kant-en-klaar-of-zelfbouw">Kant-en-klaar of zelf bouwen?</a>
-          <a href="#benodigdheden">Benodigdheden</a>
-          <a href="#betaalbare-onderdelen">Betaalbare onderdelen</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#integratie">Integratie met Homey</a>
-          <a href="#praktisch-gebruik">Praktisch gebruik</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="tutorials.html">Homeyduino sensoren koppelen in Homey</a>
-            <a href="diy.html">Meer DIY projecten</a>
-            <a href="homey.html">Homey als centrale hub</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Juist omdat deze sensor zo eenvoudig is, zijn er veel praktische toepassingen te bedenken. Denk aan een kastdeur, schuurdeur, raam of buitendeur. De status alleen al is waardevol, maar in combinatie met Homey wordt zo’n eenvoudige contactsensor ineens een nuttig onderdeel van je bredere automatisering.</p>
+<p>Tegelijkertijd zit daar ook meteen de praktische grens: het is niet heel handig om voor ieder raam of iedere deur een apart Arduino-board te plaatsen. Juist daarom is dit project vooral interessant als losse sensor, als leerproject of als basis voor een latere gecombineerde oplossing.</p>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Gebruik in de sketch je eigen wifi-gegevens voordat je de code uploadt.</li>
+<li>Controleer in Arduino IDE altijd of het juiste board is geselecteerd.</li>
+<li>Een bedrade oplossing is niet in elke situatie de meest praktische keuze; soms blijft een draadloze sensor logischer.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een MC-38 sensor, een ESP8266-board en Homeyduino bouw je met beperkte middelen een goed werkende bedrade deur- of raamsensor. Het project is eenvoudig, goedkoop en direct bruikbaar in Homey. Juist doordat je er zoveel verschillende flows aan kunt koppelen, is dit een klein project met verrassend veel praktische waarde.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#kant-en-klaar-of-zelfbouw">Kant-en-klaar of zelf bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#betaalbare-onderdelen">Betaalbare onderdelen</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-deur-en-raamsensor.html">Homeyduino deur- en raamsensor: eenvoudig, goedkoop en verrassend bruikbaar</a><a href="multi-sensor-homeyduino.html">Bouw je eigen slimme CO₂ sensor met Homeyduino</a><a href="homeyduino-co2-multisensor.html">Bouw je eigen CO₂ multi-sensor met Homeyduino</a></div>
+</div>
+</aside>
+</div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-    </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="waarom-dit-blog-bestaat.html">Waarom dit blog bestaat</a>
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="include.js"></script>
 <script src="script.js"></script>
-
 <script src="affiliate-products.js"></script>
 </body>
 </html>

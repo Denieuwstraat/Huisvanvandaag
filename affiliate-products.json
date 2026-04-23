@@ -3,12 +3,12 @@
     "name": "WeMos D1 Mini",
     "description": "Compact ESP8266 ontwikkelbord voor Homeyduino, sensoren en DIY smart home projecten.",
     "images": [
-      "assets/wemos-d1-mini-1.jpg",
-      "assets/wemos-d1-mini-2.jpg",
-      "assets/wemos-d1-mini-3.jpg",
-      "assets/wemos-d1-mini-4.jpg",
-      "assets/wemos-d1-mini-5.jpg",
-      "assets/wemos-d1-mini-6.jpg"
+      "assets/affiliate/wemos-d1-mini-1.jpg",
+      "assets/affiliate/wemos-d1-mini-2.jpg",
+      "assets/affiliate/wemos-d1-mini-3.jpg",
+      "assets/affiliate/wemos-d1-mini-4.jpg",
+      "assets/affiliate/wemos-d1-mini-5.jpg",
+      "assets/affiliate/wemos-d1-mini-6.jpg"
     ],
     "aliases": [
       "wemos d1 mini",
@@ -48,11 +48,11 @@
     "name": "MH-Z19B CO₂ sensor",
     "description": "Veelgebruikte NDIR CO₂-sensor voor binnenluchtmetingen en Homeyduino-projecten.",
     "images": [
-      "assets/mh-z19b-1.jpg",
-      "assets/mh-z19b-2.jpg",
-      "assets/mh-z19b-3.jpg",
-      "assets/mh-z19b-4.jpg",
-      "assets/mh-z19b-5.jpg"
+      "assets/affiliate/mh-z19b-1.jpg",
+      "assets/affiliate/mh-z19b-2.jpg",
+      "assets/affiliate/mh-z19b-3.jpg",
+      "assets/affiliate/mh-z19b-4.jpg",
+      "assets/affiliate/mh-z19b-5.jpg"
     ],
     "aliases": [
       "mh-z19b",
@@ -88,6 +88,286 @@
         "url": "",
         "label": "Snelle internationale levering",
         "badge": "Prime"
+      }
+    ]
+  },
+  "pir_sensor_module": {
+    "name": "Mini PIR bewegingssensor module (HC-SR501 / AM312 / SR602)",
+    "description": "Compacte PIR bewegingssensor voor aanwezigheid detectie en automatiseringen met Arduino en Homeyduino.",
+    "images": [
+      "assets/affiliate/pir-sensor-1.jpg",
+      "assets/affiliate/pir-sensor-2.jpg",
+      "assets/affiliate/pir-sensor-3.jpg",
+      "assets/affiliate/pir-sensor-4.jpg"
+    ],
+    "aliases": [
+      "pir",
+      "pir sensor",
+      "pir_sensor",
+      "pir module",
+      "pir bewegingssensor",
+      "Passive Infrared Sensor (PIR)",
+      "bewegingssensor",
+      "motion sensor",
+      "motion detector",
+      "presence sensor",
+      "presence detection",
+      "infrared sensor",
+      "ir sensor",
+      "hc-sr501",
+      "hc sr501",
+      "sr501",
+      "am312",
+      "sr602",
+      "hw-ms03"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c2vNG7NR",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "ldr_sensor": {
+    "name": "LM393 LDR lichtsensor  module 4pin",
+    "description": "Fotosensor voor het meten van lichtintensiteit, ideaal voor automatiseringen op basis van daglicht of donker.",
+    "images": [
+      "assets/affiliate/ldr-lm393.jpg"
+    ],
+    "aliases": [
+      "ldr",
+      "ldr sensor",
+      "LDR sensor",
+      "LDR sensor met weerstand en potentiometer",
+      "ldr module",
+      "LM393",
+      "lichtsensor",
+      "lichtsensor 4pin",
+      "licht sensor",
+      "licht intensiteit sensor",
+      "lichtintensiteit",
+      "photosensor",
+      "photoresistor",
+      "light sensor",
+      "brightness sensor",
+      "lux sensor",
+      "ambient light sensor"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c39OudGz",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "reed_contact_sensor": {
+    "name": "MC-38 deur/raam sensor (magnetisch)",
+    "description": "Eenvoudige magneetschakelaar voor het detecteren van open/dicht status van deuren en ramen.",
+    "images": [
+      "assets/affiliate/mc38-1.jpg",
+      "assets/affiliate/mc38-2.jpg",
+      "assets/affiliate/mc38-3.jpg",
+      "assets/affiliate/mc38-4.jpg"
+    ],
+    "aliases": [
+      "mc38",
+      "mc-38",
+      "reed sensor",
+      "reed switch",
+      "reed contact",
+      "magnetische schakelaar",
+      "magnet sensor",
+      "deur sensor",
+      "raam sensor",
+      "door sensor",
+      "window sensor",
+      "contact sensor",
+      "open dicht sensor"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c3Bf8OeH",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "dht11_sensor": {
+    "name": "DHT11 temperatuur- en luchtvochtigheidssensor",
+    "description": "Veelgebruikte sensor voor temperatuur en luchtvochtigheid in DIY smart home projecten.",
+    "images": [
+      "assets/affiliate/dht11-1.jpg",
+      "assets/affiliate/dht11-2.jpg",
+      "assets/affiliate/dht11-3.jpg",
+      "assets/affiliate/dht11-4.jpg"
+    ],
+    "aliases": [
+      "dht11",
+      "dht-11",
+      "dht11 sensor",
+      "dht11_sensor",
+      "temperature sensor",
+      "humidity sensor",
+      "temperatuur sensor",
+      "luchtvochtigheid sensor",
+      "temp sensor",
+      "humidity module",
+      "temp humidity sensor"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c3L75YTR",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "relay_module": {
+    "name": "1-kanaals relais module (5V)",
+    "description": "Relaismodule voor het schakelen van apparaten via Arduino of Homey, geschikt voor 230V toepassingen.",
+    "images": [
+      "assets/affiliate/relay-1.jpg",
+      "assets/affiliate/relay-2.jpg",
+      "assets/affiliate/relay-3.jpg"
+    ],
+    "aliases": [
+      "relay",
+      "relay module",
+      "relay board",
+      "relais",
+      "relais module",
+      "schakel module",
+      "switch module",
+      "1 channel relay",
+      "1-kanaals relais",
+      "5v relay",
+      "relay shield"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "sound_sensor": {
+    "name": "KY-037 geluidsensor module",
+    "description": "Geluidsensor voor detectie van geluiden zoals klappen of spraak, ideaal voor simpele automatiseringen.",
+    "images": [
+      "assets/affiliate/sound-sensor-1.jpg",
+      "assets/affiliate/sound-sensor-2.jpg",
+      "assets/affiliate/sound-sensor-3.jpg"
+    ],
+    "aliases": [
+      "sound sensor",
+      "geluidsensor",
+      "audio sensor",
+      "microfoon sensor",
+      "microphone sensor",
+      "clap sensor",
+      "sound detection",
+      "ky-037",
+      "ky037",
+      "ky-37",
+      "ky37",
+      "sound module"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c44AKkJf",
+        "label": "Budgetoptie",
+        "badge": "€"
+      }
+    ]
+  },
+  "homey": {
+    "name": "Homey smart home hub",
+    "description": "Slimme hub die al je apparaten en automatiseringen samenbrengt in één systeem.",
+    "images": [
+      "assets/affiliate/homey-1.jpg",
+      "assets/affiliate/homey-2.jpg",
+      "assets/affiliate/homey-3.jpg"
+    ],
+    "aliases": [
+      "homey",
+      "homey pro",
+      "athom homey",
+      "homey bridge",
+      "smart home hub",
+      "domotica hub",
+      "smart home controller"
+    ],
+    "shops": [
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      }
+    ]
+  },
+  "roomba_i7_plus": {
+    "name": "Roomba i7+ robotstofzuiger",
+    "description": "Slimme robotstofzuiger met automatische vuilafvoer en integratie met smart home systemen.",
+    "images": [
+      "assets/affiliate/roomba-i7-1.jpg",
+      "assets/affiliate/roomba-i7-2.jpg",
+      "assets/affiliate/roomba-i7-3.jpg"
+    ],
+    "aliases": [
+      "roomba",
+      "roomba i7",
+      "roomba i7+",
+      "irobot",
+      "robotstofzuiger",
+      "robot stofzuiger",
+      "robot vacuum",
+      "robot vacuum cleaner",
+      "stofzuig robot"
+    ],
+    "shops": [
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      }
+    ]
+  },
+  "nest_wifi_pro": {
+    "name": "Nest Wifi Pro",
+    "description": "Snelle en stabiele mesh wifi oplossing voor een betrouwbaar smart home netwerk.",
+    "images": [
+      "assets/affiliate/nest-wifi-1.jpg",
+      "assets/affiliate/nest-wifi-2.jpg",
+      "assets/affiliate/nest-wifi-3.jpg"
+    ],
+    "aliases": [
+      "nest wifi",
+      "nest wifi pro",
+      "google nest wifi",
+      "google wifi",
+      "mesh wifi",
+      "wifi mesh",
+      "mesh netwerk",
+      "wifi systeem",
+      "router mesh"
+    ],
+    "shops": [
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
       }
     ]
   }

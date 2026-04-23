@@ -1,135 +1,350 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homeyduino relay switch met Google Assistant ondersteuning</title>
-  <meta name="description" content="Met een Wemos D1 Mini en een relaymodule schakel je apparatuur slim via Homey en desgewenst ook met je stem via Google Assistant.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Homeyduino Relay met Google Assistent ondersteuning | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Bouw een betaalbare Homeyduino relay switch met Wemos D1 Mini en bedien aangesloten apparaten via Homey, flows of Google Assistent." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container navbar">
-    <a class="logo" href="index.html" aria-label="huisvanvandaag.nl home">
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="logo-image logo-header">
-      <span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-    </a>
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span></button>
-    <nav class="nav-links" aria-label="Hoofdnavigatie"><a href="index.html">Home</a><a href="over.html">Over</a><a href="homey.html">Homey</a><a href="diy.html" class="active">DIY</a><a href="tutorials.html">Tutorials</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></nav>
-  </div>
-</header>
+<div id="site-header"></div>
 <main>
-
+<!-- HERO -->
 <section class="article-hero">
-  <div class="container article-layout">
-    <div>
-      <div class="breadcrumbs"><a href="index.html">Home</a><span>•</span><a href="diy.html">DIY</a><span>•</span><span>Relay switch</span></div>
-      <span class="eyebrow">DIY project • schakelen</span>
-      <h1>Homeyduino relay switch met Google Assistant ondersteuning</h1>
-      <p class="lead muted">Met een Wemos D1 Mini en een relaymodule schakel je apparatuur slim via Homey en desgewenst ook met je stem via Google Assistant.</p>
-      <div class="meta-list"><span class="meta-pill">Moeilijkheid: gemiddeld</span><span class="meta-pill">Indicatie kosten: laag</span><span class="meta-pill">Gebruik: slim schakelen van apparaten</span></div>
-    </div>
-    <div class="panel">
-      <h3>Wat je in dit artikel leert</h3>
-      <p class="muted">Hoe je met een Wemos D1 Mini en een relaymodule bestaande apparatuur slim schakelt via Homey en Google Assistant.</p>
-      <div class="chips"><span class="chip">Homeyduino</span><span class="chip">Relay</span><span class="chip">Google Assistant</span></div>
-    </div>
-  </div>
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>Homeyduino relay</span>
+</div>
+<span class="eyebrow">DIY project</span>
+<h1>Homeyduino Relay met Google Assistent ondersteuning</h1>
+<p class="lead muted">
+          Met een Wemos D1 Mini en een relay bouw je een betaalbare wifi-schakelaar die je via Homey kunt bedienen, in flows kunt gebruiken en zelfs met je stem kunt aansturen via Google Assistent.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Schakelen</span>
+<span class="meta-pill">Platform: Homey / Homeyduino / Google Assistent</span>
+<span class="meta-pill">Hardware: Wemos D1 Mini + relay</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Betaalbaar alternatief</strong><br/>
+<span class="muted">Je bouwt zelf een wifi-schakelaar op basis van goedkope onderdelen zoals een Wemos D1 Mini en een relay-module.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct bruikbaar in Homey</strong><br/>
+<span class="muted">De relay verschijnt in Homey als schakelbaar apparaat en is daardoor eenvoudig te gebruiken in de app en in flows.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Werkt met Google Assistent</strong><br/>
+<span class="muted">Door het apparaat slim te benoemen kun je het met een spraakopdracht aan- en uitschakelen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Praktische toepassing</strong><br/>
+<span class="muted">In het voorbeeld wordt de relay gebruikt om een televisie in de tuin op afstand en met stem te bedienen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Makkelijk uit te breiden</strong><br/>
+<span class="muted">Geef iedere relay een unieke naam en bouw later eenvoudig verder met meerdere relais in huis.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde Homeyduino relay met Wemos D1 Mini voor bediening via Homey en Google Assistent" src="assets/header/homeyduino-relay-google-assistent-hero.jpg"/>
+<figcaption class="muted small">
+            Een compacte Homeyduino relay switch op basis van een Wemos D1 Mini, bedoeld om apparaten via Homey en Google Assistent te schakelen.
+          </figcaption>
+</figure>
+</div>
+</div>
 </section>
-<section class="section-tight">
-  <div class="container article-layout">
-    <article class="article-body">
-<p class="lead">Een relayproject is een van de duidelijkste voorbeelden van zelfbouw met directe praktische waarde. Je maakt er bestaande apparatuur slim mee, zonder meteen afhankelijk te zijn van dure kant-en-klare modules.</p>
-<h2 id="waarom">Waarom een relay project interessant is</h2>
-<p>Dit project is een betaalbaar alternatief voor commerciële wifi-schakelaars. Via Homey werkt het ook samen met Google Assistant, waardoor je bestaande apparaten opneemt in een bredere automatisering — niet alleen slim schakelen, maar slim integreren.</p>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Een relay is een van de handigste bouwstenen binnen een smart home. Waar een sensor vooral meet, zorgt een relay er juist voor dat je iets echt kunt schakelen. In dit project bouw je een Homeyduino relay switch die via wifi samenwerkt met Homey en ook met Google Assistent bediend kan worden.
+        </p>
+<p>
+          Het project is vooral interessant als je een betaalbaar alternatief zoekt voor een wifi-schakelaar en graag zelf controle houdt over de opbouw. Tegelijk hoort hier ook een duidelijke waarschuwing bij: werken met elektriciteit is gevaarlijk. Zorg dus dat je alles deugdelijk aansluit en nooit onder spanning werkt.
+        </p>
 <h2 id="waarschuwing">Belangrijke veiligheidswaarschuwing</h2>
 <div class="warning"><strong>Werken met elektriciteit is gevaarlijk.</strong> Zorg dat je alleen met dit project aan de slag gaat als je weet wat je doet, nooit onder spanning werkt en behuizing, trekontlasting en aansluitingen deugdelijk uitvoert. Publiceer of gebruik dit project niet als losse proefopstelling wanneer er netspanning in het spel is.</div>
-<h2 id="benodigd">Benodigdheden</h2>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een relay-schakelaar op basis van een Wemos D1 Mini en een relay-module voor de Wemos. Via Homeyduino wordt de relay zichtbaar in Homey als schakelbaar apparaat, zodat je hem met de app, met flows en via Google Assistent kunt bedienen.</p>
 <ul>
-  <li>Wemos D1 Mini of NodeMCU met wifi en 5V</li>
-  <li>1-kanaals relaymodule of relay shield voor de Wemos</li>
-  <li>USB-C voeding</li>
-  <li>Homey met Homeyduino</li>
-  <li>Arduino IDE</li>
+<li><strong>Wifi-schakelaar</strong> → de relay schakelt een uitgang op basis van een commando vanuit Homey.</li>
+<li><strong>Spraakbediening</strong> → door de relay een logische naam te geven kun je hem via Google Assistent aan- en uitzetten.</li>
 </ul>
-
+<p>Daarmee bouw je geen theoretisch testproject, maar een praktische schakelmodule die direct toepasbaar is. In het oorspronkelijke voorbeeld wordt hij gebruikt om een televisie in de tuin te bedienen.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini</li>
+<li>Relay speciaal voor de Wemos D1 Mini</li>
+<li>Micro USB lader</li>
+<li>Homey Smart Home HUB met Homeyduino app geïnstalleerd</li>
+<li>Arduino IDE software</li>
+</ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
-<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
-<h3>Voorkom gepruts: bestel meteen de juiste onderdelen</h3>
-<p>Dit zijn precies de producten die dit project soepel laten draaien. Scheelt uitzoeken, testen en drie keer opnieuw bestellen.</p>
-  <div id="affiliate-auto-homeyduino-relay-html-1"></div>
+<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
+<h3>Handige links bij dit project</h3>
+<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+<div id="affiliate-auto-homeyduino-relay-html-1"></div>
+<div id="affiliate-auto-homeyduino-relay-html-2"></div>
+<div id="affiliate-auto-homeyduino-relay-html-3"></div>
 </section>
 <script>
-  renderAffiliateProduct("affiliate-auto-homeyduino-relay-html-1", "wemos_d1_mini");
+  renderAffiliateProduct("affiliate-auto-homeyduino-relay-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-relay-html-2", "relay_module");
+  renderAffiliateProduct("affiliate-auto-homeyduino-relay-html-3", "wemos_d1_mini");
 </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de relay aan op de Wemos D1 Mini</h3>
+<p>Begin met het juist aansluiten van de relay op je board. In de gebruikte opstelling is de relay gekoppeld aan D0. Volgens het schema zijn dit de drie belangrijke aansluitingen voor de relay-module op de Wemos D1 Mini.</p>
+<ul>
+<li><strong>IN / S</strong> → <strong>D0</strong></li>
+<li><strong>VCC / +</strong> → <strong>5V</strong></li>
+<li><strong>GND / –</strong> → <strong>GND</strong></li>
+</ul>
+<figure>
+<img alt="Aansluitschema van een relay-module op een Wemos D1 Mini voor Homeyduino" src="assets/header/homeyduino-relay-aansluitschema.jpg"/>
+<figcaption class="muted small">
+            De basisopstelling is eenvoudig: de relay wordt op D0, 5V en GND aangesloten en vormt zo de schakelbare uitgang van het project.
+          </figcaption>
+</figure>
+<h3>2. Installeer Arduino IDE en de juiste libraries</h3>
+<p>Om de code op de Wemos D1 Mini te zetten heb je Arduino IDE nodig. Installeer daarin eerst de Homeyduino library via <em>Schets &gt; Bibliotheek gebruiken &gt; Bibliotheken beheren</em>. Zoek daarnaast ook op <em>ESP8266</em> en <em>Relay</em> en installeer die libraries eveneens. Installeer vervolgens via <em>Hulpmiddelen &gt; Board &gt; Board Beheer</em> ook het board voor de Wemos D1 Mini als dat nog niet aanwezig is.</p>
+<h3>3. Upload de Homeyduino code</h3>
+<p>Open daarna een nieuw venster in Arduino IDE en vervang de standaardtekst door onderstaande code. Vul hierbij je eigen netwerkgegevens in. Geef de relay ook een unieke naam als je later meerdere relais in huis wilt gebruiken, zodat Homey ze als losse apparaten herkent.</p>
+<pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl.
+// Kijk op de site voor meer Homeyduino en andere Smart Home gerelateerde posts.
+// Origineel afkomstig van: https://github.com/athombv/homey-arduino-library
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+#include &lt;Homey.h&gt;
+#include &lt;Relay.h&gt;
 
-<h2 id="setup">Opzet en koppeling</h2>
-<p>Het mooie aan dit project is dat het technisch relatief overzichtelijk blijft: de Wemos stuurt het relay aan, Homey ziet het apparaat als schakelbare component en Google Assistant kan daar vervolgens bovenop komen als spraaklaag.</p>
-<p>Een praktijkvoorbeeld is een televisie in de tuin die op afstand en via spraak bediend wordt. Dat laat zien dat zelfbouw niet alleen goedkoper kan zijn, maar soms ook beter aansluit op hoe je een apparaat werkelijk gebruikt.</p>
+#define PIN_RELAY D0 // PIN was cruciaal hier, met D2 werkte niet, met D0 wel
+
+void wifi() {
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.begin("&lt;SSID&gt;", "&lt;PASSWORD&gt;");
+    uint8_t timeout = 30;
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+      if (timeout&lt;1) break;
+    }
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.print("Verbonden met WiFi! (");
+      Serial.print(WiFi.localIP());
+      Serial.println(")");
+    }
+  }
+}
+
+bool state = false;
+unsigned long previousMillis = 0;
+const unsigned long interval = 100; //Interval in milliseconds
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(PIN_RELAY, OUTPUT); //Set relay pin to output
+  digitalWrite(PIN_RELAY, LOW); //Turn output off
+
+  Homey.begin("Relay"); // vul hier de gewenste unieke naam in
+  Homey.setClass("socket");
+  Homey.addCapability("onoff", setState);
+  Homey.addAction("output", setState);
+  Homey.addCondition("state", getState);
+}
+
+void loop() {
+  wifi();
+  Homey.loop();
+  unsigned long currentMillis = millis();
+  if(currentMillis - previousMillis &gt; interval) {
+    previousMillis = currentMillis;
+  }
+}
+
+void setState() {
+  state = Homey.value.toInt();
+  applyState();
+}
+
+void applyState() {
+  digitalWrite(PIN_RELAY, state);
+  Serial.println("applyState(): new state is " String(state));
+  Homey.setCapabilityValue("onoff", state);
+  Homey.trigger("state", state);
+}
+
+void getState() {
+  Serial.println("getState(): state is " String(state));
+  return Homey.returnResult(state);
+}</code></pre>
+<h3>4. Koppel de relay aan Homey</h3>
+<p>Zodra de code draait, kun je de relay via de Homey app koppelen. Daarna verschijnt hij als schakelbaar apparaat in je slimme huis. Vanaf dat moment kun je hem bedienen via een schakelaar in de Homey app of opnemen in flows.</p>
+<h3>5. Bedien de relay via app, flows of stem</h3>
+<p>De relay is niet alleen via de app te bedienen, maar ook via Google Home. Na een <em>Ok, Google</em>-commando kun je simpelweg zeggen: <em>Schakel &lt;naam relay&gt; aan</em> of <em>Schakel &lt;naam relay&gt; uit</em>. Juist daarom is een duidelijke en unieke naam per relay handig als je er later meer toevoegt.</p>
+<figure>
+<img alt="Eindresultaat van een zelfgebouwde Homeyduino relay veilig weggewerkt in een behuizing" src="assets/header/homeyduino-relay-eindresultaat.jpg"/>
+<figcaption class="muted small">
+            In het eindresultaat zijn de Wemos D1 Mini en de relay netjes en veilig weggewerkt in een kunststof behuizing.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De kracht van dit project zit in de koppeling met Homey. Doordat de relay als <em>socket</em> met de capability <em>onoff</em> wordt toegevoegd, voelt hij in Homey aan als een gewone schakelbare module. Daardoor kun je hem logisch inpassen in bestaande flows of gebruiken als los bedienpunt in de app.</p>
+<p>Dat maakt deze relay interessant voor meerdere toepassingen, zoals:</p>
+<ul>
+<li>Een apparaat schakelen via de Homey app</li>
+<li>Een uitgang automatisch bedienen via een flow</li>
+<li>Een apparaat met stem aan- en uitzetten via Google Assistent</li>
+</ul>
+<figure>
+<img alt="Zelfgebouwde Homeyduino relay zichtbaar in Homey als schakelbaar apparaat" src="assets/header/homeyduino-relay-homey.jpg"/>
+<figcaption class="muted small">
+            Zodra de relay aan Homey is gekoppeld, kun je hem gebruiken als schakelaar in de app en in automatiseringen.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Het beschreven praktijkvoorbeeld laat goed zien waar dit soort zelfbouwprojecten sterk in zijn. De eerste relay wordt gebruikt om de televisie in de tuin te bedienen. Eerst zat daar een RF-schakelaar tussen, maar omdat de tv verder alleen met stem werd gebruikt voor bijvoorbeeld Netflix of YouTube, was het logisch om ook het in- en uitschakelen op diezelfde manier te doen. Daarmee wordt de relay een concrete schakel tussen handmatig schakelen en echt slim bedienen.</p>
+<figure>
+<img alt="Praktische toepassing van een zelfgebouwde Homeyduino relay voor het schakelen van een apparaat" src="assets/header/homeyduino-relay-praktijk.jpg"/>
+<figcaption class="muted small">
+            Een relay als deze is vooral handig op plekken waar je een bestaand apparaat slim wilt schakelen via Homey of spraakbediening.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Werken met elektriciteit is gevaarlijk, dus sluit alles deugdelijk aan en werk nooit onder spanning.</li>
+<li>Gebruik D0 voor de relay zoals in de gebruikte code; daarbij wordt expliciet genoemd dat D2 in deze opstelling niet werkte en D0 wel.</li>
+<li>Geef iedere relay een unieke naam als je meerdere exemplaren wilt gebruiken, zodat Homey ze goed uit elkaar kan houden.</li>
+</ul>
 <h2 id="conclusie">Conclusie</h2>
-<p>De combinatie van Homey, relay en Google maakt dit project veelzijdig en praktisch. Met de juiste veiligheidsvoorzorgen en een degelijke behuizing is dit een toegankelijke manier om bestaande apparatuur slim te maken.</p>
+<p>Met dit project bouw je een praktische en betaalbare Homeyduino relay switch die meer doet dan alleen schakelen. Door de koppeling met Homey en de ondersteuning voor Google Assistent ontstaat een flexibel project dat direct bruikbaar is in huis. Juist de combinatie van eenvoudige hardware, duidelijke software en concrete toepassingen maakt dit een sterk zelfbouwproject voor iedereen die slim wil schakelen zonder direct naar duurdere kant-en-klare modules te grijpen.</p>
 </article>
-    <aside class="side-stack">
-      <div class="toc">
-        <h3>In dit artikel</h3>
-        <a href="#waarom">Waarom een relay project interessant is</a><a href="#waarschuwing">Belangrijke veiligheidswaarschuwing</a><a href="#benodigd">Benodigdheden</a><a href="#setup">Opzet en koppeling</a><a href="#conclusie">Conclusie</a>
-      </div>
-      <div class="sidebar-card">
-        <h3>Wat je hierna kunt lezen</h3>
-        <div class="footer-links">
-          <a href="diy.html">Meer DIY projecten</a>
-          <a href="homey.html">Homey als centrale hub</a>
-          <a href="tutorials.html">Tutorials en flows</a>
-        </div>
-      </div>
-    </aside>
-  </div>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-ldr-lichtsensor.html">Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)</a></div>
+</div>
+</aside>
+</div>
 </section>
-
 </main>
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/logo-white.png" alt="Huis van Vandaag" class="footer-logo">
-      <p>Een Nederlandstalig smart-home blog over Homey, Google Home en zelfgebouwde Homeyduino projecten. Praktisch, getest en geschreven voor mensen die slim willen wonen zonder onnodig gedoe.</p>
-    </div>
-    <div>
-      <h4>Start hier</h4>
-      <div class="footer-links">
-        <a href="homey.html">Homey uitgelegd</a>
-        <a href="tutorials.html">Eerste flows en routines</a>
-        <a href="diy.html">DIY projecten</a>
-      </div>
-    </div>
-    <div>
-      <h4>Populaire onderwerpen</h4>
-      <div class="footer-links">
-        <a href="homeyduino-co2-sensor.html">CO₂ sensor</a>
-        <a href="homeyduino-relay.html">Relay switch</a>
-        <a href="chriet-titulaer.html">Huis van de Toekomst</a>
-      </div>
-    </div>
-    <div>
-      <h4>Praktisch</h4>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="over.html">Over dit blog</a>
-        <a href="#">Privacy & disclaimer</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© huisvanvandaag.nl sinds 2018</span>
-    <span>Gebouwd door Mike</span>
-  </div>
-</footer>
+<div id="site-footer"></div>
+<script src="include.js"></script>
 <script src="script.js"></script>
-
+<script src="affiliate-products.js"></script>
 </body>
 </html>
