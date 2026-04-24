@@ -44,7 +44,7 @@ STOPWORDS_NL = {
 
 SKIP_FILENAMES = {
     "index.html",
-    "over.html",
+    "waarom-dit-blog-bestaat.html",
     "contact.html",
     "privacy.html",
     "privacy-disclaimer.html",

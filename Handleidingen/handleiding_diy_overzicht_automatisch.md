@@ -143,7 +143,7 @@ Daarnaast worden bepaalde bestanden juist uitgesloten, zoals:
 - `footer.html`
 - reviewpagina’s
 - sjabloonbestanden
-- algemene pagina’s zoals `over.html`
+- algemene pagina’s zoals `waarom-dit-blog-bestaat.html`
 
 ---
 
