@@ -66,7 +66,13 @@ window.renderAffiliateProduct = async function (targetId, productKey) {
       : "";
 
   const shops = Array.isArray(product.shops)
-    ? product.shops.filter((shop) => shop && shop.url)
+    ? product.shops.filter(
+        (shop) =>
+          shop &&
+          typeof shop.name === "string" &&
+          typeof shop.url === "string" &&
+          shop.url.trim().length > 0
+      )
     : [];
 
   const imageHtml = firstImage
@@ -104,7 +110,7 @@ window.renderAffiliateProduct = async function (targetId, productKey) {
 
             return `
               <a
-                href="${escapeHtml(shop.url)}"
+                href="${escapeHtml(shop.url.trim())}"
                 target="_blank"
                 rel="nofollow sponsored noopener"
                 class="affiliate-shop-link"

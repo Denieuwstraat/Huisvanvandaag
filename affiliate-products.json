@@ -127,11 +127,23 @@
         "url": "https://s.click.aliexpress.com/e/_c2vNG7NR",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
   "ldr_sensor": {
-    "name": "LM393 LDR lichtsensor  module 4pin",
+    "name": "LM393 LDR lichtsensor module 4pin",
     "description": "Fotosensor voor het meten van lichtintensiteit, ideaal voor automatiseringen op basis van daglicht of donker.",
     "images": [
       "assets/affiliate/ldr-lm393.jpg"
@@ -161,6 +173,18 @@
         "url": "https://s.click.aliexpress.com/e/_c39OudGz",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -194,6 +218,18 @@
         "url": "https://s.click.aliexpress.com/e/_c3Bf8OeH",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -225,6 +261,18 @@
         "url": "https://s.click.aliexpress.com/e/_c3L75YTR",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -255,6 +303,18 @@
         "url": "",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -286,6 +346,18 @@
         "url": "https://s.click.aliexpress.com/e/_c44AKkJf",
         "label": "Budgetoptie",
         "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -308,10 +380,22 @@
     ],
     "shops": [
       {
+        "name": "AliExpress",
+        "url": "",
+        "label": "Budgetoptie",
+        "badge": "€"
+      },
+      {
         "name": "Bol.com",
         "url": "",
         "label": "Snelle levering NL",
         "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -336,10 +420,22 @@
     ],
     "shops": [
       {
+        "name": "AliExpress",
+        "url": "",
+        "label": "Budgetoptie",
+        "badge": "€"
+      },
+      {
         "name": "Bol.com",
         "url": "",
         "label": "Snelle levering NL",
         "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   },
@@ -364,10 +460,22 @@
     ],
     "shops": [
       {
+        "name": "AliExpress",
+        "url": "",
+        "label": "Budgetoptie",
+        "badge": "€"
+      },
+      {
         "name": "Bol.com",
         "url": "",
         "label": "Snelle levering NL",
         "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
       }
     ]
   }
