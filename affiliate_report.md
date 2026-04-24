@@ -235,7 +235,7 @@ Totaal gescande artikelen: 30
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
-## waarom-dit-blog-bestaat.html
+## over.html
 - Titel: Over | huisvanvandaag.nl
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
@@ -277,7 +277,7 @@ Totaal gescande artikelen: 30
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
-## waarom-dit-blog-bestaat.html
+## over.html
 - Titel: Waarom dit blog bestaat | huisvanvandaag.nl
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden

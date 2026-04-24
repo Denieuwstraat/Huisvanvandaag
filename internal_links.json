@@ -69,7 +69,7 @@
       },
       {
         "title": "Waarom dit blog bestaat",
-        "url": "waarom-dit-blog-bestaat.html",
+        "url": "over.html",
         "type": "informatief",
         "score_terms": [
           "waarom",
@@ -1110,7 +1110,7 @@
     ]
   },
   {
-    "file": "waarom-dit-blog-bestaat.html",
+    "file": "over.html",
     "status": "skipped_existing_sidebar_links",
     "article_type": "informatief",
     "links_added": 0,

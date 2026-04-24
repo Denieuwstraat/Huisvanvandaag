@@ -40,7 +40,7 @@ SKIP_FILES = {
     "homey.html",
     "privacy.html",
     "over-ons.html",
-    "waarom-dit-blog-bestaat.html",
+    "over.html",
     "over-mij.html",
     "contact.html",
     "404.html",
