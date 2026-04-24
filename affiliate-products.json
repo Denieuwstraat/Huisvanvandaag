@@ -32,7 +32,7 @@
       },
       {
         "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-wemos-d1-mini-v4-esp8266-usb-c%2F9300000247216518%2F&name=OTRONIC%C2%AE%20Wemos%20D1%20Mini%20V4%20ESP8266%20USB-C",
+        "url": "",
         "label": "Snelle levering NL",
         "badge": "NL"
       },
@@ -127,12 +127,6 @@
         "url": "https://s.click.aliexpress.com/e/_c2vNG7NR",
         "label": "Budgetoptie",
         "badge": "€"
-      },
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbewegingssensor-infrarood-pir-hc-sr501%2F9300000076504530%2F&name=Bewegingssensor%20infrarood%20PIR%20HC-SR501%20Motion%20Sensor%20compatibel%20met%20Arduino%20en...",
-        "label": "Snelle levering NL",
-        "badge": "NL"
       }
     ]
   },
@@ -200,12 +194,6 @@
         "url": "https://s.click.aliexpress.com/e/_c3Bf8OeH",
         "label": "Budgetoptie",
         "badge": "€"
-       },
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-magneetcontact-mc-38-voor-deur-of-raam%2F9300000024804799%2F&name=OTRONIC%C2%AE%20Magneetcontact%20MC-38%20voor%20deur%20of%20raam%20(reed%20magnetisch)",
-        "label": "Snelle levering NL",
-        "badge": "NL"
       }
     ]
   },
@@ -237,12 +225,6 @@
         "url": "https://s.click.aliexpress.com/e/_c3L75YTR",
         "label": "Budgetoptie",
         "badge": "€"
-      },
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fazdelivery-ky-015-dht11-temperatuursensormodule-compatibel-met-arduino-inclusief-e-book%2F9300000119725806%2F&name=AZDelivery%20KY-015%20DHT11%20Temperatuursensormodule%20compatibel%20met%20Arduino%20Inclusief%20E-Book!",
-        "label": "Snelle levering NL",
-        "badge": "NL"
       }
     ]
   },
@@ -304,26 +286,22 @@
         "url": "https://s.click.aliexpress.com/e/_c44AKkJf",
         "label": "Budgetoptie",
         "badge": "€"
-       },
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgeluidssensor-microfoon-compatibel-met-arduino%2F9300000162705037%2F&name=Geluidssensor%20%2F%20Microfoon%20compatibel%20met%20Arduino",
-        "label": "Snelle levering NL",
-        "badge": "NL"
       }
     ]
   },
-  "homey pro": {
+  "homey": {
     "name": "Homey smart home hub",
     "description": "Slimme hub die al je apparaten en automatiseringen samenbrengt in één systeem.",
     "images": [
-      "assets/affiliate/homey-1.jpg"
+      "assets/affiliate/homey-1.jpg",
+      "assets/affiliate/homey-2.jpg",
+      "assets/affiliate/homey-3.jpg"
     ],
     "aliases": [
       "homey",
       "homey pro",
       "athom homey",
-      "homey",
+      "homey bridge",
       "smart home hub",
       "domotica hub",
       "smart home controller"
@@ -331,46 +309,7 @@
     "shops": [
       {
         "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhomey-pro-smart-home-hub-compatibel-met-meer-dan-1000-merken-werkt-met-siri-alexa-en-google-home%2F9300000252292778%2F&name=Homey%20Pro%20(2026)%20-%20Smart%20Home%20Hub%20-%20Compatibel%20met%20meer%20dan%201000%20merken%20-%20Werkt%20met...",
-        "label": "Snelle levering NL",
-        "badge": "NL"
-      }
-    ]
-  },
-    "homey pro mini": {
-    "name": "Homey pro mini",
-    "description": "Slimme hub die al je apparaten en automatiseringen samenbrengt in één systeem.",
-    "images": [
-      "assets/affiliate/homey-pro-mini.jpg"
-    ],
-    "aliases": [
-      "homey pro mini",
-      "homey mini",
-      "athom homey mini"
-    ],
-    "shops": [
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhomey-pro-mini-smart-home-hub-zigbee-matter-thread-ethernet%2F9300000250497336%2F&name=Homey%20Pro%20mini%20-%20Smart%20Home%20Hub%20-%20Zigbee%20-%20Matter%20-%20Thread%20-%20Ethernet",
-        "label": "Snelle levering NL",
-        "badge": "NL"
-      }
-    ]
-  },
-      "homey bridge": {
-    "name": "Homey bridge",
-    "description": "Slimme hub die al je apparaten en automatiseringen samenbrengt in één systeem.",
-    "images": [
-            "assets/affiliate/homey-bridge.jpg"
-    ],
-    "aliases": [
-      "homey bridge",
-      "athom homey bridge"
-    ],
-    "shops": [
-      {
-        "name": "Bol.com",
-        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fhomey-bridge%2F9300000080113558%2F&name=Homey%20Bridge%20-%20Smart%20Home%20Hub%20-%20Werkt%20met%20Siri%2C%20Alexa%20en%20Google%20Home",
+        "url": "",
         "label": "Snelle levering NL",
         "badge": "NL"
       }
