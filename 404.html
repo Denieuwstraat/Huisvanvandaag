@@ -9,421 +9,135 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  
+  <!-- ✅ FIX: absolute paden -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
 
   <style>
-    .error-shell {
-      max-width: 860px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .error-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      margin-bottom: .85rem;
-      padding: .45rem .8rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.09);
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .error-title {
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .error-copy {
-      max-width: 730px;
-      margin: 1rem auto 0;
-    }
-
-    .error-actions {
-      display: flex;
-      justify-content: center;
-      gap: .8rem;
-      flex-wrap: wrap;
-      margin-top: 1.25rem;
-    }
-
-    .error-grid {
-      display: grid;
-      gap: 1.25rem;
-      margin-top: 1.6rem;
-      text-align: left;
-    }
-
-    .search-panel {
-      margin-top: 1.6rem;
-    }
-
-    .error-search {
-      display: flex;
-      gap: .75rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
-    .error-search input {
-      width: min(100%, 560px);
-      padding: 1rem 1.05rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font: inherit;
-      box-shadow: none;
-      outline: none;
-      transition: border-color .15s ease, background .15s ease, transform .15s ease;
-    }
-
-    .error-search input:focus {
-      border-color: rgba(255,255,255,.22);
-      background: rgba(255,255,255,.06);
-      transform: translateY(-1px);
-    }
-
-    .quick-tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: .55rem;
-      margin-top: 1rem;
-    }
-
-    .quick-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: .5rem .8rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-      text-decoration: none;
-      transition: border-color .15s ease, background .15s ease, transform .15s ease;
-    }
-
-    .quick-tag:hover {
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .error-links {
-      display: grid;
-      gap: .85rem;
-      margin-top: .4rem;
-    }
-
-    .error-link-card {
-      display: block;
-      padding: 1rem 1rem 1rem 1.05rem;
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
-      text-decoration: none;
-      color: inherit;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-
-    .error-link-card:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.05);
-    }
-
-    .error-link-card strong {
-      display: block;
-      margin-bottom: .18rem;
-    }
-
-    .search-results {
-      margin-top: 1.15rem;
-      text-align: left;
-      display: none;
-    }
-
-    .search-results.active {
-      display: block;
-    }
-
-    .search-results h3 {
-      margin-bottom: .85rem;
-    }
-
-    .result-meta {
-      display: block;
-      margin-top: .25rem;
-      font-size: .94rem;
-    }
-
-    .micro-copy {
-      max-width: 720px;
-      margin: 1.3rem auto 0;
-    }
-
-    @media (max-width: 700px) {
-      .error-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .error-actions a {
-        width: 100%;
-      }
-    }
+    .error-shell { max-width: 860px; margin: 0 auto; text-align: center; }
+    .error-kicker { display:inline-flex; gap:.5rem; margin-bottom:.85rem; padding:.45rem .8rem; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.09); color:var(--muted); font-size:.92rem;}
+    .error-title { max-width:780px; margin:auto; }
+    .error-copy { max-width:730px; margin:1rem auto 0; }
+    .error-actions { display:flex; justify-content:center; gap:.8rem; flex-wrap:wrap; margin-top:1.25rem;}
+    .error-grid { display:grid; gap:1.25rem; margin-top:1.6rem; text-align:left;}
+    .search-panel { margin-top:1.6rem; }
+    .error-search input { width:min(100%,560px); padding:1rem; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:var(--text);}
+    .search-results { margin-top:1.15rem; display:none;}
+    .search-results.active { display:block;}
   </style>
 </head>
+
 <body>
 
 <div id="site-header"></div>
 
 <main>
-  <section class="page-hero">
-    <div class="container">
-      <div class="error-shell">
+<section class="page-hero">
+  <div class="container">
+    <div class="error-shell">
 
-        <div class="error-kicker">
-          <span>404</span>
-          <span>•</span>
-          <span>Verdwaald, maar niet verloren</span>
+      <div class="error-kicker">
+        <span>404</span><span>•</span><span>Verdwaald, maar niet verloren</span>
+      </div>
+
+      <h1 class="error-title">
+        Deze pagina is weg.<br>
+        Maar de kans is groot dat je hier iets beters vindt.
+      </h1>
+
+      <p class="lead muted error-copy">
+        Normaal is een 404-pagina een doodlopende straat. Daarom pakken we het hier anders aan.
+      </p>
+
+      <div class="error-actions">
+        <a href="/index.html" class="btn btn-primary">Terug naar home</a>
+      </div>
+
+      <div class="panel search-panel">
+        <h3>Zoek direct verder</h3>
+
+        <div class="error-search">
+          <input id="siteSearchInput" type="text" placeholder="Waar was je naar op zoek?">
         </div>
 
-       <h1 class="error-title">
-  Deze pagina is weg.<br>
-  Maar de kans is groot dat je hier iets beters vindt.
-</h1>
-        <p class="lead muted error-copy">
-          Normaal is een 404-pagina een doodlopende straat met een beleefd bordje. 
-          Daarom pakken we het hier anders aan.
-        </p>
-
-        <p class="muted error-copy">
-          Misschien is een link verouderd, is een artikel verplaatst of blijkt jouw zoekvraag slimmer te zijn dan onze URL-structuur.
-          In alle drie de gevallen is het zonde om nu af te haken.
-        </p>
-
-
-        <div class="error-actions">
-          <a href="index.html" class="btn btn-primary">Terug naar home</a>
-          
+        <div id="searchResults" class="search-results">
+          <h3>Misschien bedoelde je:</h3>
+          <div id="searchResultsList"></div>
         </div>
+      </div>
 
-        <div class="panel search-panel">
-          <h3>Zoek direct verder</h3>
-          <p class="muted">
-            Zoek op Homey, Homeyduino, sensor, tutorial of een ander onderwerp waar je eigenlijk voor kwam.
-          </p>
+      <div class="error-grid">
+        <div class="panel">
+          <h3>Misschien is dit nog interessanter</h3>
 
-         <div class="error-search">
-  <input
-    id="siteSearchInput"
-    type="text"
-    placeholder="Waar was je naar op zoek?"
-    aria-label="Zoek op de site"
-  >
-</div>
-
-
-          <div id="searchResults" class="search-results">
-            <h3>Misschien bedoelde je één van deze pagina’s</h3>
-            <div id="searchResultsList" class="error-links"></div>
-          </div>
-        </div>
-
-        <div class="error-grid">
-          <div class="panel">
-            <h3>Misschien is dit nog interessanter dan wat je zocht</h3>
-            <div class="check-list">
-              <div class="check-item">
-                <span class="check-mark">✓</span>
-                <div>
-                  <strong><a href="homey.html">Alles over Homey</a></strong><br>
-                  <span class="muted">De beste plek als je wilt begrijpen hoe Homey merken, protocollen en automatiseringen samenbrengt.</span>
-                </div>
+          <div class="check-list">
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div>
+                <strong><a href="/homey.html">Alles over Homey</a></strong>
               </div>
+            </div>
 
-              <div class="check-item">
-                <span class="check-mark">✓</span>
-                <div>
-                  <strong><a href="tutorials.html">Praktische tutorials</a></strong><br>
-                  <span class="muted">Voor dingen die simpel lijken tot je ze echt moet instellen.</span>
-                </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div>
+                <strong><a href="/tutorials.html">Praktische tutorials</a></strong>
               </div>
+            </div>
 
-              <div class="check-item">
-                <span class="check-mark">✓</span>
-                <div>
-                  <strong><a href="diy.html">DIY-projecten</a></strong><br>
-                  <span class="muted">Voor wie niet alleen slimme apparaten wil gebruiken, maar ook wil snappen en bouwen.</span>
-                </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <div>
+                <strong><a href="/diy.html">DIY-projecten</a></strong>
               </div>
             </div>
           </div>
 
-
-   
+        </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <div id="site-footer"></div>
 
-<script src="include.js"></script>
-<script src="script.js"></script>
+<!-- ✅ FIX: absolute paden -->
+<script src="/include.js"></script>
+<script src="/script.js"></script>
 
 <script>
-  const searchablePages = [
-    {
-      title: "Maak kennis met de Homey Bridge",
-      url: "homey-bridge.html",
-      description: "Slim starten met Homey zonder direct alles groots aan te pakken.",
-      keywords: ["homey bridge", "bridge", "homey cloud", "satellite mode", "instap", "hub"]
-    },
-    {
-      title: "Homey Pro (2023): de smart home hub die alles samenbrengt",
-      url: "homey-pro-2023.html",
-      description: "Voor wie meer controle, lokale automatisering en groeiruimte zoekt.",
-      keywords: ["homey pro", "pro", "lokale automatisering", "advanced flow", "homey pro 2023", "hub"]
-    },
-    {
-      title: "Wat is Homey?",
-      url: "homey.html",
-      description: "De basis als je Homey en het idee erachter goed wilt begrijpen.",
-      keywords: ["homey", "smart home", "hub", "uitleg", "kennisbank"]
-    },
-    {
-      title: "Wat is Homeyduino?",
-      url: "homeyduino.html",
-      description: "Voor makers die zelf sensoren en projecten aan Homey willen koppelen.",
-      keywords: ["homeyduino", "esp8266", "esp32", "sensor", "zelfbouw", "diy"]
-    },
-    {
-      title: "Wat is het verschil tussen Matter en Thread?",
-      url: "wat-is-het-verschil-tussen-matter-en-thread.html",
-      description: "Helder overzicht van twee termen die vaak door elkaar worden gehaald.",
-      keywords: ["matter", "thread", "verschil", "protocol", "standaard"]
-    },
-    {
-      title: "Arduino IDE instellen voor ESP8266 (Wemos D1 Mini)",
-      url: "arduino_ide_esp8266_tutorial.html",
-      description: "Een logische eerste stap voor Homeyduino- en ESP8266-projecten.",
-      keywords: ["arduino", "ide", "esp8266", "wemos", "d1 mini", "tutorial"]
-    },
-    {
-      title: "DIY-projecten",
-      url: "diy.html",
-      description: "Zelf slimme projecten bouwen in plaats van alleen kopen.",
-      keywords: ["diy", "project", "bouwen", "sensor", "zelf maken"]
-    },
-    {
-      title: "Tutorials",
-      url: "tutorials.html",
-      description: "Stap-voor-stap uitleg voor praktische smart-home onderwerpen.",
-      keywords: ["tutorial", "tutorials", "uitleg", "stappenplan"]
-    },
-    {
-      title: "Reviews",
-      url: "reviews.html",
-      description: "Eerlijke beoordelingen van slimme producten en systemen.",
-      keywords: ["review", "reviews", "ervaring", "beoordeling"]
-    }
-  ];
+const pages = [
+  { title:"Homey uitleg", url:"/homey.html", keywords:["homey"] },
+  { title:"DIY projecten", url:"/diy.html", keywords:["diy","bouwen"] },
+  { title:"Tutorials", url:"/tutorials.html", keywords:["tutorial"] }
+];
 
-  const searchInput = document.getElementById("siteSearchInput");
-  const searchButton = document.getElementById("siteSearchButton");
-  const searchResults = document.getElementById("searchResults");
-  const searchResultsList = document.getElementById("searchResultsList");
+const input = document.getElementById("siteSearchInput");
+const results = document.getElementById("searchResults");
+const list = document.getElementById("searchResultsList");
 
-  function scorePage(query, page) {
-    const q = query.toLowerCase().trim();
-    if (!q) return 0;
+input.addEventListener("input", e => {
+  const q = e.target.value.toLowerCase();
 
-    let score = 0;
-    const title = page.title.toLowerCase();
+  const matches = pages.filter(p =>
+    p.title.toLowerCase().includes(q) ||
+    p.keywords.some(k => k.includes(q))
+  );
 
-    if (title.includes(q)) score += 6;
-
-    page.keywords.forEach(keyword => {
-      const k = keyword.toLowerCase();
-      if (k === q) score += 6;
-      if (k.includes(q) || q.includes(k)) score += 3;
-      if (q.split(" ").some(word => word.length > 2 && k.includes(word))) score += 1;
-    });
-
-    return score;
+  if (!q) {
+    results.classList.remove("active");
+    return;
   }
 
-  function renderResults(query) {
-    const q = query.toLowerCase().trim();
+  results.classList.add("active");
 
-    if (!q) {
-      searchResults.classList.remove("active");
-      searchResultsList.innerHTML = "";
-      searchButton.href = "homey.html";
-      return;
-    }
-
-    const results = searchablePages
-      .map(page => ({ ...page, score: scorePage(q, page) }))
-      .filter(page => page.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
-
-    if (results.length === 0) {
-      searchResults.classList.add("active");
-      searchResultsList.innerHTML = `
-        <div class="error-link-card">
-          <strong>Geen directe match gevonden</strong>
-          <span class="muted result-meta">Probeer een bredere term zoals Homey, Bridge, Pro, tutorial, Matter, Thread of sensor.</span>
-        </div>
-      `;
-      searchButton.href = "homey.html";
-      return;
-    }
-
-    searchResults.classList.add("active");
-    searchResultsList.innerHTML = results.map(result => `
-      <a class="error-link-card" href="${result.url}">
-        <strong>${result.title}</strong>
-        <span class="muted result-meta">${result.description}</span>
-      </a>
-    `).join("");
-
-    searchButton.href = results[0].url;
-  }
-
-  searchInput.addEventListener("input", (e) => renderResults(e.target.value));
-
-  searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const firstResult = searchResultsList.querySelector("a");
-      if (firstResult) {
-        window.location.href = firstResult.href;
-      } else {
-        window.location.href = searchButton.href;
-      }
-    }
-  });
-
-  searchButton.addEventListener("click", (e) => {
-    if (!searchInput.value.trim()) return;
-    const firstResult = searchResultsList.querySelector("a");
-    if (firstResult) {
-      e.preventDefault();
-      window.location.href = firstResult.href;
-    }
-  });
+  list.innerHTML = matches.map(m =>
+    `<a href="${m.url}">${m.title}</a>`
+  ).join("");
+});
 </script>
 
 </body>
