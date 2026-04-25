@@ -203,14 +203,14 @@
 <h3>1. Sluit de sensoren aan</h3>
 <p>De vernieuwde code gebruikt andere pinnen dan de oudere versie, dus controleer de aansluitingen goed. Vooral de MH-Z19 wordt nu via seriële communicatie uitgelezen in plaats van via PWM. De pinverdeling ziet er als volgt uit:</p>
 <ul>
-<li><strong>MH-Z19 RX</strong><strong>D2</strong></li>
-<li><strong>MH-Z19 TX</strong><strong>D1</strong></li>
-<li><strong>DHT11 data</strong><strong>D5</strong></li>
-<li><strong>LDR</strong><strong>A0</strong></li>
+<li><strong>MH-Z19 RX</strong>  <strong>D2</strong></li>
+<li><strong>MH-Z19 TX</strong>  <strong>D1</strong></li>
+<li><strong>DHT11 data</strong>  <strong>D5</strong></li>
+<li><strong>LDR</strong>  <strong>A0</strong></li>
 </ul>
 <p>Zorg daarnaast uiteraard voor de juiste voeding en een gedeelde GND. Dat klinkt logisch, maar juist daar gaat het bij zelfbouwprojecten nog weleens mis.</p>
 <figure>
-<img alt="Aansluitschema van de CO₂ multi-sensor op de Wemos D1 Mini" src="assets/placeholder-co2-multisensor-schema.jpg"/>
+<img alt="Aansluitschema van de CO₂ multi-sensor op de Wemos D1 Mini" src="assets/artikel/Wemos_D1_Multi-sensor.png"/>
 <figcaption class="muted small">Plaatsaanduiding voor het definitieve aansluitschema van de CO₂ multi-sensor met MH-Z19, DHT11 en LDR.</figcaption>
 </figure>
 <h3>2. Bereid de software voor</h3>
@@ -829,8 +829,8 @@ void loop() {
 <h3>5. Koppel de sensor aan Homey</h3>
 <p>Voeg de sensor daarna toe via Homeyduino. Zodra de koppeling gelukt is, zie je in Homey de capabilities voor CO₂, temperatuur, luchtvochtigheid en licht. Omdat de code alleen publiceert bij duidelijke veranderingen of via een heartbeat, houd je het systeem netjes en voorkom je een overdaad aan updates.</p>
 <figure>
-<img alt="Placeholder voor de CO₂ multi-sensor zichtbaar in Homey" src="assets/placeholder-co2-multisensor-homey.jpg"/>
-<figcaption class="muted small">Plaatsaanduiding voor een screenshot van de sensor of de meetwaarden in Homey.</figcaption>
+<img alt="Placeholder voor de CO₂ multi-sensor zichtbaar in Homey" src="assets/artikel/multi-sensor-uitleesbaar-homey.jpg"/>
+<figcaption class="muted small">De meetwaarden van de sensoren zichtbaar in Homey.</figcaption>
 </figure>
 <h2 id="integratie">Integratie met Homey</h2>
 <p>De koppeling met Homey doet hier meer dan alleen wat cijfers tonen. De code registreert vier capabilities en probeert gemiste updates opnieuw te synchroniseren zodra de wifi terugkomt. Dat maakt deze sensor ook in dagelijks gebruik een stuk bruikbaarder.</p>
@@ -840,10 +840,7 @@ void loop() {
 <li>inzichten in temperatuur en luchtvochtigheid per ruimte</li>
 <li>een lichtwaarde als extra voorwaarde voor andere slimme flows</li>
 </ul>
-<figure>
-<img alt="Placeholder voor een Homey-flow op basis van CO₂-waarden" src="assets/placeholder-co2-multisensor-flow.jpg"/>
-<figcaption class="muted small">Plaatsaanduiding voor een voorbeeldflow die reageert op veranderingen in CO₂ of licht.</figcaption>
-</figure>
+
 <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
 <p>Deze sensor komt vooral tot zijn recht in ruimtes waar je langere tijd verblijft, zoals de woonkamer, slaapkamer of thuiswerkplek. Juist daar levert de combinatie van CO₂, temperatuur en luchtvochtigheid vaak meteen bruikbare inzichten op.</p>
 <figure>
@@ -874,7 +871,7 @@ void loop() {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerde projecten</h3>
-<div class="footer-links"><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a><a href="slimme-co2-sensor-homeyduino.html">Bouw je eigen slimme CO₂ sensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen bewegingssensor met Homeyduino</a></div>
+<div class="footer-links"><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- of raamsensor met Homeyduino</a><a href="slimme-co2-sensor-homeyduino.html">Bouw je eigen slimme CO₂ sensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen bewegingssensor met Homeyduino</a></div>
 </div>
 </aside>
 </div>

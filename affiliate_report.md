@@ -29,7 +29,7 @@ Totaal gescande artikelen: 30
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
-## deur-raamsensor-homeyduino.html
+## homeyduino-deur-en-raamsensor.html
 - Titel: Bouw je eigen deur- of raamsensor met Homeyduino | huisvanvandaag.nl
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden

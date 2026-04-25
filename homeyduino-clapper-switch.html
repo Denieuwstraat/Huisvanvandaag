@@ -508,7 +508,7 @@ void syncAlarmStateIfDirty() {
 <h3>5. Test de detectie via de seriële monitor</h3>
 <p>Open daarna de seriële monitor op <strong>115200 baud</strong>. Klap twee keer achter elkaar en controleer of je in de output ziet dat er twee geldige klappen worden geregistreerd en dat daarna de status wordt omgezet. Test ook bewust met losse tikken, achtergrondgeluid of drie snelle klappen, zodat je goed ziet hoe streng de detectie in jouw ruimte staat afgesteld.</p>
 <figure>
-<img alt="Voorbeeld van seriële monitor-output bij een werkende clapper-switch" src="assets/artikel/clapper-serial-monitor.jpg"/>
+<img alt="Voorbeeld van seriële monitor-output bij een werkende clapper-switch" src="assets\artikel\clapper-serial-monitor.jpg"/>
 <figcaption class="muted small">
             De seriële monitor is hier extra handig, omdat je direct ziet of geluid als echte klap of juist als ruis wordt beoordeeld.
           </figcaption>
@@ -523,9 +523,9 @@ void syncAlarmStateIfDirty() {
 </ul>
 <p>Doordat de code de laatste status lokaal bewaart wanneer wifi tijdelijk uitvalt, blijft het project ook bruikbaar in een situatie waarin je netwerk niet altijd perfect stabiel is.</p>
 <figure>
-<img alt="Voorbeeld van een Homey-flow die reageert op de alarm_generic status van de clapper" src="assets/clapper-homey-flow.png"/>
+<img alt="Voorbeeld van een Homey-flow die reageert op de alarm_generic status van de clapper" src="assets/artikel/clapper-homey-flow.png"/>
 <figcaption class="muted small">
-            Door <strong>alarm_generic</strong> te gebruiken, neem je de Clapper in Homey op alsof het een gewone sensorstatus is.
+            Door <strong>alarm_generic</strong> te gebruiken, neem je de Clapper in Homey op alsof het een gewone sensorstatus is. Zelf heb ik het eerste getest doormiddel van het sturen van meldingen naar mijn telefoon. En wanneer dit na behoren werkt, pas om flows of verlichting in te schakelen.
           </figcaption>
 </figure>
 <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
@@ -561,7 +561,7 @@ void syncAlarmStateIfDirty() {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="deur-raamsensor-homeyduino.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
+<div class="footer-links"><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
 </div>
 </aside>
 </div>
