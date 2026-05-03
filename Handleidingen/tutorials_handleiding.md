@@ -76,8 +76,7 @@ Controleer:
 → Voeg deze toe in tutorials.html
 
 ### ❌ Verkeerde artikelen worden meegenomen
-→ Detectie kan aangescherpt worden (vraag ChatGPT 😉)
-
+→ Detectie kan aangescherpt worden 
 ---
 
 ## Tips

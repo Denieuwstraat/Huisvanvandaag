@@ -358,20 +358,16 @@ def render_cards(articles: list[DiyArticle]) -> str:
         lines.append(card)
     return "\n".join(lines)
 
-
 def replace_between_markers(content: str, replacement: str) -> str:
     pattern = re.compile(
-        rf"({re.escape(START_MARKER)})(.*)({re.escape(END_MARKER)})",
-        flags=re.DOTALL,
+        r"(<!-- AUTO-GENERATED-DIY-CARDS:START -->)(.*?)(<!-- AUTO-GENERATED-DIY-CARDS:END -->)",
+        re.DOTALL,
     )
-    if not pattern.search(content):
-        raise ValueError(
-            "Markers niet gevonden in diy.html. Voeg deze toe:\n"
-            f"{START_MARKER}\n"
-            f"{END_MARKER}"
-        )
-    return pattern.sub(rf"\1\n{replacement}\n          \3", content, count=1)
 
+    def safe_replace(match: re.Match) -> str:
+        return f"{match.group(1)}\n{replacement}\n          {match.group(3)}"
+
+    return pattern.sub(safe_replace, content, count=1)
 
 def build_index(root: Path, output: Path, write: bool, include_drafts: bool) -> int:
     articles: list[DiyArticle] = []

@@ -237,8 +237,8 @@
 // Configuratie
 // =========================
 namespace Config {
-  constexpr const char* WIFI_SSID = &quot;SSID&quot;;
-  constexpr const char* WIFI_PASSWORD = &quot;PASSWORD&quot;;
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
 
   // Pins
   constexpr uint8_t DHT_PIN = D5;
@@ -259,12 +259,12 @@ namespace Config {
   constexpr float LDR_EMA_ALPHA = 0.15f;
 
   // Homey
-  constexpr const char* HOMEY_DEVICE_NAME = &quot;Multisensor&quot;;
-  constexpr const char* HOMEY_DEVICE_CLASS = &quot;sensor&quot;;
+  constexpr const char* HOMEY_DEVICE_NAME = "Multisensor";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
 
-  constexpr const char* CAPABILITY_TEMPERATURE = &quot;measure_temperature&quot;;
-  constexpr const char* CAPABILITY_HUMIDITY = &quot;measure_humidity&quot;;
-  constexpr const char* CAPABILITY_LUMINANCE = &quot;measure_luminance&quot;;
+  constexpr const char* CAPABILITY_TEMPERATURE = "measure_temperature";
+  constexpr const char* CAPABILITY_HUMIDITY = "measure_humidity";
+  constexpr const char* CAPABILITY_LUMINANCE = "measure_luminance";
 }
 
 // =========================
@@ -290,24 +290,24 @@ namespace WifiModule {
     WiFi.mode(WIFI_STA);
     WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
 
-    Serial.print(F(&quot;Verbinden met WiFi...&quot;));
+    Serial.print(F("Verbinden met WiFi..."));
 
     const unsigned long startAttemptTime = millis();
 
     while (WiFi.status() != WL_CONNECTED &amp;&amp;
            millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
       delay(500);
-      Serial.print(F(&quot;.&quot;));
+      Serial.print(F("."));
     }
 
     Serial.println();
 
     if (WiFi.status() == WL_CONNECTED) {
-      Serial.print(F(&quot;[SUCCES] Verbonden! IP-adres: &quot;));
+      Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
       Serial.println(WiFi.localIP());
       state.wasConnected = true;
     } else {
-      Serial.println(F(&quot;[WIFI] Timeout bereikt. Sensor start zonder wifi.&quot;));
+      Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
       state.wasConnected = false;
     }
   }
@@ -320,16 +320,16 @@ namespace WifiModule {
     state.lastCheckAt = currentMillis;
     state.reconnectedEvent = false;
 
-    DBG_PRINT(F(&quot;[DEBUG] WiFi status: &quot;));
+    DBG_PRINT(F("[DEBUG] WiFi status: "));
     DBG_PRINT(WiFi.status());
-    DBG_PRINT(F(&quot; | IP: &quot;));
+    DBG_PRINT(F(" | IP: "));
     DBG_PRINTLN(WiFi.localIP());
 
     const wl_status_t wifiStatus = WiFi.status();
 
     if (wifiStatus == WL_CONNECTED) {
       if (!state.wasConnected) {
-        Serial.print(F(&quot;[WIFI] Opnieuw verbonden! IP-adres: &quot;));
+        Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
         Serial.println(WiFi.localIP());
         state.wasConnected = true;
         state.reconnectedEvent = true;
@@ -338,10 +338,10 @@ namespace WifiModule {
     }
 
     if (state.wasConnected) {
-      Serial.println(F(&quot;[WIFI] Verbinding kwijt. Herstellen...&quot;));
+      Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
       state.wasConnected = false;
     } else {
-      Serial.println(F(&quot;[WIFI] Nog niet verbonden. Nieuwe poging...&quot;));
+      Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
     }
 
     WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
@@ -386,7 +386,7 @@ namespace ClimateModule {
 
     const int err = sensor.read(Config::DHT_PIN, &amp;temperature, &amp;humidity, NULL);
     if (err != SimpleDHTErrSuccess) {
-      Serial.print(F(&quot;[FOUT] DHT11 uitlezen mislukt, err=&quot;));
+      Serial.print(F("[FOUT] DHT11 uitlezen mislukt, err="));
       Serial.println(err);
       return false;
     }
@@ -403,11 +403,11 @@ namespace ClimateModule {
   }
 
   void logReading(const Reading&amp; reading) {
-    DBG_PRINT(F(&quot;Klimaat: &quot;));
+    DBG_PRINT(F("Klimaat: "));
     DBG_PRINT(reading.temperature);
-    DBG_PRINT(F(&quot; C | &quot;));
+    DBG_PRINT(F(" C | "));
     DBG_PRINT(reading.humidity);
-    DBG_PRINTLN(F(&quot; % vochtigheid&quot;));
+    DBG_PRINTLN(F(" % vochtigheid"));
   }
 
   bool shouldPublish(const Reading&amp; reading, unsigned long currentMillis) {
@@ -452,7 +452,7 @@ namespace ClimateModule {
 
     if (!canPublishToHomey()) {
       state.dirty = true;
-      Serial.println(F(&quot;[WAARSCHUWING] Klimaatstatus lokaal bijgewerkt, nog niet naar Homey gestuurd.&quot;));
+      Serial.println(F("[WAARSCHUWING] Klimaatstatus lokaal bijgewerkt, nog niet naar Homey gestuurd."));
       return;
     }
 
@@ -464,7 +464,7 @@ namespace ClimateModule {
     state.hasPublished = true;
     state.dirty = false;
 
-    Serial.println(F(&quot;[HOMEY] Klimaatgegevens succesvol bijgewerkt.&quot;));
+    Serial.println(F("[HOMEY] Klimaatgegevens succesvol bijgewerkt."));
   }
 
   void syncIfDirty(unsigned long currentMillis) {
@@ -472,7 +472,7 @@ namespace ClimateModule {
       return;
     }
 
-    Serial.println(F(&quot;[HOMEY] Laatste klimaatstatus synchroniseren...&quot;));
+    Serial.println(F("[HOMEY] Laatste klimaatstatus synchroniseren..."));
     publishLatest(currentMillis);
   }
 
@@ -489,7 +489,7 @@ namespace ClimateModule {
     }
 
     if (!isValid(reading)) {
-      Serial.println(F(&quot;[FOUT] Ongeldige klimaatwaarde ontvangen.&quot;));
+      Serial.println(F("[FOUT] Ongeldige klimaatwaarde ontvangen."));
       return;
     }
 
@@ -558,9 +558,9 @@ namespace LuminanceModule {
   }
 
   void logReading() {
-    DBG_PRINT(F(&quot;[DEBUG] LDR raw=&quot;));
+    DBG_PRINT(F("[DEBUG] LDR raw="));
     DBG_PRINT(state.rawValue);
-    DBG_PRINT(F(&quot; | filtered=&quot;));
+    DBG_PRINT(F(" | filtered="));
     DBG_PRINTLN(state.currentLuminance);
   }
 
@@ -582,7 +582,7 @@ namespace LuminanceModule {
 
     if (!canPublishToHomey()) {
       state.dirty = true;
-      Serial.println(F(&quot;[WAARSCHUWING] Luminance lokaal bijgewerkt, nog niet naar Homey gestuurd.&quot;));
+      Serial.println(F("[WAARSCHUWING] Luminance lokaal bijgewerkt, nog niet naar Homey gestuurd."));
       return;
     }
 
@@ -595,7 +595,7 @@ namespace LuminanceModule {
     state.hasPublished = true;
     state.dirty = false;
 
-    Serial.println(F(&quot;[HOMEY] Luminance succesvol bijgewerkt.&quot;));
+    Serial.println(F("[HOMEY] Luminance succesvol bijgewerkt."));
   }
 
   void syncIfDirty(unsigned long currentMillis) {
@@ -603,7 +603,7 @@ namespace LuminanceModule {
       return;
     }
 
-    Serial.println(F(&quot;[HOMEY] Laatste luminance synchroniseren...&quot;));
+    Serial.println(F("[HOMEY] Laatste luminance synchroniseren..."));
     publishLatest(currentMillis);
   }
 
@@ -642,7 +642,7 @@ void initializeHomey() {
 void setup() {
   Serial.begin(115200);
   Serial.println();
-  Serial.println(F(&quot;--- Multisensor: DHT11 + LDR Luminance ---&quot;));
+  Serial.println(F("--- Multisensor: DHT11 + LDR Luminance ---"));
 
   ClimateModule::begin();
   LuminanceModule::begin();
@@ -724,7 +724,7 @@ void loop() {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- of raamsensor met Homeyduino</a></div>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="homeyduino-dht11-sensor.html">Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a></div>
 </div>
 </aside>
 </div>

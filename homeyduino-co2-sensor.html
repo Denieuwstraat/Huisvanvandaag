@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="nl">
 <head>
 <meta charset="utf-8"/>
@@ -178,7 +179,6 @@
 <p>
             Met dit project bouw je zelf een compacte CO₂ sensor op basis van de MH-Z19B en een Wemos D1 Mini. De sensor leest iedere vijf seconden de actuele waarde uit, toont die via de seriële monitor en publiceert alleen naar Homey wanneer dat echt zinvol is. Dat houdt je flows netjes, beperkt onnodige updates en maakt deze versie van de sketch technisch een stuk slimmer dan een simpele “alles altijd versturen”-aanpak.
           </p>
-
 <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
 <p>Je bouwt een slimme CO₂ sensor die via UART communiceert met de MH-Z19B en zijn metingen doorstuurt naar Homey met behulp van Homeyduino.</p>
 <ul>
@@ -190,7 +190,6 @@
 <p>
             Het resultaat is een betaalbare sensor die niet alleen inzicht geeft in de luchtkwaliteit, maar ook direct bruikbaar is in Homey flows. Denk aan meldingen bij slechte luchtkwaliteit of het automatisch opschakelen van mechanische ventilatie.
           </p>
-
 <h2 id="benodigdheden">Benodigdheden</h2>
 <ul>
 <li>Wemos D1 Mini of vergelijkbare ESP8266-board</li>
@@ -200,7 +199,6 @@
 <li>Homey met de Homeyduino-app geïnstalleerd</li>
 <li>Arduino IDE op je computer</li>
 </ul>
-
 <!-- AFFILIATE_AUTO_BLOCK_START -->
 <section aria-label="Aanbevolen producten" class="affiliate-auto-block">
 <h3>Handige links bij dit project</h3>
@@ -216,9 +214,7 @@
           </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
 <div id="affiliate-benodigdheden-co2"></div>
-
 <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
-
 <h3>1. Installeer Arduino IDE en voeg ESP8266 board support toe</h3>
 <p>
             De Wemos D1 Mini is gebaseerd op de ESP8266. Dat betekent dat Arduino IDE eerst moet weten hoe het met dit board moet omgaan. Is dat nog niet goed ingesteld, dan loop je al snel tegen foutmeldingen aan zoals <code>ESP8266WiFi.h: No such file or directory</code>.
@@ -242,7 +238,6 @@
 <strong>Veelgemaakte fout</strong><br/>
             Heb je per ongeluk een ESP32-board of Arduino Uno geselecteerd, dan krijg je foutmeldingen die op het eerste gezicht op je code lijken te wijzen, terwijl de oorzaak simpelweg de verkeerde boardkeuze is.
           </div>
-
 <h3>2. Installeer de juiste libraries in Arduino IDE</h3>
 <p>
             Deze sketch gebruikt de libraries <strong>MH-Z19</strong> en <strong>Homeyduino</strong>. Werk bij voorkeur met één juiste versie per library, zodat Arduino IDE niet per ongeluk een verouderde of dubbele installatie kiest.
@@ -264,7 +259,6 @@
 <p>
             Gebruik je bijvoorbeeld <code>&lt;WiFi.h&gt;</code> in plaats van <code>&lt;ESP8266WiFi.h&gt;</code>, dan zit je in de praktijk in ESP32-land en gaat het project niet goed compileren.
           </p>
-
 <h3>3. Sluit de sensor correct aan via UART</h3>
 <p>
             In deze versie lezen we de MH-Z19B uit via UART. Daarbij is één regel echt belangrijk: <strong>TX en RX worden gekruist aangesloten</strong>. De zender van het ene apparaat gaat dus naar de ontvanger van het andere apparaat.
@@ -316,7 +310,6 @@ constexpr uint8_t MH_Z19_TX_PIN = D1;</code></pre>
               Let bij UART vooral op dat TX en RX gekruist worden aangesloten.
             </figcaption>
 </figure>
-
 <h3>4. Upload de code</h3>
 <p>
             Vul in de configuratie je eigen wifi-gegevens in en upload daarna de sketch naar je Wemos D1 Mini. Deze versie is overzichtelijker opgezet dan een eenvoudige testsketch, doordat de code werkt met een aparte configuratie-namespace, gescheiden functies en een eigen state-model.
@@ -338,7 +331,6 @@ constexpr uint8_t MH_Z19_TX_PIN = D1;</code></pre>
 <li>je wifi-gegevens zijn ingevuld</li>
 <li>de juiste MH-Z19 library is geïnstalleerd</li>
 </ul>
-
 <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
 #include &lt;MHZ19.h&gt;
@@ -529,7 +521,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 
   Serial.println(F("[HOMEY] Data succesvol verstuurd."));
 }</code></pre>
-
 <h3>5. Test de sensor via de seriële monitor</h3>
 <p>
             Open in Arduino IDE de seriële monitor via <strong>Tools → Serial Monitor</strong>. Na het opstarten kan de MH-Z19B in het begin nog even 0 of een ongeldige waarde teruggeven. Dat is normaal. De sensor heeft doorgaans een paar minuten nodig om stabiel te worden.
@@ -555,7 +546,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
               In de seriële monitor zie je snel of de sensor correct communiceert en bruikbare waarden teruggeeft.
             </figcaption>
 </figure>
-
 <h3>6. Voeg de sensor toe in Homey</h3>
 <p>
             Zodra de code draait en de Wemos met je netwerk verbonden is, kun je het apparaat via de Homeyduino-app in Homey toevoegen. Daarna verschijnt de sensor als apparaat met in ieder geval de capabilities <code>measure_co2</code> en <code>measure_temperature</code>.
@@ -567,7 +557,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 <li>de sensor volgen via Homey Insights</li>
 <li>de temperatuurwaarde als extra diagnose laten meelopen</li>
 </ul>
-
 <h2 id="integratie">Integratie met Homey</h2>
 <p>
             Juist de koppeling met Homey maakt dit project extra interessant. Het blijft dan niet bij een leuk elektronica-experiment, maar wordt een praktisch onderdeel van je slimme huis. Homey kan de CO₂-waarde immers gebruiken als trigger voor flows, notificaties of de aansturing van andere apparaten.
@@ -581,7 +570,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
               Eenmaal gekoppeld aan Homey kun je de CO₂-waarden en temperatuur volgen en gebruiken in flows.
             </figcaption>
 </figure>
-
 <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
 <p>
             In de praktijk is deze sensor vooral interessant in ruimtes waar mensen langere tijd aanwezig zijn, zoals de woonkamer, werkkamer of slaapkamer. Zeker in goed geïsoleerde huizen kan de luchtkwaliteit ongemerkt achteruitgaan terwijl je daar zelf pas laat iets van merkt.
@@ -601,7 +589,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
               Een praktisch voorbeeld: Homey laat je ventilatie reageren op de gemeten CO₂-waarde.
             </figcaption>
 </figure>
-
 <h2 id="aandachtspunten">Aandachtspunten</h2>
 <ul>
 <li>De MH-Z19B werkt op <strong>5V</strong> en niet op 3.3V.</li>
@@ -611,7 +598,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 <li>De sketch controleert wifi periodiek, dus herstel van de verbinding gebeurt niet elke seconde maar volgens het ingestelde interval.</li>
 <li>Bij communicatieproblemen is het altijd slim om als eerste te controleren of TX en RX gekruist zijn aangesloten.</li>
 </ul>
-
 <h2 id="conclusie">Conclusie</h2>
 <p>
             Met deze versie bouw je een slimme CO₂ sensor die niet alleen netjes via UART uitleest, maar ook veel volwassener met wifi, timing en publicaties omgaat. Je leest iedere vijf seconden uit, filtert ongeldige metingen weg en stuurt alleen relevante wijzigingen naar Homey. Dat maakt het project niet alleen betaalbaar en leerzaam, maar ook gewoon prettig bruikbaar in het dagelijks leven.
@@ -623,7 +609,6 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
             Enthousiast geworden? Bestel je onderdelen, bouw je eigen CO₂ sensor en laat Homey voortaan automatisch een seintje geven zodra het tijd is om te ventileren.
           </p>
 </article>
-
 <aside class="side-stack">
 <div class="toc">
 <h3>In dit artikel</h3>
@@ -637,7 +622,7 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="multi-sensor-homeyduino.html">Bouw je eigen slimme CO₂ sensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-ldr-lichtsensor.html">Maak je eigen slimme lichtsensor schakelaar (LDR + Homeyduino)</a></div>
+<div class="footer-links"><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="homeyduino-dht11-sensor.html">Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows</a></div>
 </div>
 </aside>
 </div>

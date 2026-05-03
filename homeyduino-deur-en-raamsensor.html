@@ -148,8 +148,8 @@
 // Configuratie
 // =========================
 namespace Config {
-  constexpr const char* WIFI_SSID = &quot;&lt;SSID&gt;&quot;;
-  constexpr const char* WIFI_PASSWORD = &quot;&lt;PASSWORD&gt;&quot;;
+  constexpr const char* WIFI_SSID = "&lt;SSID&gt;";
+  constexpr const char* WIFI_PASSWORD = "&lt;PASSWORD&gt;";
 
   constexpr uint8_t DOOR_SENSOR_PIN = D2;
   constexpr uint8_t DOOR_OPEN_PIN_STATE = HIGH;
@@ -164,9 +164,9 @@ namespace Config {
   constexpr unsigned long HOMEY_STALE_TIMEOUT_MS = 300000;
   constexpr unsigned long FAILSAFE_RESTART_COOLDOWN_MS = 900000;
 
-  constexpr const char* HOMEY_DEVICE_NAME = &quot;Keuken deursensor&quot;;
-  constexpr const char* HOMEY_DEVICE_CLASS = &quot;sensor&quot;;
-  constexpr const char* CAPABILITY_CONTACT = &quot;alarm_contact&quot;;
+  constexpr const char* HOMEY_DEVICE_NAME = "Keuken deursensor";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+  constexpr const char* CAPABILITY_CONTACT = "alarm_contact";
 }
 
 // =========================
@@ -235,7 +235,7 @@ void syncDoorStateIfDirty(unsigned long currentMillis);
 void setup() {
   Serial.begin(115200);
   Serial.println();
-  Serial.println(F(&quot;--- Deursensor Systeem Gestart ---&quot;));
+  Serial.println(F("--- Deursensor Systeem Gestart ---"));
 
   pinMode(Config::DOOR_SENSOR_PIN, INPUT_PULLUP);
 
@@ -277,24 +277,24 @@ void loop() {
 void connectToWifiWithTimeout() {
   WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
 
-  Serial.print(F(&quot;Verbinden met WiFi...&quot;));
+  Serial.print(F("Verbinden met WiFi..."));
 
   const unsigned long startAttemptTime = millis();
 
   while (WiFi.status() != WL_CONNECTED &amp;&amp;
          millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
     delay(500);
-    Serial.print(F(&quot;.&quot;));
+    Serial.print(F("."));
   }
 
   Serial.println();
 
   if (WiFi.status() == WL_CONNECTED) {
-    Serial.print(F(&quot;[SUCCES] Verbonden! IP-adres: &quot;));
+    Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
     Serial.println(WiFi.localIP());
     wifiState.wasConnected = true;
   } else {
-    Serial.println(F(&quot;[WIFI] Timeout bereikt. Sensor start zonder wifi.&quot;));
+    Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
     wifiState.wasConnected = false;
   }
 }
@@ -307,16 +307,16 @@ void maintainWifi(unsigned long currentMillis) {
   wifiState.lastWifiCheckAt = currentMillis;
   wifiState.reconnectedEvent = false;
 
-  DBG_PRINT(F(&quot;[DEBUG] WiFi status: &quot;));
+  DBG_PRINT(F("[DEBUG] WiFi status: "));
   DBG_PRINT(WiFi.status());
-  DBG_PRINT(F(&quot; | IP: &quot;));
+  DBG_PRINT(F(" | IP: "));
   DBG_PRINTLN(WiFi.localIP());
 
   const wl_status_t status = WiFi.status();
 
   if (status == WL_CONNECTED) {
     if (!wifiState.wasConnected) {
-      Serial.print(F(&quot;[WIFI] Opnieuw verbonden! IP-adres: &quot;));
+      Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
       Serial.println(WiFi.localIP());
       wifiState.wasConnected = true;
       wifiState.reconnectedEvent = true;
@@ -326,12 +326,12 @@ void maintainWifi(unsigned long currentMillis) {
   }
 
   if (wifiState.wasConnected) {
-    Serial.println(F(&quot;[WIFI] Verbinding kwijt. Herstellen...&quot;));
+    Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
     wifiState.wasConnected = false;
     homeyState.initialized = false;
     requestHomeyReinitialize();
   } else {
-    Serial.println(F(&quot;[WIFI] Nog niet verbonden. Nieuwe poging...&quot;));
+    Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
   }
 
   WiFi.disconnect();
@@ -361,7 +361,7 @@ void initializeHomey(unsigned long currentMillis) {
   homeyState.lastInitAt = currentMillis;
   markHomeyActivity(currentMillis);
 
-  Serial.println(F(&quot;[HOMEY] Homey geïnitialiseerd.&quot;));
+  Serial.println(F("[HOMEY] Homey geïnitialiseerd."));
 }
 
 void requestHomeyReinitialize() {
@@ -406,7 +406,7 @@ void runFailsafeRestartCheck(unsigned long currentMillis) {
       (currentMillis - homeyState.lastRestartAt) &gt;= Config::FAILSAFE_RESTART_COOLDOWN_MS;
 
   if (homeyLooksStale &amp;&amp; restartCooldownPassed) {
-    Serial.println(F(&quot;[FAILSAFE] Te lang geen Homey-activiteit. Herstart ESP...&quot;));
+    Serial.println(F("[FAILSAFE] Te lang geen Homey-activiteit. Herstart ESP..."));
     homeyState.lastRestartAt = currentMillis;
     delay(250);
     ESP.restart();
@@ -426,7 +426,7 @@ void processDoorSensor(unsigned long currentMillis) {
   const int currentRawPinState = digitalRead(Config::DOOR_SENSOR_PIN);
 
   if (currentRawPinState != doorState.lastRawDoorPinState) {
-    DBG_PRINT(F(&quot;[DEBUG] Raw pin state gewijzigd naar: &quot;));
+    DBG_PRINT(F("[DEBUG] Raw pin state gewijzigd naar: "));
     DBG_PRINTLN(currentRawPinState);
   }
 
@@ -466,8 +466,8 @@ void initializeDoorState(int currentRawPinState, unsigned long currentMillis) {
 
   const bool isOpen = isDoorOpenFromPinState(currentRawPinState);
 
-  Serial.print(F(&quot;[INIT] Deurstatus bij opstart: &quot;));
-  Serial.println(isOpen ? F(&quot;OPEN&quot;) : F(&quot;DICHT&quot;));
+  Serial.print(F("[INIT] Deurstatus bij opstart: "));
+  Serial.println(isOpen ? F("OPEN") : F("DICHT"));
 
   markDoorState(isOpen);
 
@@ -481,8 +481,8 @@ void handleStableDoorStateChange(int newPinState, unsigned long currentMillis) {
 
   const bool isOpen = isDoorOpenFromPinState(newPinState);
 
-  Serial.print(F(&quot;[EVENT] Deur is nu: &quot;));
-  Serial.println(isOpen ? F(&quot;OPEN&quot;) : F(&quot;DICHT&quot;));
+  Serial.print(F("[EVENT] Deur is nu: "));
+  Serial.println(isOpen ? F("OPEN") : F("DICHT"));
 
   markDoorState(isOpen);
 
@@ -531,7 +531,7 @@ void publishLatestDoorStateToHomey(unsigned long currentMillis) {
 
   if (!canPublishToHomey()) {
     doorState.dirty = true;
-    Serial.println(F(&quot;[WAARSCHUWING] Laatste deurstatus lokaal bewaard (Geen WiFi/Homey).&quot;));
+    Serial.println(F("[WAARSCHUWING] Laatste deurstatus lokaal bewaard (Geen WiFi/Homey)."));
     return;
   }
 
@@ -544,7 +544,7 @@ void publishLatestDoorStateToHomey(unsigned long currentMillis) {
 
   markHomeyActivity(currentMillis);
 
-  Serial.println(F(&quot;[HOMEY] Deurstatus succesvol bijgewerkt.&quot;));
+  Serial.println(F("[HOMEY] Deurstatus succesvol bijgewerkt."));
 }
 
 void syncDoorStateIfDirty(unsigned long currentMillis) {
@@ -556,7 +556,7 @@ void syncDoorStateIfDirty(unsigned long currentMillis) {
     return;
   }
 
-  Serial.println(F(&quot;[HOMEY] Laatste deurstatus synchroniseren...&quot;));
+  Serial.println(F("[HOMEY] Laatste deurstatus synchroniseren..."));
   publishLatestDoorStateToHomey(currentMillis);
 }</code></pre>
 <h2 id="testen">Testen via de seriële monitor</h2>
@@ -603,7 +603,7 @@ void syncDoorStateIfDirty(unsigned long currentMillis) {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="wat-is-homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a><a href="multi-sensor-homeyduino.html">Bouw je eigen slimme CO₂ multisensor met Homeyduino</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></div>
+<div class="footer-links"><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></div>
 </div>
 </aside>
 </div>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>HomeyScript: slim sturen op de goedkoopste stroomuren | huisvanvandaag.nl</title>
+<meta content="Haal met HomeyScript de laagste en hoogste stroomprijzen van vandaag en morgen op via de Enever API en gebruik ze direct in je Homey flows." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+  .project-hero-media {
+    margin-top: 1.25rem;
+  }
+
+  .project-hero-media .panel {
+    padding: 1.1rem;
+  }
+
+  .project-hero-media figure,
+  .project-hero-media figcaption {
+    margin: 0;
+  }
+
+  .project-hero-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+  }
+
+  .project-hero-media figcaption {
+    margin-top: .75rem;
+    line-height: 1.5;
+  }
+
+  .project-content-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: 1.4rem;
+    align-items: start;
+  }
+
+  .project-info-panel .check-item {
+    align-items: flex-start;
+  }
+
+  .project-info-panel .check-item strong {
+    display: inline-block;
+    margin-bottom: .15rem;
+  }
+
+  .project-article figure {
+    margin: 1.4rem 0 1.8rem;
+  }
+
+  .project-article figcaption {
+    margin-top: .65rem;
+    line-height: 1.5;
+  }
+
+  .project-article img {
+    border-radius: 18px;
+  }
+
+  .hvandaag-callout {
+    margin: 1.4rem 0;
+    padding: 1.1rem 1.2rem;
+    border-radius: 18px;
+    background: rgba(255, 196, 87, .13);
+    border: 1px solid rgba(255, 196, 87, .35);
+  }
+
+  .hvandaag-callout h3 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 980px) {
+    .project-content-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Stroomprijs script</span>
+</div>
+<span class="eyebrow">Tutorial • HomeyScript • Dynamische energie</span>
+<h1>HomeyScript: laat Homey automatisch de goedkoopste stroomuren vinden</h1>
+<p class="lead muted">
+        Dynamische stroomprijzen zijn mooi, maar pas echt interessant wanneer je huis er ook daadwerkelijk iets mee doet. Met dit HomeyScript haal je de laagste en hoogste stroomprijs van vandaag én morgen op via de Enever API v3. Homey zet de uitkomsten daarna klaar als tags, zodat je ze direct kunt gebruiken in je flows.
+      </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: HomeyScript</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Niveau: Basis / licht gevorderd</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom dit handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Van prijslijst naar slimme actie</strong><br/>
+<span class="muted">Geen handmatig turen naar tabellen, maar direct bruikbare Homey-tags voor je flows.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Vandaag én morgen</strong><br/>
+<span class="muted">Zodra de prijzen van morgen beschikbaar zijn, kan Homey daar alvast op vooruit plannen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Prijs én tijdstip</strong><br/>
+<span class="muted">Je ziet niet alleen wat de goedkoopste en duurste prijs is, maar ook op welk uur dat gebeurt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Netjes opgebouwd</strong><br/>
+<span class="muted">De functies zijn overzichtelijk gescheiden, zodat uitbreiden later een stuk eenvoudiger wordt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Foutje? Geen paniek</strong><br/>
+<span class="muted">Is morgen nog niet beschikbaar, dan blijven de gegevens van vandaag gewoon bruikbaar.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="HomeyScript voor dynamische stroomprijzen in Homey" src="assets/header/homeyscript-stroomprijs-vandaag-morgen-hero.jpg"/>
+<figcaption class="muted small">
+          Van dynamische stroomprijs naar slimme Homey-flow: dit script maakt de goedkoopste en duurste uren direct bruikbaar in je huis.
+        </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+        Wie ooit door een app met dynamische stroomprijzen heeft zitten scrollen, kent het wel. Vandaag is stroom goedkoop om 13:00 uur, morgen misschien midden in de nacht, en op een ander moment betaal je juist de hoofdprijs. Leuk om te weten, maar eerlijk is eerlijk: daar wil je natuurlijk niet iedere dag zelf achteraan.
+      </p>
+<p>
+        En precies daar wordt het interessant. Want als Homey weet wanneer stroom goedkoop of duur is, kun je daar apparaten op laten reageren. Denk aan je boiler, vaatwasser, wasmachine, laadpaal, thuisaccu of een simpele melding op je telefoon. Niet langer zelf nadenken, maar je huis het rekenwerk laten doen. Dat is voor mij precies waar domotica om draait: verschillende apparaten, diensten en gegevens aan elkaar koppelen zodat je huis slimmer wordt dan een verzameling losse apps.
+      </p>
+<div class="hvandaag-callout">
+<h3>Van Huis van de Toekomst naar stroomprijs-flow</h3>
+<p class="muted">
+          Vroeger klonk een huis dat zelf beslissingen nam als toekomstmuziek. Inmiddels kun je met een Homey, een API en een klein script al verrassend ver komen. Dit is geen sciencefiction meer, maar gewoon iets wat je vanavond nog kunt bouwen.
+        </p>
+</div>
+<h2 id="wat-leer-je">Wat gaan we maken?</h2>
+<p>
+        In deze tutorial maken we een HomeyScript dat de stroomprijzen van vandaag en morgen ophaalt via Enever. Vervolgens zoekt het script per dag de laagste en hoogste prijs, bepaalt het bijbehorende uur en slaat het resultaat op als HomeyScript-tags.
+      </p>
+<p>Na het draaien van het script heb je onder andere deze informatie beschikbaar in Homey:</p>
+<ul>
+<li><strong>De laagste stroomprijs van vandaag</strong> inclusief het uur waarop die prijs geldt.</li>
+<li><strong>De hoogste stroomprijs van vandaag</strong> zodat je juist weet wanneer je beter even niets groots start.</li>
+<li><strong>De laagste en hoogste prijs van morgen</strong> zodra deze beschikbaar zijn.</li>
+<li><strong>Tags voor flows en Advanced Flows</strong> zodat je de waardes direct kunt gebruiken.</li>
+</ul>
+<p>
+        Daarmee bouw je een praktische brug tussen dynamische energieprijzen en slimme sturing in huis. Precies het soort koppeling waardoor een Smart Home pas écht slim begint te worden.
+      </p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>
+        Deze tutorial is bedoeld voor Homey-gebruikers met een dynamisch energiecontract, zonnepanelen, een laadpaal, thuisaccu of gewoon een gezonde interesse in besparen. Je hoeft geen doorgewinterde programmeur te zijn, maar het helpt wel wanneer je al eens een HomeyScript hebt geopend en weet hoe je een script vanuit een Flow of Advanced Flow start.
+      </p>
+<p>
+        Ben je nog wat nieuw met Homey? Geen probleem. Zie dit script dan vooral als een mooi opstapje. Eerst kopiëren en werkend krijgen, daarna rustig aanpassen aan je eigen huis.
+      </p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Een werkende Homey-omgeving met HomeyScript.</li>
+<li>Een gratis API-key van Enever.</li>
+<li>Een aanbieder-veld uit de Enever-prijzenfeed, bijvoorbeeld <code>prijsANWB</code>.</li>
+<li>Een Flow of Advanced Flow waarmee je het script periodiek kunt starten.</li>
+<li>Basiskennis van Homey-tags en hoe je die in flows gebruikt.</li>
+</ul>
+<div class="panel" style="margin-top:1.2rem;">
+<h3>Gratis API-sleutel ophalen</h3>
+<p class="muted">
+          Om dit script te laten werken heb je een API-sleutel nodig van Enever. Die sleutel plaats je bovenin het script bij <code>API_KEY</code>.
+        </p>
+<ol style="margin-top:.6rem; padding-left:1.2rem;">
+<li>Ga naar <a href="https://enever.nl/prijzenfeeds/" rel="noopener" target="_blank">www.enever.nl/prijzenfeeds</a>.</li>
+<li>Maak daar een token aan met je e-mailadres.</li>
+<li>Kopieer de ontvangen tekenreeks.</li>
+<li>Vervang <code>API_KEY_NUMBER</code> in het script door je eigen token.</li>
+</ol>
+<p class="muted" style="margin-top:.8rem;">
+          Wil je een andere prijsbron gebruiken dan <code>prijsANWB</code>? Kies dan op de Enever-pagina een ander veld uit de legenda en pas <code>AANBIEDER</code> bovenin het script aan.
+        </p>
+<p class="muted small" style="margin-top:.6rem;">
+          Let op: behandel je API-key als een persoonlijke toegangssleutel. Zet hem niet openbaar in screenshots, gedeelde scripts of codevoorbeelden.
+        </p>
+</div>
+<h2 id="stappenplan">Stap voor stap aan de slag</h2>
+<h3>1. Zet je instellingen bovenin het script</h3>
+<p>
+        De belangrijkste instellingen staan bewust bij elkaar in <code>Config</code>. Dat scheelt zoeken, zeker wanneer je later nog eens je API-key, aanbieder of tag-namen wilt aanpassen.
+      </p>
+<ul>
+<li>Vervang <code>API_KEY_NUMBER</code> door je eigen Enever-token.</li>
+<li>Controleer of <code>AANBIEDER</code> overeenkomt met het prijsveld dat jij wilt gebruiken.</li>
+<li>Laat de URL’s staan op de Enever API v3-endpoints.</li>
+</ul>
+<figure>
+<img alt="De configuratie bovenin het HomeyScript voor stroomprijzen" src="assets/artikel/homeyscript-stroomprijs-instellingen.jpg"/>
+<figcaption class="muted small">
+          Bovenin het script staan alle instellingen die je normaal gesproken zelf aanpast: API-key, aanbieder, URL’s en tag-namen.
+        </figcaption>
+</figure>
+<h3>2. Waarom deze opbouw prettiger werkt</h3>
+<p>
+        Je zou alles in één enorme functie kunnen proppen. Werkt soms prima, totdat je een maand later iets wilt aanpassen en geen idee meer hebt waar wat gebeurt. Daarom is dit script opgedeeld in kleinere functies. Eén functie bouwt de URL, een andere haalt JSON op, weer een andere controleert de data en daarna wordt pas de minimum- en maximumprijs berekend.
+      </p>
+<p>
+        Dat lijkt misschien wat uitgebreider, maar het maakt het script veel onderhoudsvriendelijker. Wil je later de goedkoopste drie uur achter elkaar vinden? Of een gemiddelde prijs berekenen? Dan weet je meteen waar je moet zijn.
+      </p>
+<h3>3. Plaats het volledige script in HomeyScript</h3>
+<p>
+        Maak in HomeyScript een nieuw script aan, geef het bijvoorbeeld de naam <code>stroomprijs_vandaag_morgen</code> en plak onderstaande code erin. Controleer daarna eerst je API-key en aanbieder voordat je het script uitvoert.
+      </p>
+<pre><code>// ========================================================
+// HomeyScript: stroomprijs_vandaag_morgen.js
+// Doel: min/max stroomprijzen vandaag en morgen ophalen
+// Bron: Enever API v3
+// ========================================================
+
+// ========================================================
+// Configuratie
+// ========================================================
+const Config = {
+  API_KEY: "API_KEY_NUMBER",
+  AANBIEDER: "prijsANWB",
+
+  URL_VANDAAG: "https://enever.nl/apiv3/stroomprijs_vandaag.php",
+  URL_MORGEN: "https://enever.nl/apiv3/stroomprijs_morgen.php",
+
+  TAGS: {
+    minVandaag: "minVandaag",
+    maxVandaag: "maxVandaag",
+    minVandaagTijden: "minVandaagTijden",
+    maxVandaagTijden: "maxVandaagTijden",
+
+    minMorgen: "minMorgen",
+    maxMorgen: "maxMorgen",
+    minMorgenTijden: "minMorgenTijden",
+    maxMorgenTijden: "maxMorgenTijden"
+  }
+};
+
+// ========================================================
+// URL bouwen
+// ========================================================
+function buildPrijsUrl(baseUrl) {
+  return `${baseUrl}?token=${Config.API_KEY}&amp;price=${Config.AANBIEDER}`;
+}
+
+// ========================================================
+// Data ophalen
+// ========================================================
+async function fetchJson(url, label) {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`${label}: API gaf status ${response.status}`);
+  }
+
+  return await response.json();
+}
+
+// ========================================================
+// Prijsregels uitlezen
+// ========================================================
+function getPrijsItems(json, label) {
+  if (!json || !Array.isArray(json.data) || json.data.length === 0) {
+    throw new Error(`${label}: geen geldige data-array gevonden`);
+  }
+
+  const items = json.data
+    .map(item =&gt; ({
+      datum: item.datum,
+      prijs: parseFloat(item[Config.AANBIEDER])
+    }))
+    .filter(item =&gt; !isNaN(item.prijs));
+
+  if (items.length === 0) {
+    throw new Error(`${label}: geen prijzen gevonden voor '${Config.AANBIEDER}'`);
+  }
+
+  return items;
+}
+
+// ========================================================
+// Uur uit datum halen
+// ========================================================
+function extractUur(datum) {
+  if (!datum || typeof datum !== "string") {
+    return "onbekend";
+  }
+
+  const match = datum.match(/[T\s](\d{2}):/);
+
+  if (!match) {
+    return "onbekend";
+  }
+
+  return `${match[1]}:00`;
+}
+
+// ========================================================
+// Min/max berekenen
+// ========================================================
+function berekenMinMax(items) {
+  const prijzen = items.map(item =&gt; item.prijs);
+
+  const minVal = Math.min(...prijzen);
+  const maxVal = Math.max(...prijzen);
+
+  const minUren = items
+    .filter(item =&gt; item.prijs === minVal)
+    .map(item =&gt; extractUur(item.datum));
+
+  const maxUren = items
+    .filter(item =&gt; item.prijs === maxVal)
+    .map(item =&gt; extractUur(item.datum));
+
+  return {
+    minVal,
+    maxVal,
+    minUrenString: minUren.join(", "),
+    maxUrenString: maxUren.join(", ")
+  };
+}
+
+// ========================================================
+// Daggegevens ophalen en verwerken
+// ========================================================
+async function haalDagPrijsOp(baseUrl, label) {
+  const url = buildPrijsUrl(baseUrl);
+  const json = await fetchJson(url, label);
+  const items = getPrijsItems(json, label);
+
+  return berekenMinMax(items);
+}
+
+// ========================================================
+// HomeyScript-tags bijwerken
+// ========================================================
+async function updateVandaagTags(resultaat) {
+  await tag(Config.TAGS.minVandaag, resultaat.minVal);
+  await tag(Config.TAGS.maxVandaag, resultaat.maxVal);
+  await tag(Config.TAGS.minVandaagTijden, resultaat.minUrenString);
+  await tag(Config.TAGS.maxVandaagTijden, resultaat.maxUrenString);
+}
+
+async function updateMorgenTags(resultaat) {
+  await tag(Config.TAGS.minMorgen, resultaat.minVal);
+  await tag(Config.TAGS.maxMorgen, resultaat.maxVal);
+  await tag(Config.TAGS.minMorgenTijden, resultaat.minUrenString);
+  await tag(Config.TAGS.maxMorgenTijden, resultaat.maxUrenString);
+}
+
+async function updateMorgenNietBeschikbaarTags() {
+  await tag(Config.TAGS.minMorgenTijden, "Nog niet beschikbaar");
+  await tag(Config.TAGS.maxMorgenTijden, "Nog niet beschikbaar");
+}
+
+// ========================================================
+// Samenvatting maken
+// ========================================================
+function maakSamenvatting(vandaag, morgenTekst) {
+  return `
+============== STROOMPRIJZEN =============
+Vandaag:
+  Min = ${vandaag.minVal} (uren: ${vandaag.minUrenString})
+  Max = ${vandaag.maxVal} (uren: ${vandaag.maxUrenString})
+
+${morgenTekst}
+===========================================
+`;
+}
+
+function maakMorgenSamenvatting(morgen) {
+  return `Morgen:
+  Min = ${morgen.minVal} (uren: ${morgen.minUrenString})
+  Max = ${morgen.maxVal} (uren: ${morgen.maxUrenString})`;
+}
+
+function maakMorgenFoutSamenvatting(error) {
+  return `Morgen:
+  Nog niet beschikbaar of fout bij ophalen: ${error.message}`;
+}
+
+// ========================================================
+// Hoofdprogramma
+// ========================================================
+try {
+  const vandaag = await haalDagPrijsOp(Config.URL_VANDAAG, "Vandaag");
+  await updateVandaagTags(vandaag);
+
+  let morgenTekst;
+
+  try {
+    const morgen = await haalDagPrijsOp(Config.URL_MORGEN, "Morgen");
+    await updateMorgenTags(morgen);
+    morgenTekst = maakMorgenSamenvatting(morgen);
+  } catch (errorMorgen) {
+    await updateMorgenNietBeschikbaarTags();
+    morgenTekst = maakMorgenFoutSamenvatting(errorMorgen);
+  }
+
+  return maakSamenvatting(vandaag, morgenTekst);
+
+} catch (error) {
+  return "Fout: " + error.message;
+}</code></pre>
+<h3>4. Controleer de aangemaakte tags</h3>
+<p>
+        Na het uitvoeren van het script worden de waarden opgeslagen als HomeyScript-tags. Voor vandaag zijn dat <code>minVandaag</code>, <code>maxVandaag</code>, <code>minVandaagTijden</code> en <code>maxVandaagTijden</code>. Voor morgen krijg je dezelfde varianten met <code>Morgen</code> in de naam.
+      </p>
+<p>
+        Het voordeel daarvan is simpel: je berekent alles maar één keer. Je flows hoeven daarna alleen nog maar de tags te gebruiken.
+      </p>
+<h3>5. Start het script automatisch vanuit een Flow</h3>
+<p>
+        Laat het script bijvoorbeeld iedere dag op een vast moment draaien. Zelf zou ik hem in ieder geval ergens in de middag of begin avond nog eens laten starten, omdat de prijzen van morgen niet altijd direct beschikbaar zijn. Is morgen nog niet beschikbaar? Dan vangt het script dat netjes af en blijft de informatie van vandaag gewoon bruikbaar.
+      </p>
+<figure>
+<img alt="Homey-tags met minimum en maximum stroomprijs van vandaag en morgen" src="assets/artikel/homeyscript-stroomprijs-tags.jpg"/>
+<figcaption class="muted small">
+          De aangemaakte tags kun je daarna gebruiken in gewone flows, Advanced Flows of meldingen.
+        </figcaption>
+</figure>
+<h2 id="homey-integratie">Wat kun je hier nu mee in Homey?</h2>
+<p>
+        De echte winst zit niet in het ophalen van de prijsdata zelf, maar in wat Homey er vervolgens mee kan doen. Zodra de tags gevuld zijn, kun je ze combineren met tijd, aanwezigheid, apparaten, weersverwachting, zonnepanelen of andere voorwaarden.
+      </p>
+<p>Een paar ideeën:</p>
+<ul>
+<li>Stuur dagelijks een melding met de goedkoopste en duurste uren.</li>
+<li>Laat energie-intensieve apparaten alleen tijdens goedkope uren starten.</li>
+<li>Gebruik dure uren juist als waarschuwing om apparaten tijdelijk uit te laten.</li>
+<li>Combineer de prijs met opbrengst van zonnepanelen of aanwezigheid in huis.</li>
+<li>Maak een Advanced Flow die vooruitkijkt naar morgen en alvast een planning maakt.</li>
+</ul>
+<figure>
+<img alt="Gebruik van stroomprijs-tags in een Homey flow" src="assets/artikel/homeyscript-stroomprijs-flow.png"/>
+<figcaption class="muted small">
+          Door de prijsinformatie als tags op te slaan, kun je de logica in Homey overzichtelijk houden.
+        </figcaption>
+</figure>
+<h2 id="wat-kun-je-hierna">Mooie uitbreidingen voor later</h2>
+<p>
+        Als deze basis eenmaal draait, kun je er natuurlijk alle kanten mee op. Denk aan een tag voor de gemiddelde prijs, de goedkoopste drie aaneengesloten uren, een advies voor je laadpaal of een tekstsamenvatting die rechtstreeks naar je telefoon wordt gestuurd.
+      </p>
+<p>
+        Ook kun je onderscheid maken tussen “goedkoop genoeg om te starten” en “duur genoeg om juist te stoppen”. Zo wordt je huis niet alleen slimmer, maar ook een stuk praktischer in dagelijks gebruik.
+      </p>
+<figure>
+<img alt="Samenvatting van de stroomprijzen voor vandaag en morgen in HomeyScript" src="assets/artikel/homeyscript-stroomprijs-resultaat.jpg"/>
+<figcaption class="muted small">
+          Het script geeft ook een leesbare samenvatting terug, zodat je direct ziet of de data goed is opgehaald.
+        </figcaption>
+</figure>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Gebruik de actuele Enever API v3-URL’s met <code>/apiv3/</code> en niet een oude URL uit eerdere voorbeelden.</li>
+<li>Controleer of het gekozen aanbieder-veld, bijvoorbeeld <code>prijsANWB</code>, voorkomt in de Enever-feed.</li>
+<li>Houd er rekening mee dat de prijzen van morgen pas beschikbaar zijn zodra Enever die data heeft ontvangen en gepubliceerd.</li>
+<li>Deel je API-key niet openbaar.</li>
+<li>Test eerst met een simpele melding voordat je apparaten automatisch laat schakelen.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>
+        Met dit HomeyScript verander je dynamische stroomprijzen van losse informatie in bruikbare smart home-logica. Homey weet wanneer stroom goedkoop of duur is en jij kunt daar vervolgens flows aan koppelen. Dat kan klein beginnen met een melding op je telefoon, maar net zo goed uitgroeien tot een huis dat zelf slim plant wanneer apparaten het beste kunnen draaien.
+      </p>
+<p>
+        Dit is precies het soort project waardoor je merkt hoe krachtig Homey kan zijn. Niet omdat één apparaat slim is, maar omdat alles met elkaar samenwerkt. En daar wordt je huis iedere keer weer een beetje meer dat Huis van de Toekomst.
+      </p>
+<div class="hvandaag-callout">
+<h3>Aan de slag?</h3>
+<p class="muted">
+          Heb je Homey al in huis en een dynamisch energiecontract? Dan is dit script een mooie volgende stap. Haal je Enever API-key op, plak het script in HomeyScript en laat je huis voortaan zelf de goedkoopste uren vinden. Ga je hiermee aan de slag of bouw je er een slimme uitbreiding op? Laat vooral weten wat je ervan gemaakt hebt!
+        </p>
+</div>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat gaan we maken?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap voor stap aan de slag</a>
+<a href="#homey-integratie">Wat kun je hiermee in Homey?</a>
+<a href="#wat-kun-je-hierna">Uitbreidingen voor later</a>
+<a href="#aandachtspunten">Veelgemaakte fouten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="keukendeur-herinnering-slim-google-home-tutorial.html">Keukendeur herinnering slim maken in Google Home Script Editor</a><a href="wat-kun-je-doen-met-homey.html">Wat kun je doen met Homey? Praktische toepassingen en inspiratie</a><a href="robotstofzuiger-homey-tutorial.html">Laat je robotstofzuiger slim schoonmaken met Homey</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script src="include.js"></script>
+</body>
+</html>

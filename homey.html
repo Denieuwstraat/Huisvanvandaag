@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homey uitgelegd en welke variant bij je past | huisvanvandaag.nl</title>
-  <meta name="description" content="Wat is Homey, waarom kiezen zoveel mensen ervoor en welke variant past bij jouw slimme huis? Lees meer over Homey Bridge, Homey Pro, Homey Pro Mini en Homey Self-Hosted.">
+  <title>Homey uitgelegd: welke Homey past bij jouw slimme huis? | huisvanvandaag.nl</title>
+  <meta name="description" content="Wat is Homey, waarom is het zo handig als hart van je smart home en welke variant past het best bij jouw woning: Homey Bridge, Homey Pro, Homey Pro Mini of Homey Self-Hosted?">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
       display: inline-block;
       margin-bottom: .7rem;
       font-size: .78rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--muted);
@@ -68,13 +68,14 @@
     .variant-link {
       display: inline-block;
       margin-top: .8rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .grid-2-equal {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.2rem;
+      align-items: start;
     }
 
     .comparison-list .check-item {
@@ -84,6 +85,32 @@
     .comparison-list .check-item strong {
       display: inline-block;
       margin-bottom: .15rem;
+    }
+
+    /* Overschrijft styles.css waar nodig */
+    .page-hero,
+    .page-hero .two-col,
+    .page-hero .panel,
+    .variant-grid,
+    .grid-2-equal {
+      overflow: visible;
+    }
+
+    .page-hero .two-col {
+      align-items: start;
+    }
+
+    .page-hero .panel {
+      height: auto;
+      max-height: none;
+      align-self: start;
+    }
+
+    .panel,
+    .card,
+    .sidebar-card,
+    .cta-banner {
+      overflow-wrap: anywhere;
     }
 
     @media (max-width: 900px) {
@@ -104,13 +131,16 @@
           <div class="breadcrumbs">
             <a href="index.html">Home</a><span>•</span><span>Homey</span>
           </div>
-          <span class="eyebrow">Homey als hart van een slim huis</span>
+          <span class="eyebrow">Homey als hart van je slimme huis</span>
           <h1 style="color:var(--text);">Wat is Homey en welke variant past bij jou?</h1>
           <p style="color:var(--muted);">
-            Als je begint met een smart home, kom je al snel bij Homey uit. Niet omdat het het enige systeem is, maar omdat het één van de weinige platforms is die echt bedoeld zijn om apparaten van verschillende merken en protocollen met elkaar te laten samenwerken.
+            Zodra je begint met slimme lampen, sensoren, stekkers en speakers kom je er al snel achter: één slim apparaat maakt nog geen slim huis. Voor je het weet heb je vijf apps, drie bridges en een telefoon vol icoontjes waar je eigenlijk gewoon een lichtknop voor terug wilt.
           </p>
           <p style="color:var(--muted);">
-            Lampen, sensoren, stekkers, speakers en slimme routines: in plaats van losse apps en eilandjes brengt Homey dit samen in één systeem. Alleen komt daarna al snel de volgende vraag: <strong>welke Homey heb je eigenlijk nodig?</strong>
+            Precies daar wordt Homey interessant. Niet omdat het de enige oplossing is, maar omdat het één van de handigste manieren is om apparaten van verschillende merken en protocollen met elkaar te laten samenwerken. Lamp A, sensor B en schakelaar C hoeven dan niet meer in hun eigen eilandje te blijven zitten.
+          </p>
+          <p style="color:var(--muted);">
+            Maar dan komt natuurlijk meteen de volgende vraag: <strong>welke Homey heb je eigenlijk nodig?</strong> Bridge, Pro, Pro Mini of toch Self-Hosted? Tijd om daar eens rustig doorheen te lopen.
           </p>
         </div>
 
@@ -120,22 +150,22 @@
             <div class="check-item">
               <span class="check-mark">✓</span>
               <div>
-                <strong>Één plek voor automatisering</strong><br>
-                <span class="muted">Homey helpt om apparaten van verschillende merken en technieken samen te brengen in één logisch systeem.</span>
+                <strong>Eén plek voor je slimme huis</strong><br>
+                <span class="muted">Homey brengt apparaten, sensoren en automatiseringen samen, zodat je minder hoeft te schakelen tussen losse apps.</span>
               </div>
             </div>
             <div class="check-item">
               <span class="check-mark">✓</span>
               <div>
-                <strong>Meer dan alleen bediening</strong><br>
-                <span class="muted">De kracht zit niet alleen in handmatig schakelen, maar vooral in flows, slimme logica en automatisering op de achtergrond.</span>
+                <strong>De magie zit in flows</strong><br>
+                <span class="muted">Niet handmatig bedienen, maar automatisch laten reageren op tijd, aanwezigheid, licht, temperatuur of een sensorwaarde.</span>
               </div>
             </div>
             <div class="check-item">
               <span class="check-mark">✓</span>
               <div>
                 <strong>Niet elke Homey is hetzelfde</strong><br>
-                <span class="muted">Tussen Bridge, Pro, Pro Mini en Self-Hosted zitten duidelijke verschillen in mogelijkheden, vrijheid en gebruiksgemak.</span>
+                <span class="muted">Bridge, Pro, Pro Mini en Self-Hosted verschillen flink in mogelijkheden, vrijheid, lokaal gebruik en doelgroep.</span>
               </div>
             </div>
           </div>
@@ -146,15 +176,15 @@
     <section class="section-tight">
       <div class="container">
         <div class="panel">
-          <h2>Waarom Homey voor veel mensen interessant is</h2>
+          <h2>Waarom Homey voor veel mensen zo interessant is</h2>
           <p>
-            Veel smart-home systemen werken prima, zolang je binnen één merk blijft. Maar zodra je apparaten gaat combineren, ontstaat er vaak frictie. Dan heb je meerdere apps nodig, lopen automatiseringen langs elkaar heen en blijkt “slim” vooral te betekenen dat jij alles zelf nog aan elkaar moet knopen.
+            Veel smart-home systemen werken prima zolang je binnen één merk blijft. Een Hue-lamp met de Hue-app, een slimme stekker met zijn eigen app en een sensor met weer een andere bridge. Technisch werkt dat allemaal best aardig, maar slim voelt het pas wanneer die losse onderdelen elkaar ook begrijpen.
           </p>
           <p>
-            Daar zit precies de aantrekkingskracht van Homey. Het idee is niet dat je huis voller komt te hangen met techniek, maar dat verschillende onderdelen zich juist meer als één geheel gaan gedragen. Dat is een klein verschil in theorie, maar in de praktijk maakt het bijna alles uit.
+            Dat is precies waar Homey zijn kracht laat zien. Je gebruikt Homey niet alleen om apparaten aan en uit te zetten, maar vooral om logica te bouwen. Als de zon ondergaat én er iemand thuis is, dan gaat de verlichting aan. Als het CO₂-niveau oploopt, dan krijgt de ventilatie een zetje. Als het raam open staat en het gaat regenen, dan krijg je een melding.
           </p>
           <p>
-            Voor mij is dat ook de reden dat Homey zo goed past bij huisvanvandaag.nl: niet omdat het de meeste functies op papier heeft, maar omdat het helpt om slimme technologie ook echt bruikbaar te maken in het dagelijks leven.
+            Dat soort automatiseringen zijn niet spectaculair om aan visite te laten zien, maar ze maken je huis wel iedere dag net wat prettiger. En eerlijk is eerlijk: dát is uiteindelijk veel leuker dan weer een extra app op je telefoon.
           </p>
         </div>
       </div>
@@ -168,7 +198,7 @@
             <h2>Welke Homey past bij jouw situatie?</h2>
           </div>
           <p>
-            Dit zijn de vier varianten waar je op deze site meer over kunt lezen.
+            Er is niet één beste Homey voor iedereen. De juiste keuze hangt vooral af van hoe ver je wilt gaan, hoeveel je lokaal wilt draaien en of je vooral wilt beginnen of juist flink wilt doorgroeien.
           </p>
         </div>
 
@@ -178,7 +208,7 @@
               <span class="variant-label">Instappen</span>
               <h3>Homey Bridge</h3>
               <p class="muted">
-                De laagdrempelige manier om met Homey te beginnen. Interessant als je wilt ontdekken wat Homey kan, zonder direct voor de meest uitgebreide oplossing te gaan.
+                De laagdrempelige manier om met Homey te starten. Interessant als je wilt ontdekken wat Homey kan, zonder meteen voor de meest uitgebreide oplossing te kiezen.
               </p>
               <span class="variant-link">Lees het artikel over Homey Bridge →</span>
             </div>
@@ -189,7 +219,7 @@
               <span class="variant-label">Veelzijdig</span>
               <h3>Homey Pro (2023)</h3>
               <p class="muted">
-                Voor wie veel lokaal wil draaien, meer apparaten wil combineren en serieuze automatiseringen wil bouwen zonder onnodige beperkingen.
+                Voor wie serieus wil automatiseren, meer apparaten wil combineren en graag zoveel mogelijk lokaal wil draaien. Dit is de Homey voor wie van een slim huis echt een samenwerkend geheel wil maken.
               </p>
               <span class="variant-link">Lees het artikel over Homey Pro (2023) →</span>
             </div>
@@ -200,7 +230,7 @@
               <span class="variant-label">Compact</span>
               <h3>Homey Pro Mini</h3>
               <p class="muted">
-                Een kleinere Homey-variant voor wie lokaal wil werken, maar niet per se meteen het grootste of meest uitgebreide model nodig heeft.
+                Een compactere Homey-variant voor wie lokaal wil werken, maar niet meteen het grootste model nodig heeft. Handig als je wel de Homey-aanpak wilt, maar iets kleiner wilt beginnen.
               </p>
               <span class="variant-link">Lees het artikel over Homey Pro Mini →</span>
             </div>
@@ -211,7 +241,7 @@
               <span class="variant-label">Maximale vrijheid</span>
               <h3>Homey Self-Hosted</h3>
               <p class="muted">
-                Gericht op gebruikers die Homey liever op eigen hardware draaien en zoveel mogelijk controle over hun eigen omgeving willen houden.
+                Voor gebruikers die Homey liever op eigen hardware draaien en zoveel mogelijk controle over hun eigen omgeving willen houden. Minder plug-and-play, meer vrijheid.
               </p>
               <span class="variant-link">Lees het artikel over Homey Self-Hosted →</span>
             </div>
@@ -224,19 +254,19 @@
       <div class="container grid-2-equal">
         <div class="panel">
           <span class="eyebrow">Mijn eigen praktijk</span>
-<h2>Wat ik zelf gebruik</h2>
-<p>
-  Om het niet alleen theoretisch te houden: ik gebruik Homey al jaren in de praktijk. Mijn eerste Homey was de originele Homey uit 2014, destijds gekocht via Kickstarter. Die draait inmiddels bij mijn ouders en doet daar nog steeds wat hij moet doen.
-</p>
-<p>
-  Op dit moment gebruik ik zelf een <strong>Homey Pro (2023)</strong> en een <strong>Homey Bridge</strong>. Die combinatie is interessant omdat ik daarmee zowel uitgebreid kan automatiseren op de Homey Pro, en door middel van de Homey Bridge eenvoudig het bereik kan vergroten.
-</p>
-<p>
-  Daarnaast maak ik gebruik van twee Google Nest speakers en een Nest Hub. Die gebruik ik vooral voor spraakbediening en snelle feedback in huis, bijvoorbeeld om de status van sensoren te bekijken zonder mijn telefoon erbij te hoeven pakken.
-</p>
-<p>
-  Dat betekent ook dat de artikelen op deze site niet alleen gebaseerd zijn op productspecificaties, maar juist op wat in een echt huis wel en niet prettig werkt.
-</p>
+          <h2>Wat ik zelf gebruik</h2>
+          <p>
+            Om het niet alleen bij productspecificaties te houden: ik gebruik Homey al jaren in de praktijk. Mijn eerste Homey was de originele Homey uit 2014, destijds gekocht via Kickstarter. Als een kind zo blij was ik toen die futuristische witte bol eindelijk binnenkwam.
+          </p>
+          <p>
+            Die eerste Homey draait inmiddels bij mijn ouders en doet daar nog steeds wat hij moet doen. Zelf gebruik ik op dit moment een <strong>Homey Pro (2023)</strong> en een <strong>Homey Bridge</strong>. Die combinatie is interessant omdat ik met de Pro uitgebreid kan automatiseren en met de Bridge eenvoudig het bereik kan vergroten.
+          </p>
+          <p>
+            Daarnaast staan er hier twee Google Nest speakers en een Nest Hub. Die gebruik ik vooral voor spraakbediening en snelle feedback in huis. Even vragen of de verlichting uit kan, muziek starten of snel de status van een sensor bekijken zonder mijn telefoon erbij te pakken.
+          </p>
+          <p>
+            De artikelen op huisvanvandaag.nl zijn dus niet geschreven vanuit een folder of showroom, maar vanuit een echt huis. Met routines die werken, flows die soms slimmer kunnen en apparaten die zich gewoon dagelijks moeten bewijzen.
+          </p>
         </div>
 
         <div class="panel comparison-list">
@@ -247,21 +277,21 @@
               <span class="check-mark">✓</span>
               <div>
                 <strong>Hoeveel controle wil je?</strong><br>
-                <span class="muted">Sommige gebruikers willen vooral gemak, anderen juist zoveel mogelijk lokaal draaien en zelf bepalen hoe alles werkt.</span>
+                <span class="muted">Wil je vooral gemak en snel beginnen, of wil je juist zoveel mogelijk lokaal draaien en zelf bepalen hoe alles werkt?</span>
               </div>
             </div>
             <div class="check-item">
               <span class="check-mark">✓</span>
               <div>
                 <strong>Hoe complex wordt je smart home?</strong><br>
-                <span class="muted">Voor een paar lampen en sensoren heb je iets anders nodig dan voor een huis vol automatiseringen, flows en koppelingen.</span>
+                <span class="muted">Voor een paar lampen en sensoren heb je iets anders nodig dan voor een huis vol flows, koppelingen, DIY-sensoren en automatiseringen.</span>
               </div>
             </div>
             <div class="check-item">
               <span class="check-mark">✓</span>
               <div>
-                <strong>Wil je vooral starten of juist doorgroeien?</strong><br>
-                <span class="muted">De beste keuze hangt niet alleen af van vandaag, maar ook van hoe ver je later wilt gaan.</span>
+                <strong>Wil je starten of doorgroeien?</strong><br>
+                <span class="muted">De beste keuze hangt niet alleen af van wat je vandaag nodig hebt, maar ook van hoe ver je later wilt gaan.</span>
               </div>
             </div>
           </div>
@@ -276,6 +306,9 @@
             <span class="eyebrow">Homey in de praktijk</span>
             <h2>Waar gebruik je Homey eigenlijk voor?</h2>
           </div>
+          <p>
+            De leukste automatiseringen zijn vaak niet de ingewikkeldste. Ze halen gewoon kleine irritaties uit je dag.
+          </p>
         </div>
 
         <div class="grid-3">
@@ -283,7 +316,7 @@
             <div class="card-icon">💡</div>
             <h3>Verlichting slimmer maken</h3>
             <p class="muted">
-              Niet alleen lampen bedienen, maar laten reageren op aanwezigheid, tijdstip, lux-waarde of andere gebeurtenissen in huis.
+              Niet alleen lampen bedienen, maar ze laten reageren op aanwezigheid, tijdstip, lichtwaarde of andere gebeurtenissen in huis.
             </p>
           </article>
 
@@ -291,15 +324,15 @@
             <div class="card-icon">🌡️</div>
             <h3>Sensoren laten samenwerken</h3>
             <p class="muted">
-              Denk aan temperatuur, beweging, contact, luchtkwaliteit of energieverbruik die samen logische acties kunnen starten.
+              Temperatuur, beweging, contact, luchtkwaliteit en energieverbruik worden pas echt interessant wanneer ze acties kunnen starten.
             </p>
           </article>
 
           <article class="card">
             <div class="card-icon">🧠</div>
-            <h3>Flows bouwen die echt iets overnemen</h3>
+            <h3>Flows bouwen die iets overnemen</h3>
             <p class="muted">
-              De echte winst zit in automatiseringen die handelingen wegnemen, zodat je minder hoeft te tikken, schakelen en onthouden.
+              De echte winst zit in flows die handelingen wegnemen, zodat je minder hoeft te tikken, schakelen en onthouden.
             </p>
           </article>
         </div>
@@ -312,10 +345,10 @@
           <span class="eyebrow">Waarom dit op huisvanvandaag.nl thuishoort</span>
           <h2>Niet meer techniek, maar betere keuzes</h2>
           <p>
-            Homey is voor mij niet interessant omdat het “meer smart home” toevoegt, maar omdat het kan helpen om technologie juist meer naar de achtergrond te duwen. Minder losse handelingen. Minder gedoe. Minder nadenken over welk apparaat via welke app moet worden bediend.
+            Homey is voor mij niet interessant omdat het “meer smart home” toevoegt, maar omdat het kan helpen om technologie juist naar de achtergrond te duwen. Minder losse handelingen. Minder gedoe. Minder nadenken over welk apparaat via welke app moet worden bediend.
           </p>
           <p>
-            En dat is uiteindelijk waar slim wonen over zou moeten gaan: niet over indrukwekkende functies op een doos, maar over een huis dat prettiger werkt omdat de techniek zich beter gedraagt.
+            En dat is uiteindelijk waar slim wonen over zou moeten gaan. Niet over indrukwekkende functies op een doos, maar over een huis dat prettiger werkt omdat de techniek zich beter gedraagt.
           </p>
           <p>
             Daarom vind je hier niet alleen uitleg over wat Homey is, maar ook artikelen over de verschillende varianten, praktijkervaringen, combinaties met Google Home en DIY-projecten met onder andere ESP8266, ESP32 en Homeyduino.
@@ -328,9 +361,9 @@
       <div class="container cta-banner">
         <div>
           <span class="eyebrow">Verder lezen</span>
-          <h3>Begin met de variant die het best bij je past</h3>
+          <h3>Begin met de Homey die bij jouw huis past</h3>
           <p class="muted" style="margin:0;">
-            Twijfel je nog? Bekijk dan de afzonderlijke artikelen over de Homey Bridge, Homey Pro (2023), Homey Pro Mini en Homey Self-Hosted om de verschillen beter naast elkaar te zien.
+            Twijfel je nog? Bekijk dan de afzonderlijke artikelen over Homey Bridge, Homey Pro (2023), Homey Pro Mini en Homey Self-Hosted en kies de route die logisch voelt voor jouw huis.
           </p>
         </div>
         <div class="btn-row">

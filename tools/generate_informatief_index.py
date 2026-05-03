@@ -184,11 +184,16 @@ def render(articles):
 
     return "\n".join(html_blocks)
 
+def replace(content: str, cards: str) -> str:
+    pattern = re.compile(
+        r"(<!-- AUTO-GENERATED-INFORMATIEF-CARDS:START -->)(.*?)(<!-- AUTO-GENERATED-INFORMATIEF-CARDS:END -->)",
+        re.DOTALL,
+    )
 
-def replace(content, cards):
-    pattern = re.compile(f"({START})(.*)({END})", re.DOTALL)
-    return pattern.sub(rf"\1\n{cards}\n\3", content)
+    def safe_replace(match: re.Match) -> str:
+        return f"{match.group(1)}\n{cards}\n{match.group(3)}"
 
+    return pattern.sub(safe_replace, content, count=1)
 
 def main():
     parser = argparse.ArgumentParser()

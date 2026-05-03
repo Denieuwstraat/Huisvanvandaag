@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Homeyduino geschikt maken voor moderne ESP32 boards (C3 &amp; C6) | huisvanvandaag.nl</title>
+<meta content="Homeyduino gebruiken met moderne ESP32 boards zoals de ESP32-C3 en ESP32-C6? Zo pas je chip.h aan en voorkom je compile errors. Inclusief volledige code." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+    }
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Homeyduino ESP32 upgrade</span>
+</div>
+<span class="eyebrow">DIY • Homeyduino • ESP32</span>
+<h1>Homeyduino geschikt maken voor moderne ESP32 boards (C3 &amp; C6)</h1>
+<p class="lead muted">
+        Vandaag weer een kleine, maar bijzonder handige Homeyduino aanpassing. Gebruik je een moderne ESP32-C3 of ESP32-C6 en krijg je ineens foutmeldingen waar je op een oudere ESP32 nooit last van had? Dan is de kans groot dat niet jouw project stuk is, maar dat de Homeyduino library nog uitgaat van oudere boarddefinities.
+      </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Tutorial</span>
+<span class="meta-pill">Platform: Homeyduino</span>
+<span class="meta-pill">Niveau: Gemiddeld</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item"><span class="check-mark">✓</span><div><strong>Geen onnodige compile errors</strong><br/><span class="muted">Vooral handig bij ESP32-C3 en ESP32-C6 boards</span></div></div>
+<div class="check-item"><span class="check-mark">✓</span><div><strong>Homeyduino blijft bruikbaar</strong><br/><span class="muted">Ook op nieuwere hardware</span></div></div>
+<div class="check-item"><span class="check-mark">✓</span><div><strong>Geen ingewikkelde ombouw</strong><br/><span class="muted">Een kleine aanpassing in chip.h is genoeg</span></div></div>
+<div class="check-item"><span class="check-mark">✓</span><div><strong>Ideaal voor zelfbouw sensoren</strong><br/><span class="muted">CO2, relais, deurcontacten en meer</span></div></div>
+<div class="check-item"><span class="check-mark">✓</span><div><strong>Volledige code inbegrepen</strong><br/><span class="muted">Je kunt direct aan de slag</span></div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-tight">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+Wie al wat langer met Homeyduino speelt, weet hoe leuk het is om je eigen sensoren en schakelaars aan Homey te koppelen. Een Wemos, NodeMCU of ESP-boardje, een sensor van een paar euro en ineens praat je zelfbouwproject gewoon mee in je Smart Home. Precies dat maakt Homeyduino zo leuk.
+</p>
+<p>
+Maar zoals wel vaker bij zelfbouwprojecten zit de uitdaging in de kleine details. Je denkt: even een nieuwer ESP32 boardje pakken, sketch uploaden en klaar. Maar in plaats daarvan krijg je een berg compile errors voorgeschoteld. Niet echt het Huis van de Toekomst gevoel waar je op hoopte.
+</p>
+<p>
+Gelukkig is de oplossing verrassend simpel. De Homeyduino library is namelijk niet per se kapot, maar gaat op sommige plekken nog uit van oudere ESP32 boards. En die hadden een andere indeling van analoge pinnen dan moderne varianten zoals de ESP32-C3 en ESP32-C6.
+</p>
+<div class="insight-panel">
+<h3>Kort samengevat</h3>
+<p class="muted">
+    Moderne ESP32 boards hebben niet altijd dezelfde A-pinnen als oudere ESP32 DevKit boards. Door in <code>chip.h</code> alleen pinnen toe te voegen die ook echt bestaan, voorkom je compile errors en maak je Homeyduino een stuk toekomstbestendiger.
+  </p>
+</div>
+<h2 id="wat-is-het">Wat gaat er precies mis?</h2>
+<p>
+In de originele Homeyduino library staat in <code>chip.h</code> een vaste lijst met analoge pinnen. Denk aan <code>A0</code> tot en met <code>A19</code>. Op oudere ESP32 DevKit-achtige boards is dat meestal geen probleem.
+</p>
+<p>
+Maar pak je een ESP32-C3, ESP32-C6 of een ander nieuwer board, dan kan het zomaar zijn dat bepaalde A-pinnen helemaal niet bestaan. Arduino probeert die pinnen dan alsnog te gebruiken, de compiler kijkt je streng aan en je project komt geen stap verder.
+</p>
+<ul>
+<li><strong>Oude situatie:</strong> Homeyduino gaat uit van een vaste lijst met analoge pinnen.</li>
+<li><strong>Het probleem:</strong> sommige moderne boards hebben die pinnen niet.</li>
+<li><strong>Het gevolg:</strong> compile errors nog voordat je sensor iets kan meten.</li>
+<li><strong>De oplossing:</strong> alleen pinnen opnemen als ze op dat board ook echt bestaan.</li>
+</ul>
+<h2 id="waarom-relevant">Waarom deze oplossing werkt</h2>
+<p>
+De truc zit hem in <code>#ifdef</code>. Daarmee zeg je tegen de compiler: gebruik deze pin alleen wanneer hij bekend is op dit board. Bestaat <code>A7</code> niet? Dan wordt die regel gewoon overgeslagen. Bestaat <code>A0</code> wel? Dan wordt die netjes meegenomen.
+</p>
+<p>
+Dat klinkt misschien als een kleine aanpassing, maar dit is precies het soort oplossing waar je bij domotica blij van wordt. Niet alles opnieuw bouwen, geen ingewikkelde workarounds, maar gewoon een bestaande library nét even slimmer maken.
+</p>
+<p>
+Of anders gezegd: Homeyduino hoeft niet langer te bepalen welk board jij mag gebruiken. Het board vertelt voortaan zelf welke pinnen beschikbaar zijn.
+</p>
+<h2 id="praktijk">Stap voor stap aan de slag</h2>
+<p>
+Maak eerst een kopie van de originele Homeyduino library. Geef deze bijvoorbeeld de naam <strong>Homeyduino_ESP32_HVV</strong>. Zo houd je de originele versie netjes intact en kun je altijd terug wanneer iets niet werkt zoals verwacht.
+</p>
+<p>
+De plek waar je moet zijn is gelukkig niet verstopt in een of andere mysterieuze systeemmap. Ga op je computer naar je <strong>Arduino folder</strong> en open daarna:
+</p>
+<div class="insight-panel">
+<h3>Waar staat chip.h?</h3>
+<p class="muted">
+<code>Arduino folder &gt; Libraries &gt; Homeyduino &gt; src &gt; chip.h</code>
+</p>
+</div>
+<p>
+Open vervolgens het bestand <code>chip.h</code>. Dit is het bestand waarin Homeyduino probeert te herkennen met welk type board je werkt en welke pinnen daarbij horen. Precies daar gaat het bij moderne ESP32-C3 en ESP32-C6 boards vaak mis.
+</p>
+<p>
+Pas eventueel ook <code>library.properties</code> aan wanneer je met een kopie van de library werkt, zodat Arduino IDE jouw aangepaste versie herkent. Controleer daarna in Arduino IDE of je het juiste board hebt geselecteerd en upload een simpele Homeyduino sketch. Werkt die? Dan kun je daarna weer verder met het echte werk: je eigen CO2 sensor, relaismodule, bewegingsmelder of ander zelfbouwproject.
+</p>
+<h2 id="waar-let-je-op">Het volledige aangepaste chip.h bestand</h2>
+<p>
+Onderstaand vind je het volledige aangepaste <code>chip.h</code> bestand. Je kunt de inhoud van je huidige <code>chip.h</code> hiermee vervangen. Het belangrijkste verschil zit in het ESP32-gedeelte: daar wordt per analoge pin eerst gecontroleerd of deze op jouw board bestaat.
+</p>
+<pre><code>#include "Arduino.h"
+#include "pins_arduino.h"
+
+#ifndef __CHIP__
+#define __CHIP__
+
+#if defined(ARDUINO_ARCH_ESP8266)
+// ESP8266
+static const char* arduino_arch = "esp8266";
+#elif defined(ARDUINO_ARCH_ESP32)
+// ESP32
+static const char* arduino_arch = "esp32";
+#elif defined(ARDUINO_ARCH_AVR)
+static const char* arduino_arch = "avr";
+#elif defined(ARDUINO_ARCH_SAM)
+// Arduino Due
+static const char* arduino_arch = "sam";
+#else
+static const char* arduino_arch = "unknown";
+#endif
+
+static const uint8_t analog_input_map[] = {
+#if defined(ARDUINO_ARCH_ESP32)
+  #ifdef A0
+    A0,
+  #endif
+  #ifdef A1
+    A1,
+  #endif
+  #ifdef A2
+    A2,
+  #endif
+  #ifdef A3
+    A3,
+  #endif
+  #ifdef A4
+    A4,
+  #endif
+  #ifdef A5
+    A5,
+  #endif
+  #ifdef A6
+    A6,
+  #endif
+  #ifdef A7
+    A7,
+  #endif
+  #ifdef A8
+    A8,
+  #endif
+  #ifdef A9
+    A9,
+  #endif
+  #ifdef A10
+    A10,
+  #endif
+  #ifdef A11
+    A11,
+  #endif
+  #ifdef A12
+    A12,
+  #endif
+  #ifdef A13
+    A13,
+  #endif
+  #ifdef A14
+    A14,
+  #endif
+  #ifdef A15
+    A15,
+  #endif
+  #ifdef A16
+    A16,
+  #endif
+  #ifdef A17
+    A17,
+  #endif
+  #ifdef A18
+    A18,
+  #endif
+  #ifdef A19
+    A19,
+  #endif
+#else
+  #if (NUM_ANALOG_INPUTS &gt; 0)
+    A0
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 1)
+    ,A1
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 2)
+    ,A2
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 3)
+    ,A3
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 4)
+    ,A4
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 5)
+    ,A5
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 6)
+    ,A6
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 7)
+    ,A7
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 8)
+    ,A8
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 9)
+    ,A9
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 10)
+    ,A10
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 11)
+    ,A11
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 12)
+    ,A12
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 13)
+    ,A13
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 14)
+    ,A14
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 15)
+    ,A15
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 16)
+    ,A16
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 17)
+    ,A17
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 18)
+    ,A18
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 19)
+    ,A19
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 20)
+    ,A20
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 21)
+    ,A21
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 22)
+    ,A22
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 23)
+    ,A23
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 24)
+    ,A24
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 25)
+    ,A25
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 26)
+    ,A26
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 27)
+    ,A27
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 28)
+    ,A28
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 29)
+    ,A29
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 30)
+    ,A30
+  #endif
+  #if (NUM_ANALOG_INPUTS &gt; 31)
+    ,A31
+  #endif
+#endif
+};
+
+static const uint8_t digital_pin_map[] = {
+#if defined(ARDUINO_ESP8266_WEMOS_D1MINI)
+  D0, D1, D2, D3, D4, D5, D6, D7, D8
+#elif defined(ARDUINO_ESP8266_NODEMCU)
+  D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10
+#else
+  #ifdef D0
+    D0
+  #endif
+  #ifdef D1
+    ,D1
+  #endif
+  #ifdef D2
+    ,D2
+  #endif
+  #ifdef D3
+    ,D3
+  #endif
+  #ifdef D4
+    ,D4
+  #endif
+  #ifdef D5
+    ,D5
+  #endif
+  #ifdef D6
+    ,D6
+  #endif
+  #ifdef D7
+    ,D7
+  #endif
+  #ifdef D8
+    ,D8
+  #endif
+  #ifdef D9
+    ,D9
+  #endif
+  #ifdef D10
+    ,D10
+  #endif
+  #ifdef D11
+    ,D11
+  #endif
+  #ifdef D12
+    ,D12
+  #endif
+  #ifdef D13
+    ,D13
+  #endif
+  #ifdef D14
+    ,D14
+  #endif
+  #ifdef D15
+    ,D15
+  #endif
+  #ifdef D16
+    ,D16
+  #endif
+  #ifdef D17
+    ,D17
+  #endif
+  #ifdef D18
+    ,D18
+  #endif
+  #ifdef D19
+    ,D19
+  #endif
+  #ifdef D20
+    ,D20
+  #endif
+  #ifdef D21
+    ,D21
+  #endif
+  #ifdef D22
+    ,D22
+  #endif
+  #ifdef D23
+    ,D23
+  #endif
+  #ifdef D24
+    ,D24
+  #endif
+  #ifdef D25
+    ,D25
+  #endif
+  #ifdef D26
+    ,D26
+  #endif
+  #ifdef D27
+    ,D27
+  #endif
+  #ifdef D28
+    ,D28
+  #endif
+  #ifdef D29
+    ,D29
+  #endif
+  #ifdef D30
+    ,D30
+  #endif
+  #ifdef D31
+    ,D31
+  #endif
+#endif
+};
+
+#endif</code></pre>
+<p>
+Dit lijkt misschien een flinke lap code, maar de gedachte erachter is juist heel simpel. Een ESP32-C3 of ESP32-C6 hoeft niet langer te doen alsof alle oude ESP32 analoge pinnen bestaan. Bestaat een pin niet? Dan wordt hij ook niet meegenomen. En precies daardoor voorkom je die vervelende compile errors.
+</p>
+<h2 id="verdieping">Belangrijke nuance</h2>
+<p>
+Deze aanpassing zorgt ervoor dat Homeyduino niet meer struikelt over niet-bestaande analoge pinnen. Daarmee los je een belangrijk compile-probleem op bij moderne ESP32 boards.
+</p>
+<p>
+Dat betekent alleen niet automatisch dat ieder ESP32 board volledig en officieel ondersteund is. Sommige boards hebben afwijkende USB-chips, andere pinlayouts of net even andere instellingen in Arduino IDE. Test dus altijd eerst met een eenvoudige sketch voordat je meteen een complete multisensor bouwt.
+</p>
+<ul>
+<li>✔ In veel gevallen compileert Homeyduino hierna probleemloos.</li>
+<li>✔ Pairing met Homey werkt meestal zoals je gewend bent.</li>
+<li>✔ Je kunt bestaande Homeyduino projecten makkelijker naar nieuwere hardware brengen.</li>
+<li>⚠ Controleer altijd de pinout van jouw specifieke ESP32 board.</li>
+</ul>
+<h2 id="volgende-stap">Wat kun je hierna bouwen?</h2>
+<p>
+Nu Homeyduino weer netjes compileert op je moderne ESP32 board, gaat de leuke kant van het verhaal beginnen. Want waarom zou je stoppen bij alleen een testsketch?
+</p>
+<ul>
+<li>Een CO2 sensor die automatisch je mechanische ventilatie aanstuurt.</li>
+<li>Een deur- of raamsensor die Homey als alarmsysteem gebruikt.</li>
+<li>Een relaismodule waarmee je verlichting of apparaten via flows schakelt.</li>
+<li>Een klein ESP32 dashboard met statusinformatie uit je Smart Home.</li>
+</ul>
+<p>
+Juist dit soort projecten maken Homeyduino zo interessant. Je bent niet afhankelijk van kant-en-klare sensoren, maar bouwt gewoon precies wat je zelf nodig hebt. Betaalbaar, leerzaam en helemaal naar eigen wens.
+</p>
+<h2 id="conclusie">Conclusie</h2>
+<p>
+Met een kleine aanpassing in <code>chip.h</code> maak je Homeyduino een stuk vriendelijker voor moderne ESP32 boards zoals de ESP32-C3 en ESP32-C6. Geen eindeloze zoektocht naar vage compile errors, maar gewoon weer verder bouwen aan je eigen slimme huis.
+</p>
+<p>
+En dat is wat mij betreft precies waar Homeyduino voor bedoeld is: bestaande techniek betaalbaar en toegankelijk maken, zodat je zelf je eigen Huis van de Toekomst kunt bouwen. Niet over tien jaar, maar gewoon vandaag al.
+</p>
+<div class="insight-panel">
+<h3>Zelf aan de slag?</h3>
+<p class="muted">
+    Heb je nog een ESP32-C3 of ESP32-C6 liggen, of wil je jouw bestaande Homeyduino projecten toekomstbestendig maken? Pas dan deze <code>chip.h</code> aan, test een eenvoudige sketch en bouw daarna jouw volgende sensor of schakelaar. Combineer dit met Homey en je hebt voor weinig geld weer een mooie uitbreiding voor je Smart Home.
+  </p>
+</div>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-is-het">Wat gaat er mis</a>
+<a href="#waarom-relevant">Waarom dit werkt</a>
+<a href="#praktijk">Aanpak</a>
+<a href="#waar-let-je-op">chip.h</a>
+<a href="#verdieping">Nuance</a>
+<a href="#volgende-stap">Volgende stap</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="wat-is-homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a><a href="homeyscript-stroomprijs-vandaag-morgen.html">HomeyScript: laat Homey automatisch de goedkoopste stroomuren vinden</a><a href="homey-bridge.html">Maak kennis met de Homey Bridge</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

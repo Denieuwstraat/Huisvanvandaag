@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>huisvanvandaag.nl | Homey, Google Home en DIY smart-home projecten</title>
+  <title>huisvanvandaag.nl | Bouw vandaag al aan je eigen Huis van de Toekomst</title>
   <meta name="description"
-    content="Praktische Homey tutorials, slimme flows en DIY Homeyduino projecten voor mensen die slimmer willen wonen zonder onnodig gedoe.">
+    content="Praktische Homey tutorials, slimme flows, Google Home tips en betaalbare DIY Homeyduino projecten voor iedereen die vandaag al slimmer wil wonen.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -57,7 +57,7 @@
     }
 
     .hero-copy h1 {
-      max-width: 10ch;
+      max-width: 11ch;
       font-size: clamp(2.6rem, 5vw, 4.8rem);
       line-height: 0.95;
       letter-spacing: -0.04em;
@@ -67,7 +67,7 @@
     }
 
     .hero-copy p {
-      max-width: 62ch;
+      max-width: 64ch;
       font-size: 1.08rem;
       line-height: 1.75;
       color: rgba(255, 255, 255, 0.88);
@@ -471,6 +471,79 @@
         align-items: flex-start;
       }
     }
+
+    /* Fix: laat de hero-kaart volledig meegroeien, ook wanneer styles.css vaste hoogtes/overflow zet */
+    .hero,
+    .hero-grid,
+    .hero-visual,
+    .showcase-card,
+    .side-stack,
+    .hero-visual .panel {
+      overflow: visible !important;
+      max-height: none !important;
+    }
+
+    .hero-grid {
+      align-items: stretch !important;
+    }
+
+    .hero-visual,
+    .showcase-card {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+
+    .side-stack {
+      height: auto !important;
+    }
+
+    .hero-visual .panel {
+      height: auto !important;
+    }
+
+
+    /* Homepage override: voorkom dat de rechter hero-kaart meerekt tot de volledige hero-hoogte */
+    .hero {
+      overflow: visible !important;
+    }
+
+    .hero-grid {
+      align-items: start !important;
+    }
+
+    .hero-visual {
+      align-self: start !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .showcase-card {
+      align-self: start !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .side-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1rem !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .hero-visual .panel {
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
   </style>
 </head>
 
@@ -481,13 +554,18 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Het Huis van de Toekomst, maar dan zonder de sciencefiction</span>
-          <h1>Slimmer wonen met Homey, Google Home en DIY-projecten die je huis net iets slimmer maken.</h1>
+          <span class="eyebrow">Het Huis van de Toekomst, maar dan gewoon voor vandaag</span>
+          <h1>Bouw je eigen slimme huis met Homey, Google Home en betaalbare DIY-projecten.</h1>
           <p>
-            Op huisvanvandaag.nl vind je praktische uitleg, slimme flows en zelfbouwprojecten die niet bedoeld zijn om
-            indruk te maken op visite, maar om thuis iets merkbaar beter te laten werken. Minder losse apps, minder
-            onhandige schakelmomenten en meer automatisering die aanvoelt alsof het eigenlijk altijd al zo had moeten
-            zijn.
+            Ooit leek een huis dat zelf meedacht nog pure toekomstmuziek. Beeldbellen, spraakbesturing,
+            slimme toegang en zonnepanelen hoorden bij demonstratiehuizen waar je met open mond doorheen liep.
+            Inmiddels ligt die toekomst gewoon in de bouwmarkt, op je bureau en soms voor een paar euro in een
+            envelop uit China. Op huisvanvandaag.nl laat ik zien hoe je daar zelf iets bruikbaars van maakt.
+          </p>
+          <p>
+            Geen showroompraat, geen onnodig dure gadgets en geen technologie om de technologie. Wel praktische
+            Homey flows, Google Home bediening en Homeyduino projecten die je woning merkbaar slimmer,
+            comfortabeler en logischer maken.
           </p>
 
           <div class="btn-row">
@@ -497,19 +575,16 @@
 
           <div class="hero-stats">
             <div class="stat">
-              <strong>Praktisch</strong>
-              <span class="muted">Geen technologie als hobbyhoekje, maar flows en projecten die dagelijks frictie uit je
-                huis halen.</span>
+              <strong>Zelf getest</strong>
+              <span class="muted">Geen theorie uit een folder, maar toepassingen die in een echt huis hun nut moeten bewijzen.</span>
             </div>
             <div class="stat">
-              <strong>Betaalbaar</strong>
-              <span class="muted">Slim wonen hoeft niet te beginnen met dure ecosystemen. Vaak kom je verrassend ver met
-                logische hardware en een beetje nieuwsgierigheid.</span>
+              <strong>Betaalbaar slim</strong>
+              <span class="muted">Van complete hubs tot zelfbouwsensoren: slim wonen hoeft niet meteen honderden euro's per kamer te kosten.</span>
             </div>
             <div class="stat">
-              <strong>Getest in een echt huis</strong>
-              <span class="muted">Dus niet ontworpen voor een showroom, maar voor de rommelige werkelijkheid van licht,
-                routines, vergeten schakelaars en net-niet handige standaardoplossingen.</span>
+              <strong>Vandaag beschikbaar</strong>
+              <span class="muted">De toekomst is leuk, maar het wordt pas interessant wanneer je haar vanavond al kunt aansluiten.</span>
             </div>
           </div>
         </div>
@@ -517,30 +592,27 @@
         <div class="hero-visual">
           <div class="showcase-card">
             <div class="showcase-top">
-              <span class="badge">Waar dit blog eigenlijk over gaat</span>
+              <span class="badge">Waar dit blog om draait</span>
               <span class="small-tag">Homey + Google + DIY</span>
             </div>
 
             <div class="side-stack" style="gap:1rem;">
               <div class="panel">
-                <span class="eyebrow">Slimme timing</span>
-                <h3>Lampen die reageren op licht, niet op een gok</h3>
-                <p class="muted">Een lichtsensor voorkomt dat verlichting te vroeg, te laat of simpelweg om de verkeerde
-                  reden aangaat.</p>
+                <span class="eyebrow">Homey als hart</span>
+                <h3>Eindelijk één plek waar je slimme apparaten elkaar begrijpen</h3>
+                <p class="muted">Lamp A, sensor B en schakelaar C hoeven niet van hetzelfde merk te zijn om samen iets slims te doen.</p>
               </div>
 
               <div class="panel">
-                <span class="eyebrow">Gezonder binnenklimaat</span>
-                <h3>CO₂ meten en pas ventileren wanneer het ertoe doet</h3>
-                <p class="muted">Zelfbouwsensoren maken luchtkwaliteit niet alleen zichtbaar, maar ook bruikbaar in
-                  flows.</p>
+                <span class="eyebrow">Google Home als stem</span>
+                <h3>Gewoon roepen wat er moet gebeuren</h3>
+                <p class="muted">Muziek starten, verlichting bedienen of flows activeren zonder eerst je telefoon te zoeken.</p>
               </div>
 
               <div class="panel">
-                <span class="eyebrow">DIY waar standaard tekortschiet</span>
-                <h3>Projecten voor wie nét iets meer wil dan kant-en-klaar</h3>
-                <p class="muted">Van bewegingssensoren tot relais en multisensoren: betaalbaar, leerzaam en vooral
-                  praktisch genoeg om te blijven gebruiken.</p>
+                <span class="eyebrow">Homeyduino als gereedschapskist</span>
+                <h3>Zelf bouwen waar kant-en-klaar net tekortschiet</h3>
+                <p class="muted">CO₂ meten, deuren bewaken, relais schakelen of met één klap de slaapkamer uitzetten. Omdat het kan én omdat het handig is.</p>
               </div>
             </div>
           </div>
@@ -553,33 +625,30 @@
         <div class="section-header">
           <div>
             <span class="eyebrow">Start hier</span>
-            <h2>Kies de route die past bij hoe jij slim wilt wonen</h2>
+            <h2>Waar begin je als je huis slimmer moet worden?</h2>
           </div>
-          <p>Nieuwe bezoeker? Zie dit als de menukaart, niet als de technische handleiding.</p>
+          <p>Waarschijnlijk heb je al slimme apparaten in huis. De echte winst begint pas wanneer ze niet langer losse eilandjes zijn.</p>
         </div>
 
         <div class="grid-3">
           <article class="card">
             <div class="card-icon">🏠</div>
-            <h3>Ik wil begrijpen wat Homey is</h3>
-            <p class="muted">Wat Homey precies doet, waarom het zo’n sterke centrale hub is en waarom veel slimme huizen
-              pas echt slim worden zodra alles met elkaar praat.</p>
+            <h3>Ik wil begrijpen wat Homey doet</h3>
+            <p class="muted">Waarom één centrale smart home hub zoveel verschil maakt en hoe Homey lampen, sensoren, schakelaars en apps aan elkaar knoopt.</p>
             <a class="link" href="homey.html">Naar Homey basis →</a>
           </article>
 
           <article class="card">
             <div class="card-icon">⚡</div>
             <h3>Ik wil meteen iets automatiseren</h3>
-            <p class="muted">Praktische tutorials voor verlichting, thuiskomst, nachtmodus, meldingen en
-              energiebesparing, oftewel de kleine ingrepen die verrassend veel opleveren.</p>
+            <p class="muted">Van verlichting bij thuiskomst tot nachtmodus, meldingen en energiebesparing. Kleine flows, groot gemak.</p>
             <a class="link" href="tutorials.html">Bekijk tutorials →</a>
           </article>
 
           <article class="card">
             <div class="card-icon">🔧</div>
-            <h3>Ik wil zelf iets bouwen</h3>
-            <p class="muted">DIY-projecten met Homeyduino voor sensoren en schakelingen die je niet zomaar in een nette
-              winkeldoos vindt, maar die vaak precies doen wat je wél nodig hebt.</p>
+            <h3>Ik wil zelf sensoren bouwen</h3>
+            <p class="muted">Met een Wemos D1 Mini, wat sensoren en Homeyduino maak je ineens projecten die precies doen wat jij nodig hebt.</p>
             <a class="link" href="diy.html">Ontdek DIY →</a>
           </article>
         </div>
@@ -590,29 +659,26 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="eyebrow">Waarom dit werkt</span>
-            <h2>Een slim huis draait zelden om méér technologie, maar bijna altijd om betere timing</h2>
+            <span class="eyebrow">Waarom een slim huis vaak niet slim voelt</span>
+            <h2>Een app op je telefoon maakt je huis nog geen Smart Home</h2>
           </div>
-          <p>De interessantste automatiseringen zijn meestal niet de meest spectaculaire, maar degene die op precies het
-            juiste moment één klein probleem uit je dag verwijderen.</p>
+          <p>Als je voor iedere lamp, thermostaat, speaker en sensor een andere app moet openen, loop je uiteindelijk sneller naar de wandschakelaar.</p>
         </div>
 
         <div class="grid-3">
           <article class="card">
-            <h3>Minder handmatig ingrijpen</h3>
-            <p class="muted">Niet telkens zelf corrigeren wat je slimme huis eigenlijk al had moeten begrijpen.</p>
+            <h3>Alles met elkaar laten praten</h3>
+            <p class="muted">Een KlikAanKlikUit sensor die Philips Hue schakelt. Een CO₂ meter die ventilatie start. Een agenda die je huis laat voorbereiden op thuiskomst. Dáár begint het leuke werk.</p>
           </article>
 
           <article class="card">
-            <h3>Minder verspilling</h3>
-            <p class="muted">Verlichting, ventilatie en schakelingen pas activeren wanneer het echt nodig is, niet omdat
-              een klok toevallig iets besloten heeft.</p>
+            <h3>Automatiseren op het juiste moment</h3>
+            <p class="muted">Niet omdat een klok zegt dat het 19:00 uur is, maar omdat het donker wordt, er iemand thuiskomt of de luchtkwaliteit verslechtert.</p>
           </article>
 
           <article class="card">
-            <h3>Meer controle</h3>
-            <p class="muted">Zelf kiezen waar standaardoplossingen goed genoeg zijn en waar zelfbouw ineens de
-              verstandigste optie blijkt.</p>
+            <h3>Zelf bepalen wat slim genoeg is</h3>
+            <p class="muted">Soms is kant-en-klaar perfect. Soms bouw je voor een fractie van de prijs zelf precies de sensor die je nergens fatsoenlijk kunt kopen.</p>
           </article>
         </div>
       </div>
@@ -623,31 +689,27 @@
         <div class="section-header">
           <div>
             <span class="eyebrow">Beste eerste artikelen</span>
-            <h2>Dit zijn de slimste plekken om te beginnen</h2>
+            <h2>Drie goede plekken om te beginnen</h2>
           </div>
-          <p>Geen willekeurige selectie, maar drie artikelen die samen goed laten zien waar huisvanvandaag.nl voor
-            staat.</p>
+          <p>Deze artikelen laten precies zien waar huisvanvandaag.nl voor staat: nieuwsgierigheid, betaalbare techniek en toepassingen die thuis écht iets toevoegen.</p>
         </div>
 
         <div class="grid-3">
           <article class="card">
             <h3>Wat is Homey en waarom kiezen zoveel mensen hiervoor?</h3>
-            <p class="muted">Een helder startartikel voor wie wil begrijpen waarom Homey zo vaak het hart van een slim
-              huis wordt, juist omdat het chaos vertaalt naar samenhang.</p>
+            <p class="muted">Een duidelijke kennismaking met Homey als centrale smart home hub en waarom losse slimme apparaten pas echt interessant worden zodra ze samenwerken.</p>
             <a class="link" href="homey.html">Lees artikel →</a>
           </article>
 
           <article class="card">
             <h3>CO₂ sensor met Homeyduino</h3>
-            <p class="muted">Een van de beste voorbeelden van een DIY-project dat niet alleen leuk is om te bouwen, maar
-              thuis ook direct waarde toevoegt doordat het onzichtbare informatie bruikbaar maakt.</p>
+            <p class="muted">Een mooi voorbeeld van DIY die direct nut heeft: luchtkwaliteit meten en die waarde gebruiken om automatisch te ventileren wanneer het nodig is.</p>
             <a class="link" href="homeyduino-co2-sensor.html">Lees artikel →</a>
           </article>
 
           <article class="card">
             <h3>Chriet Titulaer en het Huis van de Toekomst</h3>
-            <p class="muted">Het verhaal achter de belofte van slim wonen, en waarom die toekomst vaak dichterbij is
-              dan de meeste mensen denken.</p>
+            <p class="muted">De inspiratie achter dit blog. Veel wat toen futuristisch leek, staat inmiddels gewoon bij ons thuis op de kast, aan de muur of in de meterkast.</p>
             <a class="link" href="chriet-titulaer.html">Lees artikel →</a>
           </article>
         </div>
@@ -659,36 +721,32 @@
         <div class="section-header">
           <div>
             <span class="eyebrow">Uitgelichte DIY-projecten</span>
-            <h2>Zelfbouwprojecten die laten zien dat slim wonen niet altijd uit een winkel hoeft te komen</h2>
+            <h2>Zelf bouwen is vaak goedkoper, leerzamer en verrassend praktisch</h2>
           </div>
-          <p>Geen knutselen om het knutselen, maar projecten die iets oplossen, meten of slimmer maken op een manier die
-            standaardproducten vaak nét missen.</p>
+          <p>Niet knutselen omdat er toevallig een soldeerbout ligt, maar omdat je huis er daadwerkelijk slimmer van wordt.</p>
         </div>
 
         <div class="grid-3">
           <article class="card">
             <div class="card-icon">🌿</div>
             <h3>CO₂ sensor</h3>
-            <p class="muted">Meet de luchtkwaliteit in huis en gebruik die data voor waarschuwingen of automatische
-              ventilatie. Een prachtig voorbeeld van technologie die pas waarde krijgt zodra ze gedrag beïnvloedt.</p>
+            <p class="muted">Maak luchtkwaliteit zichtbaar in Homey en gebruik die data voor waarschuwingen of automatische ventilatie. Onzichtbaar probleem, zichtbare oplossing.</p>
             <a class="link" href="homeyduino-co2-sensor.html">Bekijk project →</a>
           </article>
 
-<article class="card">
-  <div class="card-icon">🌡️</div>
-  <h3>CO₂ multi-sensor</h3>
-  <p class="muted">
-    Eén sensor die meerdere problemen tegelijk oplost: CO₂, temperatuur, luchtvochtigheid en licht.
-    Ideaal als je niet alleen wilt meten, maar je huis écht slimmer wilt laten reageren op wat er gebeurt.
-  </p>
-  <a class="link" href="homeyduino-co2-multisensor.html">Bekijk project →</a>
-</article>
+          <article class="card">
+            <div class="card-icon">🌡️</div>
+            <h3>CO₂ multi-sensor</h3>
+            <p class="muted">
+              CO₂, temperatuur, luchtvochtigheid en licht in één project. Ideaal wanneer je met één zelfbouwsensor meerdere flows slimmer wilt maken.
+            </p>
+            <a class="link" href="homeyduino-co2-multisensor.html">Bekijk project →</a>
+          </article>
 
           <article class="card">
             <div class="card-icon">👏</div>
             <h3>Clapper switch</h3>
-            <p class="muted">Een speelser project, maar tegelijk een mooi bewijs dat slimme techniek vaak het leukst is
-              wanneer ze ook een glimlach oproept.</p>
+            <p class="muted">Een knipoog naar ouderwetse domotica, maar dan gekoppeld aan Homey. Twee keer klappen en je slaapkamer gaat in één keer uit. Heerlijk nutteloos? Vooral heerlijk handig.</p>
             <a class="link" href="homeyduino-clapper-switch.html">Bekijk project →</a>
           </article>
         </div>
@@ -700,35 +758,32 @@
         <div class="story-grid">
           <div class="panel">
             <span class="eyebrow">Over huisvanvandaag.nl</span>
-            <h2>Niet méér technologie, maar een huis dat slimmer aanvoelt</h2>
-            <p>Als kind maakte het <strong>Huis van de Toekomst</strong> enorme indruk. Klimaatregeling, beeldbellen,
-              spraakherkenning en slimme toegang voelden toen bijna buitenaards.</p>
-            <p>Jaren later bleek de interessantste vraag niet óf die toekomst er komt, maar hoeveel ervan je vandaag al
-              zelf kunt bouwen. Maar dan betaalbaar, praktisch en zonder van je huis een IT-project te maken. Want de beste
-              technologie is zelden de technologie waar je het meest over nadenkt, maar de technologie die op de juiste
-              momenten gewoon stilletjes haar werk doet.</p>
+            <h2>Van open mond in Rosmalen naar zelf bouwen aan huis</h2>
+            <p>Als kleine jongen maakte het <strong>Huis van de Toekomst</strong> enorme indruk. Klimaatbeheersing, beeldbellen, spraakherkenning, slimme toegang en zonnepanelen voelden toen bijna buitenaards.</p>
+            <p>Jaren later bleek de vraag niet meer wanneer die toekomst eindelijk zou komen. De betere vraag werd: hoeveel kun je vandaag al zelf bouwen? Met betaalbare producten, open platformen, slimme hubs en een beetje nieuwsgierigheid kom je namelijk verrassend ver.</p>
+            <p>Dit blog is mijn verslag van die zoektocht. Naar een huis dat niet vol hangt met gadgets, maar dat beter reageert op het dagelijkse leven.</p>
             <div class="chips">
               <span class="chip">Homey als centrale hub</span>
-              <span class="chip">Google Home voor routines</span>
-              <span class="chip">DIY waar standaard tekortschiet</span>
+              <span class="chip">Google Home voor spraak</span>
+              <span class="chip">Homeyduino voor zelfbouw</span>
             </div>
             <a class="link" href="over.html">Lees het volledige verhaal →</a>
           </div>
 
           <div class="panel">
             <span class="eyebrow">Waar je op kunt rekenen</span>
-            <h2>Praktisch, getest en zonder onnodige show</h2>
-            <p>Dit blog draait niet om gadgets verzamelen, maar om toepassingen die thuis echt iets prettiger maken.
-              Soms is dat een simpele flow, soms een zelfgebouwde sensor en soms juist de conclusie dat iets niet de
-              moeite waard is.</p>
-            <p>Daarom ligt de nadruk hier op begrijpelijke uitleg, bruikbare voorbeelden en projecten die niet alleen
-              op papier slim klinken, maar ook in een echt huis logisch aanvoelen.</p>
+            <h2>Praktisch, betaalbaar en zonder onnodige show</h2>
+            <p>Huisvanvandaag.nl draait niet om zoveel mogelijk slimme apparaten verzamelen. Het gaat om oplossingen die je huis fijner maken. Soms is dat een simpele flow. Soms een Google Home commando. Soms een sensor die je zelf in elkaar zet omdat de kant-en-klare oplossing te duur, te beperkt of gewoon net niet handig is.</p>
+            <p>Daarom vind je hier uitleg die je kunt volgen, projecten die je zelf kunt maken en ideeën die je meteen kunt toepassen. Want het mooiste smart home product is niet het product waar je het vaakst naar kijkt, maar het product dat precies op het juiste moment ongemerkt zijn werk doet.</p>
+            <p><strong>Wil je vandaag beginnen?</strong> Kies één project, sluit het aan en ervaar hoe leuk het is wanneer je huis ineens wél begrijpt wat je bedoelt.</p>
+            <a class="link" href="diy.html">Start met een DIY-project →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- tijdelijk uitgeschakeld totdat ik een maillist heb  <section class="section-soft">
+    <!-- tijdelijk uitgeschakeld totdat ik een maillist heb
+    <section class="section-soft">
       <div class="container newsletter">
         <div>
           <span class="eyebrow">Op de hoogte blijven?</span>
@@ -741,7 +796,8 @@
           <button class="btn btn-primary" type="button">Schrijf me in</button>
         </form>
       </div>
-    </section> -->
+    </section>
+    -->
   </main>
 
   <div id="site-footer"></div>

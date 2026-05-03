@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- PAGINATITEL -->
+<title>Bouw je eigen DS18B20 temperatuursensor met Homeyduino | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Bouw zelf een ESP32-C3 temperatuursensor met DS18B20, OLED-scherm en Homeyduino. Handig voor sauna, jacuzzi, zwembad of vijver." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>DS18B20 temperatuursensor</span>
+</div>
+<span class="eyebrow">DIY • Homeyduino • Temperatuur</span>
+<h1>Bouw je eigen DS18B20 temperatuursensor met Homeyduino</h1>
+<p class="lead muted">
+          Meet temperatuur met een ESP32-C3, een DS18B20-sensor en een klein OLED-scherm, en stuur de waarde automatisch door naar Homey.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY smart home</span>
+<span class="meta-pill">Platform: Homeyduino</span>
+<span class="meta-pill">Hardware: ESP32-C3, DS18B20 en OLED</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Waarom dit project leuk én nuttig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Temperatuur direct zichtbaar</strong><br/>
+<span class="muted">Het onboard OLED-scherm toont de actuele temperatuur zonder dat je eerst Homey hoeft te openen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Waarde in Homey gebruiken</strong><br/>
+<span class="muted">De gemeten temperatuur wordt via Homeyduino gepubliceerd als meetwaarde in Homey.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Breed inzetbaar</strong><br/>
+<span class="muted">Denk aan temperatuurmeting bij een vijver, zwembad, jacuzzi, sauna of andere plek waar je temperatuur slim wilt volgen.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Robuuste sensorlogica</strong><br/>
+<span class="muted">De code controleert of de meting geldig is en publiceert pas opnieuw bij een relevante verandering of heartbeat.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Netjes opgebouwd</strong><br/>
+<span class="muted">WiFi, display, Homeyduino en sensoruitlezing zijn overzichtelijk gescheiden in functies en configuratieblokken.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="ESP32-C3 temperatuursensor met DS18B20 en OLED voor Homeyduino" src="assets\header\dsb120-homeyduino-hero.png"/>
+<figcaption class="muted small">
+            Een compacte Homeyduino-temperatuursensor met lokale OLED-weergave en automatische koppeling met Homey.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Sommige temperaturen wil je niet alleen af en toe controleren, maar gewoon automatisch in je slimme huis beschikbaar hebben. Denk aan de temperatuur van water in een vijver of zwembad, de warmte van een jacuzzi of het verloop van de temperatuur in een sauna.
+        </p>
+<p>
+          In dit project bouw je een compacte temperatuursensor met een ESP32-C3, een DS18B20-temperatuursensor en een klein 72x40 OLED-scherm. De actuele temperatuur wordt lokaal weergegeven op het scherm en via Homeyduino doorgestuurd naar Homey als <code>measure_temperature</code>.
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een slimme temperatuursensor die zelfstandig verbinding maakt met WiFi, de DS18B20 uitleest, de temperatuur op het OLED-scherm toont en de meetwaarde naar Homey publiceert.</p>
+<ul>
+<li><strong>Lokale temperatuurweergave</strong> → het OLED-scherm toont de actuele temperatuur en een korte WiFi-status.</li>
+<li><strong>Homeyduino-integratie</strong> → Homey krijgt de temperatuur als meetwaarde binnen, zodat je deze in flows kunt gebruiken.</li>
+</ul>
+<p>Het resultaat is een kleine, praktische sensorunit die niet alleen meet, maar ook meteen bruikbaar wordt binnen je automatiseringen.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>ESP32-C3 board met onboard 72x40 OLED-scherm</li>
+<li>DS18B20 temperatuursensor</li>
+<li>Weerstand voor de DS18B20-datalijn, afhankelijk van je gebruikte sensoruitvoering</li>
+<li>USB-kabel en voeding voor de ESP32-C3</li>
+<li>Arduino IDE met de benodigde bibliotheken: Homeyduino, OneWire, DallasTemperature en U8g2</li>
+</ul>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de DS18B20 aan op de ESP32-C3</h3>
+<p>In de code wordt de datapin van de DS18B20 ingesteld op GPIO 2. Het OLED-scherm gebruikt I2C via SDA op GPIO 5 en SCL op GPIO 6. Controleer altijd of jouw specifieke board dezelfde pinnen gebruikt.</p>
+<ul>
+<li><strong>Data</strong> → <strong>GPIO 2</strong></li>
+<li><strong>VIN</strong> → <strong>3V</strong></li>
+<li><strong>GND</strong> → <strong>GD</strong></li>
+</ul>
+<figure>
+<img alt="Aansluiten van een DS18B20 temperatuursensor op een ESP32-C3" src="assets/artikel/homeyduino-ds18b20-temperatuursensor-aansluiten.png"/>
+<figcaption class="muted small">
+            De DS18B20 wordt gebruikt voor de temperatuurmeting; het OLED-scherm toont de waarde lokaal op het apparaat.
+          </figcaption>
+</figure>
+<h3>2. Installeer de benodigde bibliotheken</h3>
+<p>Voor deze sketch gebruik je WiFi, Homeyduino, Wire, OneWire, DallasTemperature en U8g2. Installeer de externe bibliotheken via de Library Manager van de Arduino IDE voordat je de code compileert.</p>
+<h3>3. Plaats de code op de ESP32-C3</h3>
+<p>Vul eerst je eigen WiFi-gegevens in bij <code>WIFI_SSID</code> en <code>WIFI_PASSWORD</code>. Pas eventueel ook de apparaatnaam aan, zodat je in Homey meteen ziet welke sensor je toevoegt.</p>
+<pre><code>// ========================================================
+// ESP32-C3 DS18B20 + OLED + Homeyduino
+// Temperatuursensor met onboard 72x40 OLED-scherm
+// ========================================================
+
+#include &lt;WiFi.h&gt;
+#include &lt;Homey.h&gt;
+#include &lt;Wire.h&gt;
+#include &lt;OneWire.h&gt;
+#include &lt;DallasTemperature.h&gt;
+#include &lt;U8g2lib.h&gt;
+
+// ========================================================
+// Debug instellingen
+// ========================================================
+#define DEBUG 1
+
+#if DEBUG
+  #define DBG_PRINT(x) Serial.print(x)
+  #define DBG_PRINTLN(x) Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// ========================================================
+// Configuratie
+// ========================================================
+namespace Config {
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
+
+  constexpr const char* HOMEY_DEVICE_NAME = "Temperatuursensor Sauna";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+
+  // DS18B20
+  constexpr uint8_t TEMP_SENSOR_PIN = 2;
+
+  // OLED I2C-pinnen
+  constexpr uint8_t OLED_SDA = 5;
+  constexpr uint8_t OLED_SCL = 6;
+
+  // Timing
+  constexpr unsigned long SENSOR_READ_INTERVAL_MS = 5000;
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 15000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  // Sensorfilter
+  constexpr float MIN_VALID_TEMP_C = -40.0;
+  constexpr float MAX_VALID_TEMP_C = 85.0;
+  constexpr float MIN_TEMP_CHANGE_TO_PUBLISH = 0.2;
+}
+
+// ========================================================
+// Globale objecten
+// ========================================================
+OneWire oneWire(Config::TEMP_SENSOR_PIN);
+DallasTemperature tempSensor(&amp;oneWire);
+
+U8G2_SSD1306_72X40_ER_F_HW_I2C display(
+  U8G2_R0,
+  U8X8_PIN_NONE,
+  Config::OLED_SCL,
+  Config::OLED_SDA
+);
+
+// ========================================================
+// Status
+// ========================================================
+namespace State {
+  float currentTemperature = NAN;
+  float lastPublishedTemperature = NAN;
+
+  bool sensorAvailable = false;
+  bool homeyReady = false;
+
+  unsigned long lastSensorReadAt = 0;
+  unsigned long lastHomeyHeartbeatAt = 0;
+  unsigned long lastWifiCheckAt = 0;
+}
+
+// ========================================================
+// Hulpfuncties
+// ========================================================
+bool isValidTemperature(float temperature) {
+  return !isnan(temperature)
+    &amp;&amp; temperature != DEVICE_DISCONNECTED_C
+    &amp;&amp; temperature &gt;= Config::MIN_VALID_TEMP_C
+    &amp;&amp; temperature &lt;= Config::MAX_VALID_TEMP_C;
+}
+
+bool hasTemperatureChangedEnough(float newValue, float oldValue) {
+  if (isnan(oldValue)) return true;
+  return abs(newValue - oldValue) &gt;= Config::MIN_TEMP_CHANGE_TO_PUBLISH;
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED &amp;&amp; State::homeyReady;
+}
+
+// ========================================================
+// Display
+// ========================================================
+void drawDisplay(float temperature, bool sensorAvailable) {
+  display.clearBuffer();
+
+  display.setFont(u8g2_font_5x7_tf);
+  display.drawStr(0, 7, "Temp");
+
+  if (!sensorAvailable || isnan(temperature)) {
+    display.setFont(u8g2_font_6x10_tf);
+    display.drawStr(0, 25, "Geen sensor");
+  } else {
+    char tempText[8];
+    snprintf(tempText, sizeof(tempText), "%.1f", temperature);
+
+    display.setFont(u8g2_font_logisoso20_tf);
+    display.drawStr(0, 32, tempText);
+
+    display.setFont(u8g2_font_6x10_tf);
+    display.drawCircle(48, 22, 2);
+    display.drawStr(52, 31, "C");
+  }
+
+  // Kleine WiFi/Homey status rechtsboven
+  display.setFont(u8g2_font_4x6_tf);
+
+  if (WiFi.status() == WL_CONNECTED) {
+    display.drawStr(54, 7, "WiFi");
+  } else {
+    display.drawStr(50, 7, "NoWiFi");
+  }
+
+  display.sendBuffer();
+}
+
+// ========================================================
+// WiFi
+// ========================================================
+void connectToWifi() {
+  DBG_PRINT("Verbinden met WiFi: ");
+  DBG_PRINTLN(Config::WIFI_SSID);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  unsigned long startedAt = millis();
+
+  while (WiFi.status() != WL_CONNECTED &amp;&amp;
+         millis() - startedAt &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    DBG_PRINT(".");
+  }
+
+  DBG_PRINTLN();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    DBG_PRINTLN("WiFi verbonden.");
+    DBG_PRINT("IP-adres: ");
+    DBG_PRINTLN(WiFi.localIP());
+  } else {
+    DBG_PRINTLN("WiFi verbinden mislukt.");
+  }
+}
+
+void maintainWifi() {
+  unsigned long now = millis();
+
+  if (now - State::lastWifiCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  State::lastWifiCheckAt = now;
+
+  if (WiFi.status() == WL_CONNECTED) {
+    return;
+  }
+
+  DBG_PRINTLN("WiFi verbinding verloren. Opnieuw verbinden...");
+  WiFi.disconnect();
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+// ========================================================
+// Homey
+// ========================================================
+void setupHomey() {
+  if (WiFi.status() != WL_CONNECTED) {
+    DBG_PRINTLN("Homey setup overgeslagen: geen WiFi.");
+    return;
+  }
+
+  DBG_PRINTLN("Homeyduino starten...");
+
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability("measure_temperature");
+
+  State::homeyReady = true;
+
+  DBG_PRINT("Homeyduino actief als: ");
+  DBG_PRINTLN(Config::HOMEY_DEVICE_NAME);
+}
+
+void publishTemperatureToHomey(bool forcePublish = false) {
+  if (!canPublishToHomey()) {
+    DBG_PRINTLN("Publiceren naar Homey overgeslagen: Homey/WiFi niet klaar.");
+    return;
+  }
+
+  if (!State::sensorAvailable || !isValidTemperature(State::currentTemperature)) {
+    DBG_PRINTLN("Publiceren naar Homey overgeslagen: ongeldige temperatuur.");
+    return;
+  }
+
+  bool shouldPublish =
+    forcePublish ||
+    hasTemperatureChangedEnough(State::currentTemperature, State::lastPublishedTemperature);
+
+  if (!shouldPublish) {
+    return;
+  }
+
+  Homey.setCapabilityValue("measure_temperature", State::currentTemperature);
+
+  State::lastPublishedTemperature = State::currentTemperature;
+
+  DBG_PRINT("Temperatuur naar Homey gepubliceerd: ");
+  DBG_PRINT(State::currentTemperature);
+  DBG_PRINTLN(" C");
+}
+
+void maintainHomey() {
+  if (canPublishToHomey()) {
+    Homey.loop();
+  }
+
+  unsigned long now = millis();
+
+  if (now - State::lastHomeyHeartbeatAt &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS) {
+    State::lastHomeyHeartbeatAt = now;
+    publishTemperatureToHomey(true);
+  }
+}
+
+// ========================================================
+// Temperatuursensor
+// ========================================================
+void setupTemperatureSensor() {
+  tempSensor.begin();
+
+  int deviceCount = tempSensor.getDeviceCount();
+
+  if (deviceCount &gt; 0) {
+    State::sensorAvailable = true;
+    DBG_PRINT("DS18B20 gevonden. Aantal sensoren: ");
+    DBG_PRINTLN(deviceCount);
+  } else {
+    State::sensorAvailable = false;
+    DBG_PRINTLN("Geen DS18B20 sensor gevonden.");
+  }
+}
+
+void readTemperatureSensor() {
+  unsigned long now = millis();
+
+  if (now - State::lastSensorReadAt &lt; Config::SENSOR_READ_INTERVAL_MS) {
+    return;
+  }
+
+  State::lastSensorReadAt = now;
+
+  tempSensor.requestTemperatures();
+
+  float measuredTemperature = tempSensor.getTempCByIndex(0);
+
+  if (!isValidTemperature(measuredTemperature)) {
+    State::sensorAvailable = false;
+    State::currentTemperature = NAN;
+
+    DBG_PRINTLN("Ongeldige temperatuurmeting of sensor losgekoppeld.");
+    drawDisplay(State::currentTemperature, State::sensorAvailable);
+    return;
+  }
+
+  State::sensorAvailable = true;
+  State::currentTemperature = measuredTemperature;
+
+  DBG_PRINT("Gemeten temperatuur: ");
+  DBG_PRINT(State::currentTemperature);
+  DBG_PRINTLN(" C");
+
+  drawDisplay(State::currentTemperature, State::sensorAvailable);
+  publishTemperatureToHomey(false);
+}
+
+// ========================================================
+// Display setup
+// ========================================================
+void setupDisplay() {
+  Wire.begin(Config::OLED_SDA, Config::OLED_SCL);
+
+  display.begin();
+  display.setContrast(180);
+
+  drawDisplay(NAN, false);
+
+  DBG_PRINTLN("OLED display gestart.");
+}
+
+// ========================================================
+// Setup
+// ========================================================
+void setup() {
+  Serial.begin(115200);
+  delay(500);
+
+  DBG_PRINT("Start ");
+  DBG_PRINTLN(Config::HOMEY_DEVICE_NAME);
+
+  setupDisplay();
+  setupTemperatureSensor();
+
+  connectToWifi();
+  setupHomey();
+
+  readTemperatureSensor();
+  publishTemperatureToHomey(true);
+}
+
+// ========================================================
+// Loop
+// ========================================================
+void loop() {
+  maintainWifi();
+  maintainHomey();
+  readTemperatureSensor();
+}</code></pre>
+<h3>4. Controleer de seriële monitor en het OLED-scherm</h3>
+<p>Na het uploaden start de ESP32-C3 op, zoekt de DS18B20, verbindt met WiFi en initialiseert Homeyduino. In de seriële monitor zie je of de sensor gevonden is en welk IP-adres het board krijgt. Op het OLED-scherm verschijnt de actuele temperatuur of de melding dat er geen sensor beschikbaar is.</p>
+<h3>5. Voeg de sensor toe in Homey</h3>
+<p>Zodra Homeyduino actief is, kun je het apparaat in Homey toevoegen. De sensor meldt zich met de ingestelde apparaatnaam en gebruikt de capability <code>measure_temperature</code>.</p>
+<figure>
+<img alt="DS18B20 temperatuursensor zichtbaar in Homey" src="assets\artikel\homeyduino-ds18b20-temperatuursensor-homey.jpg"/>
+<figcaption class="muted small">
+            In Homey komt de sensor binnen als temperatuursensor, zodat je de waarde kunt gebruiken in flows en dashboards.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De sketch publiceert de temperatuur naar Homey wanneer de waarde voldoende verandert of wanneer de heartbeat wordt uitgevoerd. Daardoor blijft de waarde actueel zonder dat Homey bij iedere kleine schommeling onnodig wordt bijgewerkt.</p>
+<p>Voorbeelden van toepassingen zijn:</p>
+<ul>
+<li>Een melding wanneer de jacuzzi of sauna een ingestelde temperatuur bereikt.</li>
+<li>Een flow die de watertemperatuur van een vijver of zwembad in de gaten houdt.</li>
+<li>Een dashboardwaarde waarmee je snel ziet hoe warm een ruimte, waterpartij of buitenopstelling is.</li>
+</ul>
+<figure>
+<img alt="Voorbeeld van een Homey flow met een DS18B20 temperatuursensor" src="assets/artikel/homeyduino-ds18b20-temperatuursensor-flow.jpg"/>
+<figcaption class="muted small">
+            Met de temperatuurwaarde in Homey kun je flows maken op basis van grenswaarden of temperatuurveranderingen.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>De DS18B20 is vooral interessant wanneer je temperatuur op een specifieke plek wilt meten en die waarde niet alleen lokaal, maar ook in Homey beschikbaar wilt hebben. Bij gebruik rond water, buiten of in vochtige omgevingen is de behuizing belangrijk: zorg dat de elektronica droog blijft en dat alleen een daarvoor geschikte sensoruitvoering in contact komt met vocht of water.</p>
+<figure>
+<img alt="Praktijkopstelling van een Homeyduino temperatuursensor bij water of sauna" src="assets/artikel/homeyduino-ds18b20-temperatuursensor-praktijk.jpg"/>
+<figcaption class="muted small">
+            Denk vooraf goed na over de plaatsing: de sensor moet goed kunnen meten, terwijl de ESP32-C3 beschermd blijft tegen vocht en hitte.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Controleer of jouw ESP32-C3 board dezelfde OLED-pinnen gebruikt als in deze sketch.</li>
+<li>Gebruik bij vijver, zwembad of jacuzzi alleen een sensoruitvoering en behuizing die geschikt zijn voor de omstandigheden waarin je meet.</li>
+<li>De code accepteert temperaturen tussen -40 en 85 graden Celsius; waarden daarbuiten worden als ongeldig behandeld.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met deze DIY-temperatuursensor voeg je een praktische meetwaarde toe aan je slimme huis. Het OLED-scherm maakt de sensor zelfstandig afleesbaar, terwijl Homeyduino ervoor zorgt dat de temperatuur ook beschikbaar is voor flows. Daarmee is dit een mooi project voor situaties waarin je temperatuur slimmer wilt volgen, zoals bij een vijver, zwembad, jacuzzi, sauna of andere plek waar temperatuur echt iets zegt.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- en raamsensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</body>
+</html>

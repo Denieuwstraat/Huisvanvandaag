@@ -300,7 +300,7 @@
     "shops": [
       {
         "name": "AliExpress",
-        "url": "",
+        "url": "https://s.click.aliexpress.com/e/_c3RweAb5",
         "label": "Budgetoptie",
         "badge": "€"
       },
@@ -427,7 +427,7 @@
       },
       {
         "name": "Bol.com",
-        "url": "",
+        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Firobot-roomba-i7-robotstofzuiger-met-slimme-navigatie-automatische-vuilafvoer-i7556%2F9200000132820600%2F&name=iRobot%20Roomba%20i7%2B%20Robotstofzuiger%20-%20Slimme%20navigatie%20-%20Automatische%20vuilafvoer%20-%20i7556",
         "label": "Snelle levering NL",
         "badge": "NL"
       },
@@ -467,7 +467,97 @@
       },
       {
         "name": "Bol.com",
+        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fgoogle-nest-wifi-pro-mesh-wifi-wifi-6e-2-pack%2F9300000123778668%2F&name=Google%20Nest%20Wifi%20Pro%20-%20Mesh%20Wifi%206E%20-%202-pack%20-%20Smarthome%20connectiviteit",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
         "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
+      }
+    ]
+  },
+  "ds18b20_temperature_sensor": {
+    "name": "DS18B20 waterdichte temperatuursensor",
+    "description": "Digitale temperatuursensor met waterdichte roestvrijstalen probe, geschikt voor DIY-metingen zoals watertemperatuur in een vijver, zwembad, aquarium, jacuzzi of sauna-project.",
+    "images": [
+      "assets/affiliate/ds18b20-1.jpg"
+    ],
+    "aliases": [
+      "ds18b20",
+      "ds18b20 sensor",
+      "DS18B20 Temperature Sensor Module Kit",
+      "DS18B20 waterproof probe",
+      "waterproof stainless steel probe",
+      "waterdichte temperatuursensor",
+      "waterdichte temperatuur sensor",
+      "temperatuur probe",
+      "temperature probe",
+      "waterproof temperature sensor",
+      "1-wire temperature sensor",
+      "onewire temperature sensor",
+      "digitale temperatuursensor",
+      "temperatuur sensor waterdicht",
+      "watertemperatuur sensor",
+      "vijver temperatuur sensor",
+      "zwembad temperatuur sensor"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c3AwWanz",
+        "label": "Budgetoptie",
+        "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-ds18b20-waterdichte-probe-temperatuursensor-1m-kabel%2F9300000044110606%2F&name=OTRONIC%C2%AE%20DS18B20%20waterdichte%20probe%20temperatuursensor%201m%20kabel",
+        "label": "Snelle levering NL",
+        "badge": "NL"
+      },
+      {
+        "name": "Amazon",
+        "url": "",
+        "label": "Snelle internationale levering",
+        "badge": "Prime"
+      }
+    ]
+  },
+  "esp32_c3_oled_board": {
+    "name": "ESP32-C3 OLED development board 0.42 inch",
+    "description": "Compact ESP32-C3 ontwikkelbord met ingebouwd 0.42 inch OLED-scherm, keramische antenne, wifi en bluetooth. Handig voor compacte IoT- en Homeyduino-projecten.",
+    "images": [
+      "assets/affiliate/esp32-c3-oled-1.jpg"
+    ],
+    "aliases": [
+      "esp32-c3 oled",
+      "esp32 c3 oled",
+      "ESP32-C3 OLED Development Board",
+      "ESP32-C3 OLED Development Board With 0.42 Inch OLED",
+      "0.42 inch oled esp32",
+      "esp32 c3 0.42 oled",
+      "esp32 c3 supermini oled",
+      "esp32 supermini oled",
+      "esp32-c3 supermini",
+      "esp32 c3 development board",
+      "esp32 oled board",
+      "esp32 oled display board",
+      "esp32 wifi bluetooth board",
+      "ceramic antenna esp32",
+      "iot development board"
+    ],
+    "shops": [
+      {
+        "name": "AliExpress",
+        "url": "https://s.click.aliexpress.com/e/_c44Oc70F",
+        "label": "Budgetoptie",
+        "badge": "€"
+      },
+      {
+        "name": "Bol.com",
+        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fontwikkelbord-met-0-42-inch-oled-display-voor-esp32-c3-mini-module-ondersteunt-2-4g-wifi-en-bluetooth-ideaal-voor-iot-projecten-en-prototyping%2F9300000279233361%2F&name=Ontwikkelbord%20met%200.42%20Inch%20OLED%20Display%20voor%20ESP32-C3%20Mini%20Module%2C%20Ondersteunt%202.4G...",
         "label": "Snelle levering NL",
         "badge": "NL"
       },
