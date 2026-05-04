@@ -92,19 +92,33 @@
 <li>Arduino IDE</li>
 </ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
-<section aria-label="Aanbevolen producten" class="affiliate-auto-block">
-<h3>Handige links bij dit project</h3>
-<p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
-<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-1"></div>
-<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-2"></div>
-<div id="affiliate-auto-homeyduino-deur-raam-sensor-html-3"></div>
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-homeyduino-deur-en-raamsensor-html-1"></div>
+  <div id="affiliate-auto-homeyduino-deur-en-raamsensor-html-2"></div>
+  <div id="affiliate-auto-homeyduino-deur-en-raamsensor-html-3"></div>
 </section>
 <script>
-  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-1", "homey");
-  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-2", "reed_contact_sensor");
-  renderAffiliateProduct("affiliate-auto-homeyduino-deur-raam-sensor-html-3", "wemos_d1_mini");
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-en-raamsensor-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-en-raamsensor-html-2", "reed_contact_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-deur-en-raamsensor-html-3", "wemos_d1_mini");
 </script>
 <!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2 id="opbouw">Hoe deze sensor werkt</h2>
 <p>De kracht van dit project zit in de eenvoud. Het MC-38 contact geeft simpelweg door of het magneetcontact gesloten of onderbroken is. De Wemos D1 Mini leest die status uit op een digitale pin en stuurt die vervolgens als capability door naar Homey.</p>
 <p>In deze vernieuwde versie gebeurt dat netter dan in een snelle basisopzet. De code werkt met debounce, controleert periodiek de wifi-verbinding, initialiseert Homey opnieuw als dat nodig is en bewaart de laatst bekende deurstatus lokaal zolang publiceren niet mogelijk is. Daarnaast wordt de actuele status ook periodiek opnieuw verstuurd via een heartbeat, zodat Homey niet alleen afhankelijk is van echte statuswisselingen.</p>
