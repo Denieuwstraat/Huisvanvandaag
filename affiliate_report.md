@@ -367,7 +367,6 @@ Totaal gescande artikelen: 39
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys:
-  - Nest_Wifi_Pro
   - nest_wifi_pro
 
 ## review-roomba-irobot-i7.html
