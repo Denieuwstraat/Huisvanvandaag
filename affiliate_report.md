@@ -295,7 +295,7 @@ Totaal gescande artikelen: 39
   - homey
 
 ## index.html
-- Titel: huisvanvandaag.nl | Bouw vandaag al aan je eigen Huis van de Toekomst
+- Titel: huisvanvandaag.nl | Het huis dat met je meedenkt
 - Artikeltype: diy
 - Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
