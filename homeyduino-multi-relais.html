@@ -727,9 +727,18 @@ void loop() {
         <h3>4. Het apparaat koppelen aan Homey</h3>
         <p>Zodra de ESP8266 verbinding heeft gemaakt met WiFi verschijnt het apparaat in Homeyduino. Voeg het apparaat toe aan Homey zodat de flowacties beschikbaar worden.</p>
 
-        <h3>5. Flows maken voor afzonderlijke relais</h3>
-        <p>Maak in Homey flows aan die de juiste Homeyduino acties aanroepen. Ieder relais krijgt zijn eigen actie zoals relay_1_on of relay_3_off.</p>
+<h3>5. Flows maken voor afzonderlijke relais</h3>
+<p>
+  Installeer in Homey eerst de 
+  <a href="https://homey.app/nl-nl/app/com.arjankranenburg.virtual/Virtuele-Apparaten/" target="_blank" rel="noopener">
+    Virtuele Apparaten app.
+  </a>
+  Voeg daarna per relais een virtueel apparaat toe, bijvoorbeeld een virtuele schakelaar. In dit voorbeeld gebruiken we vier afzonderlijke schakelaars zoals ‘Relais 1/4’, ‘Relais 2/4’ enzovoort. Deze virtuele schakelaars gebruik je vervolgens als bediening binnen Homey.
+</p>
 
+<p>
+  Maak daarna flows aan waarbij het aan- of uitzetten van een virtuele schakelaar de juiste Homeyduino actie aanroept. Ieder relais krijgt zijn eigen actie zoals <code>relay_1_on</code>, <code>relay_1_off</code> of <code>relay_3_on</code>. Op die manier kun je ieder relais afzonderlijk bedienen alsof het een normaal slim apparaat in Homey is.
+</p>
         <figure>
           <img src="assets/artikel/homey-flow-4-kanaals-relais.jpg" alt="Homey flows voor afzonderlijke relaisacties">
           <figcaption class="muted small">
