@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PAGINATITEL -->
+  <title>4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Leer hoe je een 4-kanaals relaismodule afzonderlijk aanstuurt via Homey met een Wemos D1 Mini en Homeyduino. Inclusief flows, bekabeling en complete code.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
+
+  <style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="container article-layout">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="diy.html">DIY</a>
+          <span>•</span>
+          <span>4-kanaals relais</span>
+        </div>
+
+        <span class="eyebrow">DIY &amp; Homeyduino</span>
+        <h1>4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini</h1>
+
+        <p class="lead muted">
+          Bouw je eigen slimme 4-kanaals relaismodule waarmee je meerdere apparaten afzonderlijk kunt schakelen via Homey-flows, Homeyduino en een Wemos D1 Mini.
+        </p>
+
+        <div class="meta-list">
+          <span class="meta-pill">Categorie: DIY smart home</span>
+          <span class="meta-pill">Platform: Homey</span>
+          <span class="meta-pill">Hardware: Wemos D1 Mini + 4-kanaals relaismodule</span>
+        </div>
+      </div>
+
+      <!-- RECHTER INFOBLOK -->
+      <div class="panel project-info-panel">
+        <h3>Wat je in dit artikel leert</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Vier relais afzonderlijk schakelen</strong><br>
+              <span class="muted">Ieder relais krijgt zijn eigen Homey-flowactie zodat je apparaten individueel kunt bedienen.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Volledig lokaal</strong><br>
+              <span class="muted">De communicatie verloopt lokaal via Homeyduino zonder afhankelijk te zijn van externe cloudservices.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Uitbreidbaar</strong><br>
+              <span class="muted">De basis is eenvoudig uit te breiden met sensoren, tijdschema’s of automatiseringen.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Status zichtbaar in Homey</strong><br>
+              <span class="muted">De hoofdstatus van de relaismodule wordt automatisch bijgewerkt in Homey.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Geschikt voor echte toepassingen</strong><br>
+              <span class="muted">Denk aan verlichting, ventilatie, pompen of andere apparaten die je slim wilt schakelen.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO AFBEELDING -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="assets/header/homeyduino-4-kanaals-relais.jpg" alt="4-kanaals relaismodule gekoppeld aan Homey via Homeyduino">
+          <figcaption class="muted small">
+            Een Wemos D1 Mini gekoppeld aan een 4-kanaals relaismodule waarmee meerdere relais afzonderlijk via Homey bestuurd kunnen worden.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section-tight" style="padding-top: 14px;">
+    <div class="container project-content-layout">
+      <article class="article-body project-article">
+
+        <p class="lead">
+          Veel slimme stekkers of relaismodules werken prima zolang je één apparaat wilt schakelen. Maar zodra je meerdere apparaten afzonderlijk wilt bedienen vanuit Homey, wordt het vaak duurder, beperkter of minder flexibel.
+        </p>
+
+        <p>
+          Met een Wemos D1 Mini en een eenvoudige 4-kanaals relaismodule bouw je relatief goedkoop een volledig lokaal schakelsysteem waarmee je vier relais afzonderlijk via Homey-flows kunt bedienen. In dit project gebruiken we Homeyduino zodat ieder relais een eigen flowactie krijgt binnen Homey.
+        </p>
+
+        <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+        <p>Je bouwt een slimme 4-kanaals relaiscontroller die via Homey afzonderlijke relais kan schakelen.</p>
+        <ul>
+          <li><strong>Vier afzonderlijke relais</strong> → Ieder relais kan apart aan- of uitgezet worden via Homey-flows.</li>
+          <li><strong>Lokale Homeyduino integratie</strong> → De communicatie verloopt rechtstreeks tussen Homey en de ESP8266.</li>
+        </ul>
+        <p>Hiermee kun je bijvoorbeeld meerdere lampen, voedingen of andere apparaten centraal automatiseren zonder losse slimme stekkers te gebruiken.</p>
+
+        <h2 id="benodigdheden">Benodigdheden</h2>
+        <ul>
+          <li>Wemos D1 Mini of vergelijkbare ESP8266</li>
+          <li>4-kanaals relaismodule</li>
+          <li>Dupont jumper wires</li>
+          <li>USB-kabel voor de Wemos D1 Mini</li>
+          <li>Homey Pro met Homeyduino app</li>
+        </ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-homeyduino-multi-relais-html-1"></div>
+  <div id="affiliate-auto-homeyduino-multi-relais-html-2"></div>
+  <div id="affiliate-auto-homeyduino-multi-relais-html-3"></div>
+  <div id="affiliate-auto-homeyduino-multi-relais-html-4"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-multi-relais-html-1", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-multi-relais-html-2", "multi_channel_relay_module");
+  renderAffiliateProduct("affiliate-auto-homeyduino-multi-relais-html-3", "relay_module");
+  renderAffiliateProduct("affiliate-auto-homeyduino-multi-relais-html-4", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+
+        <h3>1. Relaismodule aansluiten</h3>
+        <p>Sluit de relaismodule aan op de Wemos D1 Mini. In dit project gebruiken we vier afzonderlijke GPIO-pinnen zodat ieder relais individueel aangestuurd kan worden.</p>
+        <ul>
+          <li><strong>Relais IN1</strong> → <strong>D1</strong></li>
+          <li><strong>Relais IN2</strong> → <strong>D2</strong></li>
+          <li><strong>Relais IN3</strong> → <strong>D5</strong></li>
+          <li><strong>Relais IN4</strong> → <strong>D6</strong></li>
+          <li><strong>VCC</strong> → <strong>5V</strong></li>
+          <li><strong>GND</strong> → <strong>GND</strong></li>
+        </ul>
+
+        <figure>
+          <img src="assets/artikel/homeyduino-4-relais-module-aansluiting.png" alt="4-kanaals relaismodule aangesloten op een Wemos D1 Mini">
+          <figcaption class="muted small">
+            De 4-kanaals relaismodule aangesloten op de Wemos D1 Mini. In dit voorbeeld worden vier afzonderlijke GPIO-pinnen gebruikt voor individuele bediening.
+          </figcaption>
+        </figure>
+
+        <h3>2. Homeyduino installeren</h3>
+        <p>Installeer de Homeyduino bibliotheek in de Arduino IDE en zorg dat de Homeyduino app op je Homey geïnstalleerd is. Voeg daarna de juiste ESP8266 board support toe zodat de Wemos D1 Mini geprogrammeerd kan worden.</p>
+
+        <h3>3. De code uploaden</h3>
+        <p>Upload onderstaande code naar de Wemos D1 Mini. De code maakt vier afzonderlijke Homey-flowacties aan waarmee je ieder relais apart kunt schakelen.</p>
+
+        <pre><code>#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+#include <Homey.h>
+
+// ========================================================
+// Debug instellingen
+// ========================================================
+#define DEBUG 1
+
+#if DEBUG
+  #define DBG_PRINT(x)    Serial.print(x)
+  #define DBG_PRINTLN(x)  Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// ========================================================
+// Centrale configuratie
+// ========================================================
+namespace Config {
+
+  // ======================================================
+  // WiFi
+  // ======================================================
+  constexpr const char* WIFI_SSID     = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
+
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 15000;
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS  = 30000;
+
+  // ======================================================
+  // Homey
+  // ======================================================
+  constexpr const char* HOMEY_NAME  = "4 kanaals relais";
+  constexpr const char* HOMEY_CLASS = "socket";
+
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+
+  // ======================================================
+  // Relais
+  // ======================================================
+  constexpr uint8_t RELAY_COUNT = 4;
+
+  constexpr uint8_t RELAY_PINS[RELAY_COUNT] = {
+    D1, // Relais 1 - GPIO5
+    D2, // Relais 2 - GPIO4
+    D5, // Relais 3 - GPIO14
+    D6  // Relais 4 - GPIO12
+  };
+
+  // Veel relaisboards zijn active LOW
+  constexpr bool RELAY_ACTIVE_LOW = true;
+}
+
+// ========================================================
+// Applicatiestatus
+// ========================================================
+namespace AppState {
+
+  bool relayState[Config::RELAY_COUNT] = {
+    false,
+    false,
+    false,
+    false
+  };
+
+  bool masterState = false;
+
+  unsigned long lastWifiCheckMs       = 0;
+  unsigned long lastHomeyHeartbeatMs  = 0;
+}
+
+// ========================================================
+// RelayService
+// ========================================================
+namespace RelayService {
+
+  uint8_t outputLevel(bool on) {
+    if (Config::RELAY_ACTIVE_LOW) {
+      return on ? LOW : HIGH;
+    }
+
+    return on ? HIGH : LOW;
+  }
+
+  bool isValidRelay(uint8_t index) {
+    return index < Config::RELAY_COUNT;
+  }
+
+  bool anyRelayEnabled() {
+    for (uint8_t i = 0; i < Config::RELAY_COUNT; i++) {
+      if (AppState::relayState[i]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  void updateMasterState(bool notifyHomey = true) {
+    AppState::masterState = anyRelayEnabled();
+
+    if (notifyHomey) {
+      Homey.setCapabilityValue("onoff", AppState::masterState);
+    }
+  }
+
+  void apply(uint8_t index, bool on, bool notifyHomey = true) {
+
+    if (!isValidRelay(index)) {
+      return;
+    }
+
+    AppState::relayState[index] = on;
+
+    digitalWrite(
+      Config::RELAY_PINS[index],
+      outputLevel(on)
+    );
+
+    updateMasterState(notifyHomey);
+
+    DBG_PRINT("Relais ");
+    DBG_PRINT(index + 1);
+    DBG_PRINT(" = ");
+    DBG_PRINTLN(on ? "AAN" : "UIT");
+  }
+
+  void applyAll(bool on, bool notifyHomey = true) {
+
+    for (uint8_t i = 0; i < Config::RELAY_COUNT; i++) {
+
+      AppState::relayState[i] = on;
+
+      digitalWrite(
+        Config::RELAY_PINS[i],
+        outputLevel(on)
+      );
+    }
+
+    AppState::masterState = on;
+
+    if (notifyHomey) {
+      Homey.setCapabilityValue("onoff", on);
+    }
+
+    DBG_PRINTLN(on ? "Alle relais AAN" : "Alle relais UIT");
+  }
+
+  void begin() {
+
+    for (uint8_t i = 0; i < Config::RELAY_COUNT; i++) {
+
+      pinMode(Config::RELAY_PINS[i], OUTPUT);
+
+      digitalWrite(
+        Config::RELAY_PINS[i],
+        outputLevel(false)
+      );
+
+      AppState::relayState[i] = false;
+    }
+
+    AppState::masterState = false;
+
+    DBG_PRINTLN("Relais geïnitialiseerd.");
+  }
+}
+
+// ========================================================
+// WifiService
+// ========================================================
+namespace WifiService {
+
+  bool connectWithTimeout() {
+
+    if (WiFi.status() == WL_CONNECTED) {
+      return true;
+    }
+
+    DBG_PRINT("Verbinden met WiFi: ");
+    DBG_PRINTLN(Config::WIFI_SSID);
+
+    WiFi.mode(WIFI_STA);
+
+    WiFi.begin(
+      Config::WIFI_SSID,
+      Config::WIFI_PASSWORD
+    );
+
+    const unsigned long startedAt = millis();
+
+    while (
+      WiFi.status() != WL_CONNECTED &&
+      millis() - startedAt < Config::WIFI_CONNECT_TIMEOUT_MS
+    ) {
+
+      delay(500);
+      DBG_PRINT(".");
+    }
+
+    DBG_PRINTLN("");
+
+    if (WiFi.status() == WL_CONNECTED) {
+
+      DBG_PRINT("WiFi verbonden. IP-adres: ");
+      DBG_PRINTLN(WiFi.localIP());
+
+      return true;
+    }
+
+    DBG_PRINTLN("WiFi verbinden mislukt.");
+
+    return false;
+  }
+
+  void maintain() {
+
+    const unsigned long now = millis();
+
+    if (
+      now - AppState::lastWifiCheckMs <
+      Config::WIFI_CHECK_INTERVAL_MS
+    ) {
+      return;
+    }
+
+    AppState::lastWifiCheckMs = now;
+
+    if (WiFi.status() == WL_CONNECTED) {
+      return;
+    }
+
+    DBG_PRINTLN("WiFi kwijt. Opnieuw verbinden...");
+
+    connectWithTimeout();
+  }
+}
+
+// ========================================================
+// Homey callbacks
+// ========================================================
+
+// --------------------
+// Hoofdschakelaar
+// --------------------
+void setMasterState() {
+
+  const bool requestedState =
+    Homey.value.toInt() == 1;
+
+  RelayService::applyAll(
+    requestedState,
+    true
+  );
+}
+
+void getMasterState() {
+  Homey.returnResult(AppState::masterState);
+}
+
+// --------------------
+// Relais 1
+// --------------------
+void setRelay1On() {
+  RelayService::apply(0, true, true);
+}
+
+void setRelay1Off() {
+  RelayService::apply(0, false, true);
+}
+
+void getRelay1State() {
+  Homey.returnResult(AppState::relayState[0]);
+}
+
+// --------------------
+// Relais 2
+// --------------------
+void setRelay2On() {
+  RelayService::apply(1, true, true);
+}
+
+void setRelay2Off() {
+  RelayService::apply(1, false, true);
+}
+
+void getRelay2State() {
+  Homey.returnResult(AppState::relayState[1]);
+}
+
+// --------------------
+// Relais 3
+// --------------------
+void setRelay3On() {
+  RelayService::apply(2, true, true);
+}
+
+void setRelay3Off() {
+  RelayService::apply(2, false, true);
+}
+
+void getRelay3State() {
+  Homey.returnResult(AppState::relayState[2]);
+}
+
+// --------------------
+// Relais 4
+// --------------------
+void setRelay4On() {
+  RelayService::apply(3, true, true);
+}
+
+void setRelay4Off() {
+  RelayService::apply(3, false, true);
+}
+
+void getRelay4State() {
+  Homey.returnResult(AppState::relayState[3]);
+}
+
+// ========================================================
+// HomeyService
+// ========================================================
+namespace HomeyService {
+
+  void begin() {
+
+    Homey.begin(Config::HOMEY_NAME);
+
+    Homey.setClass(Config::HOMEY_CLASS);
+
+    // ====================================================
+    // Hoofdschakelaar
+    // ====================================================
+    Homey.addCapability(
+      "onoff",
+      setMasterState
+    );
+
+    Homey.addCondition(
+      "state",
+      getMasterState
+    );
+
+    // ====================================================
+    // Relais Flow-acties
+    // ====================================================
+    Homey.addAction(
+      "relay_1_on",
+      setRelay1On
+    );
+
+    Homey.addAction(
+      "relay_1_off",
+      setRelay1Off
+    );
+
+    Homey.addAction(
+      "relay_2_on",
+      setRelay2On
+    );
+
+    Homey.addAction(
+      "relay_2_off",
+      setRelay2Off
+    );
+
+    Homey.addAction(
+      "relay_3_on",
+      setRelay3On
+    );
+
+    Homey.addAction(
+      "relay_3_off",
+      setRelay3Off
+    );
+
+    Homey.addAction(
+      "relay_4_on",
+      setRelay4On
+    );
+
+    Homey.addAction(
+      "relay_4_off",
+      setRelay4Off
+    );
+
+    // ====================================================
+    // Relais condities
+    // ====================================================
+    Homey.addCondition(
+      "relay_1_state",
+      getRelay1State
+    );
+
+    Homey.addCondition(
+      "relay_2_state",
+      getRelay2State
+    );
+
+    Homey.addCondition(
+      "relay_3_state",
+      getRelay3State
+    );
+
+    Homey.addCondition(
+      "relay_4_state",
+      getRelay4State
+    );
+
+    Homey.setCapabilityValue(
+      "onoff",
+      AppState::masterState
+    );
+
+    DBG_PRINT("Homey gestart als: ");
+    DBG_PRINTLN(Config::HOMEY_NAME);
+  }
+
+  void heartbeat() {
+
+    const unsigned long now = millis();
+
+    if (
+      now - AppState::lastHomeyHeartbeatMs <
+      Config::HOMEY_HEARTBEAT_INTERVAL_MS
+    ) {
+      return;
+    }
+
+    AppState::lastHomeyHeartbeatMs = now;
+
+    Homey.setCapabilityValue(
+      "onoff",
+      AppState::masterState
+    );
+
+    DBG_PRINTLN("Homey heartbeat verzonden.");
+  }
+}
+
+// ========================================================
+// Setup
+// ========================================================
+void setup() {
+
+  #if DEBUG
+    Serial.begin(115200);
+    delay(250);
+  #endif
+
+  DBG_PRINTLN("");
+  DBG_PRINTLN("Start Homeyduino 4-kanaals relais...");
+
+  RelayService::begin();
+
+  WifiService::connectWithTimeout();
+
+  HomeyService::begin();
+
+  DBG_PRINTLN("Setup gereed.");
+}
+
+// ========================================================
+// Loop
+// ========================================================
+void loop() {
+
+  WifiService::maintain();
+
+  Homey.loop();
+
+  HomeyService::heartbeat();
+}
+}</code></pre>
+
+        <h3>4. Het apparaat koppelen aan Homey</h3>
+        <p>Zodra de ESP8266 verbinding heeft gemaakt met WiFi verschijnt het apparaat in Homeyduino. Voeg het apparaat toe aan Homey zodat de flowacties beschikbaar worden.</p>
+
+        <h3>5. Flows maken voor afzonderlijke relais</h3>
+        <p>Maak in Homey flows aan die de juiste Homeyduino acties aanroepen. Ieder relais krijgt zijn eigen actie zoals relay_1_on of relay_3_off.</p>
+
+        <figure>
+          <img src="assets/artikel/homey-flow-4-kanaals-relais.jpg" alt="Homey flows voor afzonderlijke relaisacties">
+          <figcaption class="muted small">
+            Voorbeeld van afzonderlijke Advanced Homey-flow waarmee ieder relais individueel geschakeld wordt.
+          </figcaption>
+        </figure>
+
+        <h2 id="integratie">Integratie met Homey</h2>
+        <p>De relaismodule verschijnt in Homey als één apparaat met een hoofdschakelaar. Daarnaast kun je via flowacties ieder relais afzonderlijk bedienen. Hierdoor combineer je de flexibiliteit van Homey-flows met goedkope en uitbreidbare ESP8266-hardware.</p>
+        <p>Praktische toepassingen zijn bijvoorbeeld:</p>
+        <ul>
+          <li>Afzonderlijke verlichting schakelen in verschillende ruimtes</li>
+          <li>Ventilatie of afzuiging automatisch inschakelen</li>
+          <li>Meerdere apparaten slim automatiseren vanuit één compacte module</li>
+        </ul>
+
+        <figure>
+          <img src="assets/artikel/homey-4-kanaals-relais-apparaat.jpg" alt="4-kanaals relais zichtbaar in Homey">
+          <figcaption class="muted small">
+            De relaismodule zichtbaar in Homey, inclusief afzonderlijke relaisstatussen en flowintegratie. In dit voorbeeld zijn relais 1 en 3 actief geschakeld via Homey-flows.
+          </figcaption>
+        </figure>
+
+        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+        <p>
+          Een groot voordeel van deze aanpak is dat je relatief eenvoudig meerdere schakelingen kunt centraliseren. In plaats van vier losse slimme stekkers gebruik je één compacte ESP8266-oplossing die volledig lokaal werkt. Zeker bij technische ruimtes, hobbyprojecten of maatwerkautomatiseringen biedt dat veel flexibiliteit.
+        </p>
+
+                <figure>
+          <img src="assets/artikel/homeyduino-4-relais-module-afzonderlijk-geschakeld-via-homeyduino.jpg" alt="4-kanaals relais zichtbaar in Homey">
+          <figcaption class="muted small">
+            De daadwerkelijke relaismodule, in dit voorbeeld zijn relais 1 en 3 actief geschakeld via Homey-flows.
+          </figcaption>
+        </figure>
+
+        <h2 id="aandachtspunten">Aandachtspunten</h2>
+        <ul>
+          <li>Veel relaismodules zijn active LOW, waardoor de logica omgekeerd werkt.</li>
+          <li>Gebruik geschikte voeding en wees voorzichtig bij het schakelen van netspanning.</li>
+          <li>Controleer altijd welke GPIO-pinnen geschikt zijn voor jouw ESP8266-board.</li>
+        </ul>
+
+        <h2 id="conclusie">Conclusie</h2>
+        <p>
+          Met een Wemos D1 Mini, Homeyduino en een 4-kanaals relaismodule bouw je een verrassend krachtige lokale schakelmogelijkheid voor Homey. Dankzij de afzonderlijke flowacties kun je ieder relais individueel bedienen en eenvoudig integreren in bestaande automatiseringen. Daarmee is dit een praktisch en flexibel DIY-project voor iedereen die meer controle wil over zijn slimme huis.
+        </p>
+      </article>
+
+      <aside class="side-stack">
+        <div class="toc">
+          <h3>In dit artikel</h3>
+          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+          <a href="#benodigdheden">Benodigdheden</a>
+          <a href="#stappenplan">Stap-voor-stap uitleg</a>
+          <a href="#integratie">Integratie met Homey</a>
+          <a href="#praktisch-gebruik">Praktisch gebruik</a>
+          <a href="#aandachtspunten">Aandachtspunten</a>
+          <a href="#conclusie">Conclusie</a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Gerelateerd</h3>
+          <div class="footer-links">
+            <a href="homeyduino-co2-sensor.html">Homeyduino CO2-sensor bouwen</a>
+            <a href="homeyduino-dht11-sensor.html">Homeyduino DHT11 klimaatsensor</a>
+            <a href="homeyduino-ldr-lichtsensor.html">LDR lichtsensor koppelen aan Homey</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Affiliate inventory scan
 
-Totaal gescande artikelen: 39
+Totaal gescande artikelen: 40
 
 ## 404.html
 - Titel: Pagina niet gevonden | huisvanvandaag.nl
@@ -261,6 +261,24 @@ Totaal gescande artikelen: 39
   - dht11_sensor
   - homey
   - ldr_sensor
+  - wemos_d1_mini
+
+## homeyduino-multi-relais.html
+- Titel: 4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini | huisvanvandaag.nl
+- Artikeltype: diy
+- Matchbron: benodigdheden
+- Benodigdheden-sectie gevonden: ja
+- Heading: Benodigdheden
+- Benodigdheden:
+  - Wemos D1 Mini of vergelijkbare ESP8266
+  - 4-kanaals relaismodule
+  - Dupont jumper wires
+  - USB-kabel voor de Wemos D1 Mini
+  - Homey Pro met Homeyduino app
+- Herkende productkeys:
+  - homey
+  - multi_channel_relay_module
+  - relay_module
   - wemos_d1_mini
 
 ## homeyduino-temperatuursensor-ds18b120.html

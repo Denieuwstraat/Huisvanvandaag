@@ -613,5 +613,57 @@
         "badge": "Prime"
       }
     ]
-  }
+}, 
+"multi_channel_relay_module": {
+  "name": "Multi-channel relaismodule met optocoupler (1-8 kanaals)",
+  "description": "Veelgebruikte relaismodule voor het schakelen van apparaten via Arduino, ESP8266, ESP32 en Homeyduino. Verkrijgbaar in varianten met 1, 2, 4, 6 of 8 relais en ondersteuning voor high- en low-level triggering.",
+  "images": [
+    "assets/affiliate/multi-channel-relay-module-1.jpg"
+  ],
+  "aliases": [
+    "relay module",
+    "relay board",
+    "relais module",
+    "relais board",
+    "4 kanaals relais",
+    "4-kanaals relais",
+    "8 kanaals relais",
+    "8-kanaals relais",
+    "2 kanaals relais",
+    "2-kanaals relais",
+    "1 kanaals relais",
+    "1-kanaals relais",
+    "multi channel relay",
+    "relay shield",
+    "optocoupler relay",
+    "arduino relay module",
+    "esp8266 relay module",
+    "esp32 relay module",
+    "homeyduino relais",
+    "high low trigger relay",
+    "5v relay module",
+    "12v relay module",
+    "24v relay module"
+  ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c44t57W7",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frelais-module-12v-4-kanaals-t-b-v-arduino%2F9300000039396020%2F&name=Relais%20Module%2012v",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+    }
+  ]
 }
+} 

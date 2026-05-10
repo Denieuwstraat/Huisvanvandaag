@@ -325,6 +325,27 @@
       ]
     },
     {
+      "file": "homeyduino-multi-relais.html",
+      "relative_path": "homeyduino-multi-relais.html",
+      "title": "4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini | huisvanvandaag.nl",
+      "article_type": "diy",
+      "match_source": "benodigdheden",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "Wemos D1 Mini of vergelijkbare ESP8266",
+        "4-kanaals relaismodule",
+        "Dupont jumper wires",
+        "USB-kabel voor de Wemos D1 Mini",
+        "Homey Pro met Homeyduino app"
+      ],
+      "matched_product_keys": [
+        "homey",
+        "multi_channel_relay_module",
+        "relay_module",
+        "wemos_d1_mini"
+      ]
+    },
+    {
       "file": "homeyduino-temperatuursensor-ds18b120.html",
       "relative_path": "homeyduino-temperatuursensor-ds18b120.html",
       "title": "Bouw je eigen DS18B20 temperatuursensor met Homeyduino | huisvanvandaag.nl",
