@@ -89,24 +89,7 @@
 <script src="/js/article-schema.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-<div class="container navbar">
-<a aria-label="huisvanvandaag.nl home" class="logo" href="index.html">
-<img alt="Huis van Vandaag" class="logo-image logo-header" src="assets/logo-white.png"/>
-<span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
-</a>
-<button aria-expanded="false" aria-label="Menu openen" class="nav-toggle"><span></span></button>
-<nav aria-label="Hoofdnavigatie" class="nav-links">
-<a href="index.html">Home</a>
-<a href="over.html">Over</a>
-<a href="homey.html">Homey</a>
-<a href="diy.html">DIY</a>
-<a href="tutorials.html">Tutorials</a>
-<a href="reviews.html">Reviews</a>
-<a href="contact.html">Contact</a>
-</nav>
-</div>
-</header>
+<div id="site-header"></div>
 <main>
 <section class="article-hero">
 <div class="container article-layout">
@@ -118,6 +101,7 @@
 <span>•</span>
 <span>Wat kun je doen met Homey?</span>
 </div>
+<span class="eyebrow">Informatief</span>
 <span class="eyebrow">Smart home inspiratie</span>
 <h1>Wat kun je doen met Homey? Praktische toepassingen en inspiratie</h1>
 <p class="lead muted">
@@ -173,7 +157,7 @@
 <div class="container project-hero-media">
 <div class="panel">
 <figure>
-<img alt="Homey als centrale smart home hub in een modern huis" src="assets/homey-toepassingen-hero.jpg"/>
+<img alt="Homey als centrale smart home hub in een modern huis" src="assets/header/homey-pro-2023.jpg"/>
 <figcaption class="muted small">
             Met Homey breng je losse slimme apparaten samen in één systeem dat echt met je meewerkt.
           </figcaption>
@@ -187,16 +171,7 @@
 <p class="lead">
           Een slim huis klinkt aantrekkelijk, maar in de praktijk loopt het vaak vast op losse apps, verschillende merken en apparaten die nét niet goed samenwerken. Juist daar maakt Homey het verschil.
         </p>
-<!-- AFFILIATE_AUTO_BLOCK_START -->
-<section class="affiliate-auto-block" aria-label="Affiliate links bij deze review">
-  <h3>Bekijk actuele prijs en beschikbaarheid</h3>
-  <p>Dit zijn passende links bij het product uit deze review.</p>
-  <div id="affiliate-auto-wat-kun-je-doen-met-homey-html-1"></div>
-</section>
-<script>
-  renderAffiliateProduct("affiliate-auto-wat-kun-je-doen-met-homey-html-1", "homey");
-</script>
-<!-- AFFILIATE_AUTO_BLOCK_END -->
+
 
 
 
@@ -228,7 +203,7 @@
 <li><strong>Merken combineren</strong> → Apparaten die normaal los van elkaar werken, kun je binnen Homey toch logisch laten samenwerken.</li>
 </ul>
 <figure>
-<img alt="De Homey app met apparaten en automatiseringen in beeld" src="assets/homey-app-interface.jpg"/>
+<img alt="De Homey app met apparaten en automatiseringen in beeld" src="assets/artikel/homey-app-interface.jpg"/>
 <figcaption class="muted small">
             In de Homey app komen bediening, inzichten en automatiseringen samen.
           </figcaption>
@@ -240,7 +215,7 @@
 <p>De bekendste toepassing is slimme verlichting, maar daar houdt het niet op. Juist in de combinatie van meerdere signalen wordt Homey interessant. Denk aan verlichting die niet alleen op beweging reageert, maar ook op tijdstip of aanwezigheid.</p>
 <p>Ook op het gebied van comfort, meldingen en energiebewust gebruik zijn er veel praktische scenario’s te bedenken. Bijvoorbeeld een routine die apparaten uitschakelt wanneer niemand meer thuis is, of een melding wanneer ergens een deur te lang open blijft staan.</p>
 <figure>
-<img alt="Slimme verlichting en automatisering met Homey in de woonkamer" src="assets/homey-verlichting-automatisering.jpg"/>
+<img alt="Slimme verlichting en automatisering met Homey in de woonkamer" src="assets/artikel/homey-verlichting-automatisering.jpg"/>
 <figcaption class="muted small">
             Een goede automatisering voelt niet technisch, maar vanzelfsprekend.
           </figcaption>
@@ -253,11 +228,19 @@
 <li>Houd flows overzichtelijk, zodat je later nog begrijpt waarom iets gebeurt.</li>
 </ul>
 <p>Zo bouw je stap voor stap een slim huis dat rustiger en slimmer aanvoelt, in plaats van ingewikkelder.</p>
-<figure>
-<img alt="Voorbeeld van een Homey flow met duidelijke logica" src="assets/homey-flow-schema.jpg"/>
-<figcaption class="muted small">
-            Eenvoudige flows zijn vaak krachtiger dan een wirwar aan losse regels.
-          </figcaption>
+<a href="https://www.huisvanvandaag.nl/homeyduino-clapper-switch.html" class="image-link">
+  <figure>
+    <img 
+      alt="Voorbeeld van een Homey flow met duidelijke logica" 
+      src="assets/artikel/homey-flow-schema-klapschakelaar.jpg"
+    />
+
+    <figcaption class="muted small">
+      Eenvoudige flows zijn vaak krachtiger dan een wirwar aan losse regels. 
+      Deze flow schakelt bijvoorbeeld de lampen aan of uit doormiddel van in je handen te klappen.
+    </figcaption>
+  </figure>
+</a>
 </figure>
 <h2 id="verdieping">Hoe haal je nog meer uit Homey?</h2>
 <p>Wie verder wil gaan, kan Homey ook gebruiken als basis voor zelfbouwprojecten en uitgebreidere automatiseringen. Juist daar wordt het interessant voor mensen die graag iets aanpassen, meten of zelf bouwen.</p>
@@ -270,10 +253,16 @@
 <li>Gebruik dit artikel als vertrekpunt om gerichter te kiezen welke automatiseringen in jouw huis echt nuttig zijn.</li>
 </ul>
 <figure>
-<img alt="Zelfbouwproject gekoppeld aan Homey voor extra automatisering" src="assets/homey-diy-project.jpg"/>
+<a href="https://www.huisvanvandaag.nl/diy.html">
+  <img 
+    alt="Zelfbouwproject gekoppeld aan Homey voor extra automatisering" 
+    src="assets/header/homeyduino-co2-sensor-hero.jpg"
+  />
+</a>
+
 <figcaption class="muted small">
-            Wie eenmaal de basis begrijpt, ontdekt vaak al snel hoe krachtig Homey in combinatie met DIY kan zijn.
-          </figcaption>
+  Wie eenmaal de basis begrijpt, ontdekt vaak al snel hoe krachtig Homey in combinatie met DIY kan zijn.
+</figcaption>
 </figure>
 <h2 id="conclusie">Conclusie</h2>
 <p>Homey is vooral waardevol omdat het losse slimme apparaten verandert in één samenhangend systeem. Niet door zoveel mogelijk techniek toe te voegen, maar door automatisering logisch, overzichtelijk en bruikbaar te maken.</p>
