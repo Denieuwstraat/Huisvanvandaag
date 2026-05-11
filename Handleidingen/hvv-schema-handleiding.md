@@ -96,8 +96,8 @@ worden automatisch opgehaald.
 Voeg in alle artikeltemplates vlak vóór `</head>` toe:
 
 ```html
-<script src="/js/global-schema.js"></script>
-<script src="/js/article-schema.js"></script>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
 </head>
 ```
 
@@ -172,8 +172,8 @@ Extra voor reviews:
 
 <script src="affiliate-products.js"></script>
 
-<script src="/js/global-schema.js"></script>
-<script src="/js/article-schema.js"></script>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
 </head>
 ```
 
