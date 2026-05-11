@@ -36,6 +36,8 @@ alleen de ingevulde HTML
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="hv-schema-type" content="review">
+  <meta name="hv-product-name" content="Naam van het product">
 
   <!-- PAGINATITEL -->
   <title>[[REVIEW_TITEL]] | huisvanvandaag.nl</title>
@@ -135,7 +137,9 @@ alleen de ingevulde HTML
       }
     }
   </style>
+ 
 <script src="/js/global-schema.js"></script>
+<script src="/js/article-schema.js"></script>
 </head>
 <body>
 
