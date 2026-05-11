@@ -61,6 +61,7 @@ alleen de ingevulde HTML
         <span>[[KORTE_ARTIKELNAAM]]</span>
       </div>
 
+      <span class="eyebrow">Informatief</span>
       <span class="eyebrow">[[EYEBROW]]</span>
       <h1>[[ARTIKEL_TITEL]]</h1>
 
