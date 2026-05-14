@@ -5,8 +5,6 @@
       "file": "404.html",
       "relative_path": "404.html",
       "title": "Pagina niet gevonden | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -15,25 +13,14 @@
       "file": "arduino_ide_esp8266_tutorial.html",
       "relative_path": "arduino_ide_esp8266_tutorial.html",
       "title": "Arduino IDE instellen voor ESP8266 (Wemos D1 Mini) | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "benodigdheden",
-      "benodigdheden_heading": "Wat heb je nodig?",
-      "benodigdheden": [
-        "Computer met Arduino IDE",
-        "Wemos D1 Mini of ESP8266-board",
-        "USB-kabel",
-        "Internetverbinding"
-      ],
-      "matched_product_keys": [
-        "wemos_d1_mini"
-      ]
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
     },
     {
       "file": "bedankt.html",
       "relative_path": "bedankt.html",
       "title": "Bedankt | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -42,8 +29,6 @@
       "file": "bewegingssensor_homeyduino.html",
       "relative_path": "bewegingssensor_homeyduino.html",
       "title": "Bouw je eigen Bewegingssensor (PIR + Arduino) | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "ESP8266 board, bijvoorbeeld een NodeMCU of Wemos D1 Mini",
@@ -62,8 +47,6 @@
       "file": "chriet-titulaer.html",
       "relative_path": "chriet-titulaer.html",
       "title": "Chriet Titulaer en het Huis van de Toekomst | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -72,33 +55,22 @@
       "file": "contact.html",
       "relative_path": "contact.html",
       "title": "Contact | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "diy.html",
       "relative_path": "diy.html",
       "title": "DIY & Homeyduino | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey",
-        "wemos_d1_mini"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "footer.html",
       "relative_path": "footer.html",
       "title": null,
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -107,8 +79,6 @@
       "file": "gemini-voor-home.html",
       "relative_path": "gemini-voor-home.html",
       "title": "Gemini voor Home: wat verandert er ten opzichte van Google Assistant? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -117,8 +87,14 @@
       "file": "header.html",
       "relative_path": "header.html",
       "title": null,
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "homey-bridge-satellite-mode-vs-homeylink.html",
+      "relative_path": "homey-bridge-satellite-mode-vs-homeylink.html",
+      "title": "Homey Bridge Satellite Mode vs HomeyLink: wat zijn de verschillen? | huisvanvandaag.nl",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -127,68 +103,46 @@
       "file": "homey-bridge.html",
       "relative_path": "homey-bridge.html",
       "title": "Maak kennis met de Homey Bridge | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "homey-pro-2023.html",
       "relative_path": "homey-pro-2023.html",
       "title": "Homey Pro (2023): het slimme hart van je huis | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "homey-pro-mini-2026.html",
       "relative_path": "homey-pro-mini-2026.html",
       "title": "Homey Pro mini: wat is het en hoe verschilt het van Bridge en Pro? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "homey-self-hosted-2026.html",
       "relative_path": "homey-self-hosted-2026.html",
       "title": "Homey Self-Hosted: wat is het en wanneer kies je hiervoor? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "homey.html",
       "relative_path": "homey.html",
       "title": "Homey uitgelegd: welke Homey past bij jouw slimme huis? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "homeyduino-clapper-switch.html",
       "relative_path": "homeyduino-clapper-switch.html",
       "title": "Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of vergelijkbaar ESP8266-board",
@@ -207,8 +161,6 @@
       "file": "homeyduino-co2-multisensor.html",
       "relative_path": "homeyduino-co2-multisensor.html",
       "title": "Bouw zelf een slimme CO₂ multi-sensor voor Homey | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of vergelijkbaar ESP8266-board",
@@ -223,6 +175,7 @@
         "dht11_sensor",
         "homey",
         "ldr_sensor",
+        "mh_z19b",
         "wemos_d1_mini"
       ]
     },
@@ -230,8 +183,6 @@
       "file": "homeyduino-co2-sensor.html",
       "relative_path": "homeyduino-co2-sensor.html",
       "title": "Bouw je eigen slimme CO₂ sensor met Homeyduino (UART) | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of vergelijkbare ESP8266-board",
@@ -251,8 +202,6 @@
       "file": "homeyduino-deur-en-raamsensor.html",
       "relative_path": "homeyduino-deur-en-raamsensor.html",
       "title": "Bouw je eigen deur- en raamsensor met Homeyduino | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of vergelijkbaar ESP8266-board",
@@ -273,8 +222,6 @@
       "file": "homeyduino-dht11-sensor.html",
       "relative_path": "homeyduino-dht11-sensor.html",
       "title": "Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of NodeMCU met wifi",
@@ -293,11 +240,25 @@
       "file": "homeyduino-esp32-c3-c6-compatibiliteit.html",
       "relative_path": "homeyduino-esp32-c3-c6-compatibiliteit.html",
       "title": "Homeyduino geschikt maken voor moderne ESP32 boards (C3 & C6) | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "homeyduino-ld2410-aanwezigheidssensor.html",
+      "relative_path": "homeyduino-ld2410-aanwezigheidssensor.html",
+      "title": "LD2410 aanwezigheidssensor maken met Homeyduino en ESP32 | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "NodeMCU-32S ESP32-board of vergelijkbaar ESP32 DevKit-board",
+        "HLK-LD2410 of LD2410B mmWave radarsensor",
+        "Dupontkabels",
+        "Arduino IDE met ESP32-boardondersteuning",
+        "Homeyduino-library en de LD2410-library van Nick Reynolds"
+      ],
       "matched_product_keys": [
+        "ESP32_Development_Board",
+        "LD2410_24G_human_presence_sensor",
         "homey"
       ]
     },
@@ -305,8 +266,6 @@
       "file": "homeyduino-licht-temperatuur-sensor.html",
       "relative_path": "homeyduino-licht-temperatuur-sensor.html",
       "title": "Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11) | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Microcontroller met wifi, bijvoorbeeld een ESP8266 NodeMCU of Wemos D1 Mini",
@@ -328,8 +287,6 @@
       "file": "homeyduino-multi-relais.html",
       "relative_path": "homeyduino-multi-relais.html",
       "title": "4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "Wemos D1 Mini of vergelijkbare ESP8266",
@@ -349,8 +306,6 @@
       "file": "homeyduino-temperatuursensor-ds18b120.html",
       "relative_path": "homeyduino-temperatuursensor-ds18b120.html",
       "title": "Bouw je eigen DS18B20 temperatuursensor met Homeyduino | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "benodigdheden",
       "benodigdheden_heading": "Benodigdheden",
       "benodigdheden": [
         "ESP32-C3 board met onboard 72x40 OLED-scherm",
@@ -368,66 +323,38 @@
       "file": "homeyscript-stroomprijs-vandaag-morgen.html",
       "relative_path": "homeyscript-stroomprijs-vandaag-morgen.html",
       "title": "HomeyScript: slim sturen op de goedkoopste stroomuren | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "benodigdheden",
-      "benodigdheden_heading": "Wat heb je nodig?",
-      "benodigdheden": [
-        "Een werkende Homey-omgeving met HomeyScript.",
-        "Een gratis API-key van Enever.",
-        "Een aanbieder-veld uit de Enever-prijzenfeed, bijvoorbeeld prijsANWB .",
-        "Een Flow of Advanced Flow waarmee je het script periodiek kunt starten.",
-        "Basiskennis van Homey-tags en hoe je die in flows gebruikt."
-      ],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
     },
     {
       "file": "index.html",
       "relative_path": "index.html",
       "title": "huisvanvandaag.nl | Het huis dat met je meedenkt",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "informatief.html",
       "relative_path": "informatief.html",
       "title": "Informatieve artikelen | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "keukendeur-herinnering-slim-google-home-tutorial.html",
       "relative_path": "keukendeur-herinnering-slim-google-home-tutorial.html",
       "title": "Keukendeur herinnering slim maken in Google Home Script Editor | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "benodigdheden",
-      "benodigdheden_heading": "Wat heb je nodig?",
-      "benodigdheden": [
-        "Een Google Home-huishouden met toegang tot de Script Editor",
-        "Een deursensor die in Google Home zichtbaar is",
-        "Minimaal één speaker of display waarop je een broadcast wilt afspelen",
-        "De exacte apparaatnamen zoals ze in Google Home staan, inclusief kamernaam",
-        "Je script voor de automatisering"
-      ],
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
       "matched_product_keys": []
     },
     {
       "file": "matter-en-thread-uitgelegd.html",
       "relative_path": "matter-en-thread-uitgelegd.html",
       "title": "Wat is het verschil tussen Matter en Thread? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -436,8 +363,6 @@
       "file": "over.html",
       "relative_path": "over.html",
       "title": "Over mij en waarom dit blog bestaat| huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -446,8 +371,6 @@
       "file": "privacy-disclaimer.html",
       "relative_path": "privacy-disclaimer.html",
       "title": "Privacy & Disclaimer | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -456,89 +379,54 @@
       "file": "review-hue-st64-edison.html",
       "relative_path": "review-hue-st64-edison.html",
       "title": "Philips Hue ST64 Edison E27 review | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey",
-        "philips_hue_filament_edison_lamp_st64"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "review-nest-wifi-pro.html",
       "relative_path": "review-nest-wifi-pro.html",
       "title": "Nest Wifi Pro review: snel, stabiel en gezinsvriendelijk mesh wifi | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "nest_wifi_pro"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "review-roomba-irobot-i7.html",
       "relative_path": "review-roomba-irobot-i7.html",
       "title": "iRobot Roomba i7+ review: nog steeds de moeite waard? | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey",
-        "roomba_i7_plus"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "reviews.html",
       "relative_path": "reviews.html",
       "title": "Reviews | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "robotstofzuiger-homey-tutorial.html",
       "relative_path": "robotstofzuiger-homey-tutorial.html",
       "title": "Laat je robotstofzuiger slim schoonmaken met Homey | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "benodigdheden",
-      "benodigdheden_heading": "Wat heb je nodig?",
-      "benodigdheden": [
-        "Een Homey",
-        "Een gekoppelde robotstofzuiger binnen Homey",
-        "Presence of aanwezigheid correct ingesteld in Homey",
-        "Een bestaande of nieuwe flow voor vertrek en thuiskomst",
-        "Een paar minuten om de logica goed in te stellen en te testen"
-      ],
-      "matched_product_keys": [
-        "homey",
-        "roomba_i7_plus"
-      ]
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
     },
     {
       "file": "tutorials.html",
       "relative_path": "tutorials.html",
       "title": "Tutorials | huisvanvandaag.nl",
-      "article_type": "tutorial",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "waarom-dit-blog-bestaat.html",
       "relative_path": "waarom-dit-blog-bestaat.html",
       "title": "Waarom dit blog bestaat | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": []
@@ -547,25 +435,17 @@
       "file": "wat-is-homeyduino.html",
       "relative_path": "wat-is-homeyduino.html",
       "title": "Wat is Homeyduino en wat kun je ermee? | huisvanvandaag.nl",
-      "article_type": "article",
-      "match_source": "metadata_fallback",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     },
     {
       "file": "wat-kun-je-doen-met-homey.html",
       "relative_path": "wat-kun-je-doen-met-homey.html",
       "title": "Wat kun je doen met Homey? Praktische toepassingen en inspiratie | huisvanvandaag.nl",
-      "article_type": "review",
-      "match_source": "review_metadata_and_sections",
       "benodigdheden_heading": null,
       "benodigdheden": [],
-      "matched_product_keys": [
-        "homey"
-      ]
+      "matched_product_keys": []
     }
   ]
 }

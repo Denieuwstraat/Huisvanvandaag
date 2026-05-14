@@ -1,41 +1,27 @@
 # Affiliate inventory scan
 
-Totaal gescande artikelen: 40
+Totaal gescande artikelen: 42
 
 ## 404.html
 - Titel: Pagina niet gevonden | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## arduino_ide_esp8266_tutorial.html
 - Titel: Arduino IDE instellen voor ESP8266 (Wemos D1 Mini) | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: benodigdheden
-- Benodigdheden-sectie gevonden: ja
-- Heading: Wat heb je nodig?
-- Benodigdheden:
-  - Computer met Arduino IDE
-  - Wemos D1 Mini of ESP8266-board
-  - USB-kabel
-  - Internetverbinding
-- Herkende productkeys:
-  - wemos_d1_mini
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
 
 ## bedankt.html
 - Titel: Bedankt | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## bewegingssensor_homeyduino.html
 - Titel: Bouw je eigen Bewegingssensor (PIR + Arduino) | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -51,102 +37,76 @@ Totaal gescande artikelen: 40
 
 ## chriet-titulaer.html
 - Titel: Chriet Titulaer en het Huis van de Toekomst | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## contact.html
 - Titel: Contact | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## diy.html
 - Titel: DIY & Homeyduino | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
-  - wemos_d1_mini
+- Herkende productkeys: geen
 
 ## footer.html
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## gemini-voor-home.html
 - Titel: Gemini voor Home: wat verandert er ten opzichte van Google Assistant? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## header.html
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
+
+## homey-bridge-satellite-mode-vs-homeylink.html
+- Titel: Homey Bridge Satellite Mode vs HomeyLink: wat zijn de verschillen? | huisvanvandaag.nl
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## homey-bridge.html
 - Titel: Maak kennis met de Homey Bridge | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## homey-pro-2023.html
 - Titel: Homey Pro (2023): het slimme hart van je huis | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## homey-pro-mini-2026.html
 - Titel: Homey Pro mini: wat is het en hoe verschilt het van Bridge en Pro? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## homey-self-hosted-2026.html
 - Titel: Homey Self-Hosted: wat is het en wanneer kies je hiervoor? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## homey.html
 - Titel: Homey uitgelegd: welke Homey past bij jouw slimme huis? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## homeyduino-clapper-switch.html
 - Titel: Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -162,8 +122,6 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-co2-multisensor.html
 - Titel: Bouw zelf een slimme CO₂ multi-sensor voor Homey | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -178,12 +136,11 @@ Totaal gescande artikelen: 40
   - dht11_sensor
   - homey
   - ldr_sensor
+  - mh_z19b
   - wemos_d1_mini
 
 ## homeyduino-co2-sensor.html
 - Titel: Bouw je eigen slimme CO₂ sensor met Homeyduino (UART) | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -200,8 +157,6 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-deur-en-raamsensor.html
 - Titel: Bouw je eigen deur- en raamsensor met Homeyduino | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -219,8 +174,6 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-dht11-sensor.html
 - Titel: Homeyduino DHT11 sensor: eenvoudige klimaatdata voor slimmere Homey-flows
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -236,17 +189,27 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-esp32-c3-c6-compatibiliteit.html
 - Titel: Homeyduino geschikt maken voor moderne ESP32 boards (C3 & C6) | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
+
+## homeyduino-ld2410-aanwezigheidssensor.html
+- Titel: LD2410 aanwezigheidssensor maken met Homeyduino en ESP32 | huisvanvandaag.nl
+- Benodigdheden-sectie gevonden: ja
+- Heading: Benodigdheden
+- Benodigdheden:
+  - NodeMCU-32S ESP32-board of vergelijkbaar ESP32 DevKit-board
+  - HLK-LD2410 of LD2410B mmWave radarsensor
+  - Dupontkabels
+  - Arduino IDE met ESP32-boardondersteuning
+  - Homeyduino-library en de LD2410-library van Nick Reynolds
 - Herkende productkeys:
+  - ESP32_Development_Board
+  - LD2410_24G_human_presence_sensor
   - homey
 
 ## homeyduino-licht-temperatuur-sensor.html
 - Titel: Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11) | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -265,8 +228,6 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-multi-relais.html
 - Titel: 4-kanaals relaismodule aansturen met Homeyduino en een Wemos D1 Mini | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -283,8 +244,6 @@ Totaal gescande artikelen: 40
 
 ## homeyduino-temperatuursensor-ds18b120.html
 - Titel: Bouw je eigen DS18B20 temperatuursensor met Homeyduino | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: benodigdheden
 - Benodigdheden-sectie gevonden: ja
 - Heading: Benodigdheden
 - Benodigdheden:
@@ -299,160 +258,96 @@ Totaal gescande artikelen: 40
 
 ## homeyscript-stroomprijs-vandaag-morgen.html
 - Titel: HomeyScript: slim sturen op de goedkoopste stroomuren | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: benodigdheden
-- Benodigdheden-sectie gevonden: ja
-- Heading: Wat heb je nodig?
-- Benodigdheden:
-  - Een werkende Homey-omgeving met HomeyScript.
-  - Een gratis API-key van Enever.
-  - Een aanbieder-veld uit de Enever-prijzenfeed, bijvoorbeeld prijsANWB .
-  - Een Flow of Advanced Flow waarmee je het script periodiek kunt starten.
-  - Basiskennis van Homey-tags en hoe je die in flows gebruikt.
-- Herkende productkeys:
-  - homey
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
 
 ## index.html
 - Titel: huisvanvandaag.nl | Het huis dat met je meedenkt
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## informatief.html
 - Titel: Informatieve artikelen | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## keukendeur-herinnering-slim-google-home-tutorial.html
 - Titel: Keukendeur herinnering slim maken in Google Home Script Editor | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: benodigdheden
-- Benodigdheden-sectie gevonden: ja
-- Heading: Wat heb je nodig?
-- Benodigdheden:
-  - Een Google Home-huishouden met toegang tot de Script Editor
-  - Een deursensor die in Google Home zichtbaar is
-  - Minimaal één speaker of display waarop je een broadcast wilt afspelen
-  - De exacte apparaatnamen zoals ze in Google Home staan, inclusief kamernaam
-  - Je script voor de automatisering
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## matter-en-thread-uitgelegd.html
 - Titel: Wat is het verschil tussen Matter en Thread? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## over.html
 - Titel: Over mij en waarom dit blog bestaat| huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## privacy-disclaimer.html
 - Titel: Privacy & Disclaimer | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## review-hue-st64-edison.html
 - Titel: Philips Hue ST64 Edison E27 review | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
-  - philips_hue_filament_edison_lamp_st64
+- Herkende productkeys: geen
 
 ## review-nest-wifi-pro.html
 - Titel: Nest Wifi Pro review: snel, stabiel en gezinsvriendelijk mesh wifi | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - nest_wifi_pro
+- Herkende productkeys: geen
 
 ## review-roomba-irobot-i7.html
 - Titel: iRobot Roomba i7+ review: nog steeds de moeite waard? | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
-  - roomba_i7_plus
+- Herkende productkeys: geen
 
 ## reviews.html
 - Titel: Reviews | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## robotstofzuiger-homey-tutorial.html
 - Titel: Laat je robotstofzuiger slim schoonmaken met Homey | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: benodigdheden
-- Benodigdheden-sectie gevonden: ja
-- Heading: Wat heb je nodig?
-- Benodigdheden:
-  - Een Homey
-  - Een gekoppelde robotstofzuiger binnen Homey
-  - Presence of aanwezigheid correct ingesteld in Homey
-  - Een bestaande of nieuwe flow voor vertrek en thuiskomst
-  - Een paar minuten om de logica goed in te stellen en te testen
-- Herkende productkeys:
-  - homey
-  - roomba_i7_plus
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
 
 ## tutorials.html
 - Titel: Tutorials | huisvanvandaag.nl
-- Artikeltype: tutorial
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## waarom-dit-blog-bestaat.html
 - Titel: Waarom dit blog bestaat | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
 
 ## wat-is-homeyduino.html
 - Titel: Wat is Homeyduino en wat kun je ermee? | huisvanvandaag.nl
-- Artikeltype: article
-- Matchbron: metadata_fallback
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen
 
 ## wat-kun-je-doen-met-homey.html
 - Titel: Wat kun je doen met Homey? Praktische toepassingen en inspiratie | huisvanvandaag.nl
-- Artikeltype: review
-- Matchbron: review_metadata_and_sections
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - homey
+- Herkende productkeys: geen

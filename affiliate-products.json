@@ -18,8 +18,6 @@
       "wemod d1 mini",
       "Wemos D1 Mini (5V)",
       "d1 mini",
-      "nodemcu",
-      "node mcu",
       "esp8266",
       "esp-8266"
     ],
@@ -32,7 +30,7 @@
       },
       {
         "name": "Bol.com",
-        "url": "",
+        "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-wemos-d1-mini-v4-esp8266-usb-c%2F9300000247216518%2F&name=OTRONIC%C2%AE%20Wemos%20D1%20Mini%20V4%20ESP8266%20USB-C",
         "label": "Snelle levering NL",
         "badge": "NL"
       },
@@ -59,6 +57,7 @@
       "mh z19b",
       "mh-z19c",
       "mh z19c",
+      "MH-Z19 CO₂-sensor",
       "mhz19b",
       "mhz19c",
       "co2 sensor",
@@ -655,6 +654,76 @@
     {
       "name": "Bol.com",
       "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Frelais-module-12v-4-kanaals-t-b-v-arduino%2F9300000039396020%2F&name=Relais%20Module%2012v",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+    }
+  ]
+  }, 
+"LD2410_24G_human_presence_sensor": {
+  "name": "HLK-LD2410 24G human Presence sensor (mmWave radar)",
+  "description": "24G radar sensor voor het detecteren van menselijke aanwezigheid en hartslag, geschikt voor slimme automatiseringen en gezondheidsmonitoring",
+  "images": [
+    "assets/affiliate/LD2410-presence-sensor.jpg"
+  ],
+  "aliases": [
+    "LD2410 presence sensor",
+    "24G radar sensor",
+    "LD2410",
+    "HLK-LD2410",
+    "LD2410B mmWave radarsensor",
+    "human presence sensor"
+  ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c34sZMDz",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fmicrowave-radar-sensor-module-ld2410-gevoelige-bewegingssensor-voor-menselijke-aanwezigheid%2F9300000248461368%2F&name=Microwave%20Radar%20Sensor%20Module%20LD2410%20-%20Gevoelige%20Bewegingssensor%20voor%20Menselijke...",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+    }
+  ]
+}, 
+"ESP32_Development_Board": {
+  "name": "ESP32 Development Board WiFi+Bluetooth Dual Core ESP32-DevKitC-32 ESP-WROOM-32 Expansion ",
+  "description": "Een veelzijdig ESP32-ontwikkelbord met ingebouwde wifi en Bluetooth, ideaal voor het bouwen van slimme apparaten en IoT-projecten.",
+  "images": [
+    "assets/affiliate/esp32-development-board.jpg"
+  ],
+  "aliases": [
+    "ESP32 DevKitC-32",
+    "ESP32 Development Board",
+    "ESP32 Board",
+    "NodeMCU-32S ESP32-board",
+    "ESP-WROOM-32 Development Board",
+    "ESP32 WiFi Bluetooth Board"
+  ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c4dkWsQR",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-nodemcu-esp32-s-4mb-wroom-38-pins%2F9300000024846825%2F&name=Otronic.nl%20NodeMCU%20ESP32-S%20-%204MB%20WROOM%2038%20pins",
       "label": "Snelle levering NL",
       "badge": "NL"
     },
