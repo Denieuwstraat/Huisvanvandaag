@@ -98,7 +98,7 @@
 <div class="meta-list">
 <span class="meta-pill">Categorie: DIY</span>
 <span class="meta-pill">Platform: Homey / Homeyduino</span>
-<span class="meta-pill">Hardware: Wemos D1 Mini + geluidssensor</span>
+<span class="meta-pill">Hardware: Wemos D1 Mini + KY-37 geluidssensor</span>
 </div>
 </div>
 <div class="panel clapper-info-panel">
@@ -229,22 +229,23 @@
 <h3>2. Installeer Arduino IDE en de benodigde libraries</h3>
 <p>Installeer Arduino IDE en zorg dat de <strong>ESP8266 board support</strong> en de <strong>Homeyduino-library</strong> aanwezig zijn. Controleer daarna via <strong>Hulpmiddelen → Board</strong> of je het juiste board voor de Wemos D1 Mini hebt geselecteerd.</p>
 <h3>3. Upload de code</h3>
-<p>Vul in onderstaande sketch eerst je eigen wifi-naam en wachtwoord in. De code is nu modulair opgezet en controleert niet alleen op dubbele klappen, maar houdt ook rekening met te korte pulsen, debounce en wifi-herstel. Daarnaast wordt de laatste status lokaal bewaard wanneer Homey tijdelijk niet bereikbaar is, zodat deze later alsnog kan worden gesynchroniseerd.</p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
-#include &lt;Homey.h&gt;
+<p>Vul in onderstaande sketch eerst je eigen wifi-naam en wachtwoord in. De code is nu modulair opgezet en controleert niet alleen op dubbele klappen, maar houdt ook rekening met debounce en wifi-herstel. Daarnaast wordt de laatste status lokaal bewaard wanneer Homey tijdelijk niet bereikbaar is, zodat deze later alsnog kan worden gesynchroniseerd.</p>
+
+<pre><code>#include <ESP8266WiFi.h>
+#include <Homey.h>
 
 // =========================
 // Configuratie
 // =========================
 namespace Config {
-  constexpr const char* WIFI_SSID = "&lt;SSID&gt;";
-  constexpr const char* WIFI_PASSWORD = "&lt;PASSWORD&gt;";
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
 
   constexpr uint8_t SOUND_PIN = D2;
 
-  constexpr unsigned long CLAP_WINDOW_MS = 1000;
-  constexpr unsigned long CLAP_DEBOUNCE_MS = 250;
-  constexpr unsigned long MIN_CLAP_LOW_MS = 20;
+  // Dubbele klap instellingen
+  constexpr unsigned long CLAP_WINDOW_MS = 650;
+  constexpr unsigned long CLAP_DEBOUNCE_MS = 150;
 
   constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
   constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
@@ -261,8 +262,6 @@ struct ClapState {
   int count = 0;
   unsigned long lastDetectedAt = 0;
   bool lastPinState = HIGH;
-  bool pulseActive = false;
-  unsigned long pulseStartAt = 0;
 };
 
 struct AlarmState {
@@ -345,8 +344,8 @@ void connectToWifiWithTimeout() {
 
   const unsigned long startAttemptTime = millis();
 
-  while (WiFi.status() != WL_CONNECTED &amp;&amp;
-         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+  while (WiFi.status() != WL_CONNECTED &&
+         millis() - startAttemptTime < Config::WIFI_CONNECT_TIMEOUT_MS) {
     delay(500);
     Serial.print(F("."));
   }
@@ -364,7 +363,7 @@ void connectToWifiWithTimeout() {
 }
 
 void maintainWifi(unsigned long currentMillis) {
-  if (currentMillis - wifiState.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+  if (currentMillis - wifiState.lastCheckAt < Config::WIFI_CHECK_INTERVAL_MS) {
     return;
   }
 
@@ -417,33 +416,22 @@ void initializeHomey() {
 void processSoundInput(unsigned long currentMillis) {
   const bool currentPinState = digitalRead(Config::SOUND_PIN);
 
-  // Start mogelijke puls
-  if (clapState.lastPinState == HIGH &amp;&amp; currentPinState == LOW) {
-    clapState.pulseActive = true;
-    clapState.pulseStartAt = currentMillis;
-  }
-
-  // Einde puls
-  if (clapState.pulseActive &amp;&amp; clapState.lastPinState == LOW &amp;&amp; currentPinState == HIGH) {
-    const unsigned long pulseDuration = currentMillis - clapState.pulseStartAt;
-    const bool pulseLongEnough = pulseDuration &gt;= Config::MIN_CLAP_LOW_MS;
+  // Detecteer alleen de overgang van HIGH naar LOW
+  // Dit past beter bij geluidsensoren die zeer korte pulsen geven.
+  if (clapState.lastPinState == HIGH && currentPinState == LOW) {
     const bool debouncePassed =
-        (currentMillis - clapState.lastDetectedAt) &gt; Config::CLAP_DEBOUNCE_MS;
+        (currentMillis - clapState.lastDetectedAt) > Config::CLAP_DEBOUNCE_MS;
 
-    if (pulseLongEnough &amp;&amp; debouncePassed) {
+    if (debouncePassed) {
       clapState.count++;
       clapState.lastDetectedAt = currentMillis;
 
       Serial.print(F("[DEBUG] Geldige klap! (Aantal: "));
       Serial.print(clapState.count);
       Serial.println(F(")"));
-    } else if (!pulseLongEnough) {
-      Serial.print(F("[RUIS] Puls te kort genegeerd ("));
-      Serial.print(pulseDuration);
-      Serial.println(F(" ms)"));
+    } else {
+      Serial.println(F("[RUIS] Puls genegeerd door debounce."));
     }
-
-    clapState.pulseActive = false;
   }
 
   clapState.lastPinState = currentPinState;
@@ -455,14 +443,14 @@ void handleCompletedClapWindow(unsigned long currentMillis) {
   }
 
   const bool clapWindowExpired =
-      (currentMillis - clapState.lastDetectedAt) &gt; Config::CLAP_WINDOW_MS;
+      (currentMillis - clapState.lastDetectedAt) > Config::CLAP_WINDOW_MS;
 
   if (!clapWindowExpired) {
     return;
   }
 
   if (clapState.count == 2) {
-    Serial.println(F("&gt;&gt;&gt; [ACTIE] Dubbele klap! Status omzetten."));
+    Serial.println(F(">>> [ACTIE] Dubbele klap! Status omzetten."));
     toggleAlarmStatus();
   } else {
     Serial.print(F("[INFO] "));
