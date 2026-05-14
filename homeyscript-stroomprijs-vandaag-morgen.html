@@ -277,7 +277,9 @@
 <p>
         Maak in HomeyScript een nieuw script aan, geef het bijvoorbeeld de naam <code>stroomprijs_vandaag_morgen</code> en plak onderstaande code erin. Controleer daarna eerst je API-key en aanbieder voordat je het script uitvoert.
       </p>
-<pre><code>// ========================================================
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>// ========================================================
 // HomeyScript: stroomprijs_vandaag_morgen.js
 // Doel: min/max stroomprijzen vandaag en morgen ophalen
 // Bron: Enever API v3
@@ -471,7 +473,8 @@ try {
 
 } catch (error) {
   return "Fout: " + error.message;
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Controleer de aangemaakte tags</h3>
 <p>
         Na het uitvoeren van het script worden de waarden opgeslagen als HomeyScript-tags. Voor vandaag zijn dat <code>minVandaag</code>, <code>maxVandaag</code>, <code>minVandaagTijden</code> en <code>maxVandaagTijden</code>. Voor morgen krijg je dezelfde varianten met <code>Morgen</code> in de naam.

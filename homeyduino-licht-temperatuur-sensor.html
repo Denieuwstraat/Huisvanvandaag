@@ -239,7 +239,9 @@
 <p>Zorg dat je ESP8266-board correct is ingesteld in Arduino IDE en installeer de libraries <code>ESP8266WiFi</code>, <code>Homey</code> en <code>SimpleDHT</code>. Vul daarna bovenin de sketch je eigen wifi-naam en wachtwoord in.</p>
 <h3>3. Upload de Homeyduino code</h3>
 <p>Onderstaande code leest de DHT11 en LDR op verschillende intervallen uit, bewaakt de wifi-verbinding en publiceert alleen wijzigingen of heartbeat-updates naar Homey. Daardoor blijft de sensor ook in dagelijks gebruik een stuk netter werken.</p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;Homey.h&gt;
 #include &lt;SimpleDHT.h&gt;
 
@@ -692,7 +694,8 @@ void loop() {
 
   ClimateModule::process(currentMillis);
   LuminanceModule::process(currentMillis);
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Test de sensor via de seriële monitor</h3>
 <p>Open de Seriële Monitor in Arduino IDE en zet deze op <strong>115200 baud</strong>. Zo kun je controleren of de wifi goed verbindt en of de sensorwaarden netjes binnenkomen. Zet <code>DEBUG</code> op <code>1</code> wanneer je extra informatie wilt zien over de wifi-status of de gefilterde LDR-waarde.</p>
 <h3>5. Voeg de sensor toe aan Homey en gebruik hem in flows</h3>
@@ -757,5 +760,18 @@ void loop() {
 <script src="include.js"></script>
 <script src="script.js"></script>
 <script src="affiliate-products.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
 </body>
 </html>

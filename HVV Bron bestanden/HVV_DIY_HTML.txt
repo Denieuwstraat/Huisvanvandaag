@@ -261,7 +261,12 @@ Bron HTML:
         <h3>3. [[STAP_3_TITEL]]</h3>
         <p>[[STAP_3_TEKST]]</p>
 
-        <pre><code>[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
+        <div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+ <div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code> [[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
+</div>
 
         <h3>4. [[STAP_4_TITEL]]</h3>
         <p>[[STAP_4_TEKST]]</p>
@@ -342,8 +347,19 @@ Bron HTML:
 
   <script src="include.js"></script>
   <script src="script.js"></script>
-</body>
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
 
-<script src="script.js"></script>
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
+
 </body>
 </html>

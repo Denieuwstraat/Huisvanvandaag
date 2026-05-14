@@ -231,7 +231,9 @@
 <p>Voor deze sketch gebruik je WiFi, Homeyduino, Wire, OneWire, DallasTemperature en U8g2. Installeer de externe bibliotheken via de Library Manager van de Arduino IDE voordat je de code compileert.</p>
 <h3>3. Plaats de code op de ESP32-C3</h3>
 <p>Vul eerst je eigen WiFi-gegevens in bij <code>WIFI_SSID</code> en <code>WIFI_PASSWORD</code>. Pas eventueel ook de apparaatnaam aan, zodat je in Homey meteen ziet welke sensor je toevoegt.</p>
-<pre><code>// ========================================================
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>// ========================================================
 // ESP32-C3 DS18B20 + OLED + Homeyduino
 // Temperatuursensor met onboard 72x40 OLED-scherm
 // ========================================================
@@ -569,7 +571,8 @@ void loop() {
   maintainWifi();
   maintainHomey();
   readTemperatureSensor();
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Controleer de seriële monitor en het OLED-scherm</h3>
 <p>Na het uploaden start de ESP32-C3 op, zoekt de DS18B20, verbindt met WiFi en initialiseert Homeyduino. In de seriële monitor zie je of de sensor gevonden is en welk IP-adres het board krijgt. Op het OLED-scherm verschijnt de actuele temperatuur of de melding dat er geen sensor beschikbaar is.</p>
 <h3>5. Voeg de sensor toe in Homey</h3>
@@ -633,7 +636,19 @@ void loop() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
-</body>
-<script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

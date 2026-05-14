@@ -235,7 +235,9 @@ Door een tijdsvenster en vaste dagen toe te voegen, voorkom je dat de robot op o
 <p>Voeg in het “Dan”-gedeelte de actie toe om de robotstofzuiger te starten. In jouw voorbeeld is dat de schoonmaakactie van de Roomba zelf.</p>
 <h3>3. Maak de stop-flow voor thuiskomst</h3>
 <p>De tweede flow zorgt ervoor dat de robot netjes stopt zodra de eerste persoon thuiskomt. Daarmee maak je de automatisering veel prettiger in gebruik.</p>
-<pre><code>Als: De eerste persoon thuiskomt
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>Als: De eerste persoon thuiskomt
 En: De flow “Roomba start leeg huis” is ingeschakeld
 Dan: Dock</code></pre>
 <h3>4. Test beide flows bewust</h3>

@@ -231,7 +231,9 @@
 <h3>3. Upload de code</h3>
 <p>Vul in onderstaande sketch eerst je eigen wifi-naam en wachtwoord in. De code is nu modulair opgezet en controleert niet alleen op dubbele klappen, maar houdt ook rekening met debounce en wifi-herstel. Daarnaast wordt de laatste status lokaal bewaard wanneer Homey tijdelijk niet bereikbaar is, zodat deze later alsnog kan worden gesynchroniseerd.</p>
 
-<pre><code>#include <ESP8266WiFi.h>
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include <ESP8266WiFi.h>
 #include <Homey.h>
 
 // =========================
@@ -513,7 +515,8 @@ void syncAlarmStateIfDirty() {
 
   Serial.println(F("[HOMEY] Laatste status synchroniseren..."));
   publishLatestAlarmStatusToHomey();
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Selecteer het juiste board en upload</h3>
 <p>Kies in Arduino IDE het board <strong>LOLIN (Wemos) D1 R2 &amp; Mini</strong> en upload daarna de code naar de Wemos D1 Mini.</p>
 <h3>5. Test de detectie via de seriële monitor</h3>
@@ -581,5 +584,19 @@ void syncAlarmStateIfDirty() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

@@ -151,7 +151,9 @@
 <p>Vul daarna in de code je eigen wifi-gegevens in en pas eventueel ook de apparaatnaam aan. In het voorbeeld staat die nu ingesteld op <code>Keuken deursensor</code>, maar je kunt daar natuurlijk iedere naam aan geven die voor jouw Homey-opstelling logisch is. Wil je tijdens het testen meer inzicht in wat er gebeurt, dan kun je <code>DEBUG</code> tijdelijk op <code>1</code> zetten. Dan zie je extra meldingen over ruwe pinstatussen en wifi-controles in de seriële monitor.</p>
 <h2 id="code">Code voor de deur- en raamsensor</h2>
 <p>Onderstaande sketch gebruikt debounce, bewaakt de wifi-verbinding, initialiseert Homey opnieuw na verbindingsproblemen en verstuurt periodiek een heartbeat. Daarnaast zit er een failsafe in die de ESP kan herstarten als de Homey-communicatie te lang stilvalt. Daardoor is deze versie beter voorbereid op dagelijks gebruik dan een heel eenvoudige basiscode.</p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;Homey.h&gt;
 
 // =========================
@@ -581,7 +583,8 @@ void syncDoorStateIfDirty(unsigned long currentMillis) {
 
   Serial.println(F("[HOMEY] Laatste deurstatus synchroniseren..."));
   publishLatestDoorStateToHomey(currentMillis);
-}</code></pre>
+ </code></pre>
+</div>
 <h2 id="testen">Testen via de seriële monitor</h2>
 <p>Na het uploaden open je de seriële monitor in Arduino IDE. Deze sketch gebruikt <strong>115200 baud</strong>. Daar zie je direct wat de sensor doet bij het openen en sluiten van het contact.</p>
 <p>Bij het opstarten meldt de code eerst welke deurstatus er is gedetecteerd en of de wifi-verbinding tot stand komt. Daarna verschijnt bij iedere stabiele wijziging een nieuwe statusregel. Bij verbindingsproblemen zie je bovendien of de laatste status lokaal wordt bewaard, of Homey opnieuw wordt geïnitialiseerd en of een heartbeat of synchronisatie opnieuw wordt uitgevoerd. Juist daardoor is deze versie ook prettiger te debuggen wanneer je hem langere tijd wilt laten draaien.</p>
@@ -635,5 +638,19 @@ void syncDoorStateIfDirty(unsigned long currentMillis) {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

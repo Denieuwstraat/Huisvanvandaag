@@ -249,7 +249,9 @@
         <h3>3. De code uploaden</h3>
         <p>Upload onderstaande code naar de Wemos D1 Mini. De code maakt vier afzonderlijke Homey-flowacties aan waarmee je ieder relais apart kunt schakelen.</p>
 
-        <pre><code>#include <ESP8266WiFi.h>
+        <div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <Homey.h>
 
@@ -725,7 +727,8 @@ void loop() {
 
   HomeyService::heartbeat();
 }
-}</code></pre>
+ </code></pre>
+</div>
 
         <h3>4. Het apparaat koppelen aan Homey</h3>
         <p>Zodra de ESP8266 verbinding heeft gemaakt met WiFi verschijnt het apparaat in Homeyduino. Voeg het apparaat toe aan Homey zodat de flowacties beschikbaar worden.</p>
@@ -819,8 +822,19 @@ void loop() {
 
   <script src="include.js"></script>
   <script src="script.js"></script>
-</body>
 
-<script src="script.js"></script>
+  <script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

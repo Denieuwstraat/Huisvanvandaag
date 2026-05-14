@@ -138,7 +138,9 @@ Pas eventueel ook <code>library.properties</code> aan wanneer je met een kopie v
 <p>
 Onderstaand vind je het volledige aangepaste <code>chip.h</code> bestand. Je kunt de inhoud van je huidige <code>chip.h</code> hiermee vervangen. Het belangrijkste verschil zit in het ESP32-gedeelte: daar wordt per analoge pin eerst gecontroleerd of deze op jouw board bestaat.
 </p>
-<pre><code>#include "Arduino.h"
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include "Arduino.h"
 #include "pins_arduino.h"
 
 #ifndef __CHIP__

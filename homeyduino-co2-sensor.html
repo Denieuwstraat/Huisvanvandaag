@@ -249,7 +249,9 @@
 <li>Zoek het veld <strong>Additional Boards Manager URLs</strong></li>
 <li>Voeg deze URL toe:</li>
 </ol>
-<pre><code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code></pre>
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code></pre>
 <p>Ga daarna naar:</p>
 <ul>
 <li><strong>Tools → Board → Boards Manager</strong></li>
@@ -275,7 +277,9 @@
 <p>
             Controleer daarna of je sketch onder andere deze includes gebruikt:
           </p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
 #include &lt;MHZ19.h&gt;
 #include &lt;Homey.h&gt;</code></pre>
@@ -318,7 +322,9 @@
 </tbody>
 </table>
 <p>In de code zie je dat terug in deze configuratie:</p>
-<pre><code>constexpr uint8_t MH_Z19_RX_PIN = D2;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>constexpr uint8_t MH_Z19_RX_PIN = D2;
 constexpr uint8_t MH_Z19_TX_PIN = D1;</code></pre>
 <p>
             Dat lijkt misschien verwarrend, maar is logisch bekeken vanuit de Wemos. De Wemos ontvangt namelijk data van de sensor op D2, dus daar hoort de <strong>TX van de sensor</strong> op. Omgekeerd ontvangt de sensor data van de Wemos via zijn RX-pin, dus die sluit je aan op <strong>D1</strong>.
@@ -354,7 +360,9 @@ constexpr uint8_t MH_Z19_TX_PIN = D1;</code></pre>
 <li>je wifi-gegevens zijn ingevuld</li>
 <li>de juiste MH-Z19 library is geïnstalleerd</li>
 </ul>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
 #include &lt;MHZ19.h&gt;
 #include &lt;Homey.h&gt;
@@ -543,7 +551,8 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
   state.hasPublished = true;
 
   Serial.println(F("[HOMEY] Data succesvol verstuurd."));
-}</code></pre>
+ </code></pre>
+</div>
 <h3>5. Test de sensor via de seriële monitor</h3>
 <p>
             Open in Arduino IDE de seriële monitor via <strong>Tools → Serial Monitor</strong>. Na het opstarten kan de MH-Z19B in het begin nog even 0 of een ongeldige waarde teruggeven. Dat is normaal. De sensor heeft doorgaans een paar minuten nodig om stabiel te worden.
@@ -551,15 +560,21 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 <p>
             Zodra alles goed werkt, zie je regels zoals:
           </p>
-<pre><code>CO2: 823 ppm | Temp: 24 C</code></pre>
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>CO2: 823 ppm | Temp: 24 C</code></pre>
 <p>
             En wanneer de meting daadwerkelijk naar Homey wordt gepubliceerd, verschijnt ook:
           </p>
-<pre><code>[HOMEY] Data succesvol verstuurd.</code></pre>
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>[HOMEY] Data succesvol verstuurd.</code></pre>
 <p>
             Heb je tijdelijk geen wifi, dan blijft de sensor wel uitlezen maar slaat hij het publiceren over. In dat geval zie je een melding zoals:
           </p>
-<pre><code>[HOMEY] Publicatie overgeslagen: Geen WiFi.</code></pre>
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>[HOMEY] Publicatie overgeslagen: Geen WiFi.</code></pre>
 <p>
             Zie je helemaal niets of krijg je alleen fouten terug, controleer dan eerst de boardkeuze, daarna de gebruikte library en vervolgens de TX/RX-aansluitingen. In de praktijk zit de fout vaak in één van die drie punten.
           </p>
@@ -657,5 +672,19 @@ void publishToHomey(const SensorReading&amp; reading, unsigned long currentMilli
 <script src="affiliate-components-v3.js"></script>
 <script src="include.js"></script>
 <script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

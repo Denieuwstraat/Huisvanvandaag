@@ -206,7 +206,9 @@
 <h3>3. Plak het script in de editor</h3>
 <p>Plak onderstaande YAML in de editor. Dit script luistert naar de status van de keukendeur en roept op meerdere momenten iets om. De aparte <code>condition</code> controleert vlak voor de broadcast nogmaals of de deur nog open staat. Dat is handig, omdat <code>for</code> alleen bij starters gebruikt mag worden en niet bij conditions.</p>
 <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
-<pre><code>metadata:
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>metadata:
   name: Keukendeur herinnering slim
   description: &gt;
     Roept in stappen om als de keukendeur open blijft staan.

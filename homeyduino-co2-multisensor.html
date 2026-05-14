@@ -238,7 +238,9 @@
 <p>Installeer Arduino IDE en controleer of de ESP8266-board support goed staat ingesteld. Voeg vervolgens de libraries toe die in deze sketch worden gebruikt: ESP8266WiFi, SoftwareSerial, MHZ19, Homey en SimpleDHT. Vul daarna bovenin de code je eigen wifi-gegevens in.</p>
 <h3>3. Upload de code</h3>
 <p>Pas eventueel meteen ook de apparaatnaam aan. In de voorbeeldcode staat die nu op Multisensor. Upload de sketch vervolgens naar je Wemos D1 Mini, waarna vier Homey-capabilities worden aangemaakt: CO₂, temperatuur, luchtvochtigheid en luminance.</p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
 #include &lt;MHZ19.h&gt;
 #include &lt;Homey.h&gt;
@@ -844,7 +846,8 @@ void loop() {
   Co2Module::process(currentMillis);
   ClimateModule::process(currentMillis);
   LuminanceModule::process(currentMillis);
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Test de metingen</h3>
 <p>Open na het uploaden de Seriële Monitor. Let goed op dat deze sketch op 115200 baud draait en dus niet op 9600. Daar kun je meteen controleren of de wifi netjes verbindt en of de metingen goed binnenkomen. Wil je extra informatie zien, zet DEBUG dan tijdelijk op 1.</p>
 <h3>5. Koppel de sensor aan Homey</h3>
@@ -900,5 +903,19 @@ void loop() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

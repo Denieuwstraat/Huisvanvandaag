@@ -235,7 +235,9 @@
 <p>Uploaden doe je via Arduino IDE. Kies daar het juiste board en upload de code op 9600 baud. Werkt je ESP8266-board niet meteen zoals verwacht, dan kun je het eerst opnieuw flashen met NodeMCU Flasher. Vul in de code daarna je eigen wifi-naam, wachtwoord en de gewenste naam van je PIR sensor in.</p>
 <h3>3. Upload de code voor Homeyduino</h3>
 <p>De onderstaande code maakt verbinding met wifi, start Homeyduino op als sensor en geeft beweging door via de capability <em>alarm_motion</em>. In deze variant is ook een status-led opgenomen, zodat je lokaal kunt zien of er beweging is gedetecteerd.</p>
-<pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl.
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>// Code aangepast voor Homeyduino door Domoticablog https://huisvanvandaag.nl.
 // Kijk op de site voor meer Homeyduino en andere Smart Home gerelateerde posts.
 // Originele code zie: https://www.instructables.com/id/Interface-PIR-Sensor-With-NodeMCU/
 #include &lt;ESP8266WiFi.h&gt;
@@ -285,7 +287,8 @@ void loop() {
     Homey.setCapabilityValue("alarm_motion", false);
     Serial.println("Motion absent!");
   }
-}</code></pre>
+ </code></pre>
+</div>
 <h3>4. Test of de sensor goed werkt</h3>
 <p>Open in Arduino IDE de Seriële Monitor via <em>Hulpmiddelen &gt; Seriële Monitor</em> of gebruik de sneltoets <em>CTRL+SHIFT+M</em>. Wanneer de sensor beweging detecteert, verschijnt de melding <em>Motion detected!</em>. Wordt er niets waargenomen, dan zie je <em>Motion absent!</em>. Gebruik je de variant met led, dan zie je dat ook direct aan het lampje.</p>
 <h3>5. Voeg de sensor toe aan Homey</h3>
@@ -338,5 +341,19 @@ void loop() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
+</body>
 </body>
 </html>

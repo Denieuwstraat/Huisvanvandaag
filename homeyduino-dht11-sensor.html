@@ -121,12 +121,16 @@
 <p>Zodra de code draait, kun je de DHT11 sensor koppelen via Homeyduino in Homey. Daarna verschijnen temperatuur en luchtvochtigheid als bruikbare meetwaarden in de app, in Insights en in je flows. Daarmee verandert deze eenvoudige zelfbouwsensor direct in een praktische bouwsteen voor comfort, ventilatie en meldingen.</p>
 <h2 id="software">Software en koppeling</h2>
 <p>Deze versie is volledig gericht op klimaatmetingen. In plaats van meerdere sensoren en capabilities gebruik je hier alleen de twee belangrijkste capabilities voor een DHT11: temperatuur en luchtvochtigheid. Daarmee blijft het project overzichtelijk, terwijl het in Homey meteen praktisch inzetbaar is.</p>
-<pre><code>Homey.addCapability("measure_temperature");
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>Homey.addCapability("measure_temperature");
 Homey.addCapability("measure_humidity");</code></pre>
 <p>Dat maakt dit project ideaal als eerste kennismaking met Homeyduino. Je bouwt geen ingewikkelde multisensor, maar een duidelijke basis die je later altijd nog kunt uitbreiden.</p>
 <h2 id="code">Code voor de DHT11 sensor</h2>
 <p>Onderstaande sketch gebruikt een DHT11 op pin <code>D5</code> en stuurt temperatuur en luchtvochtigheid door naar Homey. De code controleert de wifi-verbinding, filtert ongeldige waarden eruit en synchroniseert gemiste updates opnieuw zodra de verbinding terugkomt. Vul alleen nog je eigen wifi-gegevens in.</p>
-<pre><code>#include &lt;ESP8266WiFi.h&gt;
+<div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;Homey.h&gt;
 #include &lt;SimpleDHT.h&gt;
 
@@ -426,7 +430,8 @@ void logClimateReading(const ClimateReading&amp; reading) {
   Serial.print(F(" C | "));
   Serial.print(reading.humidity);
   Serial.println(F(" % vochtigheid"));
-}</code></pre>
+ </code></pre>
+</div>
 <h2 id="flows">Voorbeelden van flows</h2>
 <ul>
 <li>Laat Homey een melding sturen wanneer de luchtvochtigheid in de badkamer te hoog oploopt.</li>
@@ -459,5 +464,19 @@ void logClimateReading(const ClimateReading&amp; reading) {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
+
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+
 </body>
 </html>

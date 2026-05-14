@@ -1412,3 +1412,28 @@ ul, ol { padding-left: 1.15rem; }
   transition: all .2s ease;
 }
 /* 🔥Einde zichtbaarheid zoekbalk 404 pagina*/
+
+/* Onderstaande code is voor de kopieer knop bij codeblokken */
+
+.code-block {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #2d2d2d;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.copy-btn:hover {
+  background: #444;
+}
+
+/* Einde codeblok: Onderstaande code is voor de kopieer knop bij codeblokken */

@@ -256,7 +256,9 @@ alleen de ingevulde HTML
         <p>[[STAP_3_TEKST]]</p>
 
         <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
-        <pre><code>[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
+        <div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
 
         <h3>4. [[STAP_4_TITEL]]</h3>
         <p>[[STAP_4_TEKST]]</p>
