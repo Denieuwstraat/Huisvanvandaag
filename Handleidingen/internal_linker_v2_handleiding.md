@@ -1,4 +1,4 @@
-# Internal Linker v2 – Handleiding (Huis van Vandaag)
+# Internal Linker v2 – Handleiding (Huisvanvandaag)
 
 ## 🎯 Doel
 

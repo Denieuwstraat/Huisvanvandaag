@@ -1,4 +1,4 @@
-# 📦 Affiliate producten toevoegen – Huis van Vandaag
+# 📦 Affiliate producten toevoegen – Huisvanvandaag
 
 Deze handleiding beschrijft hoe je nieuwe affiliate producten toevoegt en hoe je ze automatisch in artikelen laat verschijnen.
 

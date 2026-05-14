@@ -1,4 +1,4 @@
-# Huis van Vandaag — GEO / SEO Schema Architectuur
+# Huisvanvandaag — GEO / SEO Schema Architectuur
 
 ## Doel van deze aanpak
 
@@ -7,7 +7,7 @@ Deze werkwijze zorgt ervoor dat:
 - zoekmachines beter begrijpen waar pagina’s over gaan;
 - AI-systemen zoals ChatGPT, Gemini en Perplexity je content beter kunnen interpreteren;
 - artikelen semantisch consistent blijven;
-- Huis van Vandaag als niche-authority rondom Homey, Homeyduino en DIY smart home wordt opgebouwd;
+- Huisvanvandaag als niche-authority rondom Homey, Homeyduino en DIY smart home wordt opgebouwd;
 - structured data centraal onderhoudbaar blijft.
 
 ---
@@ -218,7 +218,7 @@ Dit vergroot de kans op:
 
 # 8. Aanbevolen nichefocus
 
-Voor Huis van Vandaag is deze focus logisch:
+Voor Huisvanvandaag is deze focus logisch:
 
 ```javascript
 "knowsAbout": [

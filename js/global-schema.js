@@ -4,7 +4,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://huisvanvandaag.nl/#organization",
-      "name": "Huis van Vandaag",
+      "name": "Huisvanvandaag",
       "url": "https://huisvanvandaag.nl",
       "logo": {
         "@type": "ImageObject",
@@ -32,7 +32,7 @@
       "@type": "WebSite",
       "@id": "https://huisvanvandaag.nl/#website",
       "url": "https://huisvanvandaag.nl",
-      "name": "Huis van Vandaag",
+      "name": "Huisvanvandaag",
       "description": "Praktische uitleg, DIY-projecten en tutorials over smart home, Homey, Homeyduino en zelfbouwsensoren.",
       "publisher": {
         "@id": "https://huisvanvandaag.nl/#organization"

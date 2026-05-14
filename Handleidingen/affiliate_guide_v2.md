@@ -1,4 +1,4 @@
-# 📦 Affiliate producten toevoegen – Huis van Vandaag (v2)
+# 📦 Affiliate producten toevoegen – Huisvanvandaag (v2)
 
 Deze handleiding is bijgewerkt zodat hij volledig aansluit op de **nieuwe scanner + injector** (met review support).
 
