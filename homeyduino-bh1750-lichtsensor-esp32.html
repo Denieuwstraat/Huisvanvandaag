@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="howto" name="hv-schema-type"/>
+<!-- PAGINATITEL -->
+<title>BH1750 lichtsensor op ESP32 en Homeyduino maken | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Maak een nauwkeurige BH1750 lichtsensor met een ESP32 DevKit en Homeyduino. Inclusief aansluiting, Arduino-code, debugtips en uitlezen in Homey." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</head>
+<body>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>BH1750 lichtsensor</span>
+</div>
+<span class="eyebrow">DIY lichtsensor met Homeyduino</span>
+<h1>BH1750 lichtsensor op ESP32 en Homeyduino maken</h1>
+<p class="lead muted">
+          Bouw een digitale luxsensor die de lichtsterkte uitleest met een BH1750-module, verwerkt op een ESP32 DevKit en doorstuurt naar Homey als helderheidswaarde.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY sensor</span>
+<span class="meta-pill">Platform: Homey / Homeyduino</span>
+<span class="meta-pill">Hardware: ESP32 DevKit + BH1750</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>BH1750 aansluiten</strong><br/>
+<span class="muted">Je ziet hoe je de I2C-pinnen van de sensor koppelt aan een ESP32 DevKit.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Luxwaarde uitlezen</strong><br/>
+<span class="muted">De sensor geeft een echte luxwaarde terug in plaats van een ruwe analoge waarde.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Homeyduino gebruiken</strong><br/>
+<span class="muted">De lichtwaarde wordt in Homey zichtbaar via de capability measure_luminance.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Debuggen via Serial Monitor</strong><br/>
+<span class="muted">Je kunt met debugregels controleren of sensor, WiFi en Homey correct werken.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Stabiel publiceren</strong><br/>
+<span class="muted">De code filtert kleine schommelingen en publiceert alleen wanneer dat zinvol is.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="BH1750 lichtsensor aangesloten op een ESP32 DevKit voor Homeyduino" src="assets/header/bh1750-lichtsensor-homeyduino-esp32-hero.jpg"/>
+<figcaption class="muted small">
+            Placeholder voor de hero-afbeelding: voeg hier later een foto toe van de ESP32 DevKit met de BH1750 lichtsensor.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Een lichtsensor is een van die kleine onderdelen die een smart home net wat slimmer laat reageren. Denk aan verlichting die alleen aangaat als het echt donker genoeg is, of een flow die overdag anders reageert dan in de avond.
+        </p>
+<p>
+          In een eerdere opzet kun je dit doen met een LDR. Dat werkt prima voor eenvoudige licht-donker-detectie, maar de BH1750 is een nettere oplossing wanneer je met exacte luxwaarden wilt werken. De sensor communiceert via I2C met de ESP32 en levert een meetwaarde die Homey direct als helderheid kan tonen.
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>In dit project maak je een digitale lichtsensor op basis van een ESP32 DevKit, een BH1750-module en Homeyduino. De ESP32 leest de sensor uit, filtert de waarde lichtjes en stuurt de luxwaarde naar Homey.</p>
+<ul>
+<li><strong>Digitale luxsensor</strong> → de BH1750 meet lichtsterkte als luxwaarde en niet als ruwe analoge waarde.</li>
+<li><strong>Homey-apparaat</strong> → in Homey verschijnt de sensor als apparaat met de waarde Helderheid.</li>
+</ul>
+<p>Het resultaat is een compacte DIY-sensor die je kunt gebruiken als trigger of voorwaarde in Homey-flows.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>ESP32 DevKit, in dit voorbeeld gebruikt als NodeMCU-32S</li>
+<li>BH1750FVI digital light sensor module</li>
+<li>Arduino IDE</li>
+<li>Homeyduino-library</li>
+<li>BH1750-library en een USB-datakabel</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-1"></div>
+  <div id="affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-2"></div>
+  <div id="affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-1", "MH1750_licht_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-2", "homey");
+  <!-- renderAffiliateProduct("affiliate-auto-homeyduino-bh1750-lichtsensor-esp32-html-3", "ldr_sensor"); -->
+  </script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+
+
+
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de BH1750 aan op de ESP32</h3>
+<p>De BH1750 gebruikt I2C. Daardoor heb je naast voeding en ground twee signaallijnen nodig: SDA voor data en SCL voor de kloklijn. Op een standaard ESP32 DevKit gebruik je meestal GPIO 21 voor SDA en GPIO 22 voor SCL.</p>
+<ul>
+<li><strong>VCC</strong> → <strong>3V3</strong></li>
+<li><strong>GND</strong> → <strong>GND</strong></li>
+<li><strong>SDA / data</strong> → <strong>GPIO 21</strong></li>
+<li><strong>SCL / clock</strong> → <strong>GPIO 22</strong></li>
+</ul>
+<p>De ADDR-pin hoef je in deze opzet niet aan te sluiten. Laat je ADDR los, dan gebruikt de sensor normaal het standaard I2C-adres. Sluit je ADDR bewust hoog aan, dan kan het adres wijzigen. Dat is vooral handig wanneer je twee BH1750-sensoren op dezelfde I2C-bus wilt gebruiken.</p>
+<figure>
+<img alt="Aansluitschema van BH1750 lichtsensor op ESP32 DevKit voor Homeyduino" src="assets/artikel/ESP32-BH1750-lichtsensor-aansluitschema.png"/>
+<figcaption class="muted small">
+            Aansluitschema van de BH1750 lichtsensor op een ESP32 DevKit. De sensor gebruikt I2C, dus sluit SDA aan op GPIO 21 en SCL op GPIO 22.
+          </figcaption>
+</figure>
+<h3>2. Installeer de juiste libraries</h3>
+<p>Voor deze sketch heb je in ieder geval de libraries <code>Wire.h</code>, <code>BH1750.h</code>, <code>WiFi.h</code> en <code>Homey.h</code> nodig. <code>Wire.h</code> en <code>WiFi.h</code> horen bij de ESP32-omgeving. De BH1750- en Homeyduino-library voeg je toe via de Arduino IDE.</p>
+<h3>3. Upload de code naar de ESP32</h3>
+<p>Gebruik in de Arduino IDE een ESP32-boardprofiel dat past bij jouw DevKit. In dit voorbeeld werkte de opzet met NodeMCU-32S. Vul in de code je eigen WiFi-naam en wachtwoord in en upload daarna de sketch.</p>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>// Code for Homeyduino made by Smart Home Blog https://huisvanvandaag.nl
+// ESP32 DevKit + BH1750 version with reconnect, Homey re-init and failsafe restart support.
+
+#include &lt;WiFi.h&gt;
+#include &lt;Wire.h&gt;
+#include &lt;BH1750.h&gt;
+#include &lt;Homey.h&gt;
+
+// =========================
+// Debug instellingen
+// =========================
+#define DEBUG 0   // 1 = debug aan, 0 = debug uit
+
+#if DEBUG
+  #define DBG_PRINT(x) Serial.print(x)
+  #define DBG_PRINTLN(x) Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "{PASSWORD}";
+
+  // ESP32 DevKit standaard I2C-pinnen
+  constexpr uint8_t I2C_SDA_PIN = 21;
+  constexpr uint8_t I2C_SCL_PIN = 22;
+
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 15000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  constexpr unsigned long SENSOR_SAMPLE_INTERVAL_MS = 1000;
+  constexpr unsigned long SENSOR_REINIT_INTERVAL_MS = 30000;
+
+  constexpr unsigned long HOMEY_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr unsigned long HOMEY_STALE_TIMEOUT_MS = 300000;
+  constexpr unsigned long HOMEY_REINIT_COOLDOWN_MS = 60000;
+  constexpr unsigned long FAILSAFE_RESTART_COOLDOWN_MS = 900000;
+
+  constexpr float LUMINANCE_PUBLISH_THRESHOLD = 5.0f;
+  constexpr float EMA_ALPHA = 0.15f;
+
+  constexpr const char* HOMEY_DEVICE_NAME = "BH1750 Lichtsensor LUX";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+  constexpr const char* CAPABILITY_LUMINANCE = "measure_luminance";
+}
+
+// =========================
+// Sensor object
+// =========================
+BH1750 lightMeter;
+
+// =========================
+// State
+// =========================
+struct LuminanceState {
+  float rawLux = 0.0f;
+  float filteredLux = 0.0f;
+  bool hasReading = false;
+
+  float currentLuminance = 0.0f;
+  float lastPublishedLuminance = 0.0f;
+  bool hasPublished = false;
+  bool dirty = false;
+
+  bool sensorInitialized = false;
+  unsigned long lastSampleAt = 0;
+  unsigned long lastPublishAt = 0;
+  unsigned long lastSensorInitAttemptAt = 0;
+};
+
+struct WifiState {
+  unsigned long lastCheckAt = 0;
+  bool wasConnected = false;
+  bool reconnectedEvent = false;
+};
+
+struct HomeyState {
+  bool initialized = false;
+  bool reinitRequested = false;
+  unsigned long lastActivityAt = 0;
+  unsigned long lastInitAt = 0;
+  unsigned long lastRestartAt = 0;
+};
+
+LuminanceState luminanceState;
+WifiState wifiState;
+HomeyState homeyState;
+
+// =========================
+// Functiedeclaraties
+// =========================
+void connectToWifiWithTimeout();
+void maintainWifi(unsigned long currentMillis);
+bool canPublishToHomey();
+
+void initializeHomey(unsigned long currentMillis);
+void requestHomeyReinitialize();
+void maintainHomey(unsigned long currentMillis);
+void markHomeyActivity(unsigned long currentMillis);
+void runFailsafeRestartCheck(unsigned long currentMillis);
+void performControlledRestart();
+
+void initializeBh1750(unsigned long currentMillis);
+void maintainBh1750(unsigned long currentMillis);
+
+void processLuminanceSensor(unsigned long currentMillis);
+float readLux();
+void updateFilteredLuminance(float lux);
+void markLatestLuminance();
+bool shouldPublishLuminance(unsigned long currentMillis);
+void publishLatestLuminanceToHomey(unsigned long currentMillis);
+void syncLuminanceIfDirty(unsigned long currentMillis);
+
+// =========================
+// Setup
+// =========================
+void setup() {
+  Serial.begin(115200);
+  delay(250);
+
+  Serial.println();
+  Serial.println(F("--- ESP32 BH1750 Luminance Sensor Gestart ---"));
+
+  Wire.begin(Config::I2C_SDA_PIN, Config::I2C_SCL_PIN);
+  initializeBh1750(millis());
+
+  WiFi.mode(WIFI_STA);
+  WiFi.setAutoReconnect(true);
+  WiFi.persistent(true);
+
+  connectToWifiWithTimeout();
+  initializeHomey(millis());
+
+  luminanceState.lastSampleAt = millis() - Config::SENSOR_SAMPLE_INTERVAL_MS;
+}
+
+// =========================
+// Main loop
+// =========================
+void loop() {
+  const unsigned long currentMillis = millis();
+
+  maintainWifi(currentMillis);
+  maintainHomey(currentMillis);
+  maintainBh1750(currentMillis);
+
+  if (homeyState.initialized &amp;&amp; WiFi.status() == WL_CONNECTED) {
+    Homey.loop();
+  }
+
+  yield();
+
+  if (wifiState.reconnectedEvent) {
+    wifiState.reconnectedEvent = false;
+    syncLuminanceIfDirty(currentMillis);
+  }
+
+  processLuminanceSensor(currentMillis);
+  runFailsafeRestartCheck(currentMillis);
+}
+
+// =========================
+// WiFi
+// =========================
+void connectToWifiWithTimeout() {
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+  Serial.print(F("Verbinden met WiFi..."));
+
+  const unsigned long startAttemptTime = millis();
+
+  while (WiFi.status() != WL_CONNECTED &amp;&amp;
+         millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+    delay(500);
+    Serial.print(F("."));
+  }
+
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
+    Serial.println(WiFi.localIP());
+    wifiState.wasConnected = true;
+  } else {
+    Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
+    wifiState.wasConnected = false;
+  }
+}
+
+void maintainWifi(unsigned long currentMillis) {
+  if (currentMillis - wifiState.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+    return;
+  }
+
+  wifiState.lastCheckAt = currentMillis;
+  wifiState.reconnectedEvent = false;
+
+  DBG_PRINT(F("[DEBUG] WiFi status: "));
+  DBG_PRINT(WiFi.status());
+  DBG_PRINT(F(" | IP: "));
+  DBG_PRINTLN(WiFi.localIP());
+
+  const wl_status_t status = WiFi.status();
+
+  if (status == WL_CONNECTED) {
+    if (!wifiState.wasConnected) {
+      Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
+      Serial.println(WiFi.localIP());
+      wifiState.wasConnected = true;
+      wifiState.reconnectedEvent = true;
+      requestHomeyReinitialize();
+    }
+    return;
+  }
+
+  if (wifiState.wasConnected) {
+    Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
+    wifiState.wasConnected = false;
+    homeyState.initialized = false;
+    requestHomeyReinitialize();
+  } else {
+    Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
+  }
+
+  WiFi.disconnect();
+  delay(100);
+  WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+}
+
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED &amp;&amp; homeyState.initialized;
+}
+
+// =========================
+// Homey
+// =========================
+void initializeHomey(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    homeyState.initialized = false;
+    return;
+  }
+
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_LUMINANCE);
+
+  homeyState.initialized = true;
+  homeyState.reinitRequested = false;
+  homeyState.lastInitAt = currentMillis;
+  markHomeyActivity(currentMillis);
+
+  Serial.println(F("[HOMEY] Homey opnieuw geïnitialiseerd."));
+}
+
+void requestHomeyReinitialize() {
+  homeyState.reinitRequested = true;
+}
+
+void maintainHomey(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    homeyState.initialized = false;
+    return;
+  }
+
+  if (!homeyState.initialized) {
+    initializeHomey(currentMillis);
+    return;
+  }
+
+  if (!homeyState.reinitRequested) {
+    return;
+  }
+
+  if (currentMillis - homeyState.lastInitAt &lt; Config::HOMEY_REINIT_COOLDOWN_MS) {
+    return;
+  }
+
+  initializeHomey(currentMillis);
+}
+
+void markHomeyActivity(unsigned long currentMillis) {
+  homeyState.lastActivityAt = currentMillis;
+}
+
+void runFailsafeRestartCheck(unsigned long currentMillis) {
+  if (WiFi.status() != WL_CONNECTED) {
+    return;
+  }
+
+  if (!homeyState.initialized) {
+    return;
+  }
+
+  const bool homeyLooksStale =
+      (currentMillis - homeyState.lastActivityAt) &gt;= Config::HOMEY_STALE_TIMEOUT_MS;
+
+  if (!homeyLooksStale) {
+    return;
+  }
+
+  const bool restartCooldownPassed =
+      (currentMillis - homeyState.lastRestartAt) &gt;= Config::FAILSAFE_RESTART_COOLDOWN_MS;
+
+  if (!restartCooldownPassed) {
+    return;
+  }
+
+  Serial.println(F("[FAILSAFE] Te lang geen Homey-activiteit. Gecontroleerde herstart..."));
+  homeyState.lastRestartAt = currentMillis;
+  delay(250);
+  performControlledRestart();
+}
+
+void performControlledRestart() {
+  ESP.restart();
+}
+
+// =========================
+// BH1750
+// =========================
+void initializeBh1750(unsigned long currentMillis) {
+  luminanceState.lastSensorInitAttemptAt = currentMillis;
+
+  if (lightMeter.begin(BH1750::CONTINUOUS_HIGH_RES_MODE)) {
+    luminanceState.sensorInitialized = true;
+    Serial.println(F("[BH1750] Sensor geïnitialiseerd."));
+  } else {
+    luminanceState.sensorInitialized = false;
+    Serial.println(F("[BH1750] Initialisatie mislukt. Controleer SDA/SCL/VCC/GND."));
+  }
+}
+
+void maintainBh1750(unsigned long currentMillis) {
+  if (luminanceState.sensorInitialized) {
+    return;
+  }
+
+  if (currentMillis - luminanceState.lastSensorInitAttemptAt &lt; Config::SENSOR_REINIT_INTERVAL_MS) {
+    return;
+  }
+
+  Serial.println(F("[BH1750] Nieuwe initialisatiepoging..."));
+  initializeBh1750(currentMillis);
+}
+
+// =========================
+// Sensorlogica
+// =========================
+void processLuminanceSensor(unsigned long currentMillis) {
+  if (!luminanceState.sensorInitialized) {
+    return;
+  }
+
+  if (currentMillis - luminanceState.lastSampleAt &lt; Config::SENSOR_SAMPLE_INTERVAL_MS) {
+    return;
+  }
+
+  luminanceState.lastSampleAt = currentMillis;
+
+  const float lux = readLux();
+
+  if (lux &lt; 0.0f || isnan(lux)) {
+    Serial.println(F("[BH1750] Ongeldige meting ontvangen."));
+    luminanceState.sensorInitialized = false;
+    return;
+  }
+
+  updateFilteredLuminance(lux);
+  markLatestLuminance();
+
+  DBG_PRINT(F("[DEBUG] BH1750 raw lux="));
+  DBG_PRINT(luminanceState.rawLux);
+  DBG_PRINT(F(" | filtered lux="));
+  DBG_PRINTLN(luminanceState.currentLuminance);
+
+  if (shouldPublishLuminance(currentMillis)) {
+    publishLatestLuminanceToHomey(currentMillis);
+  }
+}
+
+float readLux() {
+  return lightMeter.readLightLevel();
+}
+
+void updateFilteredLuminance(float lux) {
+  luminanceState.rawLux = lux;
+
+  if (!luminanceState.hasReading) {
+    luminanceState.filteredLux = lux;
+    luminanceState.hasReading = true;
+    return;
+  }
+
+  luminanceState.filteredLux =
+      (Config::EMA_ALPHA * lux) +
+      ((1.0f - Config::EMA_ALPHA) * luminanceState.filteredLux);
+}
+
+void markLatestLuminance() {
+  luminanceState.currentLuminance = luminanceState.filteredLux;
+
+  if (!luminanceState.hasPublished) {
+    luminanceState.dirty = true;
+    return;
+  }
+
+  luminanceState.dirty =
+      fabs(luminanceState.currentLuminance - luminanceState.lastPublishedLuminance) &gt;=
+      Config::LUMINANCE_PUBLISH_THRESHOLD;
+}
+
+bool shouldPublishLuminance(unsigned long currentMillis) {
+  if (!luminanceState.hasReading) {
+    return false;
+  }
+
+  const bool heartbeatReached =
+      (currentMillis - luminanceState.lastPublishAt) &gt;= Config::HOMEY_HEARTBEAT_INTERVAL_MS;
+
+  return luminanceState.dirty || heartbeatReached;
+}
+
+void publishLatestLuminanceToHomey(unsigned long currentMillis) {
+  if (!luminanceState.hasReading) {
+    return;
+  }
+
+  if (!canPublishToHomey()) {
+    luminanceState.dirty = true;
+    Serial.println(F("[WAARSCHUWING] Laatste luminance lokaal bewaard (geen WiFi/Homey)."));
+    return;
+  }
+
+  Homey.setCapabilityValue(
+      Config::CAPABILITY_LUMINANCE,
+      luminanceState.currentLuminance
+  );
+
+  luminanceState.lastPublishedLuminance = luminanceState.currentLuminance;
+  luminanceState.lastPublishAt = currentMillis;
+  luminanceState.hasPublished = true;
+  luminanceState.dirty = false;
+  markHomeyActivity(currentMillis);
+
+  Serial.print(F("[HOMEY] Luminance bijgewerkt: "));
+  Serial.print(luminanceState.currentLuminance);
+  Serial.println(F(" lux"));
+}
+
+void syncLuminanceIfDirty(unsigned long currentMillis) {
+  if (!luminanceState.dirty) {
+    return;
+  }
+
+  Serial.println(F("[HOMEY] Laatste luminance synchroniseren..."));
+  publishLatestLuminanceToHomey(currentMillis);
+}</code></pre>
+</div>
+<h3>4. Controleer de Serial Monitor</h3>
+<p>Open de Serial Monitor op 115200 baud. Bij een geslaagde start zie je onder meer dat de BH1750 is geïnitialiseerd, dat de ESP32 met WiFi verbonden is en dat Homey opnieuw is geïnitialiseerd.</p>
+<h3>5. Zet debug aan als je meer wilt zien</h3>
+<p>Standaard staat debug uit. Wil je zien hoe de ruwe en gefilterde luxwaarde zich gedragen, zet dan <code>#define DEBUG 0</code> tijdelijk om naar <code>#define DEBUG 1</code>. Dat is vooral handig bij het bepalen van een goede drempelwaarde voor je Homey-flows.</p>
+<figure>
+<img alt="Arduino IDE Serial Monitor met debuggegevens van de BH1750 lichtsensor" src="assets/artikel/BH1750_lichtsensor_lux_homeyduino_debug_aan.png"/>
+<figcaption class="muted small">
+            Met debug aan zie je de ruwe luxwaarde, de gefilterde luxwaarde, de WiFi-status en wanneer Homey een nieuwe waarde ontvangt.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>In Homey wordt de sensor toegevoegd als Homeyduino-apparaat met de capability <code>measure_luminance</code>. Daardoor toont Homey de waarde als helderheid in lux.</p>
+<p>Dat maakt de sensor geschikt voor praktische flows, bijvoorbeeld:</p>
+<ul>
+<li>Schakel verlichting alleen in wanneer de helderheid lager is dan een gekozen luxwaarde.</li>
+<li>Gebruik de lichtwaarde als extra voorwaarde bij bewegingssensoren.</li>
+<li>Laat screens, gordijnen of sfeerlicht anders reageren afhankelijk van de hoeveelheid daglicht.</li>
+</ul>
+<figure>
+<img alt="BH1750 lichtsensor uitgelezen in de Homey app met helderheidswaarde in lux" src="assets/artikel/BH1750_lichtsensor_lux_homeyduino_uitlezen_in_homey.png"/>
+<figcaption class="muted small">
+            In Homey wordt de BH1750 zichtbaar als lichtsensor met een helderheidswaarde in lux.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>De code gebruikt een eenvoudige EMA-filtering. Daardoor reageert de sensor niet op elke kleine schommeling, maar blijft de waarde wel bruikbaar voor automatiseringen. Daarnaast wordt pas opnieuw gepubliceerd wanneer de waarde voldoende verandert of wanneer de heartbeat is bereikt.</p>
+<p>Bij het testen kwam ook een praktisch punt naar voren: de ESP32 werd eerst niet goed herkend door de Arduino IDE. In dit geval bleek dat geen fout in de sketch te zijn, maar een USB-driverprobleem. Na het installeren van een oudere CH340-driver werd het board weer correct herkend en kon de code normaal worden geüpload.</p>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Gebruik een USB-kabel die ook data ondersteunt; veel laadkabels werken niet voor uploaden.</li>
+<li>Controleer bij uploadproblemen of jouw ESP32-board een CH340 USB-chip gebruikt en of de driver goed werkt.</li>
+<li>Let op SDA en SCL: SDA is de datalijn, SCL is de kloklijn. Wissel je ze om, dan wordt de sensor meestal niet gevonden.</li>
+<li>Laat ADDR los voor de standaardopzet. Gebruik ADDR alleen bewust wanneer je het I2C-adres wilt wijzigen.</li>
+<li>Als Homeyduino compileert met ESP32-pinmapfouten, controleer dan of jouw Homeyduino-library geschikt is voor jouw ESP32-board.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een ESP32 DevKit en een BH1750-module maak je een nette, digitale lichtsensor voor Homey. Ten opzichte van een simpele LDR is vooral het werken met echte luxwaarden prettig. Daardoor kun je in Homey concretere en stabielere flows maken, bijvoorbeeld voor verlichting die alleen reageert wanneer het in huis echt donker genoeg is.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-ld2410-aanwezigheidssensor.html">LD2410 aanwezigheids-sensor maken met Homeyduino en ESP32</a><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="homeyduino-esp32-c3-c6-compatibiliteit.html">Homeyduino geschikt maken voor moderne ESP32 boards (C3 &amp; C6)</a></div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+</body>
+</body></html>

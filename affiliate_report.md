@@ -1,6 +1,6 @@
 # Affiliate inventory scan
 
-Totaal gescande artikelen: 42
+Totaal gescande artikelen: 43
 
 ## 404.html
 - Titel: Pagina niet gevonden | huisvanvandaag.nl
@@ -104,6 +104,21 @@ Totaal gescande artikelen: 42
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
+
+## homeyduino-bh1750-lichtsensor-esp32.html
+- Titel: BH1750 lichtsensor op ESP32 en Homeyduino maken | huisvanvandaag.nl
+- Benodigdheden-sectie gevonden: ja
+- Heading: Benodigdheden
+- Benodigdheden:
+  - ESP32 DevKit, in dit voorbeeld gebruikt als NodeMCU-32S
+  - BH1750FVI digital light sensor module
+  - Arduino IDE
+  - Homeyduino-library
+  - BH1750-library en een USB-datakabel
+- Herkende productkeys:
+  - MH1750_licht_sensor
+  - homey
+  - ldr_sensor
 
 ## homeyduino-clapper-switch.html
 - Titel: Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl

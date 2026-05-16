@@ -154,9 +154,7 @@
       "LDR sensor met weerstand en potentiometer",
       "ldr module",
       "LM393",
-      "lichtsensor",
       "lichtsensor 4pin",
-      "licht sensor",
       "licht intensiteit sensor",
       "lichtintensiteit",
       "photosensor",
@@ -724,6 +722,41 @@
     {
       "name": "Bol.com",
       "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-nodemcu-esp32-s-4mb-wroom-38-pins%2F9300000024846825%2F&name=Otronic.nl%20NodeMCU%20ESP32-S%20-%204MB%20WROOM%2038%20pins",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+    }
+  ]
+}, 
+"MH1750_licht_sensor": {
+  "name": "MH1750 Licht Sensor",
+  "description": "Een nauwkeurige lichtsensor voor het meten van lichtintensiteit, geschikt voor slimme automatiseringen en energiebesparing.",
+  "images": [
+    "assets/affiliate/mh1750-lichtsensor.jpg"
+  ],
+  "aliases": [
+    "MH1750 Sensor",
+    "BH1750 BH1750FVI Chip Light Intensity Light Module Light balloon",
+    "BH1750-module",
+    "BH1750",
+    "BH1750 module",
+    "BH1750 lichtsensor"
+     ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c4FcHEsF",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fotronic-lichtintensiteitssensor-bh1750-16-bit-i2c%2F9300000223988855%2F&name=OTRONIC%C2%AE%20Lichtintensiteitssensor%20BH1750%2016-bit%20I2C",
       "label": "Snelle levering NL",
       "badge": "NL"
     },

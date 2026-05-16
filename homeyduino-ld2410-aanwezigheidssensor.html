@@ -1,24 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="hv-schema-type" content="howto">
-
-  <!-- PAGINATITEL -->
-  <title>LD2410 aanwezigheidssensor maken met Homeyduino en ESP32 | huisvanvandaag.nl</title>
-
-  <!-- META DESCRIPTION -->
-  <meta name="description" content="Maak zelf een slimme LD2410 mmWave aanwezigheidssensor met ESP32 en Homeyduino. Inclusief aansluiten, Arduino-code, driver-tip en koppeling met Homey.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="howto" name="hv-schema-type"/>
+<!-- PAGINATITEL -->
+<title>LD2410 aanwezigheidssensor maken met Homeyduino en ESP32 | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Maak zelf een slimme LD2410 mmWave aanwezigheidssensor met ESP32 en Homeyduino. Inclusief aansluiten, Arduino-code, driver-tip en koppeling met Homey." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
     .project-hero-media {
       margin-top: 1.25rem;
     }
@@ -79,131 +76,114 @@
       }
     }
   </style>
-
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
 </head>
 <body>
-
 <body>
-  <div id="site-header"></div>
-
+<div id="site-header"></div>
 <main>
-  <!-- HERO -->
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="diy.html">DIY</a>
-          <span>•</span>
-          <span>LD2410 Homeyduino sensor</span>
-        </div>
-
-        <span class="eyebrow">DIY smart home project</span>
-        <h1>LD2410 aanwezigheidssensor maken met Homeyduino en ESP32</h1>
-
-        <p class="lead muted">
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>LD2410 Homeyduino sensor</span>
+</div>
+<span class="eyebrow">DIY smart home project</span>
+<h1>LD2410 aanwezigheids-sensor maken met Homeyduino en ESP32</h1>
+<p class="lead muted">
           Vandaag weer een mooi Homeyduino project: een slimme aanwezigheidssensor die niet alleen beweging ziet, maar ook merkt dat je gewoon stil op de bank zit.
         </p>
-
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: DIY sensor</span>
-          <span class="meta-pill">Platform: Homey / Homeyduino</span>
-          <span class="meta-pill">Hardware: ESP32 + LD2410</span>
-        </div>
-      </div>
-
-      <!-- RECHTER INFOBLOK -->
-      <div class="panel project-info-panel">
-        <h3>Wat je in dit artikel leert</h3>
-        <div class="check-list">
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>LD2410 aansluiten</strong><br>
-              <span class="muted">Je sluit de radar netjes via UART aan op GPIO16 en GPIO17 van een NodeMCU-32S ESP32.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Meer meten dan beweging</strong><br>
-              <span class="muted">Je haalt aanwezigheid, beweging, stilstand, afstand en energiewaarden uit één betaalbare sensor.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Homeyduino gebruiken</strong><br>
-              <span class="muted">Je stuurt de waardes door naar Homey, zodat je ze direct in flows kunt gebruiken.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Driverproblemen oplossen</strong><br>
-              <span class="muted">Je weet wat je moet doen wanneer je ESP32 niet als COM-poort verschijnt in Arduino IDE.</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>Basis voor slimme flows</strong><br>
-              <span class="muted">Ideaal voor verlichting, slaapkamerautomatisering, werkkamerlogica of je eigen Huisvanvandaag.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO AFBEELDING -->
-    <div class="container project-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="assets/header/LD2410-homeyduino-sensor-hero-2.jpg" alt="LD2410 sensor, meer dan een gewone bewegingssensor. Met Homeyduino stuur je aanwezigheid, beweging, afstand en energiewaarden door naar Homey.">
-          <figcaption class="muted small">
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY sensor</span>
+<span class="meta-pill">Platform: Homey / Homeyduino</span>
+<span class="meta-pill">Hardware: ESP32 + LD2410</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>LD2410 aansluiten</strong><br/>
+<span class="muted">Je sluit de radar netjes via UART aan op GPIO16 en GPIO17 van een NodeMCU-32S ESP32.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Meer meten dan beweging</strong><br/>
+<span class="muted">Je haalt aanwezigheid, beweging, stilstand, afstand en energiewaarden uit één betaalbare sensor.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Homeyduino gebruiken</strong><br/>
+<span class="muted">Je stuurt de waardes door naar Homey, zodat je ze direct in flows kunt gebruiken.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Driverproblemen oplossen</strong><br/>
+<span class="muted">Je weet wat je moet doen wanneer je ESP32 niet als COM-poort verschijnt in Arduino IDE.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Basis voor slimme flows</strong><br/>
+<span class="muted">Ideaal voor verlichting, slaapkamerautomatisering, werkkamerlogica of je eigen Huisvanvandaag.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="LD2410 sensor, meer dan een gewone bewegingssensor. Met Homeyduino stuur je aanwezigheid, beweging, afstand en energiewaarden door naar Homey." src="assets/header/LD2410-homeyduino-sensor-hero-2.jpg"/>
+<figcaption class="muted small">
             Een zelfgebouwde LD2410 sensor meet niet enkel beweging, maar ook aanwezigheid, afstand en energiewaarden. Via Homeyduino stuur je deze data door naar Homey, zodat je er slimme flows mee kunt maken.
           </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT -->
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container project-content-layout">
-      <article class="article-body project-article">
-
-        <p class="lead">
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
           Een gewone bewegingssensor is handig, maar wie al wat langer met domotica bezig is kent het probleem: je zit rustig op de bank, leest een boek of kijkt televisie en ineens denkt je slimme huis dat de kamer leeg is. Licht uit. Gezellig.
         </p>
-
-        <p>
+<p>
           Dat kan slimmer. In dit project bouwen we daarom een aanwezigheidssensor met een LD2410 mmWave radar, een NodeMCU-32S ESP32 en Homeyduino. De ESP32 leest de sensor via UART uit en stuurt de gegevens naar Homey. Zo kun je niet alleen zien óf er iemand is, maar ook of iemand beweegt, stil aanwezig is en op welke afstand de detectie ongeveer plaatsvindt.
         </p>
-
-        <h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
-        <p>Je maakt een zelfbouw aanwezigheidssensor die je als Homeyduino-apparaat toevoegt aan Homey. De LD2410-radarmodule wordt via UART aangesloten op de ESP32 en levert meerdere waardes die je in Homey-flows kunt gebruiken.</p>
-        <ul>
-          <li><strong>Aanwezigheid en beweging</strong> → Homey ziet of er iemand in de ruimte is, of die persoon beweegt of juist stil aanwezig blijft.</li>
-          <li><strong>Afstand en detectiesterkte</strong> → naast simpele aan/uit-detectie krijg je ook afstand en energiewaarden waarmee je later kunt finetunen.</li>
-        </ul>
-        <p>Het eindresultaat is vooral interessant voor ruimtes waar een gewone PIR-sensor tekortschiet. Denk aan de woonkamer, slaapkamer, werkkamer of een leeshoek waar je langere tijd stil kunt zitten.</p>
-
-        <h2 id="benodigdheden">Benodigdheden</h2>
-        <ul>
-          <li>NodeMCU-32S ESP32-board of vergelijkbaar ESP32 DevKit-board</li>
-          <li>HLK-LD2410 of LD2410B mmWave radarsensor</li>
-          <li>Dupontkabels</li>
-          <li>Arduino IDE met ESP32-boardondersteuning</li>
-          <li>Homeyduino-library en de LD2410-library van Nick Reynolds</li>
-        </ul>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je maakt een zelfbouw aanwezigheidssensor die je als Homeyduino-apparaat toevoegt aan Homey. De LD2410-radarmodule wordt via UART aangesloten op de ESP32 en levert meerdere waardes die je in Homey-flows kunt gebruiken.</p>
+<ul>
+<li><strong>Aanwezigheid en beweging</strong> → Homey ziet of er iemand in de ruimte is, of die persoon beweegt of juist stil aanwezig blijft.</li>
+<li><strong>Afstand en detectiesterkte</strong> → naast simpele aan/uit-detectie krijg je ook afstand en energiewaarden waarmee je later kunt finetunen.</li>
+</ul>
+<p>Het eindresultaat is vooral interessant voor ruimtes waar een gewone PIR-sensor tekortschiet. Denk aan de woonkamer, slaapkamer, werkkamer of een leeshoek waar je langere tijd stil kunt zitten.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>NodeMCU-32S ESP32-board of vergelijkbaar ESP32 DevKit-board</li>
+<li>HLK-LD2410 of LD2410B mmWave radarsensor</li>
+<li>Dupontkabels</li>
+<li>Arduino IDE met ESP32-boardondersteuning</li>
+<li>Homeyduino-library en de LD2410-library van Nick Reynolds</li>
+</ul>
 <!-- AFFILIATE_AUTO_BLOCK_START -->
 <section class="affiliate-auto-block" aria-label="Aanbevolen producten">
   <h3>Handige links bij dit project</h3>
@@ -226,35 +206,32 @@
 
 
 
-        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 
-        <h3>1. Sluit de LD2410 aan op de ESP32</h3>
-        <p>De LD2410 werkt op 5V en praat via UART met de ESP32. Gebruik hiervoor bij voorkeur niet de standaard RX- en TX-pinnen die ook voor USB/Serial gebruikt worden, maar sluit de sensor aan op GPIO16 en GPIO17. Dat voorkomt gedoe tijdens uploaden en testen.</p>
-        <ul>
-          <li><strong>LD2410 VCC</strong> → <strong>5V / VIN</strong></li>
-          <li><strong>LD2410 GND</strong> → <strong>GND</strong></li>
-          <li><strong>LD2410 TX</strong> → <strong>GPIO16 op de ESP32</strong></li>
-          <li><strong>LD2410 RX</strong> → <strong>GPIO17 op de ESP32</strong></li>
-        </ul>
 
-        <figure>
-          <img src="assets/artikel/LD2410-esp32-mcu-aansluitschema.png" alt="Aansluitschema voor de LD2410 op een NodeMCU-32S board.">
-          <figcaption class="muted small">
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de LD2410 aan op de ESP32</h3>
+<p>De LD2410 werkt op 5V en praat via UART met de ESP32. Gebruik hiervoor bij voorkeur niet de standaard RX- en TX-pinnen die ook voor USB/Serial gebruikt worden, maar sluit de sensor aan op GPIO16 en GPIO17. Dat voorkomt gedoe tijdens uploaden en testen.</p>
+<ul>
+<li><strong>LD2410 VCC</strong> → <strong>5V / VIN</strong></li>
+<li><strong>LD2410 GND</strong> → <strong>GND</strong></li>
+<li><strong>LD2410 TX</strong> → <strong>GPIO16 op de ESP32</strong></li>
+<li><strong>LD2410 RX</strong> → <strong>GPIO17 op de ESP32</strong></li>
+</ul>
+<figure>
+<img alt="Aansluitschema voor de LD2410 op een NodeMCU-32S board." src="assets/artikel/LD2410-esp32-mcu-aansluitschema.png"/>
+<figcaption class="muted small">
             In dit geval gebruiken we een NodeMCU-32S board. In de code worden GPIO16 en GPIO17 gebruikt voor de UART-verbinding met de LD2410.
           </figcaption>
-        </figure>
-
-        <h3>2. Controleer de USB-driver en COM-poort</h3>
-        <p>Verschijnt je ESP32 niet als COM-poort in de Arduino IDE, terwijl Windows wel netjes een verbindingsgeluid laat horen? Dan is de kans groot dat de juiste USB-naar-UART-driver nog ontbreekt. Veel ESP32-boards gebruiken een CP210x-chip. De officiële VCP-drivers zijn hier te downloaden via <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" target="_blank" rel="noopener">Silicon Labs CP210x USB to UART Bridge VCP Drivers</a>. Na installatie zou je board gewoon als COM-poort zichtbaar moeten zijn.</p>
-
-        <h3>3. Upload de Homeyduino-code</h3>
-        <p>Vul eerst je eigen WiFi-gegevens in bij <code>WIFI_SSID</code> en <code>WIFI_PASSWORD</code>. Daarna upload je onderstaande code naar de ESP32. De sketch is bewust overzichtelijk opgebouwd in losse onderdelen voor WiFi, radar-uitlezing en Homey-publicatie. Handig, want als je later wilt uitbreiden hoef je niet meteen door een enorme spaghetti aan code te worstelen.</p>
-
-        <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
- <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code>// ========================================================
+</figure>
+<h3>2. Controleer de USB-driver en COM-poort</h3>
+<p>Verschijnt je ESP32 niet als COM-poort in de Arduino IDE, terwijl Windows wel netjes een verbindingsgeluid laat horen? Dan is de kans groot dat de juiste USB-naar-UART-driver nog ontbreekt. Veel ESP32-boards gebruiken een CP210x-chip. De officiële VCP-drivers zijn hier te downloaden via <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads" rel="noopener" target="_blank">Silicon Labs CP210x USB to UART Bridge VCP Drivers</a>. Na installatie zou je board gewoon als COM-poort zichtbaar moeten zijn.</p>
+<h3>3. Upload de Homeyduino-code</h3>
+<p>Vul eerst je eigen WiFi-gegevens in bij <code>WIFI_SSID</code> en <code>WIFI_PASSWORD</code>. Daarna upload je onderstaande code naar de ESP32. De sketch is bewust overzichtelijk opgebouwd in losse onderdelen voor WiFi, radar-uitlezing en Homey-publicatie. Handig, want als je later wilt uitbreiden hoef je niet meteen door een enorme spaghetti aan code te worstelen.</p>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>// ========================================================
 // Homeyduino LD2410 Presence Sensor voor ESP32
 // #SOLID versie
 //
@@ -292,15 +269,15 @@
 namespace Config {
 
   // WiFi
-  constexpr const char* WIFI_SSID     = &quot;SSID&quot;;
-  constexpr const char* WIFI_PASSWORD = &quot;PASSWORD&quot;;
+  constexpr const char* WIFI_SSID     = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
 
   constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 20000;
   constexpr unsigned long WIFI_CHECK_INTERVAL_MS  = 30000;
 
   // Homey
-  constexpr const char* HOMEY_NAME  = &quot;LD2410 Sensor&quot;;
-  constexpr const char* HOMEY_CLASS = &quot;sensor&quot;;
+  constexpr const char* HOMEY_NAME  = "LD2410 Sensor";
+  constexpr const char* HOMEY_CLASS = "sensor";
 
   constexpr unsigned long HOMEY_LOOP_INTERVAL_MS        = 10;
   constexpr unsigned long HOMEY_REPUBLISH_INTERVAL_MS   = 60000;
@@ -391,7 +368,7 @@ public:
     lastWifiCheckAt = millis();
 
     if (WiFi.status() != WL_CONNECTED) {
-      DBG_PRINTLN(&quot;WiFi verbroken. Opnieuw verbinden...&quot;);
+      DBG_PRINTLN("WiFi verbroken. Opnieuw verbinden...");
       connect();
     }
   }
@@ -402,7 +379,7 @@ public:
 
 private:
   static void connect() {
-    DBG_PRINT(&quot;Verbinden met WiFi: &quot;);
+    DBG_PRINT("Verbinden met WiFi: ");
     DBG_PRINTLN(Config::WIFI_SSID);
 
     WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
@@ -412,16 +389,16 @@ private:
     while (WiFi.status() != WL_CONNECTED &amp;&amp;
            millis() - startAttempt &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
       delay(250);
-      DBG_PRINT(&quot;.&quot;);
+      DBG_PRINT(".");
     }
 
     DBG_PRINTLN();
 
     if (WiFi.status() == WL_CONNECTED) {
-      DBG_PRINT(&quot;WiFi verbonden. IP: &quot;);
+      DBG_PRINT("WiFi verbonden. IP: ");
       DBG_PRINTLN(WiFi.localIP());
     } else {
-      DBG_PRINTLN(&quot;WiFi verbinden mislukt.&quot;);
+      DBG_PRINTLN("WiFi verbinden mislukt.");
     }
   }
 };
@@ -444,9 +421,9 @@ public:
     radarState.connected = radar.begin(radarSerial);
 
     if (radarState.connected) {
-      DBG_PRINTLN(&quot;LD2410 verbonden.&quot;);
+      DBG_PRINTLN("LD2410 verbonden.");
     } else {
-      DBG_PRINTLN(&quot;LD2410 niet gevonden. Controleer bekabeling.&quot;);
+      DBG_PRINTLN("LD2410 niet gevonden. Controleer bekabeling.");
     }
   }
 
@@ -506,39 +483,39 @@ private:
     lastDebugPrintAt = millis();
 
     Serial.println();
-    Serial.println(&quot;========== LD2410 DATA ==========&quot;);
+    Serial.println("========== LD2410 DATA ==========");
 
-    Serial.print(&quot;Sensor verbonden:       &quot;);
-    Serial.println(radarState.connected ? &quot;ja&quot; : &quot;nee&quot;);
+    Serial.print("Sensor verbonden:       ");
+    Serial.println(radarState.connected ? "ja" : "nee");
 
-    Serial.print(&quot;Aanwezigheid:           &quot;);
-    Serial.println(radarState.presence ? &quot;ja&quot; : &quot;nee&quot;);
+    Serial.print("Aanwezigheid:           ");
+    Serial.println(radarState.presence ? "ja" : "nee");
 
-    Serial.print(&quot;Bewegend doel:          &quot;);
-    Serial.println(radarState.moving ? &quot;ja&quot; : &quot;nee&quot;);
+    Serial.print("Bewegend doel:          ");
+    Serial.println(radarState.moving ? "ja" : "nee");
 
-    Serial.print(&quot;Stilstaand doel:        &quot;);
-    Serial.println(radarState.stationary ? &quot;ja&quot; : &quot;nee&quot;);
+    Serial.print("Stilstaand doel:        ");
+    Serial.println(radarState.stationary ? "ja" : "nee");
 
-    Serial.print(&quot;Beste afstand:          &quot;);
+    Serial.print("Beste afstand:          ");
     Serial.print(radarState.bestDistanceCm);
-    Serial.println(&quot; cm&quot;);
+    Serial.println(" cm");
 
-    Serial.print(&quot;Bewegende afstand:      &quot;);
+    Serial.print("Bewegende afstand:      ");
     Serial.print(radarState.movingDistanceCm);
-    Serial.println(&quot; cm&quot;);
+    Serial.println(" cm");
 
-    Serial.print(&quot;Stilstaande afstand:    &quot;);
+    Serial.print("Stilstaande afstand:    ");
     Serial.print(radarState.stationaryDistanceCm);
-    Serial.println(&quot; cm&quot;);
+    Serial.println(" cm");
 
-    Serial.print(&quot;Bewegingsenergie:       &quot;);
+    Serial.print("Bewegingsenergie:       ");
     Serial.println(radarState.movingEnergy);
 
-    Serial.print(&quot;Stilstaande energie:    &quot;);
+    Serial.print("Stilstaande energie:    ");
     Serial.println(radarState.stationaryEnergy);
 
-    Serial.println(&quot;=================================&quot;);
+    Serial.println("=================================");
 #endif
   }
 };
@@ -552,17 +529,17 @@ public:
     Homey.begin(Config::HOMEY_NAME);
     Homey.setClass(Config::HOMEY_CLASS);
 
-    Homey.addCapability(&quot;alarm_generic&quot;);      // algemene aanwezigheid
-    Homey.addCapability(&quot;alarm_motion&quot;);       // bewegend doel
-    Homey.addCapability(&quot;alarm_contact&quot;);      // stilstaand doel
-    Homey.addCapability(&quot;measure_distance&quot;);   // afstand in meters
+    Homey.addCapability("alarm_generic");      // algemene aanwezigheid
+    Homey.addCapability("alarm_motion");       // bewegend doel
+    Homey.addCapability("alarm_contact");      // stilstaand doel
+    Homey.addCapability("measure_distance");   // afstand in meters
 
-    Homey.addCapability(&quot;measure_power&quot;);      // bewegingsenergie
-    Homey.addCapability(&quot;measure_luminance&quot;);  // stilstaande energie
+    Homey.addCapability("measure_power");      // bewegingsenergie
+    Homey.addCapability("measure_luminance");  // stilstaande energie
 
     publishAll();
 
-    DBG_PRINTLN(&quot;Homeyduino gestart.&quot;);
+    DBG_PRINTLN("Homeyduino gestart.");
   }
 
   static void loop() {
@@ -601,31 +578,31 @@ private:
   static void publishPresenceIfChanged() {
     if (radarState.presence == publishedState.presence) return;
 
-    Homey.setCapabilityValue(&quot;alarm_generic&quot;, radarState.presence);
+    Homey.setCapabilityValue("alarm_generic", radarState.presence);
     publishedState.presence = radarState.presence;
 
-    DBG_PRINT(&quot;Homey alarm_generic: &quot;);
-    DBG_PRINTLN(radarState.presence ? &quot;true&quot; : &quot;false&quot;);
+    DBG_PRINT("Homey alarm_generic: ");
+    DBG_PRINTLN(radarState.presence ? "true" : "false");
   }
 
   static void publishMovingIfChanged() {
     if (radarState.moving == publishedState.moving) return;
 
-    Homey.setCapabilityValue(&quot;alarm_motion&quot;, radarState.moving);
+    Homey.setCapabilityValue("alarm_motion", radarState.moving);
     publishedState.moving = radarState.moving;
 
-    DBG_PRINT(&quot;Homey alarm_motion: &quot;);
-    DBG_PRINTLN(radarState.moving ? &quot;true&quot; : &quot;false&quot;);
+    DBG_PRINT("Homey alarm_motion: ");
+    DBG_PRINTLN(radarState.moving ? "true" : "false");
   }
 
   static void publishStationaryIfChanged() {
     if (radarState.stationary == publishedState.stationary) return;
 
-    Homey.setCapabilityValue(&quot;alarm_contact&quot;, radarState.stationary);
+    Homey.setCapabilityValue("alarm_contact", radarState.stationary);
     publishedState.stationary = radarState.stationary;
 
-    DBG_PRINT(&quot;Homey alarm_contact: &quot;);
-    DBG_PRINTLN(radarState.stationary ? &quot;true&quot; : &quot;false&quot;);
+    DBG_PRINT("Homey alarm_contact: ");
+    DBG_PRINTLN(radarState.stationary ? "true" : "false");
   }
 
   static void publishDistanceIfChanged() {
@@ -635,15 +612,15 @@ private:
     }
 
     Homey.setCapabilityValue(
-      &quot;measure_distance&quot;,
+      "measure_distance",
       convertCmToMeters(radarState.bestDistanceCm)
     );
 
     publishedState.distanceCm = radarState.bestDistanceCm;
 
-    DBG_PRINT(&quot;Homey measure_distance: &quot;);
+    DBG_PRINT("Homey measure_distance: ");
     DBG_PRINT(convertCmToMeters(radarState.bestDistanceCm));
-    DBG_PRINTLN(&quot; m&quot;);
+    DBG_PRINTLN(" m");
   }
 
   static void publishMovingEnergyIfChanged() {
@@ -652,10 +629,10 @@ private:
       return;
     }
 
-    Homey.setCapabilityValue(&quot;measure_power&quot;, radarState.movingEnergy);
+    Homey.setCapabilityValue("measure_power", radarState.movingEnergy);
     publishedState.movingEnergy = radarState.movingEnergy;
 
-    DBG_PRINT(&quot;Homey measure_power moving energy: &quot;);
+    DBG_PRINT("Homey measure_power moving energy: ");
     DBG_PRINTLN(radarState.movingEnergy);
   }
 
@@ -665,25 +642,25 @@ private:
       return;
     }
 
-    Homey.setCapabilityValue(&quot;measure_luminance&quot;, radarState.stationaryEnergy);
+    Homey.setCapabilityValue("measure_luminance", radarState.stationaryEnergy);
     publishedState.stationaryEnergy = radarState.stationaryEnergy;
 
-    DBG_PRINT(&quot;Homey measure_luminance stationary energy: &quot;);
+    DBG_PRINT("Homey measure_luminance stationary energy: ");
     DBG_PRINTLN(radarState.stationaryEnergy);
   }
 
   static void publishAll() {
-    Homey.setCapabilityValue(&quot;alarm_generic&quot;, radarState.presence);
-    Homey.setCapabilityValue(&quot;alarm_motion&quot;, radarState.moving);
-    Homey.setCapabilityValue(&quot;alarm_contact&quot;, radarState.stationary);
+    Homey.setCapabilityValue("alarm_generic", radarState.presence);
+    Homey.setCapabilityValue("alarm_motion", radarState.moving);
+    Homey.setCapabilityValue("alarm_contact", radarState.stationary);
 
     Homey.setCapabilityValue(
-      &quot;measure_distance&quot;,
+      "measure_distance",
       convertCmToMeters(radarState.bestDistanceCm)
     );
 
-    Homey.setCapabilityValue(&quot;measure_power&quot;, radarState.movingEnergy);
-    Homey.setCapabilityValue(&quot;measure_luminance&quot;, radarState.stationaryEnergy);
+    Homey.setCapabilityValue("measure_power", radarState.movingEnergy);
+    Homey.setCapabilityValue("measure_luminance", radarState.stationaryEnergy);
 
     publishedState.presence = radarState.presence;
     publishedState.moving = radarState.moving;
@@ -692,7 +669,7 @@ private:
     publishedState.movingEnergy = radarState.movingEnergy;
     publishedState.stationaryEnergy = radarState.stationaryEnergy;
 
-    DBG_PRINTLN(&quot;Homey status volledig gepubliceerd.&quot;);
+    DBG_PRINTLN("Homey status volledig gepubliceerd.");
   }
 
   static float convertCmToMeters(int centimeters) {
@@ -710,7 +687,7 @@ void setup() {
 #endif
 
   DBG_PRINTLN();
-  DBG_PRINTLN(&quot;Start ESP32 LD2410 Homeyduino #SOLID sensor...&quot;);
+  DBG_PRINTLN("Start ESP32 LD2410 Homeyduino #SOLID sensor...");
 
   WifiManager::begin();
   RadarService::begin();
@@ -726,93 +703,74 @@ void loop() {
   HomeyService::loop();
 }</code></pre>
 </div>
-
-        <h3>4. Test de seriële output</h3>
-        <p>Open de Serial Monitor op 115200 baud. Wanneer alles goed is aangesloten, zie je de waardes voorbij komen: aanwezigheid, bewegend doel, stilstaand doel, afstand en energie. Let op: de LD2410 praat zelf met 256000 baud tegen de ESP32, maar de Serial Monitor blijft in deze sketch gewoon op 115200 baud staan.</p>
-
-        <h3>5. Voeg de sensor toe aan Homey</h3>
-        <p>Open de Homey app en voeg het Homeyduino-apparaat toe. Zie je niet direct alle waardes verschijnen? Verwijder het apparaat dan een keer en voeg het opnieuw toe. Homey registreert de beschikbare capabilities namelijk op het moment dat je het apparaat toevoegt.</p>
-
-        <figure>
-          <img src="assets/artikel/LD2410-sensor-data-uitlezen-via-serial-monitor.jpg" alt="LD2410 testdata zichtbaar in de Serial Monitor van Arduino IDE">
-          <figcaption class="muted small">
+<h3>4. Test de seriële output</h3>
+<p>Open de Serial Monitor op 115200 baud. Wanneer alles goed is aangesloten, zie je de waardes voorbij komen: aanwezigheid, bewegend doel, stilstaand doel, afstand en energie. Let op: de LD2410 praat zelf met 256000 baud tegen de ESP32, maar de Serial Monitor blijft in deze sketch gewoon op 115200 baud staan.</p>
+<h3>5. Voeg de sensor toe aan Homey</h3>
+<p>Open de Homey app en voeg het Homeyduino-apparaat toe. Zie je niet direct alle waardes verschijnen? Verwijder het apparaat dan een keer en voeg het opnieuw toe. Homey registreert de beschikbare capabilities namelijk op het moment dat je het apparaat toevoegt.</p>
+<figure>
+<img alt="LD2410 testdata zichtbaar in de Serial Monitor van Arduino IDE" src="assets/artikel/LD2410-sensor-data-uitlezen-via-serial-monitor.jpg"/>
+<figcaption class="muted small">
             De Serial Monitor laat zien of de sensor goed wordt uitgelezen. Hier is onder andere een stilstaand doel zichtbaar met een afstand in centimeters.
           </figcaption>
-        </figure>
-
+</figure>
 <h2 id="integratie">Integratie met Homey</h2>
 <p>In Homey gebruiken we bestaande capabilities. Deze gebruiken we in dit project om de sensorwaarden van de LD2410 zichtbaar te maken in de Homey-app. Daardoor heten sommige waardes net even anders dan je misschien zou verwachten. Dat is niet erg, zolang je maar weet wat ze betekenen.</p>
-
 <p>De belangrijkste koppelingen zijn:</p>
 <ul>
-  <li><strong>Algemeen alarm</strong>: algemene aanwezigheid in de ruimte. Deze waarde blijft nog kort actief nadat de sensor niemand meer ziet, zodat het licht niet direct uitvalt bij een korte onderbreking.</li>
-  <li><strong>Bewegingsalarm</strong>: er wordt een bewegend doel gedetecteerd. Dit is handig voor acties zoals licht fel aanzetten wanneer iemand de kamer binnenkomt.</li>
-  <li><strong>Contactalarm</strong>: er wordt een stilstaand doel gedetecteerd. In deze opzet gebruiken we dit dus niet als deur- of raamcontact, maar als indicatie dat iemand stil aanwezig is, bijvoorbeeld zittend op de bank of liggend in bed.</li>
-  <li><strong>Afstand</strong>: de afstand tot het gedetecteerde doel, omgerekend van centimeters naar meters. Deze waarde kun je gebruiken om eenvoudige zones te maken, bijvoorbeeld dichtbij het bed, bij een bureau of verder in de kamer.</li>
-  <li><strong>Vermogen</strong>: de bewegingsenergie van de sensor. Dit is geen echt stroomverbruik, maar een indicatie van hoe sterk de bewegende detectie is.</li>
-  <li><strong>Helderheid</strong>: de stilstaande energie van de sensor. Dit is geen echte lichtmeting, maar een indicatie van hoe sterk de stilstaande detectie is.</li>
+<li><strong>Algemeen alarm</strong>: algemene aanwezigheid in de ruimte. Deze waarde blijft nog kort actief nadat de sensor niemand meer ziet, zodat het licht niet direct uitvalt bij een korte onderbreking.</li>
+<li><strong>Bewegingsalarm</strong>: er wordt een bewegend doel gedetecteerd. Dit is handig voor acties zoals licht fel aanzetten wanneer iemand de kamer binnenkomt.</li>
+<li><strong>Contactalarm</strong>: er wordt een stilstaand doel gedetecteerd. In deze opzet gebruiken we dit dus niet als deur- of raamcontact, maar als indicatie dat iemand stil aanwezig is, bijvoorbeeld zittend op de bank of liggend in bed.</li>
+<li><strong>Afstand</strong>: de afstand tot het gedetecteerde doel, omgerekend van centimeters naar meters. Deze waarde kun je gebruiken om eenvoudige zones te maken, bijvoorbeeld dichtbij het bed, bij een bureau of verder in de kamer.</li>
+<li><strong>Vermogen</strong>: de bewegingsenergie van de sensor. Dit is geen echt stroomverbruik, maar een indicatie van hoe sterk de bewegende detectie is.</li>
+<li><strong>Helderheid</strong>: de stilstaande energie van de sensor. Dit is geen echte lichtmeting, maar een indicatie van hoe sterk de stilstaande detectie is.</li>
 </ul>
-
 <p>Voor dagelijks gebruik zijn vooral het algemeen alarm, het bewegingsalarm, het contactalarm en de afstand interessant. De waarden vermogen en helderheid zijn vooral handig tijdens het testen en finetunen, bijvoorbeeld om te zien hoe sterk de sensor iemand detecteert op verschillende plekken in de kamer.</p>
-
-        <figure>
-          <img src="assets/artikel/LD2410-sensor-data-uitlezen-via-homeyduino.png" alt="Homey-scherm met LD2410 sensorwaarden zoals algemeen alarm, bewegingsalarm en afstand">
-          <figcaption class="muted small">
+<figure>
+<img alt="Homey-scherm met LD2410 sensorwaarden zoals algemeen alarm, bewegingsalarm en afstand" src="assets/artikel/LD2410-sensor-data-uitlezen-via-homeyduino.png"/>
+<figcaption class="muted small">
             In Homey zijn de LD2410-waarden zichtbaar als standaard sensorwaarden. De afstand wordt door de code omgerekend van centimeters naar meters.
-          </figcaption> 
-        </figure>
-
-        <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
-        <p>Juist hier wordt dit project leuk. Een gewone bewegingssensor schakelt vaak prima het licht aan wanneer je binnenkomt, maar is minder geschikt wanneer je daarna stil zit. Met deze LD2410 kun je veel natuurlijkere flows maken. Fel licht bij binnenkomst, gedimd licht wanneer iemand rustig aanwezig is en pas uitschakelen wanneer de kamer echt leeg is.</p>
-
-        <figure>
-          <img src="assets/artikel/LD2410-sensor-aangesloten-op-een-esp32-mcu-board.jpg" alt="LD2410 sensor aangesloten op een NodeMCU-32S ESP32 board. Met Homeyduino stuur je de gegevens van de sensor door naar Homey, zodat je slimme flows kunt maken die reageren op aanwezigheid, beweging en stilstand.">
-          <figcaption class="muted small">
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Juist hier wordt dit project leuk. Een gewone bewegingssensor schakelt vaak prima het licht aan wanneer je binnenkomt, maar is minder geschikt wanneer je daarna stil zit. Met deze LD2410 kun je veel natuurlijkere flows maken. Fel licht bij binnenkomst, gedimd licht wanneer iemand rustig aanwezig is en pas uitschakelen wanneer de kamer echt leeg is.</p>
+<figure>
+<img alt="LD2410 sensor aangesloten op een NodeMCU-32S ESP32 board. Met Homeyduino stuur je de gegevens van de sensor door naar Homey, zodat je slimme flows kunt maken die reageren op aanwezigheid, beweging en stilstand." src="assets/artikel/LD2410-sensor-aangesloten-op-een-esp32-mcu-board.jpg"/>
+<figcaption class="muted small">
             LD2410 sensor aangesloten op een NodeMCU-32S ESP32 board. Met Homeyduino stuur je de gegevens van de sensor door naar Homey, zodat je slimme flows kunt maken die reageren op aanwezigheid, beweging en stilstand.
           </figcaption>
-        </figure>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>Gebruik 5V/VIN voor de voeding van de LD2410 en verbind de GND van de sensor met de GND van de ESP32.</li>
-          <li>Gebruik GPIO16 en GPIO17 voor de sensor-UART; de standaard RX/TX-pinnen kunnen conflicteren met USB en Serial Monitor.</li>
-          <li><code>measure_power</code> en <code>measure_luminance</code> worden hier bewust hergebruikt als testwaarden voor bewegingsenergie en stilstaande energie.</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>Met een LD2410, een NodeMCU-32S ESP32 en Homeyduino kun je een compacte aanwezigheidssensor bouwen die veel meer informatie geeft dan alleen beweging. De sensor ziet aanwezigheid, onderscheidt bewegend en stilstaand gedrag en publiceert afstand en detectiesterkte naar Homey. Daarmee vormt dit project een sterke basis voor slimme verlichting, slaapkamerautomatisering en andere flows waarbij gewone PIR-sensoren te beperkt zijn.</p>
-        <p>Ga je met dit project aan de slag? Dan is dit typisch zo'n sensor die je na één succesvolle test waarschijnlijk op meerdere plekken in huis wilt gebruiken. Bestel dus meteen een paar LD2410-modules en ESP32-boardjes mee, dan kun je jouw eigen Huisvanvandaag weer een stukje slimmer maken.</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In dit artikel</h3>
-          <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
-          <a href="#benodigdheden">Benodigdheden</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#integratie">Integratie met Homey</a>
-          <a href="#praktisch-gebruik">Praktisch gebruik</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a>
-            <a href="diy.html">Bekijk meer DIY smart home projecten</a>
-            <a href="homey.html">Homey als hart van je slimme huis</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Gebruik 5V/VIN voor de voeding van de LD2410 en verbind de GND van de sensor met de GND van de ESP32.</li>
+<li>Gebruik GPIO16 en GPIO17 voor de sensor-UART; de standaard RX/TX-pinnen kunnen conflicteren met USB en Serial Monitor.</li>
+<li><code>measure_power</code> en <code>measure_luminance</code> worden hier bewust hergebruikt als testwaarden voor bewegingsenergie en stilstaande energie.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een LD2410, een NodeMCU-32S ESP32 en Homeyduino kun je een compacte aanwezigheidssensor bouwen die veel meer informatie geeft dan alleen beweging. De sensor ziet aanwezigheid, onderscheidt bewegend en stilstaand gedrag en publiceert afstand en detectiesterkte naar Homey. Daarmee vormt dit project een sterke basis voor slimme verlichting, slaapkamerautomatisering en andere flows waarbij gewone PIR-sensoren te beperkt zijn.</p>
+<p>Ga je met dit project aan de slag? Dan is dit typisch zo'n sensor die je na één succesvolle test waarschijnlijk op meerdere plekken in huis wilt gebruiken. Bestel dus meteen een paar LD2410-modules en ESP32-boardjes mee, dan kun je jouw eigen Huisvanvandaag weer een stukje slimmer maken.</p>
+</div></article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-bh1750-lichtsensor-esp32.html">BH1750 lichtsensor op ESP32 en Homeyduino maken</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-multisensor.html">Bouw zelf een slimme CO₂ multi-sensor voor Homey</a></div>
+</div>
+</aside>
+</div>
+</section>
 </main>
-
-  <div id="site-footer"></div>
-
-  <script src="include.js"></script>
-  <script src="script.js"></script>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
 <script>
 function copyCode(button) {
   const code = button.nextElementSibling.innerText;
@@ -825,7 +783,5 @@ function copyCode(button) {
   });
 }
 </script>
-
-
 </body>
-</html>
+</body></html>

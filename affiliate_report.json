@@ -140,6 +140,24 @@
       "matched_product_keys": []
     },
     {
+      "file": "homeyduino-bh1750-lichtsensor-esp32.html",
+      "relative_path": "homeyduino-bh1750-lichtsensor-esp32.html",
+      "title": "BH1750 lichtsensor op ESP32 en Homeyduino maken | huisvanvandaag.nl",
+      "benodigdheden_heading": "Benodigdheden",
+      "benodigdheden": [
+        "ESP32 DevKit, in dit voorbeeld gebruikt als NodeMCU-32S",
+        "BH1750FVI digital light sensor module",
+        "Arduino IDE",
+        "Homeyduino-library",
+        "BH1750-library en een USB-datakabel"
+      ],
+      "matched_product_keys": [
+        "MH1750_licht_sensor",
+        "homey",
+        "ldr_sensor"
+      ]
+    },
+    {
       "file": "homeyduino-clapper-switch.html",
       "relative_path": "homeyduino-clapper-switch.html",
       "title": "Bouw je eigen Clapper switch met Homeyduino | huisvanvandaag.nl",

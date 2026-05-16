@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta name="hv-schema-type" content="howto">
+<meta content="howto" name="hv-schema-type"/>
 <!-- PAGINATITEL -->
 <title>Bouw zelf een slimme CO₂ multi-sensor voor Homey | huisvanvandaag.nl</title>
 <!-- META DESCRIPTION -->
-<meta content="Zelf een slimme CO₂ multi-sensor bouwen voor Homey? Met een MH-Z19, DHT11, LDR en Wemos D1 Mini meet je CO₂, temperatuur, luchtvochtigheid en licht in één compact DIY-project." name="description"/>
+<meta content="Zelf een slimme CO₂ multi-sensor bouwen voor Homey? Met een MH-Z19, DHT11, LDR en Wemos D1 Mini meet je CO₂, temperatuur, luchtvochtigheid en licht in één compact DIY-project." name="description">
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -76,9 +76,9 @@
       }
     }
   </style>
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
-</head>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</meta></head>
 <body>
 <div id="site-header"></div>
 <main>
@@ -209,24 +209,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h2 id="prijsvergelijking">Waarom zelf bouwen?</h2>
 <p>Zelf bouwen is juist hier zo leuk omdat je voor relatief weinig geld een sensor maakt die meerdere waarden combineert én netjes samenwerkt met Homey. Je zit dus niet vast aan één fabrikant of een gesloten ecosysteem.</p>
 <p>Bovendien houd je volledige controle. Je bepaalt zelf de apparaatnaam, de drempelwaarden, de manier van publiceren en eventuele uitbreidingen. Precies dat maakt Homeyduino-projecten zo verslavend leuk.</p>
@@ -249,8 +231,8 @@
 <h3>3. Upload de code</h3>
 <p>Pas eventueel meteen ook de apparaatnaam aan. In de voorbeeldcode staat die nu op Multisensor. Upload de sketch vervolgens naar je Wemos D1 Mini, waarna vier Homey-capabilities worden aangemaakt: CO₂, temperatuur, luchtvochtigheid en luminance.</p>
 <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code>#include &lt;ESP8266WiFi.h&gt;
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
 #include &lt;SoftwareSerial.h&gt;
 #include &lt;MHZ19.h&gt;
 #include &lt;Homey.h&gt;
@@ -904,7 +886,7 @@ void loop() {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a></div>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-ld2410-aanwezigheidssensor.html">LD2410 aanwezigheids-sensor maken met Homeyduino en ESP32</a></div>
 </div>
 </aside>
 </div>
@@ -913,7 +895,6 @@ void loop() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
-
 <script>
 function copyCode(button) {
   const code = button.nextElementSibling.innerText;
@@ -926,6 +907,5 @@ function copyCode(button) {
   });
 }
 </script>
-
 </body>
 </html>

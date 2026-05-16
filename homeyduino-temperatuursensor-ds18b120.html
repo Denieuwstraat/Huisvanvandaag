@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta name="hv-schema-type" content="howto">
+<meta content="howto" name="hv-schema-type"/>
 <!-- PAGINATITEL -->
 <title>Bouw je eigen DS18B20 temperatuursensor met Homeyduino | huisvanvandaag.nl</title>
 <!-- META DESCRIPTION -->
-<meta content="Bouw zelf een ESP32-C3 temperatuursensor met DS18B20, OLED-scherm en Homeyduino. Handig voor sauna, jacuzzi, zwembad of vijver." name="description"/>
+<meta content="Bouw zelf een ESP32-C3 temperatuursensor met DS18B20, OLED-scherm en Homeyduino. Handig voor sauna, jacuzzi, zwembad of vijver." name="description">
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -76,9 +76,9 @@
       }
     }
   </style>
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
-</head>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</meta></head>
 <body>
 <body>
 <div id="site-header"></div>
@@ -206,21 +206,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 <h3>1. Sluit de DS18B20 aan op de ESP32-C3</h3>
 <p>In de code wordt de datapin van de DS18B20 ingesteld op GPIO 2. Het OLED-scherm gebruikt I2C via SDA op GPIO 5 en SCL op GPIO 6. Controleer altijd of jouw specifieke board dezelfde pinnen gebruikt.</p>
@@ -240,8 +225,8 @@
 <h3>3. Plaats de code op de ESP32-C3</h3>
 <p>Vul eerst je eigen WiFi-gegevens in bij <code>WIFI_SSID</code> en <code>WIFI_PASSWORD</code>. Pas eventueel ook de apparaatnaam aan, zodat je in Homey meteen ziet welke sensor je toevoegt.</p>
 <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code>// ========================================================
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>// ========================================================
 // ESP32-C3 DS18B20 + OLED + Homeyduino
 // Temperatuursensor met onboard 72x40 OLED-scherm
 // ========================================================
@@ -635,7 +620,7 @@ void loop() {
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- en raamsensor met Homeyduino</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a></div>
+<div class="footer-links"><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-licht-temperatuur-sensor.html">Bouw je eigen licht- en klimaatsensor met Homeyduino (LDR + DHT11)</a><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a></div>
 </div>
 </aside>
 </div>
@@ -644,7 +629,6 @@ void loop() {
 <div id="site-footer"></div>
 <script src="include.js"></script>
 <script src="script.js"></script>
-
 <script>
 function copyCode(button) {
   const code = button.nextElementSibling.innerText;
@@ -657,6 +641,5 @@ function copyCode(button) {
   });
 }
 </script>
-
 </body>
-</html>
+</body></html>

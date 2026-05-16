@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta name="hv-schema-type" content="howto">
+<meta content="howto" name="hv-schema-type"/>
 <title>Homeyduino geschikt maken voor moderne ESP32 boards (C3 &amp; C6) | huisvanvandaag.nl</title>
-<meta content="Homeyduino gebruiken met moderne ESP32 boards zoals de ESP32-C3 en ESP32-C6? Zo pas je chip.h aan en voorkom je compile errors. Inclusief volledige code." name="description"/>
+<meta content="Homeyduino gebruiken met moderne ESP32 boards zoals de ESP32-C3 en ESP32-C6? Zo pas je chip.h aan en voorkom je compile errors. Inclusief volledige code." name="description">
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -25,9 +25,9 @@
       }
     }
   </style>
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
-</head>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</meta></head>
 <body>
 <div id="site-header"></div>
 <main>
@@ -139,8 +139,8 @@ Pas eventueel ook <code>library.properties</code> aan wanneer je met een kopie v
 Onderstaand vind je het volledige aangepaste <code>chip.h</code> bestand. Je kunt de inhoud van je huidige <code>chip.h</code> hiermee vervangen. Het belangrijkste verschil zit in het ESP32-gedeelte: daar wordt per analoge pin eerst gecontroleerd of deze op jouw board bestaat.
 </p>
 <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code>#include "Arduino.h"
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>#include "Arduino.h"
 #include "pins_arduino.h"
 
 #ifndef __CHIP__
@@ -471,7 +471,7 @@ En dat is wat mij betreft precies waar Homeyduino voor bedoeld is: bestaande tec
     Heb je nog een ESP32-C3 of ESP32-C6 liggen, of wil je jouw bestaande Homeyduino projecten toekomstbestendig maken? Pas dan deze <code>chip.h</code> aan, test een eenvoudige sketch en bouw daarna jouw volgende sensor of schakelaar. Combineer dit met Homey en je hebt voor weinig geld weer een mooie uitbreiding voor je Smart Home.
   </p>
 </div>
-</article>
+</div></article>
 <aside class="side-stack">
 <div class="toc">
 <h3>In dit artikel</h3>
@@ -485,7 +485,7 @@ En dat is wat mij betreft precies waar Homeyduino voor bedoeld is: bestaande tec
 </div>
 <div class="sidebar-card">
 <h3>Gerelateerd</h3>
-<div class="footer-links"><a href="wat-is-homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a><a href="homeyscript-stroomprijs-vandaag-morgen.html">HomeyScript: laat Homey automatisch de goedkoopste stroomuren vinden</a><a href="homey-bridge.html">Maak kennis met de Homey Bridge</a></div>
+<div class="footer-links"><a href="homeyduino-ld2410-aanwezigheidssensor.html">LD2410 aanwezigheids-sensor maken met Homeyduino en ESP32</a><a href="homeyduino-bh1750-lichtsensor-esp32.html">BH1750 lichtsensor op ESP32 en Homeyduino maken</a><a href="wat-is-homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a></div>
 </div>
 </aside>
 </div>
