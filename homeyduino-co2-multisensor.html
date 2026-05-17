@@ -224,7 +224,7 @@
 <p>Zorg daarnaast uiteraard voor de juiste voeding en een gedeelde GND. Dat klinkt logisch, maar juist daar gaat het bij zelfbouwprojecten nog weleens mis.</p>
 <figure>
 <img alt="Aansluitschema van de CO₂ multi-sensor op de Wemos D1 Mini" src="assets/artikel/Wemos_D1_Multi-sensor.png"/>
-<figcaption class="muted small">Plaatsaanduiding voor het definitieve aansluitschema van de CO₂ multi-sensor met MH-Z19, DHT11 en LDR.</figcaption>
+<figcaption class="muted small">Aansluitschema van de CO₂ multi-sensor met MH-Z19, DHT11 en LDR.</figcaption>
 </figure>
 <h3>2. Bereid de software voor</h3>
 <p>Installeer Arduino IDE en controleer of de ESP8266-board support goed staat ingesteld. Voeg vervolgens de libraries toe die in deze sketch worden gebruikt: ESP8266WiFi, SoftwareSerial, MHZ19, Homey en SimpleDHT. Vul daarna bovenin de code je eigen wifi-gegevens in.</p>
@@ -845,7 +845,7 @@ void loop() {
 <h3>5. Koppel de sensor aan Homey</h3>
 <p>Voeg de sensor daarna toe via Homeyduino. Zodra de koppeling gelukt is, zie je in Homey de capabilities voor CO₂, temperatuur, luchtvochtigheid en licht. Omdat de code alleen publiceert bij duidelijke veranderingen of via een heartbeat, houd je het systeem netjes en voorkom je een overdaad aan updates.</p>
 <figure>
-<img alt="Placeholder voor de CO₂ multi-sensor zichtbaar in Homey" src="assets/artikel/multi-sensor-uitleesbaar-homey.jpg"/>
+<img alt="De CO₂ multi-sensor zichtbaar in Homey" src="assets/artikel/multi-sensor-uitleesbaar-homey.jpg"/>
 <figcaption class="muted small">De meetwaarden van de sensoren zichtbaar in Homey.</figcaption>
 </figure>
 <h2 id="integratie">Integratie met Homey</h2>
@@ -858,10 +858,7 @@ void loop() {
 </ul>
 <h2 id="praktisch-gebruik">Praktisch gebruik</h2>
 <p>Deze sensor komt vooral tot zijn recht in ruimtes waar je langere tijd verblijft, zoals de woonkamer, slaapkamer of thuiswerkplek. Juist daar levert de combinatie van CO₂, temperatuur en luchtvochtigheid vaak meteen bruikbare inzichten op.</p>
-<figure>
-<img alt="Placeholder voor toepassing van de CO₂ multi-sensor in combinatie met ventilatie" src="assets/placeholder-co2-multisensor-praktisch.jpg"/>
-<figcaption class="muted small">Plaatsaanduiding voor een praktijkfoto van de sensor of een toepassing in huis.</figcaption>
-</figure>
+
 <h2 id="aandachtspunten">Aandachtspunten</h2>
 <ul>
 <li>De pinbezetting wijkt af van de eerdere versie: de DHT11 zit nu op D5 en de MH-Z19 gebruikt D2 en D1 via seriële communicatie.</li>
