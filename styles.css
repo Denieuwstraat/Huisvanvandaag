@@ -1436,4 +1436,33 @@ ul, ol { padding-left: 1.15rem; }
   background: #444;
 }
 
-/* Einde codeblok: Onderstaande code is voor de kopieer knop bij codeblokken */
+/* Einde codeblok: bovensstaande code is voor de kopieer knop bij codeblokken */
+
+.project-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.project-article th,
+.project-article td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.project-article th {
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+}
+
+.project-article tr:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+}
+
+.project-article tr:hover {
+  background: rgba(255,255,255,0.06);
+}
