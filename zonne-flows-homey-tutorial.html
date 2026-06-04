@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="hv-schema-type" content="howto">
+
+  <!-- PAGINATITEL -->
+  <title>Zonne Flows in Homey maken: slim schakelen op zon, regen en zonnestraling | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Maak in Homey slimme Zonne Flows die rekening houden met Buienradar, zonsopkomst, zonsondergang en zonnestraling. Praktische tutorial voor grootverbruikers en zonnepanelen.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
+
+  <style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+<script src="/js/global-schema.js"></script>
+<script src="/js/article-schema.js"></script>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="container article-layout">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>•</span>
+          <span>Zonne Flows in Homey</span>
+        </div>
+
+        <span class="eyebrow">Homey tutorial</span>
+        <h1>Zonne Flows in Homey maken: slim schakelen op zon, regen en zonnestraling</h1>
+
+        <p class="lead muted">
+          Bouw een set Homey-flows die bepaalt wanneer het waarschijnlijk een gunstig moment is om stroomverbruikers te starten op basis van daglicht, Buienradar en actuele zonnestraling.
+        </p>
+
+        <div class="meta-list">
+          <span class="meta-pill">Categorie: Smart home</span>
+          <span class="meta-pill">Platform: Homey</span>
+          <span class="meta-pill">Niveau: Gemiddeld</span>
+        </div>
+      </div>
+
+      <!-- RECHTER INFOBLOK -->
+      <div class="panel project-info-panel">
+        <h3>Waarom deze tutorial handig is</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Praktische zonne-logica</strong><br>
+              <span class="muted">Je maakt een duidelijke basis om grootverbruikers alleen op gunstige momenten te laten draaien.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Buienradar als rem</strong><br>
+              <span class="muted">Regenverwachting voorkomt dat een flow te optimistisch wordt vlak voor een bui.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Zonstand als basis</strong><br>
+              <span class="muted">De check draait alleen zinvol tussen zonsopkomst en zonsondergang.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Meetwaarde boven gevoel</strong><br>
+              <span class="muted">De actuele zonnestraling helpt beter dan alleen een algemene weersverwachting.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Goed te onderhouden</strong><br>
+              <span class="muted">Met duidelijke namen, variabelen en notities begrijp je de flows later ook nog.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO AFBEELDING -->
+    <!-- Gebruik dit blok alleen als er echt een passende hero-afbeelding is -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="assets/header/zonne-flows-homey-hero.jpg" alt="Homey Advanced Flow voor zonneflows met Buienradar en zonnestraling">
+          <figcaption class="muted small">
+            Homey Advanced Flow voor zonneflows met Buienradar en zonnestraling
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section-tight" style="padding-top: 14px;">
+    <div class="container project-content-layout">
+      <article class="article-body project-article">
+
+        <p class="lead">
+          Zonnepanelen leveren niet de hele dag evenveel op. Toch kun je met Homey al vrij slim bepalen wanneer het waarschijnlijk een goed moment is om bijvoorbeeld de wasmachine, vaatwasser, boiler of een andere verbruiker te starten.
+        </p>
+
+        <p>
+          In deze tutorial bouwen we geen exacte opbrengstvoorspelling, maar een praktische beslislaag: is er daglicht, komt er geen regen aan en is de actuele zonnestraling hoog genoeg? Dan zetten we een Homey Logic-variabele op gunstig. Die variabele kun je later gebruiken om meldingen te sturen of apparaten automatisch te schakelen.
+        </p>
+
+        <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+        <p>Je leert hoe je een kleine set samenwerkende Homey Advanced Flows maakt rondom zonnepanelen en weersinformatie.</p>
+        <ul>
+          <li><strong>Weerinformatie gebruiken</strong> → je gebruikt Buienradar om regenmomenten te herkennen en een weerapparaat met zonnestraling om de actuele opbrengstkans te beoordelen.</li>
+          <li><strong>Flows onderhoudbaar maken</strong> → je werkt met duidelijke variabelen, vaste naamgeving en notities in de flow zelf.</li>
+        </ul>
+        <p>Aan het einde heb je een basis die niet direct apparaten hoeft te schakelen, maar wel betrouwbaar een status bijhoudt: is dit een gunstig PV-moment of niet?</p>
+
+        <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+        <p>Deze tutorial is bedoeld voor Homey-gebruikers die zonnepanelen hebben of willen inspelen op zonnige momenten in huis. Je hoeft geen programmeur te zijn, maar enige ervaring met Homey Flows, Advanced Flow en Logic-variabelen is handig. De aanpak is vooral interessant als je eerst veilig wilt testen met variabelen voordat je apparaten automatisch laat starten.</p>
+
+        <h2 id="benodigdheden">Wat heb je nodig?</h2>
+        <ul>
+          <li>Een werkende Homey-installatie met toegang tot Advanced Flow.</li>
+          <li>De Buienradar-app in Homey, zodat je triggers zoals “het gaat regenen over 30 minuten” kunt gebruiken.</li>
+          <li>Een weerapparaat in Homey dat actuele zonnestraling kan leveren, bijvoorbeeld als waarde in W/m².</li>
+          <li>Drie Homey Logic-variabelen: <code>Zonne_Regen_Binnenkort</code>, <code>Zonne_PV_Gunstig</code> en <code>Zonne_Laatste_Status</code>.</li>
+          <li>Een map in Homey met de naam <strong>Zonne Flows</strong>, zodat alle flows overzichtelijk bij elkaar staan.</li>
+        </ul>
+
+        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+
+        <h3>1. Maak eerst de Logic-variabelen aan</h3>
+        <p>De flows werken het prettigst wanneer je niet alles direct aan apparaten koppelt, maar eerst met variabelen werkt. Die variabelen vormen de tussenlaag tussen weerinformatie en latere automatisering.</p>
+        <ul>
+          <li>Maak <code>Zonne_Regen_Binnenkort</code> aan als Ja/Nee-variabele.</li>
+          <li>Maak <code>Zonne_PV_Gunstig</code> aan als Ja/Nee-variabele.</li>
+          <li>Maak <code>Zonne_Laatste_Status</code> aan als tekstvariabele.</li>
+        </ul>
+
+        <!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
+        <figure>
+          <img src="assets/artikel/zonne-flows-logic-variabelen.jpg" alt="Homey Logic variabelen voor Zonne Flows">
+          <figcaption class="muted small">
+            Homey Logic variabelen voor Zonne Flows
+          </figcaption>
+        </figure>
+
+        <h3>2. Maak de Buienradar-flows</h3>
+        <p>De Buienradar-flows bepalen of regen de zonne-logica tijdelijk moet blokkeren. Maak bij voorkeur drie Advanced Flows: <strong>Zonne Flows - Regen komt eraan ADV</strong>, <strong>Zonne Flows - Regen gestart ADV</strong> en <strong>Zonne Flows - Regen gestopt ADV</strong>. Laat ze tijdens het bouwen uitgeschakeld staan totdat je ze gecontroleerd hebt.</p>
+
+        <h3>3. Gebruik duidelijke flowlogica</h3>
+        <p>De regenflows hoeven niet ingewikkeld te zijn. Ze zetten alleen variabelen. Daardoor blijft de hoofdflow voor PV-momenten schoon en overzichtelijk.</p>
+
+        <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
+        <pre><code>Buienradar: het gaat regenen over 30 minuten
+→ Zonne_Regen_Binnenkort = Ja
+→ Zonne_PV_Gunstig = Nee
+→ Zonne_Laatste_Status = Regen verwacht binnen 30 minuten
+
+Buienradar: het begint met regenen
+→ Zonne_Regen_Binnenkort = Ja
+→ Zonne_PV_Gunstig = Nee
+→ Zonne_Laatste_Status = Het regent nu
+
+Buienradar: het stopt met regenen
+→ Zonne_Regen_Binnenkort = Nee
+→ Zonne_Laatste_Status = Regen gestopt, PV-check opnieuw mogelijk</code></pre>
+
+        <h3>4. Bouw de PV-check elk kwartier</h3>
+        <p>De belangrijkste flow is <strong>Zonne Flows - PV check elk kwartier ADV</strong>. Die draait elke 15 minuten en beoordeelt of het moment gunstig genoeg is. De logica is: na zonsopkomst, voor zonsondergang, geen regen binnenkort en zonnestraling hoger dan 400 W/m². Alleen als al die voorwaarden kloppen, wordt <code>Zonne_PV_Gunstig</code> op Ja gezet.</p>
+
+        <h3>5. Voeg notities toe voor later onderhoud</h3>
+        <p>Een flow die vandaag logisch voelt, kan over zes maanden onduidelijk zijn. Voeg daarom in elke Advanced Flow een korte notitie toe. Beschrijf daarin wat de flow doet, welke variabelen hij wijzigt en hoe hij samenhangt met de andere Zonne Flows.</p>
+
+        <!-- Tweede afbeelding optioneel -->
+        <figure>
+          <img src="assets/header/zonne-flows-homey-hero.jpg" alt="Advanced Flow in Homey voor PV-check elk kwartier">
+          <figcaption class="muted small">
+            Complete Advanced Flow met zonvoorwaarden, regenstatus en zonnestraling.
+          </figcaption>
+        </figure>
+
+        <!-- Gebruik dit blok alleen als Homey of een vergelijkbare integratie echt onderdeel is van de tutorial -->
+        <h2 id="homey-integratie">Integratie met Homey</h2>
+        <p>De kracht van deze aanpak zit in de scheiding tussen meten, beoordelen en schakelen. Buienradar zet de regenstatus. Het weerapparaat levert zonnestraling. De PV-check combineert die gegevens en zet alleen een centrale variabele op gunstig of ongunstig.</p>
+        <p>Daarna kun je <code>Zonne_PV_Gunstig</code> gebruiken als voorwaarde in andere flows. Begin bij voorkeur met meldingen, zodat je eerst kunt controleren of de logica in de praktijk klopt.</p>
+        <ul>
+          <li>Stuur een melding wanneer <code>Zonne_PV_Gunstig</code> Ja wordt.</li>
+          <li>Gebruik de variabele later als voorwaarde voor wasmachine, vaatwasser of boiler.</li>
+          <li>Combineer de zonneflow eventueel met stroomprijsflows als je ook dynamische tarieven gebruikt.</li>
+        </ul>
+
+        <!-- Derde afbeelding optioneel -->
+        <figure>
+          <img src="assets/artikel/zonne-flows-advanced-flow.png" alt="Statusvariabele Zonne Laatste Status in Homey">
+          <figcaption class="muted small">
+            Statusvariabele waarmee je ziet waarom de PV-check gunstig of ongunstig is.
+          </figcaption>
+        </figure>
+
+        <h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+        <p>Als de basis goed werkt, kun je de flow uitbreiden. Denk aan een strengere drempel voor zonnestraling, een aparte status voor “zeer gunstig”, een melding naar je telefoon of een koppeling met apparaten die je alleen wilt starten bij gunstige zonne-omstandigheden.</p>
+
+        <!-- Vierde afbeelding optioneel -->
+        <figure>
+          <img src="assets/artikel/zonne-flows-melding.png" alt="Homey melding bij gunstig PV-moment">
+          <figcaption class="muted small">
+            Voorbeeldmelding: “Gunstig PV-moment: goed moment om een grootverbruiker te starten.”
+          </figcaption>
+        </figure>
+
+        <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+        <ul>
+          <li>Zet nieuwe flows eerst uitgeschakeld klaar en controleer de verbindingen voordat je ze activeert.</li>
+          <li>Gebruik duidelijke statusmeldingen. “Geen gunstig PV-moment” kan komen door nacht, regen of te lage zonnestraling.</li>
+          <li>Laat deze logica niet direct zware apparaten schakelen voordat je een paar dagen hebt getest of de variabelen doen wat je verwacht.</li>
+        </ul>
+
+        <h2 id="conclusie">Conclusie</h2>
+        <p>Met een paar goed gestructureerde Homey Advanced Flows kun je een praktische zonne-status maken voor je slimme huis. Buienradar voorkomt dat de flow vlak voor of tijdens regen te optimistisch wordt. De zonvoorwaarden zorgen dat de check alleen overdag loopt. De actuele zonnestraling maakt de beoordeling concreter. Door alles te koppelen aan duidelijke Logic-variabelen houd je de automatisering overzichtelijk en kun je later veilig uitbreiden naar meldingen of automatisch schakelen.</p>
+      </article>
+
+      <aside class="side-stack">
+        <div class="toc">
+          <h3>In deze tutorial</h3>
+          <a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+          <a href="#voor-wie">Voor wie is deze tutorial?</a>
+          <a href="#benodigdheden">Wat heb je nodig?</a>
+          <a href="#stappenplan">Stap-voor-stap uitleg</a>
+          <a href="#homey-integratie">Integratie met Homey</a>
+          <a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+          <a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+          <a href="#conclusie">Conclusie</a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Gerelateerd</h3>
+          <div class="footer-links">
+            <a href="homey.html">Meer over Homey en slimme automatiseringen</a>
+            <a href="tutorials.html">Bekijk alle tutorials</a>
+            <a href="diy.html">Bekijk DIY-projecten voor je slimme huis</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</body>
+</html>
