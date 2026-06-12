@@ -6,6 +6,9 @@ Maak een eerlijke, professionele en prettig leesbare review voor huisvanvandaag.
 REGELS:
 - behoud de HTML-structuur exact
 - vervang alleen de [[PLACEHOLDERS]]
+- vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag
+- formaat publish_date: YYYY-MM-DD
+- laat [[PUBLISH_DATE]] nooit als placeholder staan
 - verzin geen feiten die niet in de input staan
 - als iets niet getest, bevestigd of beschreven is: niet als feit opschrijven
 - geen AI-uitleg
@@ -38,6 +41,7 @@ alleen de ingevulde HTML
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="hv-schema-type" content="review">
   <meta name="hv-product-name" content="Naam van het product">
+  <meta name="publish_date" content="[[PUBLISH_DATE]]">
 
   <!-- PAGINATITEL -->
   <title>[[REVIEW_TITEL]] | huisvanvandaag.nl</title>

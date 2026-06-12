@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="howto" name="hv-schema-type"/>
+<meta name="publish_date" content="2026-06-12">
+<!-- PAGINATITEL -->
+<title>LD2410 aanwezigheidssensor gebruiken voor slimme flows in Homey | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Leer hoe je in Homey een LD2410 aanwezigheidssensor gebruikt om de aanwezigheid bij te houden en verlichting pas uit te schakelen als de kamer echt leeg is." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</head>
+<body>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>LD2410 woonkamer status</span>
+</div>
+<span class="eyebrow">Homey tutorial</span>
+<h1>LD2410 aanwezigheid gebruiken voor slimme woonkamer flows in Homey</h1>
+<p class="lead muted">Slimme verlichting wordt pas echt slim wanneer je rekening houdt met wat er in de ruimte gebeurt. In deze tutorial ontdek je hoe je met een LD2410 aanwezigheidssensor voorkomt dat lampen uitgaan terwijl er nog iemand ontspannen televisie zit te kijken.</p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Smart home</span>
+<span class="meta-pill">Platform: Homey</span>
+<span class="meta-pill">Niveau: Gemiddeld</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Voorkomt ongewenst uitschakelen</strong><br/>
+<span class="muted">De lampen gaan niet uit zolang de LD2410 nog aanwezigheid ziet.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Werkt met één statusvariabele</strong><br/>
+<span class="muted">Alle logica draait om TV_Kamer_Status met drie duidelijke waarden.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Geschikt voor stilzitten</strong><br/>
+<span class="muted">De LD2410 kan ook een stilstaand doelwit meenemen in de flowlogica.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Overzichtelijke Homey-flows</strong><br/>
+<span class="muted">Je lichtflow kijkt alleen naar de status, niet naar alle sensorkaarten tegelijk.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Makkelijk te testen</strong><br/>
+<span class="muted">Je kunt de statusflows eerst los controleren voordat je de lampen echt laat schakelen.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<!-- Gebruik dit blok alleen als er echt een passende hero-afbeelding is -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Homey Advanced Flow voor een LD2410 aanwezigheidssensor in de woonkamer" src="assets/artikel/TV Kamer - status TV kijken flow .png"/>
+<figcaption class="muted small">
+            Screenshot van de Advanced Flow waarin de woonkamerstatus wordt bepaald.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">Automatisch de verlichting uitschakelen om 22:00 uur klinkt ideaal, totdat je zelf nog midden in een spannende film zit. Gelukkig kun je dit met een LD2410 aanwezigheidssensor veel slimmer aanpakken. Door de woonkamer eerst een eigen status te geven, weet Homey precies wanneer de ruimte daadwerkelijk leeg is en kan de verlichting op het juiste moment uitschakelen.</p>
+<p>
+          In deze tutorial maken we daarom geen losse voorwaarden in elke lichtflow. We bouwen eerst een kleine statuslaag met één tekstvariabele: <strong>TV_Kamer_Status</strong>. Die variabele krijgt via Advanced Flows de waarde <strong>Actief</strong>, <strong>TV_Kijken</strong> of <strong>Leeg</strong>. Daarna hoeft de verlichting alleen nog naar die ene status te kijken.
+        </p>
+<h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+<p>Je leert hoe je de gegevens van een LD2410 sensor omzet naar een slimme kamerstatus binnen Homey. Hierdoor worden je flows overzichtelijker, betrouwbaarder en veel eenvoudiger verder uit te breiden.</p>
+<ul>
+<li><strong>Status in plaats van losse sensorlogica</strong> → de sensor bepaalt eerst de situatie in de kamer, daarna schakelen andere flows op basis van die status.</li>
+<li><strong>Veiliger uitschakelen na 22:00</strong> → de lampen gaan alleen uit als de woonkamer volgens Homey echt leeg is.</li>
+</ul>
+<p>Het resultaat is een opzet waarbij je bestaande flow <strong>Licht uit na 22:00 uur</strong> niet meer blind op tijd werkt, maar rekening houdt met aanwezigheid in de woonkamer.</p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>Gebruik je een LD2410 aanwezigheidssensor in je woonkamer, woonkamer of zithoek? Dan is deze tutorial voor jou. Vooral wanneer je de sensor via Homeyduino of een vergelijkbare oplossing hebt gekoppeld en meerdere meetwaarden beschikbaar hebt, haal je met deze aanpak het maximale uit je automatiseringen.</p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Een werkende LD2410 aanwezigheidssensor in Homey.</li>
+<li>Homey Advanced Flow.</li>
+<li>Een tekstvariabele met de naam <strong>TV_Kamer_Status</strong>.</li>
+<li>Een bestaande of nieuwe flow die de woonkamerverlichting na 22:00 uur mag uitschakelen.</li>
+<li>Een paar testmomenten waarbij je kunt controleren of de sensor logisch schakelt.</li>
+</ul>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Maak één tekstvariabele aan</h3>
+<p>Open Homey Logica en maak één centrale tekstvariabele aan. Door overal dezelfde naam te gebruiken blijven je flows overzichtelijk en voorkom je fouten wanneer je later uitbreidingen toevoegt.</p>
+<ul>
+<li>Naam: <strong>TV_Kamer_Status</strong></li>
+<li>Type: <strong>Tekst</strong></li>
+<li>Waarden die je flows gaan invullen: <strong>Actief</strong>, <strong>TV_Kijken</strong> en <strong>Leeg</strong></li>
+</ul>
+<!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
+<figure>
+<img alt="Tekstvariabele TV_Kamer_Status in Homey Logica" src="assets/artikel/homey-logica-woonkamer-status.jpg"/>
+<figcaption class="muted small">
+            Screenshot van de tekstvariabele TV_Kamer_Status in Homey Logica.
+          </figcaption>
+</figure>
+<h3>2. Maak een flow voor actieve beweging</h3>
+<p>De eerste flow is eenvoudig maar belangrijk. Zodra de LD2410 duidelijke beweging detecteert, zet Homey de status direct op Actief. Daarmee weet het systeem dat de ruimte actief wordt gebruikt.</p>
+<h3>3. Maak een flow voor TV kijken</h3>
+<p>Een van de sterke punten van de LD2410 is dat deze ook stilzittende personen kan detecteren. Dat maakt de sensor ideaal voor een woonkamer. Met deze flow herken je de situatie waarin iemand rustig op de bank zit zonder veel te bewegen, zodat Homey de status op TV_Kijken kan zetten.</p>
+<!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>Flow 1 — TV kamer - status actief
+
+ALS
+LD2410 Sensor → De bewegingsmelder gaat aan
+
+DAN
+Logica → Zet tekstvariabele TV_Kamer_Status naar Actief
+
+
+Flow 2 — TV kamer - status TV kijken
+
+ALS
+LD2410 Sensor → Het contactalarm gaat aan
+
+EN
+LD2410 Sensor → Het algemene alarm is aan
+LD2410 Sensor → De bewegingsmelder is uit
+LD2410 Sensor → Het contactalarm is aan
+LD2410 Sensor → Afstand is groter dan 1,5
+LD2410 Sensor → Afstand is kleiner dan 4,5
+LD2410 Sensor → Helderheid is groter dan 5
+
+DAN
+Wacht 30 seconden
+Logica → Zet tekstvariabele TV_Kamer_Status naar TV_Kijken
+
+
+Flow 3 — TV kamer - status leeg na controle
+
+ALS
+LD2410 Sensor → Het algemene alarm gaat uit
+
+DAN
+Wacht 5 minuten
+
+EN daarna opnieuw controleren:
+LD2410 Sensor → Het algemene alarm is uit
+LD2410 Sensor → De bewegingsmelder is uit
+LD2410 Sensor → Het contactalarm is uit
+
+DAN
+Logica → Zet tekstvariabele TV_Kamer_Status naar Leeg
+
+
+Flow 4 — TV kamer - licht uit zodra leeg na 22:00
+
+ALS
+TV_Kamer_Status verandert
+
+EN
+TV_Kamer_Status is precies Leeg
+De tijd is later dan 22:00
+
+DAN
+Zone Tv kamer → Zet alle lampen uit</code></pre>
+</div>
+<h3>4. Maak een flow voor leeg na controle</h3>
+<p>Sensoren kunnen soms kort een aanwezigheid missen. Om ongewenste schakelingen te voorkomen laat je Homey daarom eerst enkele minuten wachten. Pas wanneer alle relevante signalen nog steeds uit staan, wordt de kamerstatus gewijzigd naar Leeg.</p>
+<h3>5. Laat de lichtflow alleen naar de status kijken</h3>
+<p>Nu komt alles samen. Zodra de status verandert naar Leeg én het later is dan 22:00 uur, mag Homey de verlichting uitschakelen. Zo geniet je van extra comfort én voorkom je onnodig energieverbruik.</p>
+<!-- Tweede afbeelding optioneel -->
+<figure>
+<img alt="Advanced Flow die woonkamerverlichting uitschakelt zodra de kamer leeg is na 22:00" src="assets/artikel/homey-woonkamer-licht-uit-na-22.png"/>
+<figcaption class="muted small">
+            Flow die de woonkamerverlichting uitschakelt zodra TV_Kamer_Status op Leeg staat en het later is dan 22:00 uur.
+          </figcaption>
+</figure>
+<!-- Gebruik dit blok alleen als Homey of een vergelijkbare integratie echt onderdeel is van de tutorial -->
+<h2 id="homey-integratie">Integratie met Homey</h2>
+<p>Deze opzet past goed bij Homey, omdat Advanced Flow sterk is in het combineren van sensoren, variabelen, wachttijden en voorwaarden. De LD2410 blijft verantwoordelijk voor de ruwe detectie, terwijl Homey bepaalt wat die metingen praktisch betekenen voor de ruimte.</p>
+<p>Met één statusvariabele kun je later meer automatiseringen toevoegen zonder de hele sensorketen opnieuw op te bouwen.</p>
+<ul>
+<li>Gebruik <strong>TV_Kamer_Status = Actief</strong> om licht aan te houden zolang iemand beweegt.</li>
+<li>Gebruik <strong>TV_Kamer_Status = TV_Kijken</strong> om automatische uitschakeling te blokkeren tijdens stilzitten op de bank.</li>
+<li>Gebruik <strong>TV_Kamer_Status = Leeg</strong> om verlichting, sfeerlampen of andere apparaten veilig uit te schakelen.</li>
+</ul>
+<!-- Derde afbeelding optioneel -->
+<figure>
+<img alt="Overzicht van LD2410 statusflows in Homey" src="assets/artikel/ld2410-homey-status-overzicht.png"/>
+<figcaption class="muted small">
+            Overzicht van de drie statusflows en de uiteindelijke lichtflow in Homey.
+          </figcaption>
+</figure>
+<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<p>Als deze basis werkt, kun je de drempels rustig finetunen. Begin met de voorgestelde waarden en kijk een paar avonden of de status logisch wisselt. Wordt <strong>TV_Kijken</strong> te snel geactiveerd, verhoog dan de minimale stilstandsenergie of maak de afstandszone kleiner. Wordt de kamer te snel leeg gemeld, verleng dan de wachttijd van 5 minuten.</p>
+<!-- Vierde afbeelding optioneel -->
+<figure>
+<img alt="Testen van LD2410 statuswaarden in Homey" src="assets/artikel/homey-ld2410-testen.png"/>
+<figcaption class="muted small">
+           Testweergave waarin je controleert of TV_Kamer_Status logisch schakelt tussen Actief, TV_Kijken en Leeg.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Gebruik niet alleen bewegingsalarm voor een woonkamer. Iemand die stil op de bank zit, kan dan ten onrechte als afwezig worden gezien.</li>
+<li>Zet de status niet direct op <strong>Leeg</strong>. Gebruik eerst een wachttijd en controleer daarna opnieuw of de sensor nog steeds niets ziet.</li>
+<li>Gebruik in deze eenvoudige versie alleen <strong>TV_Kamer_Status</strong>. Extra variabelen zoals TV_Kamer_Bezet zijn pas nodig als je later meer nuance wilt toevoegen.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Door je LD2410-metingen eerst om te zetten naar één duidelijke Homey-status, maak je je woonkamerautomatisering veel betrouwbaarder. De verlichting gaat niet meer simpelweg uit omdat het 22:00 uur is, maar pas als de kamer daadwerkelijk leeg is. Dat maakt de flow menselijker, veiliger en makkelijker te onderhouden.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#homey-integratie">Integratie met Homey</a>
+<a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+<a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links">
+<a href="homeyduino-ld2410-aanwezigheidssensor.html">LD2410 aanwezigheidssensor koppelen aan Homey met Homeyduino</a>
+<a href="tutorials.html">Meer Homey tutorials</a>
+<a href="homey.html">Homey kennisbank</a>
+</div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+<div class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160" id="mlb2-42295160">
+<div class="row-form">
+<h3>📬 Mis geen project</h3>
+<p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+<form action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe" class="ml-block-form" method="post" target="_blank">
+<input aria-label="E-mailadres" autocomplete="email" name="fields[email]" placeholder="E-mailadres" required="" type="email"/>
+<p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+<div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+<input name="ml-submit" type="hidden" value="1"/>
+<input name="anticsrf" type="hidden" value="true"/>
+<button type="submit">👉 Houd me op de hoogte</button>
+</form>
+</div>
+<div class="row-success" style="display:none;">
+<h3>Bedankt!</h3>
+<p>Je staat op de lijst.</p>
+</div>
+</div>
+</div>
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</body>
+</html>

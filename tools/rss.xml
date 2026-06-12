@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Huis van Vandaag</title>
+  <link>https://www.huisvanvandaag.nl/</link>
+  <description>De nieuwste Homey-tips, slimme automatiseringen en DIY-projecten van Huis van Vandaag.</description>
+  <language>nl-nl</language>
+  <lastBuildDate>Fri, 12 Jun 2026 20:01:41 GMT</lastBuildDate>
+  <atom:link href="https://www.huisvanvandaag.nl/rss.xml" rel="self" type="application/rss+xml" />
+
+</channel>
+</rss>

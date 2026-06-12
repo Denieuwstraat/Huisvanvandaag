@@ -109,6 +109,7 @@ Voeg waar logisch interne verwijzingen toe naar:
 
 DIY-projecten
 tutorials
+informatief
 reviews
 
 Regels:

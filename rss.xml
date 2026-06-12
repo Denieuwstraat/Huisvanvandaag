@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Huis van Vandaag</title>
+  <link>https://www.huisvanvandaag.nl/</link>
+  <description>De nieuwste Homey-tips, slimme automatiseringen en DIY-projecten van Huis van Vandaag.</description>
+  <language>nl-nl</language>
+  <lastBuildDate>Fri, 12 Jun 2026 20:02:19 GMT</lastBuildDate>
+  <atom:link href="https://www.huisvanvandaag.nl/rss.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>LD2410 aanwezigheid gebruiken voor slimme woonkamer flows in Homey</title>
+    <link>https://www.huisvanvandaag.nl/homey-ld2410-flow-tutorial.html</link>
+    <guid isPermaLink="true">https://www.huisvanvandaag.nl/homey-ld2410-flow-tutorial.html</guid>
+    <description>Leer hoe je in Homey een LD2410 aanwezigheidssensor gebruikt om de aanwezigheid bij te houden en verlichting pas uit te schakelen als de kamer echt leeg is.</description>
+    <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
+    <enclosure url="https://www.huisvanvandaag.nl/assets/artikel/TV%20Kamer%20-%20status%20TV%20kijken%20flow%20.png" type="image/jpeg" />
+  </item>
+
+</channel>
+</rss>

@@ -6,6 +6,9 @@ Maak een volledig publiceerbaar DIY-artikel dat technisch klopt, prettig leest e
 REGELS:
 - behoud de HTML-structuur exact
 - vervang alleen de [[PLACEHOLDERS]]
+- vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag 
+- formaat publish_date: YYYY-MM-DD
+- laat [[PUBLISH_DATE]] nooit als placeholder staan
 - verzin geen feiten die niet in de input staan
 - als iets onzeker is: niet invullen alsof het zeker is
 - geen AI-uitleg
@@ -37,6 +40,7 @@ Bron HTML:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="hv-schema-type" content="howto">
+  <meta name="publish_date" content="[[PUBLISH_DATE]]">
 
   <!-- PAGINATITEL -->
   <title>[[PROJECT_TITEL]] | huisvanvandaag.nl</title>

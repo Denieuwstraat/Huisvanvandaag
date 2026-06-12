@@ -6,6 +6,9 @@ Maak een volledig publiceerbaar informatief artikel dat organisch verkeer aantre
 REGELS:
 - behoud de HTML-structuur exact
 - vervang alleen de [[PLACEHOLDERS]]
+- vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag
+- formaat publish_date: YYYY-MM-DD
+- laat [[PUBLISH_DATE]] nooit als placeholder staan
 - verzin geen feiten
 - feitelijke claims moeten gecontroleerd zijn
 - schrijf professioneel, toegankelijk, concreet en prettig leesbaar
@@ -26,6 +29,7 @@ alleen de ingevulde HTML
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="hv-schema-type" content="techarticle">
+  <meta name="publish_date" content="[[PUBLISH_DATE]]">
 
   <!-- PAGINATITEL -->
   <title>[[ARTIKEL_TITEL]] | huisvanvandaag.nl</title>
