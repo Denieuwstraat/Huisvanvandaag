@@ -14,6 +14,96 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="assets/favicon.png" rel="icon" type="image/png"/>
 <link href="styles.css" rel="stylesheet"/>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .insight-panel {
+      margin: 1.4rem 0 1.8rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .insight-panel h3 {
+      margin-top: 0;
+      margin-bottom: .55rem;
+    }
+
+    .side-stack {
+      position: sticky;
+      top: 100px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-stack {
+        position: static;
+      }
+    }
+  </style>
+
+
+
+
+
 <script src="affiliate-products.js"></script>
 <script defer="" src="/js/global-schema.js"></script>
 <script defer="" src="/js/article-schema.js"></script>
@@ -224,6 +314,7 @@
 <p class="muted small">
         Bronnen: NOS (2014 en 2017), Andere Tijden / Maand van de Geschiedenis, Omroep Brabant, De Ondernemer, IsGeschiedenis en informatie over het Kantoor van de Toekomst. Zie: https://nos.nl/artikel/592589-wat-chriet-titulaer-goed-voorspelde, https://nos.nl/artikel/2169930-welkom-in-de-wondere-wereld-chriet-titulaer-kreeg-best-vaak-gelijk, https://www.maandvandegeschiedenis.nl/andere-tijden/huis-van-de-toekomst, https://www.omroepbrabant.nl/nieuws/3134469/dit-is-overgebleven-van-het-ooit-zo-revolutionaire-huis-van-de-toekomst-rondleiding, https://www.deondernemer.nl/actueel/video-5-wonderlijke-voorspellingen-van-chriet-titulaer-die-uitkwamen~3a96eca, https://isgeschiedenis.nl/nieuws/de-voorspellingen-van-chriet-titulaer en https://nl.wikipedia.org/wiki/Kantoor_van_de_Toekomst.
       </p>
+</article>
 <aside class="side-stack">
 <div class="toc">
 <h3>In dit artikel</h3>
@@ -245,7 +336,54 @@
 <a href="diy.html">Meer smart home DIY-projecten</a>
 </div>
 </div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
 </aside>
+
 </div>
 </section>
 </main>

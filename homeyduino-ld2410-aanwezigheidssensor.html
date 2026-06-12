@@ -764,7 +764,54 @@ void loop() {
 <h3>Gerelateerd</h3>
 <div class="footer-links"><a href="homeyduino-bh1750-lichtsensor-esp32.html">BH1750 lichtsensor op ESP32 en Homeyduino maken</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-co2-multisensor.html">Bouw zelf een slimme CO₂ multi-sensor voor Homey</a></div>
 </div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
 </aside>
+
 </div>
 </section>
 </main>

@@ -1466,3 +1466,38 @@ ul, ol { padding-left: 1.15rem; }
 .project-article tr:hover {
   background: rgba(255,255,255,0.06);
 }
+
+.newsletter-sidebar-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.newsletter-sidebar-card button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #00a86b;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.newsletter-sidebar-card button:hover {
+  background: #078457;
+}
+
+.newsletter-small {
+  font-size: .85rem;
+  color: #64748b;
+}
+
+.newsletter-sidebar-card .g-recaptcha {
+  transform: scale(.85);
+  transform-origin: left top;
+  margin-bottom: -18px;
+}
