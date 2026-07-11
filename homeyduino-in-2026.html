@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="hv-schema-type" content="techarticle">
+
+  <!-- PAGINATITEL -->
+  <title>Homeyduino in 2026: wat kun je er nog mee en waarom is het interessant? | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Wat is Homeyduino, werkt het nog in 2026 en wat kun je ermee bouwen? Een praktische uitleg over Arduino, ESP8266, ESP32 en Homey.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="affiliate-products.js"></script>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+
+<section class="article-hero">
+  <div class="container article-layout">
+    <div>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>•</span>
+        <a href="homey.html">Kennisbank</a>
+        <span>•</span>
+        <span>Homeyduino in 2026</span>
+      </div>
+
+      <span class="eyebrow">Informatief</span>
+      <span class="eyebrow">Homey & DIY</span>
+      <h1>Homeyduino in 2026: wat kun je er nog mee en waarom is het interessant?</h1>
+
+      <p class="lead muted">
+        Homeyduino is misschien niet meer het nieuwste onderdeel van Homey, maar voor makers met een ESP8266, ESP32 of Arduino blijft het een verrassend praktische manier om eigen sensoren en schakelaars aan Homey te koppelen.
+      </p>
+
+      <div class="meta-list">
+        <span class="meta-pill">Categorie: Homey</span>
+        <span class="meta-pill">Onderwerp: Homeyduino, Arduino en ESP32</span>
+        <span class="meta-pill">Voor: makers, tweakers en smart home liefhebbers</span>
+      </div>
+    </div>
+
+    <div class="panel project-info-panel">
+      <h3>Waarom dit artikel de moeite waard is</h3>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Actuele uitleg</strong><br>
+            <span class="muted">Wat Homeyduino in 2026 nog wel en niet logisch maakt.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Praktische voorbeelden</strong><br>
+            <span class="muted">Van CO₂-sensor tot aanwezigheidssensor en eigen lichtproject.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Eerlijk beeld</strong><br>
+            <span class="muted">Inclusief beperkingen, onderhoud en alternatieven.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Voor Homey-gebruikers</strong><br>
+            <span class="muted">Gericht op mensen die zelf hardware willen koppelen aan flows.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Goed startpunt</strong><br>
+            <span class="muted">Helpt bepalen of Homeyduino past bij jouw project.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container project-hero-media">
+    <div class="panel">
+      <figure>
+        <img src="assets/homeyduino-esp32-placeholder.jpg" alt="ESP32 en Arduino-bord als basis voor een Homeyduino-project">
+        <figcaption class="muted small">
+          Met Homeyduino kun je eigen Arduino-, ESP8266- en ESP32-projecten zichtbaar maken in Homey.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top: 14px;">
+  <div class="container project-content-layout">
+    <article class="article-body project-article">
+
+      <p class="lead">
+        Homeyduino is de brug tussen Homey en je eigen microcontrollerprojecten. In plaats van alleen kant-en-klare sensoren te kopen, kun je zelf iets bouwen met bijvoorbeeld een ESP32, ESP8266 of Arduino en die waarden vervolgens gebruiken in Homey-flows.
+      </p>
+
+      <p>
+        Dat maakt Homeyduino vooral interessant voor wie net iets wil meten of aansturen dat niet standaard als product verkrijgbaar is. Denk aan een eigen CO₂-sensor, een lichtsensor op een specifieke plek, een LD2410-aanwezigheidssensor, een plantenproject of een simpele ingang waarmee je een bestaande installatie slimmer maakt.
+      </p>
+
+      <div class="insight-panel">
+        <h3>Kort samengevat</h3>
+        <p class="muted">Homeyduino is in 2026 vooral interessant voor eenvoudige, lokale DIY-projecten met Arduino, ESP8266 of ESP32. Het is minder geschikt als je een volledig professioneel ondersteund ecosysteem zoekt, maar juist sterk wanneer je zelf wilt bouwen, meten en experimenteren.</p>
+      </div>
+
+      <h2 id="wat-is-het">Wat is Homeyduino?</h2>
+      <p>Homeyduino is een officiële Homey-app waarmee je eigen Arduino-creaties met Homey kunt verbinden via ethernet of wifi. Aan de hardwarekant gebruik je de Homeyduino Arduino-bibliotheek. Die bibliotheek zorgt ervoor dat je project met de Homeyduino-app kan praten.</p>
+      <p>Volgens de documentatie is Homeyduino bedoeld voor Arduino-projecten, ESP8266-gebaseerde borden en ESP32-gebaseerde borden. Bij klassieke Arduino-borden kan ook een ethernetshield worden gebruikt. In de praktijk zijn vooral ESP8266 en ESP32 aantrekkelijk, omdat die goedkoop, compact en direct met wifi beschikbaar zijn.</p>
+
+      <ul>
+        <li><strong>Homey-app</strong> → de Homeyduino-app draait binnen Homey en maakt je eigen project zichtbaar als apparaat.</li>
+        <li><strong>Arduino-bibliotheek</strong> → de code op je microcontroller gebruikt de Homeyduino-library om waarden en mogelijkheden door te geven.</li>
+        <li><strong>Eigen hardware</strong> → je bepaalt zelf welke sensor, knop, relais of uitgang je aansluit.</li>
+      </ul>
+
+      <figure>
+        <img src="assets/homeyduino-uitleg-placeholder.jpg" alt="Schematische opbouw van Homeyduino met Homey, wifi en een ESP32">
+        <figcaption class="muted small">
+          De kern is eenvoudig: je microcontroller meet of schakelt iets, Homey gebruikt die informatie in flows.
+        </figcaption>
+      </figure>
+
+      <h2 id="waarom-relevant">Waarom is Homeyduino in 2026 nog relevant?</h2>
+      <p>Smart home is in 2026 veel volwassener dan toen Homeyduino werd geïntroduceerd. Er zijn meer kant-en-klare Zigbee-, Z-Wave-, Thread-, Matter- en wifi-apparaten dan ooit. Toch blijft er een categorie projecten bestaan waarvoor een standaardproduct net niet past.</p>
+      <p>Juist daar zit de kracht van Homeyduino. Je kunt een sensorwaarde maken die precies aansluit op je eigen woning, je eigen plaatsing en je eigen flowlogica. Voor huisvanvandaag-projecten is dat interessant, omdat veel praktische automatiseringen beginnen met één simpele vraag: kan Homey deze waarde ergens vandaan halen?</p>
+
+      <h2 id="praktijk">Wat kun je bouwen met Homeyduino?</h2>
+      <p>De mogelijkheden hangen vooral af van je sensor, microcontroller en programmeerwerk. Homeyduino is geen kant-en-klaar product, maar een manier om eigen meetwaarden en acties beschikbaar te maken in Homey. Daardoor kun je klein beginnen en later uitbreiden.</p>
+      <p>Praktische voorbeelden zijn een CO₂-sensor voor ventilatieflows, een lichtsensor voor zonwering, een aanwezigheidssensor op basis van een LD2410, een eenvoudige deur- of raamstatus, een plantenproject met bodemvocht of een eigen lamp- of ledstripproject. In de Homeyduino-voorbeelden is zelfs een ledstripproject beschreven waarmee je een eigen Hue-achtige lamp kunt maken met kleur, helderheid en verzadiging.</p>
+
+      <h2 id="waar-let-je-op">Waar moet je op letten?</h2>
+      <p>Homeyduino is krachtig, maar niet voor iedereen de makkelijkste route. Je werkt met code, libraries, netwerkverbindingen en soms met sensoren die gevoelig zijn voor voeding, plaatsing of storing. Dat is leuk als je wilt bouwen, maar minder ideaal als je vooral een plug-and-play oplossing zoekt.</p>
+
+      <ul>
+        <li>Controleer vooraf of jouw bord en sensor goed ondersteund worden binnen de Arduino-omgeving.</li>
+        <li>Gebruik stabiele voeding, zeker bij ESP32-projecten met wifi en sensoren die piekbelasting kunnen veroorzaken.</li>
+        <li>Houd rekening met beperkte actieve doorontwikkeling: Homeyduino is beschikbaar, maar niet elk oud onderdeel of elke oude functie krijgt nog zichtbaar actief onderhoud.</li>
+      </ul>
+
+      <p>Voor experimentele of persoonlijke projecten is dat meestal geen probleem. Voor een kritisch systeem, zoals beveiliging of iets waar je dagelijks volledig op vertrouwt, is een officieel ondersteund apparaat vaak verstandiger.</p>
+
+      <h2 id="verdieping">Homeyduino naast ESPHome en Python-apps</h2>
+      <p>Homeyduino is niet de enige route om eigen hardware aan Homey te koppelen. ESPHome is populair voor ESP8266- en ESP32-projecten en er is ook een Homey-app voor ESPHome-apparaten. Dat kan aantrekkelijk zijn als je liever met configuratiebestanden werkt dan met Arduino-code.</p>
+      <p>Daarnaast ondersteunt Homey inmiddels ook appontwikkeling in Python. Dat is vooral interessant voor ontwikkelaars die complete Homey-apps of integraties willen bouwen. Homeyduino blijft juist sterk voor kleinere microcontrollerprojecten: een sensor uitlezen, een waarde doorgeven en die gebruiken in een flow.</p>
+
+      <h2 id="volgende-stap">Volgende stap</h2>
+      <p>Wil je met Homeyduino aan de slag, begin dan klein. Kies één duidelijke meetwaarde of actie en bouw daar een eerste stabiel project omheen. Daarna kun je uitbreiden met extra sensoren, betere behuizing en slimmere flows.</p>
+
+      <ul>
+        <li>Lees ook: <a href="homey-ld2410-aanwezigheidssensor.html">een LD2410-aanwezigheidssensor gebruiken met Homey</a>.</li>
+        <li>Lees ook: <a href="co2-sensor-woonkamer-homey.html">CO₂ meten in huis en gebruiken voor ventilatieflows</a>.</li>
+        <li>Lees ook: <a href="bh1750-lichtsensor-esp32-homey.html">een BH1750-lichtsensor koppelen aan een ESP32-project</a>.</li>
+      </ul>
+
+      <h2 id="conclusie">Conclusie</h2>
+      <p>Homeyduino is anno 2026 geen hippe nieuwe standaard, maar wel een waardevolle gereedschapskist voor iedereen die Homey wil uitbreiden met eigen hardware. Voor kant-en-klare producten zijn er vaak simpelere routes. Voor unieke sensoren, slimme zelfbouwprojecten en precies passende automatiseringen blijft Homeyduino juist interessant: klein beginnen, lokaal meten en Homey laten reageren op wat er echt in jouw huis gebeurt.</p>
+
+    </article>
+
+    <aside class="side-stack">
+      <div class="toc">
+        <h3>In dit artikel</h3>
+        <a href="#wat-is-het">Wat is Homeyduino?</a>
+        <a href="#waarom-relevant">Waarom nog relevant?</a>
+        <a href="#praktijk">Mogelijke projecten</a>
+        <a href="#waar-let-je-op">Aandachtspunten</a>
+        <a href="#verdieping">Alternatieven en verdieping</a>
+        <a href="#volgende-stap">Volgende stap</a>
+        <a href="#conclusie">Conclusie</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Gerelateerd</h3>
+        <div class="footer-links">
+          <a href="homey.html">Meer over Homey</a>
+          <a href="diy.html">DIY-projecten voor je slimme huis</a>
+          <a href="tutorials.html">Tutorials voor Homey en sensoren</a>
+        </div>
+      </div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+
+
+    </aside>
+  </div>
+</section>
+
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</body>
+</html>

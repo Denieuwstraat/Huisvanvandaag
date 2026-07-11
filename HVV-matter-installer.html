@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="howto" name="hv-schema-type"/>
+<meta content="#0d283f" name="theme-color"/>
+<title>HVV Matter Multisensor installeren vanuit je browser | Huisvanvandaag.nl</title>
+<meta content="Installeer de firmware van de HVV Matter Multisensor rechtstreeks vanuit Chrome of Edge. Geen ESP-IDF nodig: aansluiten, installeren en koppelen aan Google Home." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module" type="module"></script>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+<style>
+    :root {
+      --installer-navy: #0d283f;
+      --installer-navy-light: #163f5f;
+      --installer-accent: #36c2a1;
+      --installer-warning: #f4b942;
+      --installer-danger: #df5b5b;
+      --installer-surface: rgba(255,255,255,.055);
+      --installer-border: rgba(255,255,255,.12);
+      --installer-radius: 20px;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(270px, .65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .installer-shell {
+      margin: 1.5rem 0 2rem;
+      border: 1px solid var(--installer-border);
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(54,194,161,.15), transparent 34%),
+        linear-gradient(145deg, rgba(13,40,63,.98), rgba(8,25,39,.98));
+      box-shadow: 0 24px 65px rgba(0,0,0,.24);
+    }
+
+    .installer-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.35rem 1.35rem 1rem;
+      border-bottom: 1px solid var(--installer-border);
+    }
+
+    .installer-header h3 {
+      margin: 0 0 .35rem;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+    }
+
+    .installer-header p {
+      margin: 0;
+    }
+
+    .version-badge {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      background: rgba(54,194,161,.14);
+      border: 1px solid rgba(54,194,161,.35);
+      font-size: .84rem;
+      font-weight: 800;
+      color: #b9fff0;
+    }
+
+    .installer-body {
+      padding: 1.35rem;
+    }
+
+    .browser-status {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding: .9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--installer-border);
+      background: rgba(255,255,255,.04);
+    }
+
+    .browser-status[data-state="ok"] {
+      border-color: rgba(54,194,161,.42);
+      background: rgba(54,194,161,.08);
+    }
+
+    .browser-status[data-state="error"] {
+      border-color: rgba(223,91,91,.5);
+      background: rgba(223,91,91,.09);
+    }
+
+    .browser-status-icon {
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .browser-status strong {
+      display: block;
+      margin-bottom: .1rem;
+    }
+
+    .installer-checklist {
+      display: grid;
+      gap: .65rem;
+      margin: 1rem 0 1.25rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .installer-checklist li {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      margin: 0;
+    }
+
+    .installer-checklist li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(54,194,161,.15);
+      color: #9ff3df;
+      font-weight: 900;
+    }
+
+    .install-action {
+      display: grid;
+      gap: .8rem;
+      margin-top: 1.15rem;
+      padding: 1.1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--installer-border);
+      text-align: center;
+    }
+
+    esp-web-install-button {
+      --esp-tools-button-color: var(--installer-accent);
+      --esp-tools-button-text-color: #061b17;
+    }
+
+    .install-primary {
+      width: min(100%, 390px);
+      min-height: 52px;
+      margin: 0 auto;
+      padding: .85rem 1.25rem;
+      border: 0;
+      border-radius: 13px;
+      background: var(--installer-accent);
+      color: #061b17;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .install-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .install-primary:focus-visible,
+    .resource-link:focus-visible {
+      outline: 3px solid rgba(255,255,255,.85);
+      outline-offset: 3px;
+    }
+
+    .unsupported-message {
+      display: block;
+      padding: .85rem;
+      border-radius: 12px;
+      color: #ffd7d7;
+      background: rgba(223,91,91,.11);
+      border: 1px solid rgba(223,91,91,.42);
+    }
+
+    .installer-note {
+      margin: 0;
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+
+    .warning-panel {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1rem;
+      padding: .9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(244,185,66,.4);
+      background: rgba(244,185,66,.09);
+    }
+
+    .warning-panel p {
+      margin: 0;
+    }
+
+    .installer-resources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .resource-link {
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem;
+      align-items: center;
+      min-height: 52px;
+      padding: .75rem .9rem;
+      border-radius: 13px;
+      border: 1px solid var(--installer-border);
+      background: rgba(255,255,255,.04);
+      color: inherit;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .resource-link:hover {
+      background: rgba(255,255,255,.075);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin: 1.1rem 0 1.5rem;
+    }
+
+    .step-card {
+      padding: 1rem;
+      border-radius: 16px;
+      background: var(--installer-surface);
+      border: 1px solid var(--installer-border);
+    }
+
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: .65rem;
+      border-radius: 50%;
+      background: var(--installer-navy);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .step-card strong {
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: .94rem;
+    }
+
+    .status-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .status-list li {
+      margin-bottom: .7rem;
+      padding: .85rem 1rem;
+      border-left: 4px solid var(--installer-accent);
+      border-radius: 0 12px 12px 0;
+      background: var(--installer-surface);
+    }
+
+    .technical-note {
+      margin: 1.25rem 0;
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid var(--installer-border);
+      background: var(--installer-surface);
+    }
+
+    .technical-note h3 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .installer-header {
+        display: block;
+      }
+
+      .version-badge {
+        margin-top: .8rem;
+      }
+
+      .installer-resources,
+      .step-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .installer-body,
+      .installer-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="tutorials.html">Tutorials</a>
+<span>•</span>
+<span>Matter Multisensor installeren</span>
+</div>
+<span class="eyebrow">Matter • ESP32 • Webinstaller</span>
+<h1>Installeer de HVV Matter Multisensor eenvoudig vanuit je browser</h1>
+<p class="lead muted">Geen ingewikkelde software of technische kennis nodig. Sluit je ESP32 aan, klik op installeren en binnen een paar minuten draait de nieuwste Huisvanvandaag Matter Multisensor firmware op je board en in je smart home.</p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Smart home</span>
+<span class="meta-pill">Platform: Matter en Google Home</span>
+<span class="meta-pill">Niveau: Beginner</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom deze tutorial handig is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Geen ontwikkelomgeving nodig</strong><br/><span class="muted">De firmware wordt rechtstreeks vanuit de browser geïnstalleerd.</span></div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Duidelijke controle vooraf</strong><br/><span class="muted">De pagina controleert of je browser Web Serial ondersteunt.</span></div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Seriële uitvoer beschikbaar</strong><br/><span class="muted">Na het installeren kun je logs bekijken via ESP Web Tools.</span></div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Koppel de sensor eenvoudig met een smart home hub naar keuze</strong><br/><span class="muted">Binnen twee miniuten geinstalleerd, binnen 5 minuten werkend in je smart home!
+                </span></div>
+</div>
+</div>
+</div></div></section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">Firmware installeren hoeft tegenwoordig helemaal niet meer ingewikkeld te zijn. Dankzij deze webinstaller zet je de officiële HVV Matter Multisensor firmware rechtstreeks vanuit je browser op een ondersteunde ESP32. Geen losse tools, geen commandoregels en geen gedoe.</p>
+<p>Het enige wat je nodig hebt is een recente versie van Google Chrome of Microsoft Edge, een USB-datakabel die data ondersteunt en een geschikte ESP32. De rest doet de installer voor je.</p>
+<h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+<p>Je doorloopt het volledige traject van aansluiten tot koppelen.</p>
+<ul>
+<li><strong>Firmware installeren</strong> → je selecteert de juiste seriële poort en schrijft de release naar de ESP32.</li>
+<li><strong>Matter koppelen</strong> → je gebruikt de pairinginformatie uit de seriële uitvoer om de sensor aan Google Home toe te voegen.</li>
+</ul>
+<p>De pagina is bewust ingericht voor gebruikers die nog nooit eerder een ESP32 hebben geflasht.</p>
+<h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+<p>
+            Deze installer is bedoeld voor hobbyisten en makers die een HVV Matter Multisensor willen installeren zonder een volledige ontwikkelomgeving in te richten. Voor het aanpassen of zelf compileren van de firmware blijft het aparte firmwareproject nodig.
+          </p>
+<h2 id="benodigdheden">Wat heb je nodig?</h2>
+<ul>
+<li>Een ondersteunde ESP32 voor de HVV Matter Multisensor.</li>
+<li>Een USB-kabel die ook data kan overdragen.</li>
+<li>Een computer met Google Chrome of Microsoft Edge.</li>
+<li>Een vrije USB-poort en toestemming om een seriële verbinding te openen.</li>
+<li>De Google Home-app voor het koppelen van het Matter-apparaat.</li>
+</ul>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Bereid de ESP32 voor</h3>
+<p>
+            Sluit de ESP32 rechtstreeks aan op je computer. Gebruik bij voorkeur geen USB-hub tijdens de eerste installatie. Verschijnt het bord niet in de poortlijst, controleer dan eerst of je kabel data ondersteunt.
+          </p>
+<ul>
+<li>Sluit andere programma’s die de seriële poort gebruiken.</li>
+<li>Gebruik Chrome of Edge op een computer.</li>
+<li>Laat de ESP32 aangesloten tijdens de volledige installatie.</li>
+</ul>
+<div aria-label="Installatie in drie korte stappen" class="step-grid">
+<div class="step-card">
+<span class="step-number">1</span>
+<strong>Aansluiten</strong>
+<p>Verbind de ESP32 met een USB-datakabel.</p>
+</div>
+<div class="step-card">
+<span class="step-number">2</span>
+<strong>Installeren</strong>
+<p>Kies de juiste poort en start de firmware-installatie.</p>
+</div>
+<div class="step-card">
+<span class="step-number">3</span>
+<strong>Koppelen</strong>
+<p>Gebruik de Matter-code in Google Home.</p>
+</div>
+</div>
+<h3>2. Controleer je browser</h3>
+<p>
+            De installer gebruikt Web Serial. De status hieronder wordt automatisch bijgewerkt. Zie je een foutmelding, open deze pagina dan opnieuw in de nieuwste versie van Chrome of Edge en controleer of de site via HTTPS wordt geladen.
+          </p>
+<h3>3. Installeer de firmware</h3>
+<p>
+            Controleer de getoonde firmwareversie en klik daarna op <strong>Firmware installeren</strong>. Selecteer in het browservenster de seriële poort van je ESP32. ESP Web Tools begeleidt je vervolgens door het schrijven van de firmware en biedt daarna toegang tot de seriële uitvoer.
+          </p>
+<h3>4. Bekijk de seriële uitvoer</h3>
+<p>
+            Na het installeren start de ESP32 opnieuw op. Open in ESP Web Tools de log- of consoleweergave. Daar zie je de opstartmeldingen van de firmware. De Matter-pairingcode of QR-informatie kan alleen automatisch op deze pagina worden getoond wanneer de firmware deze in een vast, herkenbaar formaat beschikbaar maakt. Tot die tijd gebruik je de informatie uit de seriële uitvoer.
+          </p>
+<ul class="status-list">
+<li><strong>Geen uitvoer zichtbaar?</strong> Sluit de console, wacht enkele seconden en maak opnieuw verbinding met dezelfde seriële poort.</li>
+<li><strong>Onleesbare tekens?</strong> Controleer of de console de baudrate gebruikt die in de releasehandleiding staat.</li>
+<li><strong>ESP32 blijft opnieuw starten?</strong> Koppel de voeding los, sluit opnieuw aan en raadpleeg de releasehandleiding.</li>
+</ul>
+<h3>5. Koppel de sensor aan je smart home</h3>
+<p>
+  Na het installeren kun je de sensor toevoegen aan een smart home-platform dat Matter ondersteunt. Open hiervoor de app van je favoriete smart home hub en kies voor het toevoegen van een nieuw apparaat. Afhankelijk van de firmware kun je vervolgens de weergegeven QR-code scannen of de numerieke koppelcode handmatig invoeren. Daarna wijs je de sensor toe aan een ruimte en is deze klaar voor gebruik.
+</p>
+
+<h2 id="homey-integratie">Werkt dit ook met Homey?</h2>
+
+<p>
+  Jazeker. De firmware is ontworpen om gebruikt te worden met smart home-platformen die Matter ondersteunen. Daardoor is de sensor niet alleen te gebruiken met Google Home, maar ook met populaire smart home hubs zoals Homey, Apple Home, Samsung SmartThings en Amazon Alexa, voor zover het betreffende platform en de gebruikte hub ondersteuning bieden voor het aangeboden apparaattype. 
+</p>
+<p>Hier in huis heb ik de sensor enkel gekoppeld met Google Home en Homey, dus hoewel ik verwacht dat de sensor ook werkt met andere platforms, heb ik dat nog niet getest.</p>
+<p>
+  Welke functies uiteindelijk beschikbaar zijn, is afhankelijk van de mogelijkheden van de gebruikte smart home hub en de ondersteuning die het platform biedt voor de sensoren in de firmware. Naarmate Matter zich verder ontwikkelt, kunnen deze mogelijkheden worden uitgebreid.
+</p>
+
+<p>Gebruik je Homey? Dan kun je de sensor bijvoorbeeld inzetten voor:</p>
+
+<ul>
+  <li>Het verwerken van sensormetingen in Homey Flows.</li>
+  <li>Het combineren van meerdere sensoren en slimme apparaten in één automatisering.</li>
+  <li>Automatisch ventileren, verwarmen of koelen op basis van luchtkwaliteit, temperatuur of luchtvochtigheid.</li>
+  <li>Aanwezigheidsdetectie combineren met verlichting, meldingen of energiebesparende flows.</li>
+</ul>
+<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<p>
+            Zodra de sensor correct is gekoppeld, kun je controleren welke meetwaarden in Google Home beschikbaar zijn. Bewaar het gebruikte firmwarepakket en noteer de geïnstalleerde versie. Dat maakt ondersteuning en latere updates eenvoudiger.
+          </p>
+<div class="technical-note">
+<h3>Opzet voor toekomstige HVV-producten</h3>
+<p>
+              De installer haalt productnaam, versie, manifest, download en handleiding uit één configuratieobject. Voor een nieuwe release hoeft alleen deze configuratie te worden aangepast. Voor meerdere apparaten kan later dezelfde pagina worden uitgebreid met een product- en hardwarekeuze, zonder de firmwareprojecten met de websitecode te vermengen.
+            </p>
+</div>
+<h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+<ul>
+<li>Een laadkabel zonder datalijnen kan de ESP32 wel voeden, maar verschijnt niet als seriële poort.</li>
+<li>De installer werkt alleen in een ondersteunde browser en vanuit een beveiligde HTTPS-omgeving.</li>
+<li>Het manifest en de firmwarebestanden moeten bereikbaar zijn vanaf de website. Bij bestanden op een ander domein moeten de juiste CORS-headers zijn ingesteld.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>
+  Met de HVV Matter Multisensor Web Installer is het installeren van de firmware verrassend eenvoudig. Sluit je ESP32 aan, klik op installeren en binnen enkele minuten draait de nieuwste firmware op je board. Je hebt geen ontwikkelomgeving of ingewikkelde software nodig. Ideaal voor beginners, maar ook handig voor ervaren makers die snel aan de slag willen. Bovendien is de installer voorbereid op toekomstige firmware-updates en nieuwe projecten.
+</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In deze tutorial</h3>
+<a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+<a href="#voor-wie">Voor wie is deze tutorial?</a>
+<a href="#benodigdheden">Wat heb je nodig?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#firmware-installer">Firmware installeren</a>
+<a href="#homey-integratie">Werkt dit ook met Homey?</a>
+<a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+<a href="#aandachtspunten">Veelgemaakte fouten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Installatie samengevat</h3>
+<div class="footer-links">
+<a href="#firmware-installer">1. ESP32 aansluiten</a>
+<a href="#firmware-installer">2. Firmware installeren</a>
+<a href="#homey-integratie">3. Koppelen met Matter</a>
+</div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+<div class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160" id="mlb2-42295160">
+<div class="row-form">
+<h3>📬 Mis geen project</h3>
+<p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+<form action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe" class="ml-block-form" method="post" target="_blank">
+<input aria-label="E-mailadres" autocomplete="email" name="fields[email]" placeholder="E-mailadres" required="" type="email"/>
+<p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+<div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+<input name="ml-submit" type="hidden" value="1"/>
+<input name="anticsrf" type="hidden" value="true"/>
+<button type="submit">👉 Houd me op de hoogte</button>
+</form>
+</div>
+<div class="row-success" style="display:none;">
+<h3>Bedankt!</h3>
+<p>Je staat op de lijst.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+<script>
+    /*
+     * Alleen dit object hoeft bij een normale release te worden aangepast.
+     * Plaats het volledige releasepakket onder hetzelfde basispad op GitHub Pages.
+     */
+    const HVV_INSTALLER_CONFIG = Object.freeze({
+      productName: "HVV Matter Multisensor",
+      version: "v0.2.1",
+      releaseBasePath: "dist/v0.2.1/",
+      manifestFile: "manifest.json",
+      packageFile: "HVV-Matter-Multisensor-v0.2.1.zip",
+      guideFile: "README-flashing.md"
+    });
+
+    function configureInstaller() {
+      const config = HVV_INSTALLER_CONFIG;
+      const installButton = document.getElementById("esp-install-button");
+      const productName = document.getElementById("installer-product-name");
+      const version = document.getElementById("installer-version");
+      const download = document.getElementById("firmware-download");
+      const guide = document.getElementById("flashing-guide");
+
+      productName.textContent = config.productName;
+      version.textContent = config.version;
+      installButton.setAttribute("manifest", config.releaseBasePath + config.manifestFile);
+      download.href = config.releaseBasePath + config.packageFile;
+      guide.href = config.releaseBasePath + config.guideFile;
+    }
+
+    function updateBrowserStatus() {
+      const status = document.getElementById("browser-status");
+      const isSecure = window.isSecureContext;
+      const hasSerial = "serial" in navigator;
+
+      if (isSecure && hasSerial) {
+        status.dataset.state = "ok";
+        status.innerHTML = `
+          <span class="browser-status-icon" aria-hidden="true">✓</span>
+          <div>
+            <strong>Je browser is geschikt</strong>
+            <span class="muted">Web Serial is beschikbaar en de pagina wordt veilig geladen.</span>
+          </div>`;
+        return;
+      }
+
+      const reason = !isSecure
+        ? "Deze pagina wordt niet via een beveiligde HTTPS-verbinding geladen."
+        : "Web Serial is niet beschikbaar in deze browser.";
+
+      status.dataset.state = "error";
+      status.innerHTML = `
+        <span class="browser-status-icon" aria-hidden="true">!</span>
+        <div>
+          <strong>De webinstaller is hier niet beschikbaar</strong>
+          <span class="muted">${reason} Gebruik de nieuwste versie van Google Chrome of Microsoft Edge.</span>
+        </div>`;
+    }
+
+    function ml_webform_success_42295160() {
+      const form = document.querySelector('.ml-subscribe-form-42295160 .row-form');
+      const success = document.querySelector('.ml-subscribe-form-42295160 .row-success');
+      if (form && success) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    }
+
+    configureInstaller();
+    updateBrowserStatus();
+
+    fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel").catch(() => {});
+  </script>
+</body>
+</html>

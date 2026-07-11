@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="hv-schema-type" content="howto">
+
+  <!-- PAGINATITEL -->
+  <title>Zelf een slimme Matter-sensor maken: installatie, valkuilen en Hello World | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Leer stap voor stap hoe je met een ESP32 DevKit V1, ESP-IDF en VS Code de basis legt voor een eigen Matter-sensor en Hello World succesvol test.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="affiliate-products.js"></script>
+
+  <style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+</head>
+<body>
+
+<body>
+  <div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="container article-layout">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span>•</span>
+          <a href="tutorials.html">Tutorials</a>
+          <span>•</span>
+          <span>Matter-sensor basis</span>
+        </div>
+
+        <span class="eyebrow">ESP32 Matter basis</span>
+        <h1>Zelf een slimme Matter-sensor maken: installatie, valkuilen en Hello World</h1>
+
+        <p class="lead muted">
+          Voordat je een eigen Matter-sensor bouwt, moet eerst de ontwikkelomgeving kloppen. In deze tutorial zetten we ESP-IDF klaar, testen we Hello World en lossen we de valkuilen op die je onderweg kunt tegenkomen.
+        </p>
+
+        <div class="meta-list">
+          <span class="meta-pill">Categorie: Smart home DIY</span>
+          <span class="meta-pill">Platform: ESP32, ESP-IDF en Matter</span>
+          <span class="meta-pill">Niveau: Beginner tot gevorderde hobbyist</span>
+        </div>
+      </div>
+
+      <!-- RECHTER INFOBLOK -->
+      <div class="panel project-info-panel">
+        <h3>Waarom deze tutorial handig is</h3>
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Eerst de basis goed</strong><br>
+              <span class="muted">Je test eerst of ESP-IDF, VS Code, je board en de seriële monitor correct samenwerken.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Van Arduino naar ESP-IDF</strong><br>
+              <span class="muted">Je ziet waarom Matter-projecten meestal beginnen bij ESP-IDF in plaats van een gewone Arduino-sketch.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Echte foutmomenten uitgelegd</strong><br>
+              <span class="muted">We behandelen onder andere een ontbrekende COM-poort, flashgrootte en de betekenis van de monitor-output.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Voorbereiding op Matter</strong><br>
+              <span class="muted">Na deze stap kun je gericht verder met een BME280 of BH1750 als eerste sensor.</span>
+            </div>
+          </div>
+
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Controle over build en flash</strong><br>
+              <span class="muted">Je leert hoe je zelf code aanpast, opnieuw buildt, flasht en controleert via de monitor.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO AFBEELDING -->
+    <!-- Gebruik dit blok alleen als er echt een passende hero-afbeelding is -->
+    <div class="container project-hero-media">
+      <div class="panel">
+        <figure>
+          <img src="assets/images/esp32-matter-hello-world.jpg" alt="ESP32 DevKit V1 aangesloten op een laptop voor een Matter-sensor project">
+          <figcaption class="muted small">
+            De eerste stap naar een eigen Matter-sensor is niet meteen de sensorcode, maar een stabiele ESP-IDF omgeving die betrouwbaar kan builden, flashen en monitoren.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section-tight" style="padding-top: 14px;">
+    <div class="container project-content-layout">
+      <article class="article-body project-article">
+
+        <p class="lead">
+          Een eigen Matter-sensor bouwen klinkt alsof je meteen met sensoren, clusters en smart home-platformen aan de slag gaat. In de praktijk begint het veel eenvoudiger: eerst moet je zeker weten dat je ESP32 goed wordt herkend, dat ESP-IDF werkt en dat je een klein testprogramma kunt flashen.
+        </p>
+
+        <p>
+          In deze tutorial gebruiken we een ESP32 DevKit V1 als basis. Het einddoel is een eigen Matter-sensor, waarschijnlijk met een BME280 voor temperatuur, luchtvochtigheid en luchtdruk of een BH1750 voor lichtmeting. Maar voordat die sensor slim kan worden, testen we eerst de volledige ontwikkelketen met Hello World.
+        </p>
+
+        <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+        <p>Je leert hoe je van een lege start naar een werkende ESP-IDF testopstelling gaat. De nadruk ligt niet alleen op klikken en commando’s uitvoeren, maar vooral op begrijpen wat je ziet wanneer iets goed of fout gaat.</p>
+        <ul>
+          <li><strong>ESP-IDF werkend krijgen</strong> → je installeert en gebruikt de ESP-IDF omgeving in VS Code om een project te configureren, te bouwen en te flashen.</li>
+          <li><strong>Hello World interpreteren</strong> → je controleert via de monitor of de ESP32 echt jouw firmware draait en wat de belangrijkste regels in de output betekenen.</li>
+        </ul>
+        <p>Aan het einde heb je geen Matter-sensor, maar wel de noodzakelijke basis om die sensor verantwoord te gaan bouwen. Dat voorkomt dat je later Matter-fouten probeert op te lossen terwijl eigenlijk je toolchain, poort of flashconfiguratie niet goed stond.</p>
+
+        <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+        <p>Deze tutorial is bedoeld voor makers die al ervaring hebben met Arduino of ESP32-projecten, maar nu de stap willen zetten naar ESP-IDF en Matter. Je hoeft nog geen Matter-code te begrijpen, maar je moet wel bereid zijn om iets dichter op de ontwikkelomgeving te werken dan bij een gewone Arduino-sketch.</p>
+
+        <h2 id="benodigdheden">Wat heb je nodig?</h2>
+        <ul>
+          <li>ESP32 DevKit V1</li>
+          <li>USB-datakabel, geen kabel die alleen kan laden</li>
+          <li>Windows-pc met Visual Studio Code</li>
+          <li>ESP-IDF extensie van Espressif Systems in VS Code</li>
+          <li>Een eerste sensor voor de vervolgstap, bijvoorbeeld BME280 of BH1750</li>
+        </ul>
+
+        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+
+        <h3>1. Installeer ESP-IDF en open het voorbeeldproject</h3>
+        <p>Installeer in VS Code de officiële ESP-IDF extensie van Espressif Systems. Deze extensie voegt de belangrijkste knoppen en opdrachten toe voor builden, flashen, monitoren en configureren. Open daarna het voorbeeldproject hello_world vanuit de ESP-IDF voorbeelden of vanuit je eigen projectmap.</p>
+        <ul>
+          <li>Open de projectmap waarin onder andere CMakeLists.txt, sdkconfig en de map main staan.</li>
+          <li>Gebruik in VS Code de Command Palette met Ctrl + Shift + P.</li>
+          <li>Kies ESP-IDF: Set Espressif Device Target en selecteer voor de ESP32 DevKit V1 het target esp32.</li>
+        </ul>
+
+        <!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
+        <figure>
+          <img src="assets/images/esp-idf-vscode-target-esp32.jpg" alt="ESP-IDF target esp32 instellen in VS Code">
+          <figcaption class="muted small">
+            Het target moet overeenkomen met je chip. Voor een gewone ESP32 DevKit V1 kies je esp32.
+          </figcaption>
+        </figure>
+
+        <h3>2. Controleer of het project configureert en buildt</h3>
+        <p>Na het instellen van het target maakt ESP-IDF een buildmap aan en configureert CMake het project. In ons geval eindigde dit met de melding Target ESP32 Set Successfully. Dat is een belangrijk signaal: de ESP-IDF installatie, compiler, Python-omgeving en projectstructuur werken samen. Meldingen over git describe of losse componentmappen zonder CMakeLists.txt zijn bij dit eenvoudige project niet direct een probleem.</p>
+
+        <h3>3. Los de eerste echte blokkade op: geen seriële poort</h3>
+        <p>De eerste echte fout was No serial ports found. Dat betekent niet dat je code fout is, maar dat Windows of VS Code je ESP32 nog niet als COM-poort ziet. De oorzaak zit meestal in een USB-kabel zonder datalijnen, een ontbrekende USB-serial driver of een verkeerde USB-poort. Zodra het board wel zichtbaar werd, konden we COM10 selecteren en de monitor openen.</p>
+
+        <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
+        <div class="code-block">
+  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+  <pre><code>#include &lt;stdio.h&gt;
+#include &quot;freertos/FreeRTOS.h&quot;
+#include &quot;freertos/task.h&quot;
+#include &quot;esp_chip_info.h&quot;
+#include &quot;esp_flash.h&quot;
+#include &quot;esp_system.h&quot;
+
+void app_main(void)
+{
+    printf(&quot;Hello Mike, lekker bezig!\n&quot;);
+
+    esp_chip_info_t chip_info;
+    uint32_t flash_size;
+
+    esp_chip_info(&amp;chip_info);
+    esp_flash_get_size(NULL, &amp;flash_size);
+
+    printf(&quot;This is %s chip with %d CPU core(s), WiFi/BTBLE, silicon revision v%d.%d, %luMB external flash\n&quot;,
+           CONFIG_IDF_TARGET,
+           chip_info.cores,
+           chip_info.revision / 100,
+           chip_info.revision % 100,
+           flash_size / (1024 * 1024));
+
+    printf(&quot;Minimum free heap size: %lu bytes\n&quot;, esp_get_minimum_free_heap_size());
+
+    while (1) {
+        printf(&quot;ESP-IDF draait nog steeds netjes...\n&quot;);
+        vTaskDelay(5000 / portTICK_PERIOD_MS);
+    }
+}
+</code></pre>
+</div>
+
+        <h3>4. Flash Hello World en lees de monitor-output</h3>
+        <p>Na het flashen start de ESP32 opnieuw op en zie je in de monitor de bootloader, chipinformatie en uiteindelijk de regel Hello world. Dat is het bewijs dat de firmware echt op het board draait. In ons geval verscheen daarna ook de informatie dat het om een ESP32 met twee CPU-cores, WiFi/Bluetooth en externe flash ging.</p>
+
+        <h3>5. Zet de flashgrootte goed en pas zelf de code aan</h3>
+        <p>De monitor liet eerst zien dat het board 4 MB flash had, terwijl de firmware nog op 2 MB stond ingesteld. Dat hebben we aangepast via de SDK Configuration Editor bij Serial flasher config. Daarna verdween de waarschuwing en gaf de monitor netjes 4MB external flash aan. Vervolgens hebben we Hello World aangepast naar Hello Mike, lekker bezig! en daarna het herstartgedrag vervangen door een loop die elke paar seconden een bericht print.</p>
+
+        <!-- Tweede afbeelding optioneel -->
+        <figure>
+          <img src="assets/images/esp32-monitor-hello-world.jpg" alt="ESP-IDF monitor met Hello World output op een ESP32">
+          <figcaption class="muted small">
+            De monitor is je controlepaneel. Hier zie je of het board opstart, welke firmware draait en of je eigen wijzigingen zichtbaar worden.
+          </figcaption>
+        </figure>
+
+        <!-- Gebruik dit blok alleen als Homey of een vergelijkbare integratie echt onderdeel is van de tutorial -->
+        <h2 id="homey-integratie">Integratie met Homey</h2>
+        <p>De Homey-integratie komt pas in een latere stap. Het doel is uiteindelijk een sensor te bouwen die via Matter beschikbaar kan komen in een smart home-platform. Daarvoor moet de basis eerst kloppen: ESP-IDF moet kunnen builden, flashen en betrouwbaar communiceren met het board.</p>
+        <p>Denk bij het vervolg aan sensoren die in huis direct praktische waarde hebben:</p>
+        <ul>
+          <li>Een BME280 als temperatuur-, luchtvochtigheids- en luchtdruksensor voor een kamer.</li>
+          <li>Een BH1750 als lichtsensor voor automatische verlichting of zonlichtdetectie.</li>
+          <li>Een latere combinatie met CO₂- of aanwezigheidssensoren voor slimmere ventilatie- en lichtflows.</li>
+        </ul>
+
+        <!-- Derde afbeelding optioneel -->
+        <figure>
+          <img src="assets/images/matter-sensor-homey-concept.jpg" alt="Concept van een zelfgebouwde Matter-sensor in een smart home omgeving">
+          <figcaption class="muted small">
+            Matter wordt pas interessant als de hardware betrouwbaar draait. Deze tutorial legt daarom eerst de technische basis.
+          </figcaption>
+        </figure>
+
+        <h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+        <p>Na deze stap kun je gericht verder met een I2C-scanner. Daarmee controleer je eerst of de BME280 of BH1750 op de juiste I2C-adres wordt gevonden. Pas daarna is het logisch om sensorwaardes uit te lezen en deze later aan een Matter-datamodel te koppelen.</p>
+
+        <!-- Vierde afbeelding optioneel -->
+        <figure>
+          <img src="assets/images/bme280-bh1750-esp32-i2c.jpg" alt="BME280 en BH1750 als mogelijke I2C-sensoren voor een ESP32 Matter-project">
+          <figcaption class="muted small">
+            Een BME280 of BH1750 is een logische vervolgstap, omdat beide via I2C kunnen worden aangesloten en relatief eenvoudig te testen zijn.
+          </figcaption>
+        </figure>
+
+        <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+        <ul>
+          <li>Gebruik een echte USB-datakabel. Een laadkabel kan ervoor zorgen dat er geen COM-poort verschijnt.</li>
+          <li>Controleer de flashgrootte. In dit project stond de firmware eerst op 2 MB terwijl het board 4 MB flash had.</li>
+          <li>Begin nog niet met Matter zolang Hello World, build, flash en monitor niet probleemloos werken.</li>
+        </ul>
+
+        <h2 id="conclusie">Conclusie</h2>
+        <p>De belangrijkste winst van deze eerste stap is vertrouwen in de basis. De ESP32 DevKit V1 wordt herkend, ESP-IDF bouwt het project, de firmware wordt geflasht en de monitor toont onze eigen aangepaste tekst. Daarmee is de weg vrij om in de volgende stap een I2C-sensor zoals de BME280 of BH1750 uit te lezen en daarna pas richting een echte Matter-sensor te gaan.</p>
+      </article>
+
+      <aside class="side-stack">
+        <div class="toc">
+          <h3>In deze tutorial</h3>
+          <a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
+          <a href="#voor-wie">Voor wie is deze tutorial?</a>
+          <a href="#benodigdheden">Wat heb je nodig?</a>
+          <a href="#stappenplan">Stap-voor-stap uitleg</a>
+          <a href="#homey-integratie">Integratie met Homey</a>
+          <a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
+          <a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
+          <a href="#conclusie">Conclusie</a>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Gerelateerd</h3>
+          <div class="footer-links">
+            <a href="diy.html">Bekijk meer DIY-projecten</a>
+            <a href="tutorials.html">Meer smart home tutorials</a>
+            <a href="homey.html">Homey kennisbank</a>
+          </div>
+        </div>
+
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+
+      </aside>
+    </div>
+  </section>
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</body>
+</html>
