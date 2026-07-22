@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="techarticle" name="hv-schema-type"/>
+<title>Zelf Matter-sensoren bouwen | huisvanvandaag.nl</title>
+<meta content="Ontdek hoe de HVV Matter Sensor ontstond, bouw zelf een CO₂-multisensor en installeer de firmware eenvoudig via de browser." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+    }
+
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.04);
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      height: 100%;
+    }
+
+    .article-card-image img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article-card-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      height: 100%;
+    }
+
+    .article-card h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .article-card h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .article-card .meta-list {
+      gap: .5rem;
+    }
+
+    .article-card .button-secondary {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .category-intro {
+      max-width: 820px;
+      margin-top: 2.6rem;
+    }
+
+    .category-intro:first-child {
+      margin-top: 0;
+    }
+
+    .category-intro h2 {
+      margin-bottom: .35rem;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: 1.4rem;
+    }
+  </style>
+<script src="/js/global-schema.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="page-hero">
+<div class="container two-col">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<span>Zelf bouwen met Matter</span>
+</div>
+<span class="eyebrow">Matter &amp; DIY</span>
+<h1>Zelf bouwen met Matter</h1>
+<p class="lead muted">
+          Wat begon met een ESP32, een paar sensoren en een flinke hoeveelheid enthousiasme, groeide uit tot een compleet Matter-project.
+          <br/><br/>
+          Op deze pagina vind je precies de drie stappen van dat avontuur: het verhaal achter de ontwikkeling, de praktische bouwinstructie en de Web Installer waarmee je de firmware rechtstreeks vanuit je browser op de ESP32 zet.
+        </p>
+<div class="quick-links">
+<a class="button-secondary" href="#verhaal">Het verhaal</a>
+<a class="button-secondary" href="#bouwen">Zelf bouwen</a>
+<a class="button-secondary" href="#installeren">Firmware installeren</a>
+</div>
+</div>
+<div class="panel">
+<h3>Waar begin je?</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Nieuwsgierig naar het ontstaan?</strong><br/><span class="muted">Lees hoe een proefopstelling uitgroeide tot een bruikbaar Matter-project.</span></div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Zelf aan de slag?</strong><br/><span class="muted">Bouw een sensor voor CO₂, temperatuur en luchtvochtigheid.</span></div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div><strong>Geen zin in ingewikkelde software?</strong><br/><span class="muted">Installeer de geteste firmware gewoon rechtstreeks vanuit je browser.</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-tight" id="verhaal">
+<div class="container">
+<div class="category-intro">
+<span class="eyebrow">Van idee naar werkende sensor</span>
+<h2>Drie stappen, één slim project</h2>
+<p class="muted">Het leuke aan zelf bouwen is dat je onderweg minstens zoveel leert van wat niet meteen werkt. Hieronder vind je het complete verhaal, de praktische handleiding en uiteindelijk de kortste route naar werkende firmware.</p>
+</div>
+<div class="article-grid">
+<article class="article-card">
+<a class="article-card-image" href="zelf-een-matter-sensor-bouwen.html">
+<img alt="Het verhaal achter de ontwikkeling van de HVV Matter Sensor" loading="lazy" src="/assets/artikel/matter/Matter%20sensor%20prototype%20en%20werkende%20web%20installer.jpg""/>
+</a>
+<div class="article-card-body">
+<span class="eyebrow">Matter • Achtergrond</span>
+<h2><a href="zelf-een-matter-sensor-bouwen.html">Zelf een Matter-sensor bouwen: van eerste idee tot Web Installer</a></h2>
+<p class="muted">Een losse proefopstelling werkend krijgen is één ding. Er een project van maken dat ook iemand anders eenvoudig kan namaken, bleek een heel ander avontuur.</p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Achtergrond</span>
+<span class="meta-pill">Onderwerp: Matter &amp; ESP32</span>
+</div>
+<a class="button-secondary" href="zelf-een-matter-sensor-bouwen.html">Lees het verhaal</a>
+</div>
+</article>
+<article class="article-card" id="bouwen">
+<a class="article-card-image" href="bouw-zelf-een-matter-sensor-co2-en-bme280.html">
+<img alt="Zelf een Matter CO₂-sensor bouwen met ESP32, MH-Z19 en BME280" loading="lazy" src="/assets/artikel/matter/Matter%20sensor%20prototype%20met%20mhz19%20en%20bme280%20sensoren.jpg"/>
+</a>
+<div class="article-card-body">
+<span class="eyebrow">DIY • Binnenklimaat</span>
+<h2><a href="bouw-zelf-een-matter-sensor-co2-en-bme280.html">Bouw zelf een Matter CO₂-sensor met ESP32, MH-Z19 en BME280</a></h2>
+<p class="muted">Meet CO₂, temperatuur en luchtvochtigheid met één zelfgebouwde sensor en maak die waarden via Matter zichtbaar in je slimme woning.</p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY sensor</span>
+<span class="meta-pill">Hardware: ESP32 + MH-Z19 + BME280</span>
+</div>
+<a class="button-secondary" href="bouw-zelf-een-matter-sensor-co2-en-bme280.html">Bekijk het project</a>
+</div>
+</article>
+<article class="article-card" id="installeren">
+<a class="article-card-image" href="matter/">
+<img alt="Firmware voor de HVV Matter Sensor installeren via de browser" loading="lazy" src="/assets/artikel/matter/ESP Web Tools HVV matter multisensor firmware flasher.png"/>
+</a>
+<div class="article-card-body">
+<span class="eyebrow">Web Installer</span>
+<h2><a href="matter/">Installeer de Matter-firmware rechtstreeks vanuit je browser</a></h2>
+<p class="muted">Geen complete ontwikkelomgeving, compiler of terminalvenster. Sluit de ESP32 aan met een USB-datakabel en laat de Web Installer het lastige werk doen.</p>
+<div class="meta-list">
+<span class="meta-pill">Installatie: Via de browser</span>
+<span class="meta-pill">Browser: Chrome / Edge</span>
+</div>
+<a class="button-secondary" href="matter/">Open de Web Installer</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+<script src="affiliate-products.js"></script>
+</body>
+</html>
