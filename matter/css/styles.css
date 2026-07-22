@@ -1,0 +1,317 @@
+/* ==========================================
+   HuisvanVandaag Matter Installer
+   Kleuren afgestemd op de hoofd-stylesheet
+   ========================================== */
+
+:root {
+  color-scheme: light;
+
+  --hvv-background: #f4f7f6;
+  --hvv-background-top: #f8fbfa;
+  --hvv-panel: #ffffff;
+  --hvv-panel-soft: #f7fbf9;
+
+  --hvv-text: #14212b;
+  --hvv-muted: #61707a;
+
+  --hvv-primary: #1aa06d;
+  --hvv-primary-dark: #107651;
+  --hvv-primary-hover: #14865d;
+
+  --hvv-accent: #59b7ff;
+  --hvv-border: #d9e3e0;
+
+  --hvv-shadow: 0 14px 40px rgba(15, 23, 32, 0.08);
+  --hvv-shadow-soft: 0 8px 24px rgba(15, 23, 32, 0.06);
+
+  --hvv-radius-large: 20px;
+  --hvv-radius-medium: 14px;
+  --hvv-radius-small: 10px;
+}
+
+/* Base */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--hvv-background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--hvv-text);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(26, 160, 109, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(89, 183, 255, 0.14),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      var(--hvv-background-top) 0%,
+      var(--hvv-background) 100%
+    );
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  line-height: 1.65;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Layout */
+
+.installer-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+}
+
+.installer-card {
+  width: min(100%, 640px);
+  padding: clamp(24px, 5vw, 40px);
+  border: 1px solid rgba(217, 227, 224, 0.95);
+  border-radius: var(--hvv-radius-large);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--hvv-shadow-soft);
+}
+
+/* Header */
+
+.installer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 10px;
+  padding: 0.48rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(26, 160, 109, 0.12);
+  color: var(--hvv-primary-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--hvv-primary),
+    var(--hvv-accent)
+  );
+}
+
+h1 {
+  margin: 0;
+  color: var(--hvv-text);
+  font-size: clamp(1.75rem, 5vw, 2.35rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.version-badge {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(26, 160, 109, 0.10);
+  color: var(--hvv-primary-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+/* Intro */
+
+.intro {
+  margin: 0 0 24px;
+  color: var(--hvv-muted);
+}
+
+/* Checklist */
+
+.checklist {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  color: var(--hvv-text);
+  font-size: 0.95rem;
+}
+
+.checklist li::before {
+  content: "✓";
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--hvv-primary),
+    var(--hvv-accent)
+  );
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Installer */
+
+.install-panel {
+  padding: 18px;
+  border: 1px solid var(--hvv-border);
+  border-radius: var(--hvv-radius-medium);
+  background: var(--hvv-panel-soft);
+  text-align: center;
+}
+
+esp-web-install-button {
+  display: block;
+  --esp-tools-button-color: var(--hvv-primary);
+  --esp-tools-button-text-color: #ffffff;
+}
+
+.install-button {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.95rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--hvv-primary),
+    #21c18a
+  );
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(26, 160, 109, 0.24);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.install-button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    var(--hvv-primary-dark),
+    var(--hvv-primary)
+  );
+}
+
+.install-button:active {
+  transform: translateY(0);
+}
+
+.install-button:focus-visible {
+  outline: 3px solid rgba(89, 183, 255, 0.30);
+  outline-offset: 3px;
+}
+
+.browser-message {
+  display: block;
+  margin-top: 12px;
+  color: var(--hvv-muted);
+  font-size: 0.86rem;
+}
+
+/* Notice */
+
+.notice {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(89, 183, 255, 0.20);
+  border-radius: var(--hvv-radius-medium);
+  background: rgba(89, 183, 255, 0.10);
+  color: var(--hvv-muted);
+  font-size: 0.88rem;
+}
+
+.notice strong {
+  color: var(--hvv-text);
+}
+
+/* Footer */
+
+.footer-note {
+  margin: 20px 0 0;
+  color: var(--hvv-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 520px) {
+  .installer-shell {
+    padding: 18px 14px;
+  }
+
+  .installer-card {
+    border-radius: 18px;
+  }
+
+  .installer-header {
+    display: block;
+  }
+
+  .version-badge {
+    display: inline-block;
+    margin-top: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .install-button {
+    transition: none;
+  }
+}
+.installer-brand {
+  min-width: 0;
+}
+
+.installer-logo {
+  display: block;
+  width: min(240px, 100%);
+  height: auto;
+  margin-bottom: 20px;
+}

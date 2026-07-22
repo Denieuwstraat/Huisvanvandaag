@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="howto" name="hv-schema-type"/>
+<!-- PAGINATITEL -->
+<title>Zelf een Matter CO₂-sensor bouwen met ESP32, MH-Z19 en BME280 | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Bouw zelf een Matter-multisensor met ESP32, MH-Z19 en BME280. Meet CO₂, temperatuur en luchtvochtigheid en installeer de firmware eenvoudig via je browser." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js"></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</head>
+<body>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>Matter CO₂-sensor</span>
+</div>
+<span class="eyebrow">DIY • Matter multisensor</span>
+<h1>Zelf een Matter CO₂-sensor bouwen met ESP32, MH-Z19 en BME280</h1>
+<p class="lead muted">
+          Bouw zelf een slimme luchtkwaliteitssensor die CO₂, temperatuur en luchtvochtigheid meet én deze waarden rechtstreeks doorgeeft aan je Matter-omgeving.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Smart home en luchtkwaliteit</span>
+<span class="meta-pill">Platform: Matter en Google Home</span>
+<span class="meta-pill">Hardware: ESP32, MH-Z19 en BME280</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Dit ga je in dit artikel doen</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Drie metingen in één apparaat</strong><br/>
+<span class="muted">CO₂, temperatuur en luchtvochtigheid komen samen in één compact zelfbouwproject.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Rechtstreeks gekoppeld via Matter</strong><br/>
+<span class="muted">De meetwaarden verschijnen in een geschikt smart home-platform, zonder losse Homeyduino- of HTTP-constructie.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Geen ingewikkelde software nodig</strong><br/>
+<span class="muted">De door mij geteste firmware installeer je gewoon via de browser met de HVV Web Installer.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Gebaseerd op een werkend prototype</strong><br/>
+<span class="muted">Ik heb het complete project stap voor stap getest met een ESP32, MH-Z19 en BME280.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Direct praktisch inzetbaar</strong><br/>
+<span class="muted">Gebruik de metingen om ventilatie, comfort en de luchtkwaliteit in huis slim in de gaten te houden.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Prototype van de HVV Matter Multisensor met ESP32, MH-Z19 en BME280" src="assets/artikel/matter/Matter sensor prototype met mhz19 en bme280 sensoren.jpg"/>
+<figcaption class="muted small">
+            Het werkende prototype van de HVV Matter Multisensor, opgebouwd rond een ESP32, MH-Z19 CO₂-sensor en BME280.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Een losse CO₂-meter vertelt je hoe de lucht er op dat moment voorstaat. Handig, maar het wordt pas echt interessant wanneer je die informatie kunt gebruiken in je smart home. Dat was voor mij dan ook het uitgangspunt van dit project: zelf een Matter-sensor bouwen die niet alleen CO₂ meet, maar ook temperatuur en luchtvochtigheid doorgeeft.
+        </p>
+<p>
+          De uiteindelijke sensor is opgebouwd rond een ESP32, een MH-Z19 voor de CO₂-meting en een BME280 voor temperatuur en luchtvochtigheid. Benieuwd naar de hele weg van eerste proefopstelling tot werkende Matter-sensor? Die lees je in <a href="zelf-een-matter-sensor-bouwen.html">het achtergrondartikel over het ontstaan van dit project</a>. Op deze pagina gaan we vooral praktisch aan de slag: wat bouw je precies, hoe sluit je alles aan en hoe installeer je de firmware zonder gedoe?
+        </p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een compacte multisensor die in één oogopslag laat zien hoe het binnenklimaat ervoor staat. De MH-Z19 meet het CO₂-niveau in ppm, terwijl de BME280 temperatuur en luchtvochtigheid bijhoudt. De ESP32 leest beide sensoren uit en maakt de beschikbare waarden via Matter zichtbaar.</p>
+<ul>
+<li><strong>Luchtkwaliteit meten</strong> → de MH-Z19 meet hoeveel kooldioxide er in de lucht zit en laat zien wanneer het tijd wordt om te ventileren.</li>
+<li><strong>Klimaat in de kamer volgen</strong> → de BME280 vult de CO₂-meting aan met temperatuur en relatieve luchtvochtigheid.</li>
+</ul>
+<p>Na de installatie verschijnt de sensor als één apparaat in Google Home. Tijdens mijn praktijktest werden temperatuur, luchtvochtigheid, luchtkwaliteit en het actuele CO₂-niveau netjes weergegeven. Daarmee bouw je dus geen losse meter, maar een sensor die echt onderdeel wordt van je slimme woning.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Een ESP32 DevKit V1 of een vergelijkbaar ESP32-board dat bij de gebruikte firmware past</li>
+<li>Een MH-Z19 CO₂-sensor met UART-aansluiting</li>
+<li>Een BME280-sensormodule voor temperatuur en luchtvochtigheid</li>
+<li>Jumper wires en een USB-datakabel</li>
+<li>Een computer met Google Chrome of Microsoft Edge voor de Web Installer</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-1"></div>
+  <div id="affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-2"></div>
+  <div id="affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-3"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-1", "bme280_sensor");
+  renderAffiliateProduct("affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-2", "esp32_devkitc");
+  renderAffiliateProduct("affiliate-auto-bouw-zelf-een-matter-sensor-co2-en-bme280-html-3", "mh_z19b");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+<h2 id="stappenplan">Stap voor stap aan de slag</h2>
+<h3>1. Sluit de sensoren aan op de ESP32</h3>
+<p>Begin met de bedrading en installeer de firmware pas wanneer alles klopt. De BME280 communiceert via I²C en sluit je aan op de SDA- en SCL-pinnen van dit project. De MH-Z19 gebruikt UART. Controleer vóór het aansluiten altijd de voedingsspanning en de pinlabels van jouw specifieke module; die kunnen per uitvoering verschillen.</p>
+<ul>
+<li><strong>BME280 SDA</strong> → <strong>GPIO 21</strong></li>
+<li><strong>BME280 SCL</strong> → <strong>GPIO 22</strong></li>
+<li><strong>GND van beide sensoren</strong> → <strong>GND van de ESP32</strong></li>
+</ul>
+<figure>
+<img alt="Aansluitschema van ESP32 met MH-Z19 en BME280" src="assets/artikel/ESP32U BME280 Mhz19.png"/>
+<figcaption class="muted small">
+            Het gebruikte aansluitschema voor de ESP32, BME280 en MH-Z19. Controleer voor de zekerheid altijd de opschriften op je eigen modules.
+          </figcaption>
+</figure>
+<h3>2. Controleer de bedrading nog een keer</h3>
+<p>Loop iedere verbinding nog één keer rustig na. Let vooral op voeding, massa en de richting van RX en TX bij de MH-Z19. Een verwisselde UART-verbinding zorgt meestal simpelweg voor onbruikbare CO₂-waarden, maar een fout in de voeding kan schade veroorzaken. Sluit de USB-kabel daarom pas aan wanneer je zeker weet dat alles goed zit.</p>
+<h3>3. Installeer de firmware via je browser</h3>
+<p>Goed nieuws: voor dit project hoef je niet zelf aan de slag met ESP-IDF, ESP-Matter of andere ontwikkelsoftware. De geteste firmware staat al voor je klaar in de HVV Web Installer. Sluit de ESP32 met een USB-datakabel aan, open de installer in Chrome of Edge en volg de stappen op het scherm.</p>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code> Geen code en geen lokale ontwikkelomgeving nodig.
+
+1. Sluit de ESP32 aan met een USB-datakabel.
+2. Open de Web Installer via onderstaande groene knop.
+3. Kies Firmware installeren.
+4. Selecteer de juiste seriële poort.
+5. Wacht tot het flashen volledig is afgerond.</code></pre>
+</div>
+<h3>4. Start de HVV Web Installer</h3>
+<p>Met onderstaande knop ga je rechtstreeks naar de browserinstaller. Houd er wel rekening mee dat bij een nieuwe installatie het flashgeheugen wordt gewist. Bestaande Matter- en wifi-instellingen op het board raak je daardoor kwijt.
+
+<div class="install-panel">
+<a class="hvv-button" href="/matter/">
+        🚀 Gelijk naar de Web Installer
+    </a>
+</div></p>
+<h3>5. Koppel de sensor aan je Matter-platform</h3>
+<p>Na het flashen start de ESP32 op met de Matter-firmware. Voeg het apparaat vervolgens toe aan een geschikt Matter-platform. Tijdens mijn praktijktest koppelde ik de sensor aan Google Home, waar temperatuur, luchtvochtigheid, luchtkwaliteit en CO₂-waarde zichtbaar werden. Geef de sensor daarna een herkenbare naam en plaats hem in de juiste kamer.</p>
+<figure>
+<img alt="HVV Matter Multisensor Web Installer in de browser" src="assets/artikel/matter/ESP Web Tools HVV matter multisensor firmware flasher.png"/>
+<figcaption class="muted small">
+            Met de HVV Web Installer zet je de geteste firmware rechtstreeks vanuit Chrome of Edge op de aangesloten ESP32.
+          </figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De sensor is volledig rond Matter opgebouwd en is daardoor niet afhankelijk van Homeyduino of een losse HTTP-koppeling. Voor dit project heb ik de werking zichtbaar getest in Google Home. Gebruik je Homey, dan moeten jouw Homey-model en softwareversie het gebruikte Matter-apparaattype en de bijbehorende meetwaarden ondersteunen. Welke informatie je precies ziet en welke Flow-kaarten beschikbaar zijn, kan per platform verschillen.</p>
+<p>Zodra de meetwaarden in je smart home-platform verschijnen, kun je ze gebruiken voor meldingen en automatiseringen, mits jouw platform deze waarden ondersteunt.</p>
+<ul>
+<li>Een melding sturen zodra het CO₂-niveau oploopt en het tijd is om te ventileren.</li>
+<li>De luchtvochtigheid volgen in de woonkamer, slaapkamer of thuiswerkkamer.</li>
+<li>Temperatuur en luchtkwaliteit combineren in ventilatie- of klimaatflows.</li>
+</ul>
+<figure>
+<img alt="HVV Matter Multisensor met temperatuur luchtvochtigheid en CO2 in Google Home" src="assets/artikel/Matter sensor uitlezen in Google Home.png"/>
+<figcaption class="muted small">
+            De werkende sensor in Google Home, compleet met temperatuur, luchtvochtigheid, luchtkwaliteit en het gemeten CO₂-niveau.
+          </figcaption>
+</figure>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>In dagelijks gebruik geeft de sensor in één overzicht aan hoe het binnenklimaat ervoor staat. De CO₂-waarde is vooral nuttig in ruimtes waar langere tijd mensen aanwezig zijn, zoals de woonkamer, slaapkamer of thuiswerkplek. Temperatuur en luchtvochtigheid geven extra context: een kamer kan qua temperatuur prettig aanvoelen, terwijl de luchtkwaliteit ondertussen toch terugloopt. Door de drie metingen samen te bekijken, zie je sneller wanneer ventileren of bijsturen zinvol is.</p>
+<figure>
+<img alt="Technische informatie van de HVV Matter Multisensor in Google Home" src="assets/artikel/Matter sensor in Google Home.png"/>
+<figcaption class="muted small">
+            Google Home herkent het apparaat als HVV Matter Multisensor, met Huisvanvandaag.nl als fabrikant en Prototype-v1 als hardwareversie.
+          </figcaption>
+</figure>
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>Gebruik een USB-kabel die niet alleen stroom levert, maar ook data kan overdragen.</li>
+<li>Sluit andere programma’s die de seriële poort gebruiken voordat je de Web Installer opent.</li>
+<li>Dit blijft een zelfbouwproject en prototype. De uiteindelijke nauwkeurigheid hangt onder meer af van de gebruikte modules, de plaatsing, opwarmtijd en de ventilatie rond de sensoren.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met een ESP32, MH-Z19 en BME280 bouw je een praktische Matter-multisensor die drie belangrijke waarden van het binnenklimaat samenbrengt. De ingewikkelde ontwikkelomgeving blijft achter de schermen; voor het namaken gebruik je de browserinstaller en de geteste firmware. Wil je eerst weten waarom dit project zoveel meer werk was dan een paar sensoren aansluiten? Lees dan <a href="zelf-een-matter-sensor-bouwen.html">hoe de HVV Matter Multisensor tot stand kwam</a>. Klaar om zelf te beginnen? Dan brengt de Web Installer je rechtstreeks naar de volgende stap.</p>
+</div></article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#stappenplan">Stap voor stap aan de slag</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links">
+<a href="zelf-een-matter-sensor-bouwen.html">Hoe de HVV Matter Multisensor is ontstaan</a>
+<a href="/matter/">HVV Matter Web Installer</a>
+<a href="tutorials.html">Meer smart home-tutorials</a>
+</div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+<div class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160" id="mlb2-42295160">
+<div class="row-form">
+<h3>📬 Mis geen nieuw project</h3>
+<p>Vind je dit project interessant? Dan wil je de volgende waarschijnlijk ook niet missen.</p>
+<form action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe" class="ml-block-form" method="post" target="_blank">
+<input aria-label="E-mailadres" autocomplete="email" name="fields[email]" placeholder="E-mailadres" required="" type="email"/>
+<p class="newsletter-small">Geen spam, gewoon nieuwe smart home-projecten. Uitschrijven kan altijd.</p>
+<div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+<input name="ml-submit" type="hidden" value="1"/>
+<input name="anticsrf" type="hidden" value="true"/>
+<button type="submit">👉 Houd mij op de hoogte</button>
+</form>
+</div>
+<div class="row-success" style="display:none;">
+<h3>Bedankt!</h3>
+<p>Gelukt, je staat op de lijst.</p>
+</div>
+</div>
+</div>
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+</aside>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+</body>
+</body></html>

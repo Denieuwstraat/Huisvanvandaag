@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="howto" name="hv-schema-type"/>
 <meta content="#0d283f" name="theme-color"/>
-<title>HVV Matter Multisensor installeren vanuit je browser | Huisvanvandaag.nl</title>
+<title>HVV Matter Sensor installeren vanuit je browser | Huisvanvandaag.nl</title>
 <meta content="Installeer de firmware van de HVV Matter Multisensor rechtstreeks vanuit Chrome of Edge. Geen ESP-IDF nodig: aansluiten, installeren en koppelen aan Google Home." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -350,7 +350,7 @@
 <span>Matter Multisensor installeren</span>
 </div>
 <span class="eyebrow">Matter • ESP32 • Webinstaller</span>
-<h1>Installeer de HVV Matter Multisensor eenvoudig vanuit je browser</h1>
+<h1>Installeer de HVV Matter Sensor eenvoudig vanuit je browser</h1>
 <p class="lead muted">Geen ingewikkelde software of technische kennis nodig. Sluit je ESP32 aan, klik op installeren en binnen een paar minuten draait de nieuwste Huisvanvandaag Matter Multisensor firmware op je board en in je smart home.</p>
 <div class="meta-list">
 <span class="meta-pill">Categorie: Smart home</span>
@@ -377,13 +377,18 @@
 <span class="check-mark">✓</span>
 <div><strong>Koppel de sensor eenvoudig met een smart home hub naar keuze</strong><br/><span class="muted">Binnen twee miniuten geinstalleerd, binnen 5 minuten werkend in je smart home!
                 </span></div>
+                
 </div>
 </div>
 </div></div></section>
+<figure>
+<img alt="Web Installer waarmee je snel eenvoudig je eigen matter sensons installeert." src="assets/artikel/matter/ESP Web Tools HVV matter multisensor installeren en terminal output.png"/>
+<figcaption class="muted small">Met de Web Installer, installeer je eenvoudig en snel je zelfgebouwde matter sensor.</figcaption>
+</figure>
 <section class="section-tight" style="padding-top: 14px;">
 <div class="container project-content-layout">
 <article class="article-body project-article">
-<p class="lead">Firmware installeren hoeft tegenwoordig helemaal niet meer ingewikkeld te zijn. Dankzij deze webinstaller zet je de officiële HVV Matter Multisensor firmware rechtstreeks vanuit je browser op een ondersteunde ESP32. Geen losse tools, geen commandoregels en geen gedoe.</p>
+<p class="lead">Firmware installeren hoeft tegenwoordig helemaal niet meer ingewikkeld te zijn. Dankzij deze webinstaller zet je de officiële HVV Matter Sensor firmware rechtstreeks vanuit je browser op een ondersteunde ESP32. Geen losse tools, geen commandoregels en geen gedoe.</p>
 <p>Het enige wat je nodig hebt is een recente versie van Google Chrome of Microsoft Edge, een USB-datakabel die data ondersteunt en een geschikte ESP32. De rest doet de installer voor je.</p>
 <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
 <p>Je doorloopt het volledige traject van aansluiten tot koppelen.</p>
@@ -394,16 +399,29 @@
 <p>De pagina is bewust ingericht voor gebruikers die nog nooit eerder een ESP32 hebben geflasht.</p>
 <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
 <p>
-            Deze installer is bedoeld voor hobbyisten en makers die een HVV Matter Multisensor willen installeren zonder een volledige ontwikkelomgeving in te richten. Voor het aanpassen of zelf compileren van de firmware blijft het aparte firmwareproject nodig.
+            Deze installer is bedoeld voor hobbyisten en makers die een HVV Matter Sensor willen installeren zonder een volledige ontwikkelomgeving in te richten. Voor het aanpassen of zelf compileren van de firmware blijft het aparte firmwareproject nodig.
           </p>
 <h2 id="benodigdheden">Wat heb je nodig?</h2>
 <ul>
-<li>Een ondersteunde ESP32 voor de HVV Matter Multisensor.</li>
+<li>Een ondersteunde ESP32 voor de HVV Matter Sensor.</li>
 <li>Een USB-kabel die ook data kan overdragen.</li>
 <li>Een computer met Google Chrome of Microsoft Edge.</li>
 <li>Een vrije USB-poort en toestemming om een seriële verbinding te openen.</li>
 <li>De Google Home-app voor het koppelen van het Matter-apparaat.</li>
 </ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-hvv-matter-installer-html-1"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-hvv-matter-installer-html-1", "esp32_devkitc");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
 <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
 <h3>1. Bereid de ESP32 voor</h3>
 <p>
@@ -441,13 +459,31 @@
           </p>
 <h3>4. Bekijk de seriële uitvoer</h3>
 <p>
-            Na het installeren start de ESP32 opnieuw op. Open in ESP Web Tools de log- of consoleweergave. Daar zie je de opstartmeldingen van de firmware. De Matter-pairingcode of QR-informatie kan alleen automatisch op deze pagina worden getoond wanneer de firmware deze in een vast, herkenbaar formaat beschikbaar maakt. Tot die tijd gebruik je de informatie uit de seriële uitvoer.
-          </p>
+  Na het installeren start de ESP32 automatisch opnieuw op. Open vervolgens in ESP Web Tools de <strong>Logs &amp; Console</strong>. Tijdens het opstarten verschijnt een link die begint met:
+</p>
+
+<pre><code>https://project-chip.github.io/connectedhomeip/qrcode.html</code></pre>
+
+<p>
+  Open deze volledige link in een nieuw tabblad. Er wordt automatisch een Matter QR-code gegenereerd die je kunt scannen met Google Home of een andere Matter-compatibele smart-home-app.
+</p>
+
+<p>
+  Zie je de link niet direct verschijnen? Druk dan één keer kort op de <strong>EN/RESET</strong>-knop van de ESP32 terwijl de seriële console geopend blijft. Of via de <strong> Reset Device</strong> knop vanuit het Logs en Console scherm. De opstartinformatie, inclusief de Matter-koppellink, wordt dan opnieuw weergegeven.
+</p>
 <ul class="status-list">
 <li><strong>Geen uitvoer zichtbaar?</strong> Sluit de console, wacht enkele seconden en maak opnieuw verbinding met dezelfde seriële poort.</li>
 <li><strong>Onleesbare tekens?</strong> Controleer of de console de baudrate gebruikt die in de releasehandleiding staat.</li>
 <li><strong>ESP32 blijft opnieuw starten?</strong> Koppel de voeding los, sluit opnieuw aan en raadpleeg de releasehandleiding.</li>
 </ul>
+
+<figure>
+<img alt="Logs & Console scherm met Reset Device knop" src="assets/artikel/matter/ESP Web Tools HVV matter multisensor QR code uit serial monitor halen open gearceerde link.png"/>
+<figcaption class="muted small">
+    Logs & Console scherm met Reset Device knop zichtbaar in beeld. Hiermee ververs je de output om zo de link naar je QR-code (oranje gearceerd) zichtbaar te krijgen.
+    
+  </figcaption>
+
 <h3>5. Koppel de sensor aan je smart home</h3>
 <p>
   Na het installeren kun je de sensor toevoegen aan een smart home-platform dat Matter ondersteunt. Open hiervoor de app van je favoriete smart home hub en kies voor het toevoegen van een nieuw apparaat. Afhankelijk van de firmware kun je vervolgens de weergegeven QR-code scannen of de numerieke koppelcode handmatig invoeren. Daarna wijs je de sensor toe aan een ruimte en is deze klaar voor gebruik.
@@ -471,15 +507,18 @@
   <li>Automatisch ventileren, verwarmen of koelen op basis van luchtkwaliteit, temperatuur of luchtvochtigheid.</li>
   <li>Aanwezigheidsdetectie combineren met verlichting, meldingen of energiebesparende flows.</li>
 </ul>
-<h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
+<h2 id="wat-kun-je-hierna">De eerste stap naar een slimmer huis</h2>
+
 <p>
-            Zodra de sensor correct is gekoppeld, kun je controleren welke meetwaarden in Google Home beschikbaar zijn. Bewaar het gebruikte firmwarepakket en noteer de geïnstalleerde versie. Dat maakt ondersteuning en latere updates eenvoudiger.
-          </p>
+  De HVV Matter Multisensor is de eerste uit een serie slimme sensoren die ik de komende tijd wil ontwikkelen. Net zoals vroeger het Huis van de Toekomst mij liet zien wat er allemaal mogelijk was, wil ik laten zien dat een modern Smart Home helemaal niet ingewikkeld of duur hoeft te zijn.
+</p>
+
 <div class="technical-note">
-<h3>Opzet voor toekomstige HVV-producten</h3>
-<p>
-              De installer haalt productnaam, versie, manifest, download en handleiding uit één configuratieobject. Voor een nieuwe release hoeft alleen deze configuratie te worden aangepast. Voor meerdere apparaten kan later dezelfde pagina worden uitgebreid met een product- en hardwarekeuze, zonder de firmwareprojecten met de websitecode te vermengen.
-            </p>
+  <h3>Blijf op de hoogte</h3>
+
+  <p>
+    Er staan nog volop nieuwe projecten op de planning. Denk aan extra Matter-sensoren, nieuwe functies en regelmatige firmware-updates. Kom dus af en toe terug op HuisvanVandaag om te kijken wat er nieuw is. Wie weet staat de volgende sensor waar jij op zit te wachten er binnenkort gewoon tussen!
+  </p>
 </div>
 <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
 <ul>
@@ -489,8 +528,15 @@
 </ul>
 <h2 id="conclusie">Conclusie</h2>
 <p>
-  Met de HVV Matter Multisensor Web Installer is het installeren van de firmware verrassend eenvoudig. Sluit je ESP32 aan, klik op installeren en binnen enkele minuten draait de nieuwste firmware op je board. Je hebt geen ontwikkelomgeving of ingewikkelde software nodig. Ideaal voor beginners, maar ook handig voor ervaren makers die snel aan de slag willen. Bovendien is de installer voorbereid op toekomstige firmware-updates en nieuwe projecten.
+  Met de HVV Matter Sensor Web Installer is het installeren van de firmware verrassend eenvoudig. Sluit je ESP32 aan, klik op installeren en binnen enkele minuten draait de nieuwste firmware op je board. Je hebt geen ontwikkelomgeving of ingewikkelde software nodig. Ideaal voor beginners, maar ook handig voor ervaren makers die snel aan de slag willen. Bovendien is de installer voorbereid op toekomstige firmware-updates en nieuwe projecten.
 </p>
+ 
+<div class="install-panel">
+    <a href="/matter/" class="hvv-button">
+        🚀 Gelijk naar de Web Installer
+    </a>
+</div>
+
 </article>
 <aside class="side-stack">
 <div class="toc">
@@ -614,5 +660,9 @@
 
     fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel").catch(() => {});
   </script>
+
+
+
+<script src="affiliate-products.js"></script>
 </body>
 </html>

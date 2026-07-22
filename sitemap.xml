@@ -2,190 +2,218 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.huisvanvandaag.nl/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/#hue-gewone-lampen-slim-maken-homey.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/#matter-sensor-esp32-hello-world-tutorial.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/404.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/Chriet-Titulaer-voorspellingen.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/HVV-matter-installer.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/achter-de-schermen-zo-ingewikkeld-is-matter-eigenlijk.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/arduino_ide_esp8266_tutorial.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/bedankt.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/bewegingssensor_homeyduino.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/bouw-zelf-een-matter-sensor-co2-en-bme280.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/chriet-titulaer.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/contact.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/diy.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/gemini-voor-home.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-bridge-satellite-mode-vs-homeylink.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-bridge.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-chatgpt.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-ld2410-flow-tutorial.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-pro-2023.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-pro-mini-2026.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey-self-hosted-2026.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homey.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-bh1750-lichtsensor-esp32.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-clapper-switch.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-co2-multisensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-co2-sensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-deur-en-raamsensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.huisvanvandaag.nl/homeyduino-dht11-sensor copy.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-dht11-sensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-esp32-c3-c6-compatibiliteit.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/homeyduino-in-2026.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-ld2410-aanwezigheidssensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-licht-temperatuur-sensor.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-multi-relais.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyduino-temperatuursensor-ds18b120.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/homeyscript-stroomprijs-vandaag-morgen.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/informatief.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/keukendeur-herinnering-slim-google-home-tutorial.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/matter-en-thread-uitgelegd.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/matter/index.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/over.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/privacy-disclaimer.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/review-hue-st64-edison.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/review-nest-wifi-pro.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/review-roomba-irobot-i7.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/reviews.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/robotstofzuiger-homey-tutorial.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/tutorials.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/waarom-dit-blog-bestaat.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/wat-is-homeyduino.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/wat-je-hebt-gemist.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/wat-kun-je-doen-met-homey.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.huisvanvandaag.nl/zelf-een-matter-sensor-bouwen.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
     <loc>https://www.huisvanvandaag.nl/zonne-flows-homey-tutorial.html</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-22</lastmod>
   </url>
 </urlset>

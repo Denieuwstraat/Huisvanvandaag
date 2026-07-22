@@ -767,5 +767,94 @@
       "badge": "Prime"
     }
   ]
+},
+
+"esp32_devkitc": {
+  "name": "ESP32-DevKitC Development Board",
+  "description": "ESP32-ontwikkelbord met USB-C-aansluiting, geschikt voor sensoren, automatiseringen en uiteenlopende DIY smart home projecten.",
+  "images": [
+    "assets/affiliate/ESP32-DevKitC Development Board.jpg"
+  ],
+  "aliases": [
+    "esp32 devkitc",
+    "esp32-devkitc",
+    "esp32 devkit c",
+    "esp32 development board",
+    "esp32 dev board",
+    "esp32 type-c",
+    "esp32 usb-c",
+    "esp32-32d",
+    "esp32 32d",
+    "esp32-32u",
+    "esp32 32u",
+    "esp32 wroom",
+    "esp32",
+    "development board",
+    "ontwikkelbord"
+  ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c3fyUVCL",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fespressif-developmentboard-esp32-devkitc-vie%2F9300000092104967%2F&name=Espressif%20ESP32-DevKitC-VIE%20Developmentboard%20ESP32-DevKitC-VIE",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+    }
+    ]
+  },
+
+"bme280_sensor": {
+  "name": "BME280 temperatuur, luchtvochtigheid en luchtdruk sensor",
+  "description": "Compacte BME280-sensor voor het nauwkeurig meten van temperatuur, relatieve luchtvochtigheid en luchtdruk. Veelgebruikt in ESP32-, Arduino- en smart home DIY-projecten.",
+  "images": [
+    "assets/affiliate/bme280 temperatuur luchtvochtigheid en luchtdruk sensor.jpg"
+  ],
+  "aliases": [
+    "bme280",
+    "bme280 sensor",
+    "bme280 module",
+    "temperatuur sensor",
+    "luchtvochtigheid sensor",
+    "luchtdruk sensor",
+    "barometer sensor",
+    "weerstation sensor",
+    "i2c bme280",
+    "esp32 bme280",
+    "arduino bme280",
+    "klimaatsensor",
+    "environment sensor",
+    "bosch bme280"
+  ],
+  "shops": [
+    {
+      "name": "AliExpress",
+      "url": "https://s.click.aliexpress.com/e/_c3GRZZdN",
+      "label": "Budgetoptie",
+      "badge": "€"
+    },
+    {
+      "name": "Bol.com",
+      "url": "",
+      "label": "Snelle levering NL",
+      "badge": "NL"
+    },
+    {
+      "name": "Amazon",
+      "url": "",
+      "label": "Snelle internationale levering",
+      "badge": "Prime"
+  }
+    ]
+  }
 }
-} 

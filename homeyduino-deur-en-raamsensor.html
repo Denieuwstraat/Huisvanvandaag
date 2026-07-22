@@ -146,6 +146,10 @@
 
 
 
+
+
+
+
 <h2 id="opbouw">Hoe deze sensor werkt</h2>
 <p>De kracht van dit project zit in de eenvoud. Het MC-38 contact geeft simpelweg door of het magneetcontact gesloten of onderbroken is. De Wemos D1 Mini leest die status uit op een digitale pin en stuurt die vervolgens als capability door naar Homey.</p>
 <p>In deze vernieuwde versie gebeurt dat netter dan in een snelle basisopzet. De code werkt met debounce, controleert periodiek de wifi-verbinding, initialiseert Homey opnieuw als dat nodig is en bewaart de laatst bekende deurstatus lokaal zolang publiceren niet mogelijk is. Daarnaast wordt de actuele status ook periodiek opnieuw verstuurd via een heartbeat, zodat Homey niet alleen afhankelijk is van echte statuswisselingen.</p>

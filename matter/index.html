@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Installeer de firmware voor de HVV Matter Sensor rechtstreeks vanuit je browser."
+  >
+  <title>HVV Matter Multisensor Installer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module">
+  </script>
+</head>
+
+<body>
+  <main class="installer-shell">
+    <section class="installer-card" aria-labelledby="installer-title">
+
+      <header class="installer-header">
+        <div class="installer-brand">
+    <a href="https://huisvanvandaag.nl">
+        <img
+            src="../assets/logo-black.png"
+            alt="HuisvanVandaag"
+            class="installer-logo">
+    </a>
+
+    <span class="eyebrow">Firmware installer</span>
+
+    <h1 id="installer-title">
+        HVV Matter Sensor
+    </h1>
+</div>
+
+        <span
+          class="version-badge"
+          aria-label="Firmwareversie 0.2.1">
+          v0.2.1
+        </span>
+      </header>
+
+      <p class="intro">
+        Sluit de ESP32 aan met een USB-datakabel en installeer de
+        firmware rechtstreeks vanuit je browser.
+      </p>
+
+      <ul class="checklist" aria-label="Voorbereiding">
+        <li>
+          Gebruik Google Chrome of Microsoft Edge op een computer.
+        </li>
+        <li>
+          Gebruik een USB-kabel die ook data kan overdragen.
+        </li>
+        <li>
+          Sluit andere programma’s die de seriële poort gebruiken.
+        </li>
+      </ul>
+
+      <div class="install-panel">
+        <esp-web-install-button manifest="./firmware/v0.2.1/manifest.json">
+          <button
+            class="install-button"
+            slot="activate"
+            type="button">
+            Firmware installeren
+          </button>
+
+          <span class="browser-message" slot="unsupported">
+            Deze browser ondersteunt de webinstaller niet. Gebruik
+            Google Chrome of Microsoft Edge.
+          </span>
+
+          <span class="browser-message" slot="not-allowed">
+            Open deze installer via HTTPS of localhost.
+          </span>
+        </esp-web-install-button>
+      </div>
+
+      <aside class="notice" aria-label="Belangrijke waarschuwing">
+        <strong>Let op:</strong>
+        bij een nieuwe installatie wordt het flashgeheugen gewist.
+        Bestaande Matter- en wifi-instellingen gaan daardoor verloren.
+      </aside>
+
+      <p class="footer-note">
+        huisvanvandaag.nl · Firmwareversie v0.2.1
+      </p>
+    </section>
+  </main>
+</body>
+</html>
