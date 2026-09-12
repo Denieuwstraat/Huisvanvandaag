@@ -1555,3 +1555,20 @@ ul, ol { padding-left: 1.15rem; }
   border: 0;
   display: block;
 }
+
+
+/* Interne links */
+.article-body a[href$=".html"] {
+  font-weight: 600;
+  color: #16805e;
+  text-decoration: bold;
+  text-underline-offset: 3px;
+}
+
+/* Affiliate-links */
+.article-body a[rel~="sponsored"] {
+  font-weight: 700;
+  color: #16805e;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
