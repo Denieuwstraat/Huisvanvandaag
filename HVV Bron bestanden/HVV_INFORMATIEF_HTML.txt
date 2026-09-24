@@ -1,24 +1,58 @@
 Vul onderstaand HTML-sjabloon in voor een informatieve pagina op huisvanvandaag.nl.
 
 DOEL:
-Maak een volledig publiceerbaar informatief artikel dat organisch verkeer aantrekt, autoriteit opbouwt en waar logisch doorverwijst naar relevante DIY-, tutorial- of reviewpagina’s.
+Maak een volledig publiceerbaar informatief artikel dat organisch verkeer aantrekt, inhoudelijke autoriteit opbouwt, goed begrijpelijk en citeerbaar is voor zoekmachines en AI-zoeksystemen, en waar logisch doorverwijst naar relevante DIY-, tutorial- of reviewpagina’s.
 
 REGELS:
-- behoud de HTML-structuur exact
-- vervang alleen de [[PLACEHOLDERS]]
+- behoud de HTML-structuur van dit sjabloon
+- vervang alle [[PLACEHOLDERS]]
 - vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag
-- formaat publish_date: YYYY-MM-DD
-- laat [[PUBLISH_DATE]] nooit als placeholder staan
+- formaat PUBLISH_DATE: YYYY-MM-DD
+- vervang [[MODIFIED_DATE]] bij eerste publicatie door dezelfde datum als [[PUBLISH_DATE]]
+- wijzig [[MODIFIED_DATE]] bij een latere inhoudelijke update naar de werkelijke wijzigingsdatum
+- laat geen [[PLACEHOLDERS]] in de uiteindelijke HTML staan
 - verzin geen feiten
-- feitelijke claims moeten gecontroleerd zijn
+- feitelijke claims moeten vooraf gecontroleerd zijn aan de hand van betrouwbare, bij voorkeur primaire bronnen
+- maak duidelijk onderscheid tussen feiten, ervaringen, interpretatie en advies
 - schrijf professioneel, toegankelijk, concreet en prettig leesbaar
 - optimaliseer op zoekintentie, maar schrijf altijd eerst voor de lezer
+- geef in [[KORT_ANTWOORD]] in 2 tot 4 zinnen direct antwoord op de belangrijkste vraag van het artikel
+- laat [[KORT_ANTWOORD]] zelfstandig begrijpelijk zijn zonder de rest van het artikel te hoeven lezen
+- gebruik natuurlijke termen, productnamen, protocollen en entiteiten consequent
+- gebruik duidelijke en beschrijvende H2- en H3-koppen
 - gebruik een natuurlijke opbouw die past bij het onderwerp
+- beantwoord relevante vervolgvragen waar logisch
+- gebruik voorbeelden, concrete gegevens en praktijkcontext als die geverifieerd of uit de input bekend zijn
 - voeg interne links alleen toe waar ze logisch en functioneel zijn
+- gebruik beschrijvende ankerteksten voor interne links
 - forceer geen affiliate insteek
+- een affiliate-product mag alleen worden genoemd als het inhoudelijk relevant is voor het artikel
+- affiliate-links moeten rel="sponsored noopener" gebruiken
+- verwijder het volledige blok "Aanbevolen producten" wanneer affiliate-producten niet functioneel relevant zijn
+- voeg bij informatieve feitelijke artikelen een compact bronnenblok toe met de belangrijkste gebruikte primaire of gezaghebbende bronnen
+- verwijder het FAQ-blok wanneer er geen natuurlijke, relevante vervolgvragen zijn
+- gebruik geen FAQ-vragen die alleen bestaan om zoekwoorden te herhalen
 - geen AI-uitleg
 - geen interne notities
 - geen meta-tekst
+- output alleen de volledig ingevulde HTML
+
+SEO / AI-VINDBAARHEID:
+- [[ARTIKEL_TITEL]] moet duidelijk maken waar de pagina over gaat en natuurlijk aansluiten op de zoekintentie
+- [[META_DESCRIPTION]] moet de inhoud concreet samenvatten en uitnodigen tot doorklikken zonder clickbait
+- [[CANONICAL_URL]] is altijd de absolute definitieve URL van het artikel
+- [[HERO_AFBEELDING_ABSOLUTE_URL]] is altijd een absolute, crawlbare URL
+- gebruik één duidelijke H1
+- het blok "Kort antwoord" bevat het kernantwoord dat een zoekmachine of AI-systeem zelfstandig kan interpreteren
+- zorg dat productnamen, platformnamen en technische termen in tekst en metadata consequent hetzelfde worden geschreven
+- laat de zichtbare auteur, publicatiedatum en wijzigingsdatum overeenkomen met de structured data
+- laat structured data centraal afhandelen door /js/global-schema.js en /js/article-schema.js; voeg geen tweede, conflicterende JSON-LD toe in dit sjabloon
+
+BRONNEN:
+- gebruik bij voorkeur officiële documentatie, fabrikantdocumentatie, standaarden, overheidsbronnen of andere primaire bronnen
+- gebruik secundaire bronnen alleen als die echt iets toevoegen
+- neem alleen bronnen op die daadwerkelijk voor het artikel zijn gebruikt
+- gebruik voor normale redactionele bronlinks geen rel="nofollow" of rel="sponsored"
 
 OUTPUT:
 alleen de ingevulde HTML
@@ -28,8 +62,16 @@ alleen de ingevulde HTML
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- INTERNE ARTIKELMETADATA VOOR CENTRALE STRUCTURED DATA -->
   <meta name="hv-schema-type" content="techarticle">
   <meta name="publish_date" content="[[PUBLISH_DATE]]">
+  <meta name="modified_date" content="[[MODIFIED_DATE]]">
+  <meta name="author" content="[[AUTEUR_NAAM]]">
+
+  <!-- INDEXERING -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="[[CANONICAL_URL]]">
 
   <!-- PAGINATITEL -->
   <title>[[ARTIKEL_TITEL]] | huisvanvandaag.nl</title>
@@ -37,262 +79,411 @@ alleen de ingevulde HTML
   <!-- META DESCRIPTION -->
   <meta name="description" content="[[META_DESCRIPTION]]">
 
+  <!-- OPEN GRAPH -->
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HuisvanVandaag">
+  <meta property="og:title" content="[[ARTIKEL_TITEL]]">
+  <meta property="og:description" content="[[META_DESCRIPTION]]">
+  <meta property="og:url" content="[[CANONICAL_URL]]">
+  <meta property="og:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta property="og:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+  <meta property="article:published_time" content="[[PUBLISH_DATE]]">
+  <meta property="article:modified_time" content="[[MODIFIED_DATE]]">
+  <meta property="article:author" content="[[AUTEUR_URL]]">
+
+  <!-- SOCIAL PREVIEW -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[[ARTIKEL_TITEL]]">
+  <meta name="twitter:description" content="[[META_DESCRIPTION]]">
+  <meta name="twitter:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta name="twitter:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
 
-  <script src="affiliate-products.js"></script>
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
+  <script src="affiliate-products.js" defer></script>
+  <script src="/js/global-schema.js" defer></script>
+  <script src="/js/article-schema.js" defer></script>
 </head>
-<body>
 
 <body>
   <div id="site-header"></div>
 
-<main>
+  <main>
+    <article>
 
-<section class="article-hero">
-  <div class="container article-layout">
-    <div>
-      <div class="breadcrumbs">
-        <a href="index.html">Home</a>
-        <span>•</span>
-        <a href="homey.html">Kennisbank</a>
-        <span>•</span>
-        <span>[[KORTE_ARTIKELNAAM]]</span>
-      </div>
-
-      <span class="eyebrow">Informatief</span>
-      <span class="eyebrow">[[EYEBROW]]</span>
-      <h1>[[ARTIKEL_TITEL]]</h1>
-
-      <p class="lead muted">
-        [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
-      </p>
-
-      <div class="meta-list">
-        <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
-        <span class="meta-pill">Onderwerp: [[ONDERWERP]]</span>
-        <span class="meta-pill">Voor: [[DOELGROEP]]</span>
-      </div>
-    </div>
-
-    <div class="panel project-info-panel">
-      <h3>Waarom dit artikel de moeite waard is</h3>
-      <div class="check-list">
-        <div class="check-item">
-          <span class="check-mark">✓</span>
+      <section class="article-hero">
+        <div class="container article-layout">
           <div>
-            <strong>[[USP_1_TITEL]]</strong><br>
-            <span class="muted">[[USP_1_TEKST]]</span>
+            <nav aria-label="Broodkruimelpad">
+              <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span aria-hidden="true">•</span>
+                <a href="homey.html">Kennisbank</a>
+                <span aria-hidden="true">•</span>
+                <span aria-current="page">[[KORTE_ARTIKELNAAM]]</span>
+              </div>
+            </nav>
+
+            <span class="eyebrow">Informatief</span>
+            <span class="eyebrow">[[EYEBROW]]</span>
+
+            <h1>[[ARTIKEL_TITEL]]</h1>
+
+            <p class="lead muted">
+              [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
+            </p>
+
+            <div class="meta-list">
+              <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
+              <span class="meta-pill">Onderwerp: [[ONDERWERP]]</span>
+              <span class="meta-pill">Voor: [[DOELGROEP]]</span>
+            </div>
+
+            <p class="muted small">
+              Door <a href="[[AUTEUR_URL]]" rel="author">[[AUTEUR_NAAM]]</a>
+              · gepubliceerd <time datetime="[[PUBLISH_DATE]]">[[PUBLISH_DATE_LEESBAAR]]</time>
+              · bijgewerkt <time datetime="[[MODIFIED_DATE]]">[[MODIFIED_DATE_LEESBAAR]]</time>
+            </p>
+          </div>
+
+          <div class="panel project-info-panel">
+            <h2>Wat je uit dit artikel haalt</h2>
+
+            <div class="check-list">
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_1_TITEL]]</strong><br>
+                  <span class="muted">[[USP_1_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_2_TITEL]]</strong><br>
+                  <span class="muted">[[USP_2_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_3_TITEL]]</strong><br>
+                  <span class="muted">[[USP_3_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_4_TITEL]]</strong><br>
+                  <span class="muted">[[USP_4_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_5_TITEL]]</strong><br>
+                  <span class="muted">[[USP_5_TEKST]]</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="check-item">
-          <span class="check-mark">✓</span>
-          <div>
-            <strong>[[USP_2_TITEL]]</strong><br>
-            <span class="muted">[[USP_2_TEKST]]</span>
+        <div class="container project-hero-media">
+          <div class="panel">
+            <figure>
+              <img
+                src="[[HERO_AFBEELDING_PAD]]"
+                alt="[[HERO_AFBEELDING_ALT]]"
+                fetchpriority="high"
+                decoding="async">
+              <figcaption class="muted small">
+                [[HERO_AFBEELDING_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
           </div>
         </div>
+      </section>
 
-        <div class="check-item">
-          <span class="check-mark">✓</span>
-          <div>
-            <strong>[[USP_3_TITEL]]</strong><br>
-            <span class="muted">[[USP_3_TEKST]]</span>
+      <section class="section-tight" style="padding-top: 14px;">
+        <div class="container project-content-layout">
+
+          <div class="article-body project-article">
+
+            <!--
+              BELANGRIJK VOOR ZOEKMACHINES EN AI:
+              Beantwoord hier de hoofdvraag in 2 tot 4 concrete zinnen.
+              Dit blok moet ook zonder de rest van het artikel begrijpelijk zijn.
+            -->
+            <section class="insight-panel" aria-labelledby="kort-antwoord">
+              <h2 id="kort-antwoord">Kort antwoord</h2>
+              <p class="muted">[[KORT_ANTWOORD]]</p>
+            </section>
+
+            <p class="lead">
+              [[OPENINGSALINEA]]
+            </p>
+
+            <p>
+              [[TWEEDE_ALINEA]]
+            </p>
+
+            <h2 id="wat-is-het">[[H2_1_TITEL]]</h2>
+            <p>[[H2_1_ALINEA_1]]</p>
+            <p>[[H2_1_ALINEA_2]]</p>
+
+            <ul>
+              <li><strong>[[PUNT_1_TITEL]]</strong> → [[PUNT_1_UITLEG]]</li>
+              <li><strong>[[PUNT_2_TITEL]]</strong> → [[PUNT_2_UITLEG]]</li>
+              <li><strong>[[PUNT_3_TITEL]]</strong> → [[PUNT_3_UITLEG]]</li>
+            </ul>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_1_PAD]]"
+                alt="[[AFBEELDING_1_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_1_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h2 id="waarom-relevant">[[H2_2_TITEL]]</h2>
+            <p>[[H2_2_ALINEA_1]]</p>
+            <p>[[H2_2_ALINEA_2]]</p>
+
+            <h2 id="praktijk">[[H2_3_TITEL]]</h2>
+            <p>[[H2_3_ALINEA_1]]</p>
+            <p>[[H2_3_ALINEA_2]]</p>
+
+            <h2 id="waar-let-je-op">[[H2_4_TITEL]]</h2>
+            <p>[[H2_4_ALINEA_1]]</p>
+
+            <ul>
+              <li>[[AANDACHTSPUNT_1]]</li>
+              <li>[[AANDACHTSPUNT_2]]</li>
+              <li>[[AANDACHTSPUNT_3]]</li>
+            </ul>
+
+            <p>[[H2_4_ALINEA_2]]</p>
+
+            <h2 id="verdieping">[[H2_5_TITEL]]</h2>
+            <p>[[H2_5_ALINEA_1]]</p>
+            <p>[[H2_5_ALINEA_2]]</p>
+
+            <!--
+              OPTIONEEL AFFILIATEBLOK.
+              Verwijder dit volledige blok wanneer een product niet functioneel relevant is.
+              Gebruik uitsluitend echte affiliate-URL's en rel="sponsored noopener".
+            -->
+            <section id="aanbevolen-producten" aria-labelledby="aanbevolen-producten-titel">
+              <h2 id="aanbevolen-producten-titel">Aanbevolen producten</h2>
+
+              <p>
+                [[AFFILIATE_INLEIDING]]
+              </p>
+
+              <p class="muted small">
+                Sommige links hieronder zijn affiliate-links. Als je via zo’n link iets koopt,
+                kan HuisvanVandaag een kleine commissie ontvangen zonder dat jij meer betaalt.
+              </p>
+
+              <ul>
+                <li>
+                  <strong>[[AFFILIATE_PRODUCT_1_NAAM]]</strong> — [[AFFILIATE_PRODUCT_1_UITLEG]]
+                  <a href="[[AFFILIATE_PRODUCT_1_URL]]"
+                     rel="sponsored noopener"
+                     target="_blank">
+                    Bekijk [[AFFILIATE_PRODUCT_1_NAAM]]
+                  </a>
+                </li>
+
+                <li>
+                  <strong>[[AFFILIATE_PRODUCT_2_NAAM]]</strong> — [[AFFILIATE_PRODUCT_2_UITLEG]]
+                  <a href="[[AFFILIATE_PRODUCT_2_URL]]"
+                     rel="sponsored noopener"
+                     target="_blank">
+                    Bekijk [[AFFILIATE_PRODUCT_2_NAAM]]
+                  </a>
+                </li>
+
+                <li>
+                  <strong>[[AFFILIATE_PRODUCT_3_NAAM]]</strong> — [[AFFILIATE_PRODUCT_3_UITLEG]]
+                  <a href="[[AFFILIATE_PRODUCT_3_URL]]"
+                     rel="sponsored noopener"
+                     target="_blank">
+                    Bekijk [[AFFILIATE_PRODUCT_3_NAAM]]
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <h2 id="volgende-stap">Volgende stap</h2>
+            <p>[[VOLGENDE_STAP_TEKST]]</p>
+
+            <ul>
+              <li>[[TOEPASSING_OF_LINK_1]]</li>
+              <li>[[TOEPASSING_OF_LINK_2]]</li>
+              <li>[[TOEPASSING_OF_LINK_3]]</li>
+            </ul>
+
+            <!--
+              OPTIONEEL FAQ-BLOK.
+              Alleen gebruiken voor natuurlijke vervolgvragen die inhoudelijk bij het artikel horen.
+              Geen FAQ-schema toevoegen alleen voor rich results.
+            -->
+            <section id="veelgestelde-vragen" aria-labelledby="veelgestelde-vragen-titel">
+              <h2 id="veelgestelde-vragen-titel">Veelgestelde vragen</h2>
+
+              <h3>[[FAQ_1_VRAAG]]</h3>
+              <p>[[FAQ_1_ANTWOORD]]</p>
+
+              <h3>[[FAQ_2_VRAAG]]</h3>
+              <p>[[FAQ_2_ANTWOORD]]</p>
+
+              <h3>[[FAQ_3_VRAAG]]</h3>
+              <p>[[FAQ_3_ANTWOORD]]</p>
+            </section>
+
+            <h2 id="conclusie">Conclusie</h2>
+            <p>[[CONCLUSIE_TEKST]]</p>
+
+            <!--
+              BRONNEN:
+              Gebruik alleen bronnen die werkelijk zijn gebruikt.
+              Geef voorkeur aan primaire en gezaghebbende bronnen.
+            -->
+            <section id="bronnen" aria-labelledby="bronnen-titel">
+              <h2 id="bronnen-titel">Bronnen en verder lezen</h2>
+
+              <ul>
+                <li>
+                  <a href="[[BRON_1_URL]]">[[BRON_1_TITEL]]</a>
+                  — [[BRON_1_ORGANISATIE]]
+                </li>
+                <li>
+                  <a href="[[BRON_2_URL]]">[[BRON_2_TITEL]]</a>
+                  — [[BRON_2_ORGANISATIE]]
+                </li>
+                <li>
+                  <a href="[[BRON_3_URL]]">[[BRON_3_TITEL]]</a>
+                  — [[BRON_3_ORGANISATIE]]
+                </li>
+              </ul>
+            </section>
+
           </div>
+
+          <aside class="side-stack">
+
+            <div class="toc" role="navigation" aria-label="Inhoudsopgave">
+              <h2>In dit artikel</h2>
+              <a href="#kort-antwoord">Kort antwoord</a>
+              <a href="#wat-is-het">[[TOC_1]]</a>
+              <a href="#waarom-relevant">[[TOC_2]]</a>
+              <a href="#praktijk">[[TOC_3]]</a>
+              <a href="#waar-let-je-op">[[TOC_4]]</a>
+              <a href="#verdieping">[[TOC_5]]</a>
+              <a href="#aanbevolen-producten">Aanbevolen producten</a>
+              <a href="#volgende-stap">Volgende stap</a>
+              <a href="#veelgestelde-vragen">Veelgestelde vragen</a>
+              <a href="#conclusie">Conclusie</a>
+              <a href="#bronnen">Bronnen</a>
+            </div>
+
+            <div class="sidebar-card">
+              <h2>Gerelateerd</h2>
+
+              <div class="footer-links">
+                <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
+                <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
+                <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
+              </div>
+            </div>
+
+            <div class="sidebar-card newsletter-sidebar-card">
+              <div id="mlb2-42295160"
+                   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+
+                <div class="row-form">
+                  <h2>📬 Mis geen project</h2>
+
+                  <p>
+                    Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.
+                  </p>
+
+                  <form class="ml-block-form"
+                        action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+                        method="post"
+                        target="_blank">
+
+                    <input type="email"
+                           name="fields[email]"
+                           placeholder="E-mailadres"
+                           autocomplete="email"
+                           aria-label="E-mailadres"
+                           required>
+
+                    <p class="newsletter-small">
+                      Geen spam. Uitschrijven kan altijd.
+                    </p>
+
+                    <div class="g-recaptcha"
+                         data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+
+                    <button type="submit">👉 Houd me op de hoogte</button>
+                  </form>
+                </div>
+
+                <div class="row-success" style="display:none;">
+                  <h2>🏠 Welkom aan boord</h2>
+
+                  <p>Je inschrijving is gelukt.</p>
+
+                  <p>
+                    Vanaf nu ontvang je af en toe nieuwe Homey-tips,
+                    slimme automatiseringen en DIY-projecten.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </aside>
         </div>
-
-        <div class="check-item">
-          <span class="check-mark">✓</span>
-          <div>
-            <strong>[[USP_4_TITEL]]</strong><br>
-            <span class="muted">[[USP_4_TEKST]]</span>
-          </div>
-        </div>
-
-        <div class="check-item">
-          <span class="check-mark">✓</span>
-          <div>
-            <strong>[[USP_5_TITEL]]</strong><br>
-            <span class="muted">[[USP_5_TEKST]]</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container project-hero-media">
-    <div class="panel">
-      <figure>
-        <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]">
-        <figcaption class="muted small">
-          [[HERO_AFBEELDING_BIJSCHRIFT]]
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="section-tight" style="padding-top: 14px;">
-  <div class="container project-content-layout">
-    <article class="article-body project-article">
-
-      <p class="lead">
-        [[OPENINGSALINEA]]
-      </p>
-
-      <p>
-        [[TWEEDE_ALINEA]]
-      </p>
-
-      <div class="insight-panel">
-        <h3>Kort samengevat</h3>
-        <p class="muted">[[KORTE_SAMENVATTING_OF_BELANGRIJKSTE_INZICHT]]</p>
-      </div>
-
-      <h2 id="wat-is-het">[[H2_1_TITEL]]</h2>
-      <p>[[H2_1_ALINEA_1]]</p>
-      <p>[[H2_1_ALINEA_2]]</p>
-
-      <ul>
-        <li><strong>[[PUNT_1_TITEL]]</strong> → [[PUNT_1_UITLEG]]</li>
-        <li><strong>[[PUNT_2_TITEL]]</strong> → [[PUNT_2_UITLEG]]</li>
-        <li><strong>[[PUNT_3_TITEL]]</strong> → [[PUNT_3_UITLEG]]</li>
-      </ul>
-
-      <figure>
-        <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]">
-        <figcaption class="muted small">
-          [[AFBEELDING_1_BIJSCHRIFT]]
-        </figcaption>
-      </figure>
-
-      <h2 id="waarom-relevant">[[H2_2_TITEL]]</h2>
-      <p>[[H2_2_ALINEA_1]]</p>
-      <p>[[H2_2_ALINEA_2]]</p>
-
-      <h2 id="praktijk">[[H2_3_TITEL]]</h2>
-      <p>[[H2_3_ALINEA_1]]</p>
-      <p>[[H2_3_ALINEA_2]]</p>
-
-      <h2 id="waar-let-je-op">[[H2_4_TITEL]]</h2>
-      <p>[[H2_4_ALINEA_1]]</p>
-
-      <ul>
-        <li>[[AANDACHTSPUNT_1]]</li>
-        <li>[[AANDACHTSPUNT_2]]</li>
-        <li>[[AANDACHTSPUNT_3]]</li>
-      </ul>
-
-      <p>[[H2_4_ALINEA_2]]</p>
-
-      <h2 id="verdieping">[[H2_5_TITEL]]</h2>
-      <p>[[H2_5_ALINEA_1]]</p>
-      <p>[[H2_5_ALINEA_2]]</p>
-
-      <h2 id="volgende-stap">Volgende stap</h2>
-      <p>[[VOLGENDE_STAP_TEKST]]</p>
-
-      <ul>
-        <li>[[TOEPASSING_OF_LINK_1]]</li>
-        <li>[[TOEPASSING_OF_LINK_2]]</li>
-        <li>[[TOEPASSING_OF_LINK_3]]</li>
-      </ul>
-
-      <h2 id="conclusie">Conclusie</h2>
-      <p>[[CONCLUSIE_TEKST]]</p>
+      </section>
 
     </article>
-
-    <aside class="side-stack">
-      <div class="toc">
-        <h3>In dit artikel</h3>
-        <a href="#wat-is-het">[[TOC_1]]</a>
-        <a href="#waarom-relevant">[[TOC_2]]</a>
-        <a href="#praktijk">[[TOC_3]]</a>
-        <a href="#waar-let-je-op">[[TOC_4]]</a>
-        <a href="#verdieping">[[TOC_5]]</a>
-        <a href="#volgende-stap">Volgende stap</a>
-        <a href="#conclusie">Conclusie</a>
-      </div>
-
-      <div class="sidebar-card">
-        <h3>Gerelateerd</h3>
-        <div class="footer-links">
-          <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
-          <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
-          <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
-        </div>
-      </div>
-<div class="sidebar-card newsletter-sidebar-card">
-  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
-    <div class="row-form">
-      <h3>📬 Mis geen project</h3>
-      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
-
-      <form class="ml-block-form"
-            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
-            method="post"
-            target="_blank">
-
-        <input type="email"
-               name="fields[email]"
-               placeholder="E-mailadres"
-               autocomplete="email"
-               aria-label="E-mailadres"
-               required>
-
-        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
-
-        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-
-        <button type="submit">👉 Houd me op de hoogte</button>
-      </form>
-    </div>
-
-<div class="row-success" style="display:none;">
-  <h3>🏠 Welkom aan boord</h3>
-
-  <p>
-    Je inschrijving is gelukt.
-  </p>
-
-  <p>
-    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
-  </p>
-</div>
-
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-function ml_webform_success_42295160() {
-  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
-  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
-}
-fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
-</script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
-
-
-
-    </aside>
-  </div>
-</section>
-
-</main>
+  </main>
 
   <div id="site-footer"></div>
 
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script>
+    function ml_webform_success_42295160() {
+      document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+      document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+    }
+
+    fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+  </script>
+
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
   <script src="include.js"></script>
   <script src="script.js"></script>
-</body>
-
 </body>
 </html>

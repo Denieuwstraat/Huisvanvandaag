@@ -1,77 +1,83 @@
 (function () {
-  const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://huisvanvandaag.nl/#organization",
-      "name": "Huisvanvandaag",
-      "url": "https://huisvanvandaag.nl",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.huisvanvandaag.nl/assets/logo-white.png"
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.huisvanvandaag.nl/#organization",
+        "name": "HuisvanVandaag",
+        "alternateName": "huisvanvandaag.nl",
+        "url": "https://www.huisvanvandaag.nl/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.huisvanvandaag.nl/#logo",
+          "url": "https://www.huisvanvandaag.nl/assets/logo-white.png",
+          "contentUrl": "https://www.huisvanvandaag.nl/assets/logo-white.png"
+        },
+        "description": "Praktisch kennisplatform over smart home, Homey, Homeyduino, ESP8266, ESP32 en DIY smart home-projecten.",
+        "founder": {
+          "@id": "https://www.huisvanvandaag.nl/#mike-mulders"
+        },
+        "knowsAbout": [
+          "Homey",
+          "Homeyduino",
+          "Matter",
+          "Thread",
+          "Zigbee",
+          "ESP8266",
+          "ESP32",
+          "DIY smart home",
+          "Slimme sensoren",
+          "Smart home-automatisering"
+        ]
       },
-      "description": "Persoonlijk kennisplatform over smart home, Homey, Homeyduino, ESP8266, ESP32 en DIY smart home projecten.",
-      "founder": {
-        "@id": "https://huisvanvandaag.nl/#mike-mulders"
+      {
+        "@type": "WebSite",
+        "@id": "https://www.huisvanvandaag.nl/#website",
+        "url": "https://www.huisvanvandaag.nl/",
+        "name": "HuisvanVandaag",
+        "alternateName": "huisvanvandaag.nl",
+        "description": "Praktische uitleg, DIY-projecten, tutorials en reviews over smart home, Homey, Homeyduino en zelfbouwsensoren.",
+        "publisher": {
+          "@id": "https://www.huisvanvandaag.nl/#organization"
+        },
+        "author": {
+          "@id": "https://www.huisvanvandaag.nl/#mike-mulders"
+        },
+        "inLanguage": "nl-NL"
       },
-      "knowsAbout": [
-        "Homey",
-        "Homeyduino",
-        "ESP8266",
-        "ESP32",
-        "DIY sensoren",
-        "Smart home automatisering",
-        "DIY smart home projecten",
-        "Slimme woningautomatisering",
-        "Praktische Homey automatisering"
-      ]
-    },
-
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://huisvanvandaag.nl/#website",
-      "url": "https://huisvanvandaag.nl",
-      "name": "Huisvanvandaag",
-      "description": "Praktische uitleg, DIY-projecten en tutorials over smart home, Homey, Homeyduino en zelfbouwsensoren.",
-      "publisher": {
-        "@id": "https://huisvanvandaag.nl/#organization"
-      },
-      "author": {
-        "@id": "https://huisvanvandaag.nl/#mike-mulders"
-      },
-      "inLanguage": "nl-NL"
-    },
-
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://huisvanvandaag.nl/#mike-mulders",
-      "name": "Mike Mulders",
-      "url": "https://huisvanvandaag.nl",
-      "worksFor": {
-        "@id": "https://huisvanvandaag.nl/#organization"
-      },
-      "affiliation": {
-        "@id": "https://huisvanvandaag.nl/#organization"
-      },
-      "knowsAbout": [
-        "Homey",
-        "Homeyduino",
-        "ESP8266",
-        "ESP32",
-        "Wemos D1 Mini",
-        "DIY smart home",
-        "Smart home automatisering",
-        "Slimme sensoren",
-        "IoT automatisering",
-        "Homey flows"
-      ]
-    }
-  ];
+      {
+        "@type": "Person",
+        "@id": "https://www.huisvanvandaag.nl/#mike-mulders",
+        "name": "Mike Mulders",
+        "url": "https://www.huisvanvandaag.nl/over.html",
+        "mainEntityOfPage": {
+          "@id": "https://www.huisvanvandaag.nl/over.html"
+        },
+        "affiliation": {
+          "@id": "https://www.huisvanvandaag.nl/#organization"
+        },
+        "knowsAbout": [
+          "Homey",
+          "Homeyduino",
+          "Matter",
+          "Thread",
+          "Zigbee",
+          "ESP8266",
+          "ESP32",
+          "Wemos D1 Mini",
+          "DIY smart home",
+          "Smart home-automatisering",
+          "Slimme sensoren",
+          "IoT-automatisering",
+          "Homey Flows"
+        ]
+      }
+    ]
+  };
 
   const script = document.createElement("script");
   script.type = "application/ld+json";
-  script.text = JSON.stringify(schemas);
+  script.textContent = JSON.stringify(schema);
   document.head.appendChild(script);
 })();

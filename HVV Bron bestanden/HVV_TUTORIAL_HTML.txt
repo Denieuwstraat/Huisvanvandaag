@@ -4,21 +4,66 @@ DOEL:
 Maak een volledig publiceerbare tutorial die een lezer stap voor stap helpt om iets werkend te krijgen of beter te begrijpen.
 
 REGELS:
-- behoud de HTML-structuur exact
-- vervang alleen de [[PLACEHOLDERS]]
+- behoud de HTML-structuur van dit sjabloon
+- vervang alle [[PLACEHOLDERS]]
 - vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag
-- formaat publish_date: YYYY-MM-DD
-- laat [[PUBLISH_DATE]] nooit als placeholder staan
+- formaat PUBLISH_DATE: YYYY-MM-DD
+- vervang [[MODIFIED_DATE]] bij eerste publicatie door dezelfde datum als [[PUBLISH_DATE]]
+- wijzig [[MODIFIED_DATE]] bij een latere inhoudelijke update naar de werkelijke wijzigingsdatum
+- laat geen [[PLACEHOLDERS]] in de uiteindelijke HTML staan
 - verzin geen feiten die niet in de input staan
+- maak duidelijk wat feit, eigen ervaring en instructie is
 - geen AI-uitleg
 - geen interne notities
-- geen bronverantwoording
+- geen meta-tekst
 - schrijf professioneel, toegankelijk en praktisch
 - leg uit zonder onnodig jargon
-- maak elke stap concreet
+- maak elke stap concreet en uitvoerbaar
+- geef waar mogelijk aan wat de lezer na een stap hoort te zien of te merken
 - laat duidelijk zien wat het doel is, voor wie het relevant is en wat de lezer aan het einde bereikt
-- voeg waarschuwingen, beperkingen of aandachtspunten alleen toe als die uit de input volgen
-- voeg interne links alleen toe als suggesties
+- voeg waarschuwingen, beperkingen of aandachtspunten alleen toe als die uit input of geverifieerde documentatie volgen
+- voeg interne links alleen toe waar ze logisch en functioneel zijn
+- gebruik beschrijvende ankerteksten
+- forceer geen affiliate-insteek
+- affiliate-links zijn altijd ondergeschikt aan de tutorial
+- gebruik voor affiliate-links rel="sponsored noopener"
+- verwijder optionele blokken wanneer ze niet relevant zijn
+- output alleen de volledig ingevulde HTML
+
+TUTORIALLOGICA:
+- start met het probleem of doel
+- geef een compact direct antwoord op wat de lezer gaat bereiken
+- benoem benodigdheden
+- werk in logische stappen
+- geef per stap waar relevant een controlepunt of verwacht resultaat
+- benoem veelgemaakte fouten
+- sluit af met wat nu aantoonbaar werkt
+- verwijs daarna logisch naar een vervolgstap
+
+SEO / AI-VINDBAARHEID:
+- [[TUTORIAL_TITEL]] moet duidelijk maken welk probleem wordt opgelost of welke handeling wordt uitgevoerd
+- [[META_DESCRIPTION]] moet concreet samenvatten wat de lezer leert en bereikt
+- [[CANONICAL_URL]] is altijd de absolute definitieve URL
+- [[HERO_AFBEELDING_ABSOLUTE_URL]] is altijd een absolute, crawlbare URL
+- gebruik één duidelijke H1
+- gebruik beschrijvende H2- en H3-koppen
+- schrijf [[KORT_ANTWOORD]] in 2 tot 4 zinnen als zelfstandig begrijpelijk kernantwoord
+- gebruik productnamen, platformnamen en technische termen consequent
+- laat zichtbare auteur, publicatiedatum en wijzigingsdatum overeenkomen met structured data
+- structured data wordt centraal afgehandeld via /js/global-schema.js en /js/article-schema.js; voeg geen tweede conflicterende JSON-LD toe
+
+AFFILIATE:
+- voeg alleen een affiliate-product toe als het werkelijk nodig of nuttig is voor de tutorial
+- productcontext komt vóór de kooplink
+- gebruik geen prijsclaims tenzij actueel geverifieerd
+- gebruik rel="sponsored noopener"
+- vermeld duidelijk dat het een affiliate-link betreft
+
+BRONNEN:
+- technische claims moeten verifieerbaar zijn
+- gebruik waar nodig officiële documentatie of fabrikantdocumentatie
+- voeg geen zichtbaar bronnenblok toe als dat niet nodig is voor de tutorial
+- als externe documentatie cruciaal is, link er functioneel naar in de tekst of in een optioneel bronnenblok
 
 OUTPUT:
 alleen de ingevulde HTML
@@ -28,8 +73,16 @@ alleen de ingevulde HTML
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- INTERNE ARTIKELMETADATA -->
   <meta name="hv-schema-type" content="howto">
   <meta name="publish_date" content="[[PUBLISH_DATE]]">
+  <meta name="modified_date" content="[[MODIFIED_DATE]]">
+  <meta name="author" content="[[AUTEUR_NAAM]]">
+
+  <!-- INDEXERING -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="[[CANONICAL_URL]]">
 
   <!-- PAGINATITEL -->
   <title>[[TUTORIAL_TITEL]] | huisvanvandaag.nl</title>
@@ -37,12 +90,33 @@ alleen de ingevulde HTML
   <!-- META DESCRIPTION -->
   <meta name="description" content="[[META_DESCRIPTION]]">
 
+  <!-- OPEN GRAPH -->
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HuisvanVandaag">
+  <meta property="og:title" content="[[TUTORIAL_TITEL]]">
+  <meta property="og:description" content="[[META_DESCRIPTION]]">
+  <meta property="og:url" content="[[CANONICAL_URL]]">
+  <meta property="og:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta property="og:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+  <meta property="article:published_time" content="[[PUBLISH_DATE]]">
+  <meta property="article:modified_time" content="[[MODIFIED_DATE]]">
+  <meta property="article:author" content="[[AUTEUR_URL]]">
+
+  <!-- SOCIAL PREVIEW -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[[TUTORIAL_TITEL]]">
+  <meta name="twitter:description" content="[[META_DESCRIPTION]]">
+  <meta name="twitter:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta name="twitter:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
+
+  <script src="affiliate-products.js" defer></script>
 
   <style>
     .project-hero-media {
@@ -99,6 +173,25 @@ alleen de ingevulde HTML
       border-radius: 18px;
     }
 
+    .tutorial-check {
+      margin: 1rem 0 1.4rem;
+      padding: .9rem 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .tutorial-check strong {
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    .tutorial-buy-box {
+      margin: 1.4rem 0 1.8rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+    }
+
     @media (max-width: 980px) {
       .project-content-layout {
         grid-template-columns: 1fr;
@@ -106,302 +199,449 @@ alleen de ingevulde HTML
     }
   </style>
 
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
+  <script src="/js/global-schema.js" defer></script>
+  <script src="/js/article-schema.js" defer></script>
 </head>
-<body>
 
 <body>
   <div id="site-header"></div>
 
-<main>
-  <!-- HERO -->
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="tutorials.html">Tutorials</a>
-          <span>•</span>
-          <span>[[KORTE_TUTORIALNAAM]]</span>
-        </div>
+  <main>
+    <article>
 
-        <span class="eyebrow">[[EYEBROW]]</span>
-        <h1>[[TUTORIAL_TITEL]]</h1>
+      <!-- HERO -->
+      <section class="article-hero">
+        <div class="container article-layout">
+          <div>
 
-        <p class="lead muted">
-          [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
-        </p>
+            <nav aria-label="Broodkruimelpad">
+              <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span aria-hidden="true">•</span>
+                <a href="tutorials.html">Tutorials</a>
+                <span aria-hidden="true">•</span>
+                <span aria-current="page">[[KORTE_TUTORIALNAAM]]</span>
+              </div>
+            </nav>
 
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
-          <span class="meta-pill">Platform: [[PLATFORM]]</span>
-          <span class="meta-pill">Niveau: [[NIVEAU]]</span>
-        </div>
-      </div>
+            <span class="eyebrow">Tutorial</span>
+            <span class="eyebrow">[[EYEBROW]]</span>
 
-      <!-- RECHTER INFOBLOK -->
-      <div class="panel project-info-panel">
-        <h3>Waarom deze tutorial handig is</h3>
-        <div class="check-list">
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>[[USP_1_TITEL]]</strong><br>
-              <span class="muted">[[USP_1_TEKST]]</span>
+            <h1>[[TUTORIAL_TITEL]]</h1>
+
+            <p class="lead muted">
+              [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
+            </p>
+
+            <div class="meta-list">
+              <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
+              <span class="meta-pill">Platform: [[PLATFORM]]</span>
+              <span class="meta-pill">Niveau: [[NIVEAU]]</span>
             </div>
+
+            <p class="muted small">
+              Door <a href="[[AUTEUR_URL]]" rel="author">[[AUTEUR_NAAM]]</a>
+              · gepubliceerd <time datetime="[[PUBLISH_DATE]]">[[PUBLISH_DATE_LEESBAAR]]</time>
+              · bijgewerkt <time datetime="[[MODIFIED_DATE]]">[[MODIFIED_DATE_LEESBAAR]]</time>
+            </p>
           </div>
 
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>[[USP_2_TITEL]]</strong><br>
-              <span class="muted">[[USP_2_TEKST]]</span>
+          <!-- RECHTER INFOBLOK -->
+          <div class="panel project-info-panel">
+            <h2>Wat je na deze tutorial kunt</h2>
+
+            <div class="check-list">
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_1_TITEL]]</strong><br>
+                  <span class="muted">[[USP_1_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_2_TITEL]]</strong><br>
+                  <span class="muted">[[USP_2_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_3_TITEL]]</strong><br>
+                  <span class="muted">[[USP_3_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_4_TITEL]]</strong><br>
+                  <span class="muted">[[USP_4_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item">
+                <span class="check-mark">✓</span>
+                <div>
+                  <strong>[[USP_5_TITEL]]</strong><br>
+                  <span class="muted">[[USP_5_TEKST]]</span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>[[USP_3_TITEL]]</strong><br>
-              <span class="muted">[[USP_3_TEKST]]</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>[[USP_4_TITEL]]</strong><br>
-              <span class="muted">[[USP_4_TEKST]]</span>
-            </div>
-          </div>
-
-          <div class="check-item">
-            <span class="check-mark">✓</span>
-            <div>
-              <strong>[[USP_5_TITEL]]</strong><br>
-              <span class="muted">[[USP_5_TEKST]]</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO AFBEELDING -->
-    <!-- Gebruik dit blok alleen als er echt een passende hero-afbeelding is -->
-    <div class="container project-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]">
-          <figcaption class="muted small">
-            [[HERO_AFBEELDING_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT -->
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container project-content-layout">
-      <article class="article-body project-article">
-
-        <p class="lead">
-          [[OPENINGSALINEA]]
-        </p>
-
-        <p>
-          [[TWEEDE_ALINEA]]
-        </p>
-
-        <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
-        <p>[[WAT_LEER_JE_UITLEG]]</p>
-        <ul>
-          <li><strong>[[LEERPUNT_1_TITEL]]</strong> → [[LEERPUNT_1_UITLEG]]</li>
-          <li><strong>[[LEERPUNT_2_TITEL]]</strong> → [[LEERPUNT_2_UITLEG]]</li>
-        </ul>
-        <p>[[AANVULLENDE_UITLEG_RESULTAAT]]</p>
-
-        <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
-        <p>[[VOOR_WIE_IS_DEZE_TUTORIAL]]</p>
-
-        <h2 id="benodigdheden">Wat heb je nodig?</h2>
-        <ul>
-          <li>[[ONDERDEEL_1]]</li>
-          <li>[[ONDERDEEL_2]]</li>
-          <li>[[ONDERDEEL_3]]</li>
-          <li>[[ONDERDEEL_4]]</li>
-          <li>[[ONDERDEEL_5]]</li>
-        </ul>
-
-        <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
-
-        <h3>1. [[STAP_1_TITEL]]</h3>
-        <p>[[STAP_1_TEKST]]</p>
-        <ul>
-          <li>[[STAP_1_PUNT_1]]</li>
-          <li>[[STAP_1_PUNT_2]]</li>
-          <li>[[STAP_1_PUNT_3]]</li>
-        </ul>
-
-        <!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
-        <figure>
-          <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_1_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h3>2. [[STAP_2_TITEL]]</h3>
-        <p>[[STAP_2_TEKST]]</p>
-
-        <h3>3. [[STAP_3_TITEL]]</h3>
-        <p>[[STAP_3_TEKST]]</p>
-
-        <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
-        <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code>[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
-
-        <h3>4. [[STAP_4_TITEL]]</h3>
-        <p>[[STAP_4_TEKST]]</p>
-
-        <h3>5. [[STAP_5_TITEL]]</h3>
-        <p>[[STAP_5_TEKST]]</p>
-
-        <!-- Tweede afbeelding optioneel -->
-        <figure>
-          <img src="[[AFBEELDING_2_PAD]]" alt="[[AFBEELDING_2_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_2_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <!-- Gebruik dit blok alleen als Homey of een vergelijkbare integratie echt onderdeel is van de tutorial -->
-        <h2 id="homey-integratie">Integratie met Homey</h2>
-        <p>[[HOMEY_INTEGRATIE_UITLEG]]</p>
-        <p>[[VOORBEELD_TOEPASSINGEN_INLEIDING]]</p>
-        <ul>
-          <li>[[TOEPASSING_1]]</li>
-          <li>[[TOEPASSING_2]]</li>
-          <li>[[TOEPASSING_3]]</li>
-        </ul>
-
-        <!-- Derde afbeelding optioneel -->
-        <figure>
-          <img src="[[AFBEELDING_3_PAD]]" alt="[[AFBEELDING_3_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_3_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h2 id="wat-kun-je-hierna">Wat kun je hierna?</h2>
-        <p>[[WAT_KUN_JE_HIERNA_TEKST]]</p>
-
-        <!-- Vierde afbeelding optioneel -->
-        <figure>
-          <img src="[[AFBEELDING_4_PAD]]" alt="[[AFBEELDING_4_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_4_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
-        <ul>
-          <li>[[AANDACHTSPUNT_1]]</li>
-          <li>[[AANDACHTSPUNT_2]]</li>
-          <li>[[AANDACHTSPUNT_3]]</li>
-        </ul>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>[[CONCLUSIE_TEKST]]</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In deze tutorial</h3>
-          <a href="#wat-leer-je">Wat leer je in deze tutorial?</a>
-          <a href="#voor-wie">Voor wie is deze tutorial?</a>
-          <a href="#benodigdheden">Wat heb je nodig?</a>
-          <a href="#stappenplan">Stap-voor-stap uitleg</a>
-          <a href="#homey-integratie">Integratie met Homey</a>
-          <a href="#wat-kun-je-hierna">Wat kun je hierna?</a>
-          <a href="#aandachtspunten">Veelgemaakte fouten en aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
-            <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
-            <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
           </div>
         </div>
 
-<div class="sidebar-card newsletter-sidebar-card">
-  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
-    <div class="row-form">
-      <h3>📬 Mis geen project</h3>
-      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+        <!-- HERO AFBEELDING -->
+        <div class="container project-hero-media">
+          <div class="panel">
+            <figure>
+              <img
+                src="[[HERO_AFBEELDING_PAD]]"
+                alt="[[HERO_AFBEELDING_ALT]]"
+                fetchpriority="high"
+                decoding="async">
+              <figcaption class="muted small">
+                [[HERO_AFBEELDING_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
-      <form class="ml-block-form"
-            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
-            method="post"
-            target="_blank">
+      <!-- CONTENT -->
+      <section class="section-tight" style="padding-top: 14px;">
+        <div class="container project-content-layout">
 
-        <input type="email"
-               name="fields[email]"
-               placeholder="E-mailadres"
-               autocomplete="email"
-               aria-label="E-mailadres"
-               required>
+          <div class="article-body project-article">
 
-        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+            <!--
+              KERNANTWOORD:
+              Geef in 2 tot 4 zinnen direct aan wat de lezer doet en wat het resultaat is.
+            -->
+            <section class="insight-panel" aria-labelledby="kort-antwoord">
+              <h2 id="kort-antwoord">Kort antwoord</h2>
+              <p class="muted">[[KORT_ANTWOORD]]</p>
+            </section>
 
-        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+            <p class="lead">
+              [[OPENINGSALINEA]]
+            </p>
 
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
+            <p>
+              [[TWEEDE_ALINEA]]
+            </p>
 
-        <button type="submit">👉 Houd me op de hoogte</button>
-      </form>
-    </div>
+            <h2 id="wat-leer-je">Wat leer je in deze tutorial?</h2>
+            <p>[[WAT_LEER_JE_UITLEG]]</p>
 
-<div class="row-success" style="display:none;">
-  <h3>🏠 Welkom aan boord</h3>
+            <ul>
+              <li><strong>[[LEERPUNT_1_TITEL]]</strong> → [[LEERPUNT_1_UITLEG]]</li>
+              <li><strong>[[LEERPUNT_2_TITEL]]</strong> → [[LEERPUNT_2_UITLEG]]</li>
+              <li><strong>[[LEERPUNT_3_TITEL]]</strong> → [[LEERPUNT_3_UITLEG]]</li>
+            </ul>
 
-  <p>
-    Je inschrijving is gelukt.
-  </p>
+            <p>[[AANVULLENDE_UITLEG_RESULTAAT]]</p>
 
-  <p>
-    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
-  </p>
-</div>
+            <h2 id="voor-wie">Voor wie is deze tutorial?</h2>
+            <p>[[VOOR_WIE_IS_DEZE_TUTORIAL]]</p>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-function ml_webform_success_42295160() {
-  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
-  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
-}
-fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
-</script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+            <h2 id="benodigdheden">Wat heb je nodig?</h2>
+            <ul>
+              <li>[[ONDERDEEL_1]]</li>
+              <li>[[ONDERDEEL_2]]</li>
+              <li>[[ONDERDEEL_3]]</li>
+              <li>[[ONDERDEEL_4]]</li>
+              <li>[[ONDERDEEL_5]]</li>
+            </ul>
 
+            <!--
+              OPTIONEEL AFFILIATEBLOK.
+              Alleen gebruiken als een benodigd product functioneel relevant is.
+            -->
+            <section class="tutorial-buy-box" id="aanbevolen-product" aria-labelledby="aanbevolen-product-titel">
+              <h2 id="aanbevolen-product-titel">[[AFFILIATE_BLOK_TITEL]]</h2>
 
-      </aside>
-    </div>
-  </section>
-</main>
+              <p>[[AFFILIATE_PRODUCT_CONTEXT]]</p>
+
+              <p>
+                <a href="[[AFFILIATE_URL]]"
+                   rel="sponsored noopener"
+                   target="_blank">
+                  [[AFFILIATE_LINKTEKST]]
+                </a>
+              </p>
+
+              <p class="muted small">
+                Dit is een affiliate-link. Als je via deze link iets koopt,
+                kan HuisvanVandaag een kleine commissie ontvangen zonder dat jij meer betaalt.
+              </p>
+            </section>
+
+            <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+
+            <h3>1. [[STAP_1_TITEL]]</h3>
+            <p>[[STAP_1_TEKST]]</p>
+
+            <ul>
+              <li>[[STAP_1_PUNT_1]]</li>
+              <li>[[STAP_1_PUNT_2]]</li>
+              <li>[[STAP_1_PUNT_3]]</li>
+            </ul>
+
+            <div class="tutorial-check">
+              <strong>Controle</strong>
+              <span class="muted">[[STAP_1_CONTROLE]]</span>
+            </div>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_1_PAD]]"
+                alt="[[AFBEELDING_1_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_1_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h3>2. [[STAP_2_TITEL]]</h3>
+            <p>[[STAP_2_TEKST]]</p>
+
+            <div class="tutorial-check">
+              <strong>Controle</strong>
+              <span class="muted">[[STAP_2_CONTROLE]]</span>
+            </div>
+
+            <h3>3. [[STAP_3_TITEL]]</h3>
+            <p>[[STAP_3_TEKST]]</p>
+
+            <!-- Gebruik dit codeblok alleen als code echt onderdeel is van de tutorial -->
+            <div class="code-block">
+              <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+              <pre><code>[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
+            </div>
+
+            <div class="tutorial-check">
+              <strong>Controle</strong>
+              <span class="muted">[[STAP_3_CONTROLE]]</span>
+            </div>
+
+            <h3>4. [[STAP_4_TITEL]]</h3>
+            <p>[[STAP_4_TEKST]]</p>
+
+            <div class="tutorial-check">
+              <strong>Controle</strong>
+              <span class="muted">[[STAP_4_CONTROLE]]</span>
+            </div>
+
+            <h3>5. [[STAP_5_TITEL]]</h3>
+            <p>[[STAP_5_TEKST]]</p>
+
+            <div class="tutorial-check">
+              <strong>Controle</strong>
+              <span class="muted">[[STAP_5_CONTROLE]]</span>
+            </div>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_2_PAD]]"
+                alt="[[AFBEELDING_2_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_2_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <!-- Alleen gebruiken als Homey of een vergelijkbare integratie echt onderdeel is -->
+            <section id="homey-integratie" aria-labelledby="homey-integratie-titel">
+              <h2 id="homey-integratie-titel">Integratie met Homey</h2>
+
+              <p>[[HOMEY_INTEGRATIE_UITLEG]]</p>
+              <p>[[VOORBEELD_TOEPASSINGEN_INLEIDING]]</p>
+
+              <ul>
+                <li>[[TOEPASSING_1]]</li>
+                <li>[[TOEPASSING_2]]</li>
+                <li>[[TOEPASSING_3]]</li>
+              </ul>
+            </section>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_3_PAD]]"
+                alt="[[AFBEELDING_3_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_3_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h2 id="wat-kun-je-hierna">Wat werkt er nu?</h2>
+            <p>[[WAT_WERKT_ER_NU_TEKST]]</p>
+
+            <h2 id="volgende-stap">Wat kun je hierna?</h2>
+            <p>[[WAT_KUN_JE_HIERNA_TEKST]]</p>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_4_PAD]]"
+                alt="[[AFBEELDING_4_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_4_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h2 id="aandachtspunten">Veelgemaakte fouten en aandachtspunten</h2>
+
+            <ul>
+              <li><strong>[[FOUT_1_TITEL]]</strong> → [[FOUT_1_UITLEG]]</li>
+              <li><strong>[[FOUT_2_TITEL]]</strong> → [[FOUT_2_UITLEG]]</li>
+              <li><strong>[[FOUT_3_TITEL]]</strong> → [[FOUT_3_UITLEG]]</li>
+            </ul>
+
+            <!-- Optioneel: gebruik alleen als externe documentatie inhoudelijk nodig is -->
+            <section id="bronnen" aria-labelledby="bronnen-titel">
+              <h2 id="bronnen-titel">Documentatie en verder lezen</h2>
+
+              <ul>
+                <li>
+                  <a href="[[BRON_1_URL]]">[[BRON_1_TITEL]]</a>
+                  — [[BRON_1_ORGANISATIE]]
+                </li>
+                <li>
+                  <a href="[[BRON_2_URL]]">[[BRON_2_TITEL]]</a>
+                  — [[BRON_2_ORGANISATIE]]
+                </li>
+              </ul>
+            </section>
+
+            <h2 id="conclusie">Conclusie</h2>
+            <p>[[CONCLUSIE_TEKST]]</p>
+
+          </div>
+
+          <aside class="side-stack">
+
+            <div class="toc" role="navigation" aria-label="Inhoudsopgave">
+              <h2>In deze tutorial</h2>
+              <a href="#kort-antwoord">Kort antwoord</a>
+              <a href="#wat-leer-je">Wat leer je?</a>
+              <a href="#voor-wie">Voor wie?</a>
+              <a href="#benodigdheden">Wat heb je nodig?</a>
+              <a href="#aanbevolen-product">Aanbevolen product</a>
+              <a href="#stappenplan">Stap-voor-stap uitleg</a>
+              <a href="#homey-integratie">Integratie met Homey</a>
+              <a href="#wat-kun-je-hierna">Wat werkt er nu?</a>
+              <a href="#volgende-stap">Wat kun je hierna?</a>
+              <a href="#aandachtspunten">Veelgemaakte fouten</a>
+              <a href="#bronnen">Documentatie</a>
+              <a href="#conclusie">Conclusie</a>
+            </div>
+
+            <div class="sidebar-card">
+              <h2>Gerelateerd</h2>
+
+              <div class="footer-links">
+                <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
+                <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
+                <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
+              </div>
+            </div>
+
+            <div class="sidebar-card newsletter-sidebar-card">
+              <div id="mlb2-42295160"
+                   class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+
+                <div class="row-form">
+                  <h2>📬 Mis geen project</h2>
+
+                  <p>
+                    Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.
+                  </p>
+
+                  <form class="ml-block-form"
+                        action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+                        method="post"
+                        target="_blank">
+
+                    <input type="email"
+                           name="fields[email]"
+                           placeholder="E-mailadres"
+                           autocomplete="email"
+                           aria-label="E-mailadres"
+                           required>
+
+                    <p class="newsletter-small">
+                      Geen spam. Uitschrijven kan altijd.
+                    </p>
+
+                    <div class="g-recaptcha"
+                         data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+
+                    <button type="submit">👉 Houd me op de hoogte</button>
+                  </form>
+                </div>
+
+                <div class="row-success" style="display:none;">
+                  <h2>🏠 Welkom aan boord</h2>
+
+                  <p>Je inschrijving is gelukt.</p>
+
+                  <p>
+                    Vanaf nu ontvang je af en toe nieuwe Homey-tips,
+                    slimme automatiseringen en DIY-projecten.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </section>
+
+    </article>
+  </main>
 
   <div id="site-footer"></div>
 
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script>
+    function ml_webform_success_42295160() {
+      document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+      document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+    }
+
+    fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+  </script>
+
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
   <script src="include.js"></script>
   <script src="script.js"></script>
-</body>
-<script src="script.js"></script>
+
+  <script>
+    function copyCode(button) {
+      const code = button.nextElementSibling.innerText;
+
+      navigator.clipboard.writeText(code).then(() => {
+        button.innerText = "Gekopieerd!";
+
+        setTimeout(() => {
+          button.innerText = "Kopieer";
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>

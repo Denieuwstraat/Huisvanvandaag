@@ -1,21 +1,46 @@
 (function () {
-  const SITE_URL = "https://huisvanvandaag.nl";
+  const SITE_URL = "https://www.huisvanvandaag.nl";
   const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+  const WEBSITE_ID = `${SITE_URL}/#website`;
   const AUTHOR_ID = `${SITE_URL}/#mike-mulders`;
 
   function getMeta(name) {
     const el = document.querySelector(`meta[name="${name}"]`);
-    return el ? el.getAttribute("content")?.trim() : "";
+    return el ? (el.getAttribute("content") || "").trim() : "";
+  }
+
+  function getPropertyMeta(property) {
+    const el = document.querySelector(`meta[property="${property}"]`);
+    return el ? (el.getAttribute("content") || "").trim() : "";
+  }
+
+  function absoluteUrl(value) {
+    if (!value) return "";
+
+    try {
+      return new URL(value, `${SITE_URL}/`).href;
+    } catch {
+      return "";
+    }
   }
 
   function getCanonicalUrl() {
     const canonical = document.querySelector('link[rel="canonical"]');
-    return canonical?.href || window.location.href.split("#")[0];
+    const href = canonical ? canonical.getAttribute("href") : "";
+
+    return absoluteUrl(href) || window.location.href.split("#")[0];
   }
 
   function getPageTitle() {
     const h1 = document.querySelector("h1");
-    return h1?.textContent.trim() || document.title.replace(" | huisvanvandaag.nl", "").trim();
+
+    if (h1 && h1.textContent.trim()) {
+      return h1.textContent.trim();
+    }
+
+    return document.title
+      .replace(/\s*\|\s*huisvanvandaag\.nl\s*$/i, "")
+      .trim();
   }
 
   function getDescription() {
@@ -23,37 +48,80 @@
   }
 
   function getHeroImage() {
-    const heroImg = document.querySelector(".project-hero-media img, .article-hero img");
-    if (!heroImg) return null;
+    const ogImage = absoluteUrl(getPropertyMeta("og:image"));
+    if (ogImage) return ogImage;
 
-    return new URL(heroImg.getAttribute("src"), SITE_URL).href;
+    const heroImg = document.querySelector(
+      ".project-hero-media img, .article-hero img"
+    );
+
+    if (!heroImg) return "";
+
+    return absoluteUrl(heroImg.getAttribute("src"));
+  }
+
+  function getPublishDate() {
+    return getMeta("publish_date");
+  }
+
+  function getModifiedDate() {
+    return getMeta("modified_date") || getPublishDate();
+  }
+
+  function getVisibleText(selector) {
+    const el = document.querySelector(selector);
+    return el ? el.textContent.replace(/\s+/g, " ").trim() : "";
+  }
+
+  function getListItems(selector) {
+    return Array.from(document.querySelectorAll(selector))
+      .map((item) => item.textContent.replace(/\s+/g, " ").trim())
+      .filter(Boolean);
+  }
+
+  function toItemList(items) {
+    if (!items.length) return null;
+
+    return {
+      "@type": "ItemList",
+      "itemListElement": items.map((name, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": name
+      }))
+    };
   }
 
   function getBreadcrumbs() {
     const items = [];
-    const crumbs = document.querySelectorAll(".breadcrumbs a, .breadcrumbs span");
+    const crumbs = document.querySelectorAll(
+      ".breadcrumbs a, .breadcrumbs span"
+    );
 
     crumbs.forEach((crumb) => {
       const text = crumb.textContent.trim();
 
       if (!text || text === "•") return;
 
-      const link = crumb.tagName.toLowerCase() === "a"
-        ? new URL(crumb.getAttribute("href"), SITE_URL).href
-        : getCanonicalUrl();
-
-      items.push({
+      const item = {
         "@type": "ListItem",
         "position": items.length + 1,
-        "name": text,
-        "item": link
-      });
+        "name": text
+      };
+
+      if (crumb.tagName.toLowerCase() === "a") {
+        const href = absoluteUrl(crumb.getAttribute("href"));
+        if (href) item.item = href;
+      } else {
+        item.item = getCanonicalUrl();
+      }
+
+      items.push(item);
     });
 
     if (items.length < 2) return null;
 
     return {
-      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "@id": `${getCanonicalUrl()}#breadcrumb`,
       "itemListElement": items
@@ -64,17 +132,21 @@
     return getMeta("hv-schema-type").toLowerCase();
   }
 
-  function getArticleBase(type) {
+  function getArticleBase(types) {
     const url = getCanonicalUrl();
     const image = getHeroImage();
+    const publishDate = getPublishDate();
+    const modifiedDate = getModifiedDate();
 
     const schema = {
-      "@context": "https://schema.org",
-      "@type": type,
+      "@type": types,
       "@id": `${url}#article`,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": url
+      },
+      "isPartOf": {
+        "@id": WEBSITE_ID
       },
       "headline": getPageTitle(),
       "description": getDescription(),
@@ -92,43 +164,69 @@
       schema.image = [image];
     }
 
+    if (publishDate) {
+      schema.datePublished = publishDate;
+    }
+
+    if (modifiedDate) {
+      schema.dateModified = modifiedDate;
+    }
+
     return schema;
   }
 
   function getHowToSteps() {
     const steps = [];
-    const stepHeadings = document.querySelectorAll("article h3");
 
-    stepHeadings.forEach((heading) => {
-      const title = heading.textContent.trim();
-      if (!title) return;
+    const stepHeadings = Array.from(
+      document.querySelectorAll(".project-article h3, article h3")
+    ).filter((heading) =>
+      /^\s*\d+\s*[.)-]\s*/.test(heading.textContent)
+    );
 
-      let textParts = [];
+    stepHeadings.forEach((heading, index) => {
+      const rawTitle = heading.textContent.replace(/\s+/g, " ").trim();
+      const title = rawTitle
+        .replace(/^\s*\d+\s*[.)-]\s*/, "")
+        .trim();
+
+      const textParts = [];
       let current = heading.nextElementSibling;
 
       while (current && !["H2", "H3"].includes(current.tagName)) {
-        if (current.tagName === "P" || current.tagName === "UL" || current.tagName === "OL") {
-          textParts.push(current.textContent.trim());
+        if (
+          ["P", "UL", "OL"].includes(current.tagName) ||
+          current.classList.contains("tutorial-check")
+        ) {
+          const text = current.textContent
+            .replace(/\s+/g, " ")
+            .trim();
+
+          if (text) {
+            textParts.push(text);
+          }
         }
+
         current = current.nextElementSibling;
       }
 
-      const text = textParts.join(" ").replace(/\s+/g, " ").trim();
+      const text = textParts.join(" ").trim();
 
-      if (text) {
-        steps.push({
-          "@type": "HowToStep",
-          "name": title,
-          "text": text
-        });
-      }
+      if (!title || !text) return;
+
+      steps.push({
+        "@type": "HowToStep",
+        "position": index + 1,
+        "name": title,
+        "text": text
+      });
     });
 
     return steps;
   }
 
-  function createHowToSchema() {
-    const schema = getArticleBase("HowTo");
+  function createHowToArticleSchema() {
+    const schema = getArticleBase(["Article", "HowTo"]);
     const steps = getHowToSteps();
 
     if (steps.length > 0) {
@@ -139,20 +237,95 @@
   }
 
   function createTechArticleSchema() {
-    return getArticleBase("TechArticle");
+    return getArticleBase(["Article", "TechArticle"]);
   }
 
-  function createReviewSchema() {
-    const url = getCanonicalUrl();
+  function parseReviewRating() {
+    const raw = getVisibleText(".review-score-value");
+    if (!raw) return null;
 
-    return {
-      "@context": "https://schema.org",
+    const fractionMatch = raw.match(
+      /(\d+(?:[.,]\d+)?)\s*\/\s*(\d+(?:[.,]\d+)?)/
+    );
+
+    if (fractionMatch) {
+      const ratingValue = Number(
+        fractionMatch[1].replace(",", ".")
+      );
+
+      const bestRating = Number(
+        fractionMatch[2].replace(",", ".")
+      );
+
+      if (
+        Number.isFinite(ratingValue) &&
+        Number.isFinite(bestRating) &&
+        bestRating > 0 &&
+        ratingValue >= 0 &&
+        ratingValue <= bestRating
+      ) {
+        return {
+          "@type": "Rating",
+          "ratingValue": ratingValue,
+          "bestRating": bestRating,
+          "worstRating": 0
+        };
+      }
+    }
+
+    const percentageMatch = raw.match(
+      /(\d+(?:[.,]\d+)?)\s*%/
+    );
+
+    if (percentageMatch) {
+      const ratingValue = Number(
+        percentageMatch[1].replace(",", ".")
+      );
+
+      if (
+        Number.isFinite(ratingValue) &&
+        ratingValue >= 0 &&
+        ratingValue <= 100
+      ) {
+        return {
+          "@type": "Rating",
+          "ratingValue": ratingValue,
+          "bestRating": 100,
+          "worstRating": 0
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function createReviewProductSchema() {
+    const url = getCanonicalUrl();
+    const image = getHeroImage();
+
+    const productName =
+      getMeta("hv-product-name") ||
+      getPageTitle();
+
+    const publishDate = getPublishDate();
+    const modifiedDate = getModifiedDate();
+
+    const positiveNotes = toItemList(
+      getListItems("#pluspunten + ul li")
+    );
+
+    const negativeNotes = toItemList(
+      getListItems("#minpunten + ul li")
+    );
+
+    const reviewBody =
+      getVisibleText("#kort-oordeel + p") ||
+      getVisibleText("#conclusie + p") ||
+      getDescription();
+
+    const review = {
       "@type": "Review",
       "@id": `${url}#review`,
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": url
-      },
       "name": getPageTitle(),
       "headline": getPageTitle(),
       "description": getDescription(),
@@ -163,22 +336,71 @@
       },
       "publisher": {
         "@id": ORGANIZATION_ID
-      },
-      "itemReviewed": {
-        "@type": "Product",
-        "name": getMeta("hv-product-name") || getPageTitle()
       }
     };
+
+    const rating = parseReviewRating();
+
+    if (rating) {
+      review.reviewRating = rating;
+    }
+
+    if (reviewBody) {
+      review.reviewBody = reviewBody;
+    }
+
+    if (positiveNotes) {
+      review.positiveNotes = positiveNotes;
+    }
+
+    if (negativeNotes) {
+      review.negativeNotes = negativeNotes;
+    }
+
+    if (publishDate) {
+      review.datePublished = publishDate;
+    }
+
+    if (modifiedDate) {
+      review.dateModified = modifiedDate;
+    }
+
+    const product = {
+      "@type": "Product",
+      "@id": `${url}#product`,
+      "name": productName,
+      "description": getDescription(),
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": url
+      },
+      "isPartOf": {
+        "@id": WEBSITE_ID
+      },
+      "review": review
+    };
+
+    if (image) {
+      product.image = [image];
+    }
+
+    return product;
   }
 
-  function injectSchemas(schemas) {
-    const cleanSchemas = schemas.filter(Boolean);
+  function injectSchemas(nodes) {
+    const cleanNodes = nodes.filter(Boolean);
 
-    if (cleanSchemas.length === 0) return;
+    if (cleanNodes.length === 0) return;
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@graph": cleanNodes
+    };
 
     const script = document.createElement("script");
     script.type = "application/ld+json";
-    script.text = JSON.stringify(cleanSchemas, null, 2);
+    script.textContent = JSON.stringify(schema, null, 2);
+
     document.head.appendChild(script);
   }
 
@@ -186,18 +408,17 @@
   const schemas = [];
 
   const breadcrumbSchema = getBreadcrumbs();
-  if (breadcrumbSchema) schemas.push(breadcrumbSchema);
+
+  if (breadcrumbSchema) {
+    schemas.push(breadcrumbSchema);
+  }
 
   if (schemaType === "howto") {
-    schemas.push(createHowToSchema());
-  }
-
-  if (schemaType === "techarticle") {
+    schemas.push(createHowToArticleSchema());
+  } else if (schemaType === "techarticle") {
     schemas.push(createTechArticleSchema());
-  }
-
-  if (schemaType === "review") {
-    schemas.push(createReviewSchema());
+  } else if (schemaType === "review") {
+    schemas.push(createReviewProductSchema());
   }
 
   injectSchemas(schemas);

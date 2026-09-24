@@ -2,10 +2,13 @@ Vul onderstaand HTML-sjabloon in voor een DIY-projectpagina op huisvanvandaag.nl
 
 DOEL:
 Maak een volledig publiceerbaar DIY-artikel dat technisch klopt, prettig leest en direct op huisvanvandaag.nl geplaatst kan worden.
+Optimaliseer tegelijk voor klassieke zoekmachines én AI-zoekervaringen: de pagina moet zelfstandig begrijpelijk, goed citeerbaar en semantisch duidelijk zijn.
 
 REGELS:
-- behoud de HTML-structuur exact
-- vervang alleen de [[PLACEHOLDERS]]
+- behoud de HTML-structuur en semantiek; verwijder alleen blokken die expliciet als optioneel zijn gemarkeerd wanneer ze niet relevant zijn
+- vervang alle [[PLACEHOLDERS]]; laat geen placeholders in de publicatie staan
+- gebruik voor [[CANONICAL_URL]] altijd de absolute voorkeurs-URL van de gepubliceerde pagina
+- gebruik voor [[OG_IMAGE_URL]] een absolute URL naar de representatieve hero-afbeelding
 - vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag 
 - formaat publish_date: YYYY-MM-DD
 - laat [[PUBLISH_DATE]] nooit als placeholder staan
@@ -21,9 +24,17 @@ REGELS:
 - vermijd vlakke of generieke formuleringen
 - maak de intro aantrekkelijk en nieuwsgierig makend, zonder overdreven marketingtaal
 - benoem reële toepassingen in huis waar dat uit de input volgt
-- voeg interne links alleen toe als suggesties, niet als verzonnen feiten
+- voeg interne links alleen toe als ze werkelijk bestaan en inhoudelijk relevant zijn
+- schrijf het blok “Kort antwoord” als zelfstandig citeerbare samenvatting van 2–4 zinnen: wat bouw je, waarvoor dient het en wat is het resultaat
+- benoem productnamen, merken, protocollen en platforms consequent en volledig zodat de betrokken entiteiten ondubbelzinnig zijn
+- als affiliate-links worden gebruikt: zet de productnaam en context in gewone HTML en gebruik op de link rel="sponsored noopener"; laat essentiële productinformatie niet alleen via JavaScript injecteren
+- als er geen affiliate-links zijn: verwijder het expliciet gemarkeerde affiliate-meldingsblok
+- externe feitelijke bronnen mogen worden gelinkt wanneer dat de controleerbaarheid verhoogt; affiliate-links zijn nooit een bronvermelding
 
 EXTRA REDACTIECONTROLE:
+- controleer dat title, meta description, H1, canonical URL en hero-afbeelding inhoudelijk bij dezelfde pagina horen
+- controleer dat de zichtbare auteur en publicatiedatum overeenkomen met de structured data die global-schema.js/article-schema.js genereren
+- zorg dat de kerninformatie zonder uitvoering van affiliate-products.js al in de HTML staat
 - verwijder vaagtaal
 - verhoog praktische waarde
 - voorkom herhaling
@@ -41,6 +52,27 @@ Bron HTML:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="hv-schema-type" content="howto">
   <meta name="publish_date" content="[[PUBLISH_DATE]]">
+  <meta name="author" content="Mike Mulders">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <link rel="canonical" href="[[CANONICAL_URL]]">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="HuisvanVandaag">
+  <meta property="og:title" content="[[PROJECT_TITEL]]">
+  <meta property="og:description" content="[[META_DESCRIPTION]]">
+  <meta property="og:url" content="[[CANONICAL_URL]]">
+  <meta property="og:image" content="[[OG_IMAGE_URL]]">
+  <meta property="og:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+  <meta property="article:published_time" content="[[PUBLISH_DATE]]">
+  <meta property="article:author" content="Mike Mulders">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[[PROJECT_TITEL]]">
+  <meta name="twitter:description" content="[[META_DESCRIPTION]]">
+  <meta name="twitter:image" content="[[OG_IMAGE_URL]]">
+  <meta name="twitter:image:alt" content="[[HERO_AFBEELDING_ALT]]">
 
   <!-- PAGINATITEL -->
   <title>[[PROJECT_TITEL]] | huisvanvandaag.nl</title>
@@ -53,7 +85,7 @@ Bron HTML:
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
+  <script src="affiliate-products.js" defer></script>
 
   <style>
     .project-hero-media {
@@ -121,8 +153,6 @@ Bron HTML:
 <script src="/js/article-schema.js" defer></script>
 </head>
 <body>
-
-<body>
   <div id="site-header"></div>
 
 <main>
@@ -130,13 +160,13 @@ Bron HTML:
   <section class="article-hero">
     <div class="container article-layout">
       <div>
-        <div class="breadcrumbs">
+        <nav class="breadcrumbs" aria-label="Broodkruimelpad">
           <a href="index.html">Home</a>
           <span>•</span>
           <a href="diy.html">DIY</a>
           <span>•</span>
-          <span>[[KORTE_PROJECTNAAM]]</span>
-        </div>
+          <span aria-current="page">[[KORTE_PROJECTNAAM]]</span>
+        </nav>
 
         <span class="eyebrow">[[EYEBROW]]</span>
         <h1>[[PROJECT_TITEL]]</h1>
@@ -150,6 +180,11 @@ Bron HTML:
           <span class="meta-pill">Platform: [[PLATFORM]]</span>
           <span class="meta-pill">Hardware: [[BELANGRIJKSTE_HARDWARE]]</span>
         </div>
+
+        <p class="muted small article-byline">
+          Door <a href="[[AUTEUR_URL]]" rel="author">Mike Mulders</a> · Gepubliceerd op
+          <time datetime="[[PUBLISH_DATE]]">[[PUBLISH_DATE_DISPLAY]]</time>
+        </p>
       </div>
 
       <!-- RECHTER INFOBLOK -->
@@ -203,7 +238,7 @@ Bron HTML:
     <div class="container project-hero-media">
       <div class="panel">
         <figure>
-          <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]">
+          <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]" loading="eager" fetchpriority="high" decoding="async">
           <figcaption class="muted small">
             [[HERO_AFBEELDING_BIJSCHRIFT]]
           </figcaption>
@@ -216,6 +251,11 @@ Bron HTML:
   <section class="section-tight" style="padding-top: 14px;">
     <div class="container project-content-layout">
       <article class="article-body project-article">
+
+        <section class="insight-panel" aria-labelledby="kort-antwoord">
+          <h2 id="kort-antwoord">Kort antwoord</h2>
+          <p class="muted">[[KORT_ANTWOORD]]</p>
+        </section>
 
         <p class="lead">
           [[OPENINGSALINEA]]
@@ -234,12 +274,34 @@ Bron HTML:
         <p>[[AANVULLENDE_UITLEG_RESULTAAT]]</p>
 
         <h2 id="benodigdheden">Benodigdheden</h2>
+        <!-- OPTIONEEL: alleen tonen als er affiliate-links in deze sectie staan -->
+        <p class="muted small affiliate-disclosure">[[AFFILIATE_MELDING]]</p>
         <ul>
-          <li>[[ONDERDEEL_1]]</li>
-          <li>[[ONDERDEEL_2]]</li>
-          <li>[[ONDERDEEL_3]]</li>
-          <li>[[ONDERDEEL_4]]</li>
-          <li>[[ONDERDEEL_5]]</li>
+          <li>
+            <strong>[[ONDERDEEL_1_NAAM]]</strong> — [[ONDERDEEL_1_UITLEG]]
+            <!-- OPTIONEEL: verwijder alleen deze link als er geen passende affiliate-link is -->
+            <a href="[[ONDERDEEL_1_AFFILIATE_URL]]" rel="sponsored noopener" target="_blank">Bekijk [[ONDERDEEL_1_NAAM]]</a>
+          </li>
+          <li>
+            <strong>[[ONDERDEEL_2_NAAM]]</strong> — [[ONDERDEEL_2_UITLEG]]
+            <!-- OPTIONEEL: verwijder alleen deze link als er geen passende affiliate-link is -->
+            <a href="[[ONDERDEEL_2_AFFILIATE_URL]]" rel="sponsored noopener" target="_blank">Bekijk [[ONDERDEEL_2_NAAM]]</a>
+          </li>
+          <li>
+            <strong>[[ONDERDEEL_3_NAAM]]</strong> — [[ONDERDEEL_3_UITLEG]]
+            <!-- OPTIONEEL: verwijder alleen deze link als er geen passende affiliate-link is -->
+            <a href="[[ONDERDEEL_3_AFFILIATE_URL]]" rel="sponsored noopener" target="_blank">Bekijk [[ONDERDEEL_3_NAAM]]</a>
+          </li>
+          <li>
+            <strong>[[ONDERDEEL_4_NAAM]]</strong> — [[ONDERDEEL_4_UITLEG]]
+            <!-- OPTIONEEL: verwijder alleen deze link als er geen passende affiliate-link is -->
+            <a href="[[ONDERDEEL_4_AFFILIATE_URL]]" rel="sponsored noopener" target="_blank">Bekijk [[ONDERDEEL_4_NAAM]]</a>
+          </li>
+          <li>
+            <strong>[[ONDERDEEL_5_NAAM]]</strong> — [[ONDERDEEL_5_UITLEG]]
+            <!-- OPTIONEEL: verwijder alleen deze link als er geen passende affiliate-link is -->
+            <a href="[[ONDERDEEL_5_AFFILIATE_URL]]" rel="sponsored noopener" target="_blank">Bekijk [[ONDERDEEL_5_NAAM]]</a>
+          </li>
         </ul>
 
         <h2 id="stappenplan">Stap-voor-stap uitleg</h2>
@@ -253,7 +315,7 @@ Bron HTML:
         </ul>
 
         <figure>
-          <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]">
+          <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]" loading="lazy" decoding="async">
           <figcaption class="muted small">
             [[AFBEELDING_1_BIJSCHRIFT]]
           </figcaption>
@@ -265,12 +327,11 @@ Bron HTML:
         <h3>3. [[STAP_3_TITEL]]</h3>
         <p>[[STAP_3_TEKST]]</p>
 
+        <!-- OPTIONEEL: verwijder dit hele blok als code niet nodig is -->
         <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
- <div class="code-block">
-  <button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
-  <pre><code> [[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
-</div>
+          <button class="copy-btn" type="button" onclick="copyCode(this)">Kopieer</button>
+          <pre><code class="language-[[CODE_TAAL]]">[[CODE_BLOK_HIER_PLAKKEN]]</code></pre>
+        </div>
 
         <h3>4. [[STAP_4_TITEL]]</h3>
         <p>[[STAP_4_TEKST]]</p>
@@ -279,12 +340,13 @@ Bron HTML:
         <p>[[STAP_5_TEKST]]</p>
 
         <figure>
-          <img src="[[AFBEELDING_2_PAD]]" alt="[[AFBEELDING_2_ALT]]">
+          <img src="[[AFBEELDING_2_PAD]]" alt="[[AFBEELDING_2_ALT]]" loading="lazy" decoding="async">
           <figcaption class="muted small">
             [[AFBEELDING_2_BIJSCHRIFT]]
           </figcaption>
         </figure>
 
+        <!-- OPTIONEEL: verwijder deze hele sectie én de TOC-link als Homey niet relevant is -->
         <h2 id="integratie">Integratie met Homey</h2>
         <p>[[HOMEY_INTEGRATIE_UITLEG]]</p>
         <p>[[VOORBEELD_TOEPASSINGEN_INLEIDING]]</p>
@@ -295,7 +357,7 @@ Bron HTML:
         </ul>
 
         <figure>
-          <img src="[[AFBEELDING_3_PAD]]" alt="[[AFBEELDING_3_ALT]]">
+          <img src="[[AFBEELDING_3_PAD]]" alt="[[AFBEELDING_3_ALT]]" loading="lazy" decoding="async">
           <figcaption class="muted small">
             [[AFBEELDING_3_BIJSCHRIFT]]
           </figcaption>
@@ -305,7 +367,7 @@ Bron HTML:
         <p>[[PRAKTISCH_GEBRUIK_TEKST]]</p>
 
         <figure>
-          <img src="[[AFBEELDING_4_PAD]]" alt="[[AFBEELDING_4_ALT]]">
+          <img src="[[AFBEELDING_4_PAD]]" alt="[[AFBEELDING_4_ALT]]" loading="lazy" decoding="async">
           <figcaption class="muted small">
             [[AFBEELDING_4_BIJSCHRIFT]]
           </figcaption>
@@ -325,9 +387,11 @@ Bron HTML:
       <aside class="side-stack">
         <div class="toc">
           <h3>In dit artikel</h3>
+          <a href="#kort-antwoord">Kort antwoord</a>
           <a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
           <a href="#benodigdheden">Benodigdheden</a>
           <a href="#stappenplan">Stap-voor-stap uitleg</a>
+          <!-- OPTIONEEL: samen met Homey-sectie verwijderen als niet relevant -->
           <a href="#integratie">Integratie met Homey</a>
           <a href="#praktisch-gebruik">Praktisch gebruik</a>
           <a href="#aandachtspunten">Aandachtspunten</a>
@@ -383,6 +447,8 @@ Bron HTML:
     Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
   </p>
 </div>
+  </div>
+</div>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
@@ -406,7 +472,7 @@ fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/take
   <script src="script.js"></script>
 <script>
 function copyCode(button) {
-  const code = button.nextElementSibling.innerText;
+  const code = button.nextElementSibling.textContent;
 
   navigator.clipboard.writeText(code).then(() => {
     button.innerText = "Gekopieerd!";

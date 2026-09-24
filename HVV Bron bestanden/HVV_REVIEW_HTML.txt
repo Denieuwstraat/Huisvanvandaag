@@ -1,33 +1,81 @@
 Vul onderstaand HTML-sjabloon in voor een reviewpagina op huisvanvandaag.nl.
 
 DOEL:
-Maak een eerlijke, professionele en prettig leesbare review voor huisvanvandaag.nl.
+Maak een eerlijke, professionele, goed vindbare en prettig leesbare review voor huisvanvandaag.nl die duidelijk onderscheid maakt tussen productspecificaties, eigen gebruikservaring en redactioneel oordeel.
 
 REGELS:
-- behoud de HTML-structuur exact
-- vervang alleen de [[PLACEHOLDERS]]
+- behoud de HTML-structuur van dit sjabloon
+- vervang alle [[PLACEHOLDERS]]
 - vervang [[PUBLISH_DATE]] altijd door de actuele datum van vandaag
-- formaat publish_date: YYYY-MM-DD
-- laat [[PUBLISH_DATE]] nooit als placeholder staan
-- verzin geen feiten die niet in de input staan
+- formaat PUBLISH_DATE: YYYY-MM-DD
+- vervang [[MODIFIED_DATE]] bij eerste publicatie door dezelfde datum als [[PUBLISH_DATE]]
+- wijzig [[MODIFIED_DATE]] bij een latere inhoudelijke update naar de werkelijke wijzigingsdatum
+- laat geen [[PLACEHOLDERS]] in de uiteindelijke HTML staan
+- verzin geen feiten
 - als iets niet getest, bevestigd of beschreven is: niet als feit opschrijven
-- geen AI-uitleg
-- geen interne notities
-- geen bronverantwoording
+- baseer eigen ervaring alleen op aangeleverde praktijkervaring
+- technische specificaties moeten verifieerbaar zijn
+- maak expliciet onderscheid tussen specificatie, ervaring en oordeel
 - schrijf professioneel, toegankelijk en concreet
 - wees eerlijk en duidelijk
-- vermijd holle superlatieven
+- vermijd holle superlatieven en marketingtaal
 - maak duidelijk voor wie dit product of systeem geschikt is en voor wie niet
-- benoem pluspunten en minpunten alleen als ze uit de input volgen
-- voeg interne links alleen toe als suggesties
+- benoem pluspunten en minpunten alleen als ze uit input of verifieerbare testinformatie volgen
+- gebruik één duidelijk eindoordeel dat aansluit op de beschreven ervaring
+- forceer geen affiliate-insteek
+- affiliate-links zijn altijd ondergeschikt aan de review
+- gebruik voor affiliate-links rel="sponsored noopener"
+- voeg interne links alleen toe als ze logisch en functioneel zijn
+- gebruik beschrijvende ankerteksten
+- verwijder optionele blokken wanneer ze niet inhoudelijk relevant zijn
+- geen AI-uitleg
+- geen interne notities
+- geen meta-tekst
+- output alleen de volledig ingevulde HTML
+
+REVIEWLOGICA:
+- beschrijf wat het product is
+- beschrijf wat daadwerkelijk getest of gebruikt is
+- benoem testcontext of gebruiksduur alleen als die bekend is
+- maak duidelijk wat uit fabrikantdocumentatie komt en wat uit eigen ervaring
+- benoem concrete plus- en minpunten
+- leg uit voor wie het product logisch is
+- leg uit voor wie niet
+- eindig met een samenvattend oordeel dat door de review wordt gedragen
+
+SEO / AI-VINDBAARHEID:
+- [[REVIEW_TITEL]] moet duidelijk maken welk product of systeem wordt beoordeeld
+- [[META_DESCRIPTION]] vat de ervaring en belangrijkste conclusie concreet samen
+- [[CANONICAL_URL]] is altijd de absolute definitieve URL
+- [[HERO_AFBEELDING_ABSOLUTE_URL]] is altijd een absolute, crawlbare URL
+- gebruik één duidelijke H1
+- gebruik de volledige productnaam consequent
+- laat [[HV_PRODUCT_NAME]] exact overeenkomen met de beoordeelde productnaam
+- laat zichtbare auteur, publicatiedatum en wijzigingsdatum overeenkomen met structured data
+- gebruik beschrijvende H2-koppen
+- maak het korte oordeel zelfstandig begrijpelijk
+- structured data wordt centraal afgehandeld via /js/global-schema.js en /js/article-schema.js; voeg geen tweede conflicterende JSON-LD toe
+
+AFFILIATE:
+- voeg een affiliateknop alleen toe wanneer een passende affiliate-URL beschikbaar is
+- plaats productcontext vóór de kooplink
+- gebruik geen koopdruk
+- gebruik geen schaarsteclaims tenzij geverifieerd
+- gebruik geen prijsclaim als die niet actueel geverifieerd is
+- vermeld duidelijk dat een link een affiliate-link kan zijn
+- gebruik rel="sponsored noopener"
 
 VASTE ONDERDELEN:
 - korte intro
+- kort oordeel
 - wat is het?
+- wat is getest?
 - eerste indruk / gebruikservaring
 - pluspunten
 - minpunten
+- integratie en compatibiliteit indien relevant
 - voor wie wel / niet
+- aandachtspunten
 - eindoordeel
 - conclusie
 
@@ -39,9 +87,17 @@ alleen de ingevulde HTML
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- INTERNE REVIEWMETADATA -->
   <meta name="hv-schema-type" content="review">
-  <meta name="hv-product-name" content="Naam van het product">
+  <meta name="hv-product-name" content="[[HV_PRODUCT_NAME]]">
   <meta name="publish_date" content="[[PUBLISH_DATE]]">
+  <meta name="modified_date" content="[[MODIFIED_DATE]]">
+  <meta name="author" content="[[AUTEUR_NAAM]]">
+
+  <!-- INDEXERING -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="[[CANONICAL_URL]]">
 
   <!-- PAGINATITEL -->
   <title>[[REVIEW_TITEL]] | huisvanvandaag.nl</title>
@@ -49,12 +105,33 @@ alleen de ingevulde HTML
   <!-- META DESCRIPTION -->
   <meta name="description" content="[[META_DESCRIPTION]]">
 
+  <!-- OPEN GRAPH -->
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HuisvanVandaag">
+  <meta property="og:title" content="[[REVIEW_TITEL]]">
+  <meta property="og:description" content="[[META_DESCRIPTION]]">
+  <meta property="og:url" content="[[CANONICAL_URL]]">
+  <meta property="og:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta property="og:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+  <meta property="article:published_time" content="[[PUBLISH_DATE]]">
+  <meta property="article:modified_time" content="[[MODIFIED_DATE]]">
+  <meta property="article:author" content="[[AUTEUR_URL]]">
+
+  <!-- SOCIAL PREVIEW -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[[REVIEW_TITEL]]">
+  <meta name="twitter:description" content="[[META_DESCRIPTION]]">
+  <meta name="twitter:image" content="[[HERO_AFBEELDING_ABSOLUTE_URL]]">
+  <meta name="twitter:image:alt" content="[[HERO_AFBEELDING_ALT]]">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css">
-  <script src="affiliate-products.js"></script>
+
+  <script src="affiliate-products.js" defer></script>
 
   <style>
     .project-hero-media {
@@ -123,7 +200,7 @@ alleen de ingevulde HTML
       background: rgba(255,255,255,0.04);
     }
 
-    .review-score-panel h3 {
+    .review-score-panel h2 {
       margin-top: 0;
       margin-bottom: .55rem;
     }
@@ -135,235 +212,335 @@ alleen de ingevulde HTML
       margin-bottom: .4rem;
     }
 
+    .review-buy-box {
+      margin: 1.4rem 0 1.8rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .review-buy-box p:last-child {
+      margin-bottom: 0;
+    }
+
     @media (max-width: 980px) {
       .project-content-layout {
         grid-template-columns: 1fr;
       }
     }
   </style>
- 
-<script src="/js/global-schema.js" defer></script>
-<script src="/js/article-schema.js" defer></script>
+
+  <script src="/js/global-schema.js" defer></script>
+  <script src="/js/article-schema.js" defer></script>
 </head>
-<body>
 
 <body>
   <div id="site-header"></div>
 
-<main>
-  <!-- HERO -->
-  <section class="article-hero">
-    <div class="container article-layout">
-      <div>
-        <div class="breadcrumbs">
-          <a href="index.html">Home</a>
-          <span>•</span>
-          <a href="reviews.html">Reviews</a>
-          <span>•</span>
-          <span>[[KORTE_REVIEWNAAM]]</span>
-        </div>
+  <main>
+    <article>
 
-        <span class="eyebrow">[[EYEBROW]]</span>
-        <h1>[[REVIEW_TITEL]]</h1>
+      <!-- HERO -->
+      <section class="article-hero">
+        <div class="container article-layout">
+          <div>
 
-        <p class="lead muted">
-          [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
-        </p>
+            <nav aria-label="Broodkruimelpad">
+              <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span aria-hidden="true">•</span>
+                <a href="reviews.html">Reviews</a>
+                <span aria-hidden="true">•</span>
+                <span aria-current="page">[[KORTE_REVIEWNAAM]]</span>
+              </div>
+            </nav>
 
-        <div class="meta-list">
-          <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
-          <span class="meta-pill">Platform: [[PLATFORM]]</span>
-          <span class="meta-pill">Type: [[PRODUCTTYPE]]</span>
-        </div>
-      </div>
+            <span class="eyebrow">Review</span>
+            <span class="eyebrow">[[EYEBROW]]</span>
 
-      <!-- RECHTER INFOBLOK -->
-      <div class="panel project-info-panel">
-        <h3>Kort oordeel</h3>
-        <div class="check-list">
-          <div class="check-item [[OORDEEL_1_KLASSE]]">
-            <span class="check-mark">[[OORDEEL_1_ICON]]</span>
-            <div>
-              <strong>[[OORDEEL_1_TITEL]]</strong><br>
-              <span class="muted">[[OORDEEL_1_TEKST]]</span>
+            <h1>[[REVIEW_TITEL]]</h1>
+
+            <p class="lead muted">
+              [[KORTE_INTRO_MET_BELANGRIJKSTE_BELOFTE]]
+            </p>
+
+            <div class="meta-list">
+              <span class="meta-pill">Categorie: [[CATEGORIE]]</span>
+              <span class="meta-pill">Platform: [[PLATFORM]]</span>
+              <span class="meta-pill">Type: [[PRODUCTTYPE]]</span>
+            </div>
+
+            <p class="muted small">
+              Door <a href="[[AUTEUR_URL]]" rel="author">[[AUTEUR_NAAM]]</a>
+              · gepubliceerd <time datetime="[[PUBLISH_DATE]]">[[PUBLISH_DATE_LEESBAAR]]</time>
+              · bijgewerkt <time datetime="[[MODIFIED_DATE]]">[[MODIFIED_DATE_LEESBAAR]]</time>
+            </p>
+          </div>
+
+          <!-- RECHTER INFOBLOK -->
+          <div class="panel project-info-panel">
+            <h2>Kort oordeel</h2>
+
+            <div class="check-list">
+
+              <div class="check-item [[OORDEEL_1_KLASSE]]">
+                <span class="check-mark">[[OORDEEL_1_ICON]]</span>
+                <div>
+                  <strong>[[OORDEEL_1_TITEL]]</strong><br>
+                  <span class="muted">[[OORDEEL_1_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item [[OORDEEL_2_KLASSE]]">
+                <span class="check-mark">[[OORDEEL_2_ICON]]</span>
+                <div>
+                  <strong>[[OORDEEL_2_TITEL]]</strong><br>
+                  <span class="muted">[[OORDEEL_2_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item [[OORDEEL_3_KLASSE]]">
+                <span class="check-mark">[[OORDEEL_3_ICON]]</span>
+                <div>
+                  <strong>[[OORDEEL_3_TITEL]]</strong><br>
+                  <span class="muted">[[OORDEEL_3_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item [[OORDEEL_4_KLASSE]]">
+                <span class="check-mark">[[OORDEEL_4_ICON]]</span>
+                <div>
+                  <strong>[[OORDEEL_4_TITEL]]</strong><br>
+                  <span class="muted">[[OORDEEL_4_TEKST]]</span>
+                </div>
+              </div>
+
+              <div class="check-item [[OORDEEL_5_KLASSE]]">
+                <span class="check-mark">[[OORDEEL_5_ICON]]</span>
+                <div>
+                  <strong>[[OORDEEL_5_TITEL]]</strong><br>
+                  <span class="muted">[[OORDEEL_5_TEKST]]</span>
+                </div>
+              </div>
+
             </div>
           </div>
-
-          <div class="check-item [[OORDEEL_2_KLASSE]]">
-            <span class="check-mark">[[OORDEEL_2_ICON]]</span>
-            <div>
-              <strong>[[OORDEEL_2_TITEL]]</strong><br>
-              <span class="muted">[[OORDEEL_2_TEKST]]</span>
-            </div>
-          </div>
-
-          <div class="check-item [[OORDEEL_3_KLASSE]]">
-            <span class="check-mark">[[OORDEEL_3_ICON]]</span>
-            <div>
-              <strong>[[OORDEEL_3_TITEL]]</strong><br>
-              <span class="muted">[[OORDEEL_3_TEKST]]</span>
-            </div>
-          </div>
-
-          <div class="check-item [[OORDEEL_4_KLASSE]]">
-            <span class="check-mark">[[OORDEEL_4_ICON]]</span>
-            <div>
-              <strong>[[OORDEEL_4_TITEL]]</strong><br>
-              <span class="muted">[[OORDEEL_4_TEKST]]</span>
-            </div>
-          </div>
-
-          <div class="check-item [[OORDEEL_5_KLASSE]]">
-            <span class="check-mark">[[OORDEEL_5_ICON]]</span>
-            <div>
-              <strong>[[OORDEEL_5_TITEL]]</strong><br>
-              <span class="muted">[[OORDEEL_5_TEKST]]</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO AFBEELDING -->
-    <!-- Gebruik dit blok alleen als er echt een passende product- of sfeerafbeelding is -->
-    <div class="container project-hero-media">
-      <div class="panel">
-        <figure>
-          <img src="[[HERO_AFBEELDING_PAD]]" alt="[[HERO_AFBEELDING_ALT]]">
-          <figcaption class="muted small">
-            [[HERO_AFBEELDING_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT -->
-  <section class="section-tight" style="padding-top: 14px;">
-    <div class="container project-content-layout">
-      <article class="article-body project-article">
-
-        <p class="lead">
-          [[OPENINGSALINEA]]
-        </p>
-
-        <p>
-          [[TWEEDE_ALINEA]]
-        </p>
-
-        <div class="review-score-panel">
-          <h3>Eindoordeel</h3>
-          <div class="review-score-value">[[EINDOORDEEL_SCORE]]</div>
-          <p class="muted">[[EINDOORDEEL_KORTE_TOELICHTING]]</p>
         </div>
 
-        <h2 id="wat-is-het">Wat is het?</h2>
-        <p>[[WAT_IS_HET_UITLEG]]</p>
-        <ul>
-          <li><strong>[[KENMERK_1_TITEL]]</strong> → [[KENMERK_1_UITLEG]]</li>
-          <li><strong>[[KENMERK_2_TITEL]]</strong> → [[KENMERK_2_UITLEG]]</li>
-        </ul>
-        <p>[[AANVULLENDE_UITLEG_PRODUCT]]</p>
-
-        <h2 id="eerste-indruk">Eerste indruk en gebruikservaring</h2>
-        <p>[[EERSTE_INDRUK_TEKST]]</p>
-
-        <!-- Gebruik dit afbeeldingsblok alleen als er echt een relevante afbeelding of screenshot is -->
-        <figure>
-          <img src="[[AFBEELDING_1_PAD]]" alt="[[AFBEELDING_1_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_1_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h2 id="pluspunten">Pluspunten</h2>
-        <ul>
-          <li>[[PLUSPUNT_1]]</li>
-          <li>[[PLUSPUNT_2]]</li>
-          <li>[[PLUSPUNT_3]]</li>
-          <li>[[PLUSPUNT_4]]</li>
-        </ul>
-
-        <h2 id="minpunten">Minpunten</h2>
-        <ul>
-          <li>[[MINPUNT_1]]</li>
-          <li>[[MINPUNT_2]]</li>
-          <li>[[MINPUNT_3]]</li>
-          <li>[[MINPUNT_4]]</li>
-        </ul>
-
-        <!-- Gebruik dit blok alleen als integratie met Homey, Google Home of een ander platform echt relevant is -->
-        <h2 id="integratie">Integratie en compatibiliteit</h2>
-        <p>[[INTEGRATIE_UITLEG]]</p>
-        <ul>
-          <li>[[COMPATIBILITEIT_1]]</li>
-          <li>[[COMPATIBILITEIT_2]]</li>
-          <li>[[COMPATIBILITEIT_3]]</li>
-        </ul>
-
-        <!-- Tweede afbeelding optioneel -->
-        <figure>
-          <img src="[[AFBEELDING_2_PAD]]" alt="[[AFBEELDING_2_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_2_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h2 id="voor-wie-wel">Voor wie is dit een goede keuze?</h2>
-        <p>[[VOOR_WIE_WEL_TEKST]]</p>
-
-        <h2 id="voor-wie-niet">Voor wie juist niet?</h2>
-        <p>[[VOOR_WIE_NIET_TEKST]]</p>
-
-        <h2 id="aandachtspunten">Aandachtspunten</h2>
-        <ul>
-          <li>[[AANDACHTSPUNT_1]]</li>
-          <li>[[AANDACHTSPUNT_2]]</li>
-          <li>[[AANDACHTSPUNT_3]]</li>
-        </ul>
-
-        <!-- Derde afbeelding optioneel -->
-        <figure>
-          <img src="[[AFBEELDING_3_PAD]]" alt="[[AFBEELDING_3_ALT]]">
-          <figcaption class="muted small">
-            [[AFBEELDING_3_BIJSCHRIFT]]
-          </figcaption>
-        </figure>
-
-        <h2 id="conclusie">Conclusie</h2>
-        <p>[[CONCLUSIE_TEKST]]</p>
-      </article>
-
-      <aside class="side-stack">
-        <div class="toc">
-          <h3>In deze review</h3>
-          <a href="#wat-is-het">Wat is het?</a>
-          <a href="#eerste-indruk">Eerste indruk en gebruikservaring</a>
-          <a href="#pluspunten">Pluspunten</a>
-          <a href="#minpunten">Minpunten</a>
-          <a href="#integratie">Integratie en compatibiliteit</a>
-          <a href="#voor-wie-wel">Voor wie is dit een goede keuze?</a>
-          <a href="#voor-wie-niet">Voor wie juist niet?</a>
-          <a href="#aandachtspunten">Aandachtspunten</a>
-          <a href="#conclusie">Conclusie</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h3>Gerelateerd</h3>
-          <div class="footer-links">
-            <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
-            <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
-            <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
+        <!-- HERO AFBEELDING -->
+        <div class="container project-hero-media">
+          <div class="panel">
+            <figure>
+              <img
+                src="[[HERO_AFBEELDING_PAD]]"
+                alt="[[HERO_AFBEELDING_ALT]]"
+                fetchpriority="high"
+                decoding="async">
+              <figcaption class="muted small">
+                [[HERO_AFBEELDING_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
           </div>
         </div>
-      </aside>
-    </div>
-  </section>
-</main>
+      </section>
+
+      <!-- CONTENT -->
+      <section class="section-tight" style="padding-top: 14px;">
+        <div class="container project-content-layout">
+
+          <div class="article-body project-article">
+
+            <!--
+              KORT OORDEEL:
+              Geef in 2 tot 4 zinnen direct de kernconclusie van de review.
+              Dit blok moet zelfstandig begrijpelijk zijn.
+            -->
+            <section class="insight-panel" aria-labelledby="kort-oordeel">
+              <h2 id="kort-oordeel">Kort oordeel</h2>
+              <p class="muted">[[KORT_OORDEEL]]</p>
+            </section>
+
+            <p class="lead">
+              [[OPENINGSALINEA]]
+            </p>
+
+            <p>
+              [[TWEEDE_ALINEA]]
+            </p>
+
+            <section class="review-score-panel" aria-labelledby="eindoordeel">
+              <h2 id="eindoordeel">Eindoordeel</h2>
+              <div class="review-score-value">[[EINDOORDEEL_SCORE]]</div>
+              <p class="muted">[[EINDOORDEEL_KORTE_TOELICHTING]]</p>
+            </section>
+
+            <h2 id="wat-is-het">Wat is [[HV_PRODUCT_NAME]]?</h2>
+            <p>[[WAT_IS_HET_UITLEG]]</p>
+
+            <ul>
+              <li><strong>[[KENMERK_1_TITEL]]</strong> → [[KENMERK_1_UITLEG]]</li>
+              <li><strong>[[KENMERK_2_TITEL]]</strong> → [[KENMERK_2_UITLEG]]</li>
+              <li><strong>[[KENMERK_3_TITEL]]</strong> → [[KENMERK_3_UITLEG]]</li>
+            </ul>
+
+            <p>[[AANVULLENDE_UITLEG_PRODUCT]]</p>
+
+            <h2 id="wat-is-getest">Wat is daadwerkelijk getest?</h2>
+            <p>[[TESTCONTEXT_UITLEG]]</p>
+
+            <ul>
+              <li><strong>Gebruiksduur:</strong> [[TEST_GEBRUIKSDUUR]]</li>
+              <li><strong>Testomgeving:</strong> [[TESTOMGEVING]]</li>
+              <li><strong>Geteste functies:</strong> [[GETESTE_FUNCTIES]]</li>
+            </ul>
+
+            <h2 id="eerste-indruk">Eerste indruk en gebruikservaring</h2>
+            <p>[[EERSTE_INDRUK_TEKST]]</p>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_1_PAD]]"
+                alt="[[AFBEELDING_1_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_1_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h2 id="pluspunten">Pluspunten</h2>
+            <ul>
+              <li>[[PLUSPUNT_1]]</li>
+              <li>[[PLUSPUNT_2]]</li>
+              <li>[[PLUSPUNT_3]]</li>
+              <li>[[PLUSPUNT_4]]</li>
+            </ul>
+
+            <h2 id="minpunten">Minpunten</h2>
+            <ul>
+              <li>[[MINPUNT_1]]</li>
+              <li>[[MINPUNT_2]]</li>
+              <li>[[MINPUNT_3]]</li>
+              <li>[[MINPUNT_4]]</li>
+            </ul>
+
+            <!-- Alleen gebruiken als integratie inhoudelijk relevant is -->
+            <section id="integratie" aria-labelledby="integratie-titel">
+              <h2 id="integratie-titel">Integratie en compatibiliteit</h2>
+
+              <p>[[INTEGRATIE_UITLEG]]</p>
+
+              <ul>
+                <li>[[COMPATIBILITEIT_1]]</li>
+                <li>[[COMPATIBILITEIT_2]]</li>
+                <li>[[COMPATIBILITEIT_3]]</li>
+              </ul>
+            </section>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_2_PAD]]"
+                alt="[[AFBEELDING_2_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_2_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <h2 id="voor-wie-wel">Voor wie is [[HV_PRODUCT_NAME]] een goede keuze?</h2>
+            <p>[[VOOR_WIE_WEL_TEKST]]</p>
+
+            <h2 id="voor-wie-niet">Voor wie juist niet?</h2>
+            <p>[[VOOR_WIE_NIET_TEKST]]</p>
+
+            <h2 id="aandachtspunten">Aandachtspunten</h2>
+            <ul>
+              <li>[[AANDACHTSPUNT_1]]</li>
+              <li>[[AANDACHTSPUNT_2]]</li>
+              <li>[[AANDACHTSPUNT_3]]</li>
+            </ul>
+
+            <figure>
+              <img
+                src="[[AFBEELDING_3_PAD]]"
+                alt="[[AFBEELDING_3_ALT]]"
+                loading="lazy"
+                decoding="async">
+              <figcaption class="muted small">
+                [[AFBEELDING_3_BIJSCHRIFT]]
+              </figcaption>
+            </figure>
+
+            <!--
+              OPTIONEEL AFFILIATEBLOK.
+              Alleen gebruiken als een passende affiliate-link beschikbaar is.
+            -->
+            <section class="review-buy-box" id="bekijk-product" aria-labelledby="bekijk-product-titel">
+              <h2 id="bekijk-product-titel">[[AFFILIATE_BLOK_TITEL]]</h2>
+
+              <p>
+                [[AFFILIATE_PRODUCT_CONTEXT]]
+              </p>
+
+              <p>
+                <a href="[[AFFILIATE_URL]]"
+                   rel="sponsored noopener"
+                   target="_blank">
+                  [[AFFILIATE_LINKTEKST]]
+                </a>
+              </p>
+
+              <p class="muted small">
+                Dit is een affiliate-link. Als je via deze link iets koopt,
+                kan HuisvanVandaag een kleine commissie ontvangen zonder dat jij meer betaalt.
+              </p>
+            </section>
+
+            <h2 id="conclusie">Conclusie</h2>
+            <p>[[CONCLUSIE_TEKST]]</p>
+
+          </div>
+
+          <aside class="side-stack">
+
+            <div class="toc" role="navigation" aria-label="Inhoudsopgave">
+              <h2>In deze review</h2>
+              <a href="#kort-oordeel">Kort oordeel</a>
+              <a href="#eindoordeel">Eindoordeel</a>
+              <a href="#wat-is-het">Wat is het?</a>
+              <a href="#wat-is-getest">Wat is getest?</a>
+              <a href="#eerste-indruk">Eerste indruk en gebruikservaring</a>
+              <a href="#pluspunten">Pluspunten</a>
+              <a href="#minpunten">Minpunten</a>
+              <a href="#integratie">Integratie en compatibiliteit</a>
+              <a href="#voor-wie-wel">Voor wie is dit een goede keuze?</a>
+              <a href="#voor-wie-niet">Voor wie juist niet?</a>
+              <a href="#aandachtspunten">Aandachtspunten</a>
+              <a href="#bekijk-product">Bekijk product</a>
+              <a href="#conclusie">Conclusie</a>
+            </div>
+
+            <div class="sidebar-card">
+              <h2>Gerelateerd</h2>
+
+              <div class="footer-links">
+                <a href="[[GERELATEERD_LINK_1]]">[[GERELATEERD_TITEL_1]]</a>
+                <a href="[[GERELATEERD_LINK_2]]">[[GERELATEERD_TITEL_2]]</a>
+                <a href="[[GERELATEERD_LINK_3]]">[[GERELATEERD_TITEL_3]]</a>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </section>
+
+    </article>
+  </main>
 
   <div id="site-footer"></div>
 
   <script src="include.js"></script>
   <script src="script.js"></script>
- </body>
+</body>
 </html>
