@@ -1,4 +1,22 @@
+# =========================================================
+# HuisvanVandaag.nl - robots.txt
+# =========================================================
+
+# Normale zoekmachines
 User-agent: *
 Allow: /
 
-Sitemap: https://www.huisvanvandaag.nl/sitemap.xml
+# OpenAI Search
+# Toestaan zodat artikelen gevonden en geciteerd kunnen worden
+# in ChatGPT Search.
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI training
+# Niet toestaan dat GPTBot de website crawlt voor mogelijke
+# training van generatieve AI-modellen.
+User-agent: GPTBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://huisvanvandaag.nl/sitemap.xml
