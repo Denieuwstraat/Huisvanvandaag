@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+<meta name="hv-schema-type" content="techarticle">
+<title>Waarom dit blog bestaat | huisvanvandaag.nl</title>
+<meta content="Het verhaal achter huisvanvandaag.nl: van een bezoek aan het Huis van de Toekomst in Rosmalen naar een praktisch blog over Homey, Google Home en DIY smart-home projecten." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+  <link rel="canonical" href="https://www.huisvanvandaag.nl/waarom-dit-blog-bestaat.html">
+</head>
+<body>
+<header class="site-header">
+<div class="container navbar">
+<a aria-label="huisvanvandaag.nl home" class="logo" href="index.html">
+<img alt="Huisvanvandaag" class="logo-image logo-header" src="assets/logo-white.png"/>
+<span class="visually-hidden">huisvanvandaag.nl – Het huis dat met je meedenkt</span>
+</a>
+<button aria-expanded="false" aria-label="Menu openen" class="nav-toggle"><span></span></button>
+<nav aria-label="Hoofdnavigatie" class="nav-links">
+<a href="index.html">Home</a>
+<a class="active" href="over.html">Over</a>
+<a href="homey.html">Homey</a>
+<a href="diy.html">DIY</a>
+<a href="tutorials.html">Tutorials</a>
+<a href="reviews.html">Reviews</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a><span>•</span>
+<a href="over.html">Over</a><span>•</span>
+<span>Waarom dit blog bestaat</span>
+</div>
+<span class="eyebrow">Achtergrond • oorsprong van het blog</span>
+<h1>Waarom dit blog bestaat</h1>
+<p class="lead muted">
+        Van een bezoek aan het Huis van de Toekomst in Rosmalen naar een praktische zoektocht:
+        hoe ver kun je vandaag komen met het bouwen van een slim huis met betaalbare middelen?
+      </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: achtergrond</span>
+<span class="meta-pill">Onderwerp: oorsprong van het blog</span>
+<span class="meta-pill">Focus: Homey, Google Home en DIY</span>
+</div>
+</div>
+<div class="panel profile-panel">
+<img alt="Mike - Huisvanvandaag" class="profile-image" src="assets/artikel/mike.jpg"/>
+<div>
+<h3>Over mij</h3>
+<p class="muted">
+  Mike, geboren halverwege de jaren 80, vader van twee en parttime nerd.  
+  Als klein mannetje liep ik door het Huis van de Toekomst in Rosmalen en wist ik één ding zeker: dit wil ik later.
+  <br/><br/>
+   Alleen kwam dat “later” niet vanzelf, dus ben ik het zelf maar gaan bouwen. 
+</p>
+<div class="chips">
+<span class="chip">Nieuwsgierig</span>
+<span class="chip">Zelfbouw-minded</span>
+<span class="chip">Praktisch</span>
+</div>
+</div>
+</div>
+</div></section>
+<section class="section-tight">
+<div class="container article-layout">
+<article class="article-body">
+<p class="lead">Halverwege de jaren 90 bracht een bezoek aan het Huis van de Toekomst in Rosmalen iets in beweging dat eigenlijk nooit meer is weggegaan. Veel details van de reis zelf zijn vervaagd, maar de indruk van dat huis is altijd gebleven.</p>
+<h2 id="eerste-indruk">Een eerste blik op de toekomst</h2>
+<p>Als kind, in een tijd waarin internet nog lang niet zo vanzelfsprekend was als nu, voelde het alsof daar een wereld te zien was die ver vooruitliep op het dagelijks leven. Het ging niet om één losse gadget, maar om een compleet huis waarin techniek zichtbaar samenwerkte.</p>
+<p>Klimaatbeheersing, beeldbellen via schermen, identificatie en toegang met pasjes, zonnecellen, spraakherkenning en andere vooruitstrevende toepassingen maakten duidelijk dat wonen ooit veel slimmer en vanzelfsprekender kon worden.</p>
+<p>Vanaf dat moment bleef één gedachte hangen: <strong>zo'n huis zou ik later ook willen hebben.</strong></p>
+<h2 id="wachten">Lange tijd vooral wachten</h2>
+<p>In de jaren daarna volgde vooral wachten. Veel van de technologie die toen zo futuristisch leek, kwam maar langzaam beschikbaar voor gewone huishoudens. Pas veel later begon smart-home technologie echt in een stroomversnelling te raken.</p>
+<p>Tegelijk ontstond er ook een nieuw probleem: een wirwar aan merken, protocollen en systemen die lang niet altijd goed met elkaar samenwerken. Juist daardoor werd het bouwen van een slim huis niet alleen een kwestie van producten kiezen, maar vooral van slimme combinaties maken.</p>
+<h2 id="eigen-huis">Van fascinatie naar een eigen huis</h2>
+<p>Toen ik jaren later mijn eigen woning kocht en deze met hulp van mijn ouders grondig opknapte, kwam die oude fascinatie terug in een veel concretere vorm. Niet meer als verre toekomstfantasie, maar als praktische vraag:</p>
+<p><strong>Hoe ver kun je vandaag komen met het bouwen van je eigen Huis van de Toekomst, met betaalbare producten die nu gewoon beschikbaar zijn?</strong></p>
+<p>Dat is de kern van dit blog.</p>
+<h2 id="betaalbaar">Geen etalage van gadgets, maar een werkend huis</h2>
+<p>huisvanvandaag.nl is een verslag van die zoektocht. Niet naar het duurste of meest spectaculaire smart home, maar naar een slim huis dat in de praktijk werkt, betaalbaar blijft en stap voor stap opgebouwd kan worden.</p>
+<p>Daarbij draait het niet alleen om losse apparaten, maar vooral om de manier waarop alles samenkomt. Juist daarom speelt een centrale smart-home hub een belangrijke rol.</p>
+<h2 id="homey">Waarom Homey en Google Home hier logisch samenkomen</h2>
+<p>Omdat smart-home producten van veel verschillende merken komen en met uiteenlopende protocollen werken, is het belangrijk om een systeem te gebruiken dat die werelden bij elkaar kan brengen. In mijn eigen situatie begon dat ooit met HomeWizard, dat destijds goed voldeed, maar later minder goed aansloot op wat ik wilde bereiken.</p>
+<p>Tegenwoordig vormt Homey het centrale aansturingspunt in huis. Voor mij is dat een logische keuze, juist omdat Homey meerdere protocollen ondersteunt en er een actieve community omheen bestaat die apps ontwikkelt en ideeën deelt.</p>
+<p>In combinatie met Google Nest-producten, zoals een Nest Hub en een Google Home Mini, ontstaat bovendien een laag van routines en spraakondersteuning die slimme automatisering in het dagelijks gebruik veel toegankelijker maakt.</p>
+<h2 id="zelfbouw">Zelfbouw hoort er voor mij echt bij</h2>
+<p>Niet alles hoeft kant-en-klaar uit de doos te komen. Soms ligt de interessantste oplossing juist in zelfbouw. Met Homeyduino en relatief goedkope onderdelen kun je sensoren en toepassingen maken die veel beter aansluiten op je eigen huis en wensen.</p>
+<p>Natuurlijk kun je veel daarvan ook als kant-en-klaar product kopen, maar zelf iets bouwen geeft niet alleen meer vrijheid, het maakt het resultaat ook persoonlijker en vaak praktischer.</p>
+<p>Daarom gaat dit blog niet alleen over bestaande smart-home producten, maar ook over zelfgemaakte oplossingen, experimenten, tutorials en projecten die laten zien wat er vandaag al mogelijk is.</p>
+<h2 id="slot">De rode draad van huisvanvandaag.nl</h2>
+<p>Kort gezegd bestaat dit blog omdat een oude fascinatie voor het Huis van de Toekomst uiteindelijk veranderde in een praktische zoektocht naar een slim huis voor nu.</p>
+<p>Niet als museumstuk. Niet als gadgetverzameling. Maar als een huis dat met betaalbare techniek merkbaar beter, slimmer en leuker wordt om in te wonen.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#eerste-indruk">Een eerste blik op de toekomst</a>
+<a href="#wachten">Lange tijd vooral wachten</a>
+<a href="#eigen-huis">Van fascinatie naar een eigen huis</a>
+<a href="#betaalbaar">Geen etalage van gadgets</a>
+<a href="#homey">Waarom Homey en Google Home</a>
+<a href="#zelfbouw">Zelfbouw hoort erbij</a>
+<a href="#slot">De rode draad</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-deur-en-raamsensor.html">Bouw je eigen deur- en raamsensor met Homeyduino</a><a href="chriet-titulaer.html">Chriet Titulaer en het Huis van de Toekomst</a><a href="wat-kun-je-doen-met-homey.html">Wat kun je doen met Homey? Praktische toepassingen en inspiratie</a></div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+<div class="row-success" style="display:none;">
+  <h3>🏠 Welkom aan boord</h3>
+
+  <p>
+    Je inschrijving is gelukt.
+  </p>
+
+  <p>
+    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
+  </p>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+</aside>
+
+</div>
+</section>
+<!-- CTA TOEGEVOEGD -->
+<section class="section">
+<div class="container cta-banner">
+<div>
+<span class="eyebrow">Mijn einddoel</span>
+<h3>Nooit meer een lichtschakelaar hoeven aanraken</h3>
+<p class="muted" style="margin:0;">
+        Een grapje, maar ook weer niet helemaal. Voor mij is dat de perfecte samenvatting van wat smart home op z’n best is:
+        techniek die zo goed werkt dat je er nauwelijks nog over hoeft na te denken.
+      </p>
+</div>
+<div class="btn-row">
+<a class="btn btn-primary" href="homey.html">Start hier</a>
+<a class="btn btn-secondary" href="diy.html">Kijk hoe ik dit aanpak</a>
+</div>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+  <meta name="hv-schema-type" content="techarticle">
+
+  <!-- PAGINATITEL -->
+  <title>De beste bewegingssensoren voor Homey in 2026 | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Welke bewegingssensor past het beste bij Homey? Vergelijk IKEA MYGGSPRAY, Aqara Motion Sensor P1, Philips Hue Motion Sensor en frient Motion Sensor Pro op koppeling, functies en prijs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="affiliate-products.js" defer></script>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+  <link rel="canonical" href="https://www.huisvanvandaag.nl/beste-bewegingssensoren-voor-homey-2026.html">
+</head>
+<body>
+
+
+  <div id="site-header"></div>
+
+<main>
+
+<section class="article-hero">
+  <div class="container article-layout">
+    <div>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>•</span>
+        <a href="homey.html">Kennisbank</a>
+        <span>•</span>
+        <span>Beste bewegingssensoren voor Homey</span>
+      </div>
+
+      <span class="eyebrow">Informatief</span>
+      <span class="eyebrow">Homey & bewegingssensoren</span>
+      <h1>De beste bewegingssensoren voor Homey in 2026</h1>
+
+      <p class="lead muted">
+        Van een Matter-sensor van €8,99 tot een complete Hue- of frient-oplossing: dit zijn de bewegingssensoren die ik voor Homey serieus zou overwegen, en vooral waar ik ze zou gebruiken.
+      </p>
+
+      <div class="meta-list">
+        <span class="meta-pill">Categorie: Smart home</span>
+        <span class="meta-pill">Onderwerp: Bewegingssensoren voor Homey</span>
+        <span class="meta-pill">Voor: Homey-gebruikers</span>
+      </div>
+    </div>
+
+    <div class="panel project-info-panel">
+      <h3>Waarom dit artikel de moeite waard is</h3>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Vier actuele keuzes</strong><br>
+            <span class="muted">IKEA, Aqara, Philips Hue en frient naast elkaar.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Meer dan alleen beweging</strong><br>
+            <span class="muted">Ook licht, temperatuur, batterij en sabotage waar beschikbaar.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Koppeling telt mee</strong><br>
+            <span class="muted">Matter, Zigbee of via een bestaande Hue Bridge.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Van €8,99 tot €44,99</strong><br>
+            <span class="muted">Niet de duurste sensor wint automatisch.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Advies per ruimte</strong><br>
+            <span class="muted">Hal, trap, garage en woonkamer vragen iets anders.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container project-hero-media">
+    <div class="panel">
+      <figure>
+        <img src="assets/header/bewegingssensoren-homey-hero.png" alt="Vergelijking van slimme bewegingssensoren die met Homey kunnen werken" fetchpriority="high" decoding="async">
+        <figcaption class="muted small">
+          Vergelijking van slimme bewegingssensoren die met Homey kunnen werken: IKEA MYGGSPRAY, Aqara Motion Sensor P1, Philips Hue Motion Sensor en frient Motion Sensor Pro. Welke route naar Homey past het beste bij jouw situatie?
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top: 14px;">
+  <div class="container project-content-layout">
+    <article class="article-body project-article">
+
+      <p class="lead">
+        Een bewegingssensor is zo’n apparaat dat pas opvalt wanneer hij het verkeerd doet. Het licht springt te laat aan. De hal blijft twintig minuten verlicht nadat iedereen al boven zit. Of, de klassieker, de woonkamer besluit dat je niet meer bestaat omdat je vijf minuten stil op de bank zit. Voor Homey is daarom niet iedere bewegingssensor automatisch een goede bewegingssensor.
+      </p>
+
+      <p>
+        Sinds goedkope Matter-sensoren naast Zigbee en bestaande bridges zijn komen te staan, is de keuze bovendien interessanter geworden. Op papier detecteren ze allemaal beweging. In de praktijk bepalen vooral de extra sensoren, reactietijd, montageplek en de manier waarop Homey de gegevens binnenkrijgt of zo’n klein wit doosje irritant of juist onzichtbaar goed wordt.
+      </p>
+
+      <div class="insight-panel">
+        <h3>Kort samengevat</h3>
+        <p class="muted"><strong>Beste budget:</strong> IKEA MYGGSPRAY. <strong>Beste Zigbee-allrounder:</strong> Aqara Motion Sensor P1. <strong>Beste voor een bestaand Hue-huis:</strong> Philips Hue Motion Sensor. <strong>Meeste klassieke sensordata:</strong> frient Motion Sensor Pro.</p>
+      </div>
+
+      <h2 id="wat-is-het">Een bewegingssensor is geen aanwezigheidssensor</h2>
+      <p>Een klassieke bewegingssensor gebruikt meestal PIR: hij reageert op verandering in infraroodstraling wanneer een warm lichaam door zijn beeld beweegt. Dat is perfect voor een hal, toilet, trap, garage of berging. Daar wil je vooral weten: <em>komt er iemand binnen?</em></p>
+      <p>In een woonkamer wil je vaak iets anders weten: <em>is er nog iemand?</em> Iemand die op de bank zit te lezen of televisie kijkt kan voor een PIR-sensor praktisch verdwijnen. Voor dat probleem zijn radar- en mmWave-aanwezigheidssensoren geschikter. Die krijgen daarom hun eigen artikel in deze reeks.</p>
+
+      <ul>
+        <li><strong>PIR-beweging</strong> → uitstekend als trigger in hal, trap, toilet en garage.</li>
+        <li><strong>Aanwezigheid</strong> → vraagt in een woonkamer vaak om een ander type sensor dan klassieke PIR.</li>
+        <li><strong>Extra meetwaarden</strong> → licht en temperatuur kunnen een simpele bewegingssensor veel nuttiger maken in Homey Flows.</li>
+      </ul>
+
+      <figure>
+        <img src="assets/artikel/bewegingssensoren-homey-protocollen.png" alt="Matter Zigbee en Hue Bridge routes van bewegingssensoren naar Homey">
+        <figcaption class="muted small">
+          Bewegingssensoren voor Homey kunnen via verschillende routes worden gekoppeld. Matter over Thread, Zigbee of via een merkbridge zoals Philips Hue. Homey Pro kan zelf als Zigbee-coördinator en Matter-controller fungeren. 
+        </figcaption>
+      </figure>
+
+      <h2 id="waarom-relevant">Vier bewegingssensoren die ik voor Homey zou bekijken</h2>
+      <p><strong>IKEA MYGGSPRAY — de budgetkeuze.</strong><br>MYGGSPRAY kost bij IKEA Nederland momenteel €8,99, is Matter-compatibel en is bedoeld voor binnen én buiten. IKEA noemt zelf trappen, garages, ingangen en schuren als logische plekken. Dat is precies waar ik hem ook zou inzetten: plekken waar je vooral één betrouwbaar signaal nodig hebt — iemand beweegt. Gebruikerservaringen op IKEA’s eigen productpagina melden een snelle directe Matter-koppeling met Homey Pro 2026, maar ook dat luxmeting via die route niet altijd beschikbaar is. Voor beweging: interessant. Koop je hem specifiek als lichtsensor: eerst controleren wat jouw Homey-koppeling daadwerkelijk doorgeeft.<br><br></p>
+      <p><strong>Aqara Motion Sensor P1 — de compacte Zigbee-allrounder.</strong><br>De P1 gebruikt Zigbee 3.0, detecteert tot ongeveer zeven meter en Aqara geeft onder gunstige instellingen een batterijduur tot vijf jaar op. Homey’s officiële Aqara-app ondersteunt de Motion Sensor P1 en kan onder meer beweging, lichtsterkte en batterijstatus gebruiken. Aqara schrijft voor gebruik binnen het eigen ecosysteem een Aqara Hub voor, maar bij Homey Pro kan Homey zelf de Zigbee-controller zijn. De Nederlandse winkelprijs ligt momenteel grofweg rond €18 tot €22.<br><br><a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Faqara-motion-sensor-p1-zigbee-3-0-compatibel-met-homey-pro%2F9300000098220838%2F&name=Aqara%20Motion%20Sensor%20P1" rel="sponsored nofollow">Bekijk actuele prijs van Aqara Motion Sensor P1</a></p>
+
+      <h2 id="praktijk">De duurdere opties verdienen hun plek vooral in het juiste ecosysteem</h2>
+      <p><strong>Philips Hue Motion Sensor — logisch als de Bridge er al staat.</strong><br>De Hue Motion Sensor kost bij Philips Hue Nederland momenteel €44,99. Via de officiële Homey-integratie loopt de koppeling via de Hue Bridge; Homey praat via het netwerk met de bridge en krijgt onder meer beweging, lichtsterkte, temperatuur en batterijstatus binnen. Moet je speciaal voor één sensor een Bridge kopen, dan is het een dure route. Staat die Bridge er al omdat de woonkamer vol Hue-lampen hangt, dan is het juist een volwassen en weinig ingewikkelde keuze.<br><br><a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fphilips-hue-bewegingssensor%2F9200000065624055%2F&name=Philips%20Hue%20bewegingssensor%20-%20Slimme%20sensor%20met%20daglichtsensor%20-%20Draadloos" rel="sponsored nofollow">Bekijk actuele prijs van Philips Hue Motion Sensor</a></p>
+      <p><strong>frient Motion Sensor Pro — voor wie meer meetwaarden wil.</strong><br>De frient Motion Sensor Pro kost momenteel ongeveer €33,95, gebruikt Zigbee en combineert beweging met temperatuur en lichtsterkte. De officiële Homey-app ondersteunt daarnaast sabotage- en batterijalarmen. Homey noemt een detectiebereik van negen meter en een relatief smalle kijkhoek van 45 graden. In een gang, bij een voordeur of gericht langs een garagepad kan juist dat erg handig zijn. Hij gebruikt twee gewone AA-batterijen — minder miniatuur, wel heerlijk praktisch.<br><br><a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ffrient-motion-sensor-pro-beweging-licht-en-temperatuur-bewaking-domotica-manipulatiebeveiliging-zigbee-werkt-met-smartthings-home-assistant-en-athom-homey%2F9300000347837668%2F&name=frient%20Motion%20Sensor%20Pro%20-%20Beweging%2C%20Licht%20en%20Temperatuur%20Bewaking" rel="sponsored nofollow">Bekijk actuele prijs van frient Motion Sensor Pro</a></p>
+
+      <h2 id="waar-let-je-op">Waar ik bij een bewegingssensor voor Homey vooral op zou letten</h2>
+      <p>Het protocol krijgt vaak alle aandacht, maar de montageplek en beschikbare meetwaarden bepalen meestal veel sterker of een sensor prettig werkt. Een sensor in een smalle gang mag heel anders kijken dan een sensor die de hele garage moet zien.</p>
+
+      <ul>
+        <li><strong>Kijkhoek en bereik.</strong> Meer bereik is niet automatisch beter; soms wil je juist voorkomen dat beweging in een aangrenzende zone meetelt.</li>
+        <li><strong>Welke gegevens ziet Homey echt?</strong> Een fabrikant kan lux- of temperatuurmeting aanbieden, maar controleer of jouw specifieke Homey-koppelroute die capability ook doorgeeft.</li>
+        <li><strong>Batterij en montage.</strong> Een sensor die theoretisch perfect is maar op een onhandige plek moeilijk bereikbaar hangt, wordt na de eerste lege batterij ineens een stuk minder charmant.</li>
+      </ul>
+
+      <p>In de woonkamer zou ik bovendien nooit blind “geen beweging = niemand aanwezig” gebruiken. In <a href="PLAATS_HIER_URL_WOONKAMER_HOMEY.html">het artikel over de woonkamer slim maken met Homey</a> is een bewegingssensor een goede eerste trigger, maar niet de enige waarheid. Daarvoor zijn aanwezigheidssensoren interessanter.</p>
+
+      <h2 id="verdieping">Welke bewegingssensor zou ik zelf kiezen?</h2>
+      <p><strong>Voor hal, trap en garage:</strong> IKEA MYGGSPRAY. Voor €8,99 is een Matter-bewegingssensor voor binnen en buiten heel veel sensor voor weinig geld. <strong>Voor meerdere Zigbee-sensoren door het huis:</strong> Aqara Motion Sensor P1. Klein, betaalbaar en met lichtmeting. <strong>Voor een bestaand Hue-huis:</strong> Philips Hue Motion Sensor. De prijs is stevig, maar als de Bridge er toch al staat krijg je een complete sensor netjes in Homey.</p>
+      <p><strong>Voor entree, gang of garage waar ik extra sensordata wil:</strong> frient Motion Sensor Pro. Vooral de combinatie van beweging, licht, temperatuur en sabotage maakt hem interessant. Geen van deze vier is echter mijn eerste keuze om langdurige aanwezigheid op de bank te bepalen — daarvoor zou ik naar een mmWave- of radarsensor kijken.</p>
+
+      <h2 id="volgende-stap">Volgende stap</h2>
+      <p>Een bewegingssensor wordt pas echt nuttig als hij iets in beweging zet. Begin daarom niet met tien sensoren tegelijk, maar automatiseer één concrete situatie en bouw daarna verder.</p>
+
+      <ul>
+        <li>Gebruik een sensor samen met <a href="PLAATS_HIER_URL_BESTE_SLIMME_LAMPEN_HOMEY.html">de beste slimme lampen voor Homey</a> voor verlichting die alleen aangaat wanneer het echt nodig is.</li>
+        <li>Maak bestaande vloerlampen onderdeel van dezelfde Flow met een model uit <a href="PLAATS_HIER_URL_BESTE_SLIMME_STEKKERS_HOMEY.html">de vergelijking van slimme stekkers voor Homey</a>.</li>
+        <li>Voor een woonkamer waarin iemand ook stil kan zitten volgt hierna de vergelijking van <a href="PLAATS_HIER_URL_AANWEZIGHEIDSSENSOREN_HOMEY.html">aanwezigheidssensoren voor Homey</a>.</li>
+      </ul>
+
+      <h2 id="conclusie">Conclusie</h2>
+      <p>De goedkoopste sensor in deze vergelijking kost nog geen tientje en de duurste ruim vijf keer zoveel. Toch is de duurste niet automatisch vijf keer beter. De betere vraag is: <em>wat moet Homey op deze plek weten?</em> Alleen dat iemand voorbijloopt? Houd het simpel. Wil je licht en temperatuur meenemen? Kies completer. Wil je weten of iemand roerloos op de bank zit? Dan zoek je eigenlijk al naar een aanwezigheidssensor. Koop dus niet de sensor met het mooiste logo, maar de sensor die precies genoeg ziet voor de plek waar hij hangt.</p>
+
+    </article>
+
+    <aside class="side-stack">
+      <div class="toc">
+        <h3>In dit artikel</h3>
+        <a href="#wat-is-het">Beweging versus aanwezigheid</a>
+        <a href="#waarom-relevant">IKEA en Aqara</a>
+        <a href="#praktijk">Hue en frient</a>
+        <a href="#waar-let-je-op">Waar let je op?</a>
+        <a href="#verdieping">Welke zou ik kiezen?</a>
+        <a href="#volgende-stap">Volgende stap</a>
+        <a href="#conclusie">Conclusie</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Gerelateerd</h3>
+        <div class="footer-links">
+          <a href="PLAATS_HIER_URL_WOONKAMER_HOMEY.html">Maak je woonkamer slim met Homey</a>
+          <a href="PLAATS_HIER_URL_BESTE_SLIMME_STEKKERS_HOMEY.html">De beste slimme stekkers voor Homey</a>
+          <a href="PLAATS_HIER_URL_BESTE_SLIMME_LAMPEN_HOMEY.html">De beste slimme lampen voor Homey</a>
+        </div>
+      </div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+
+
+    </aside>
+  </div>
+</section>
+
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+
+
+</body>
+</html>

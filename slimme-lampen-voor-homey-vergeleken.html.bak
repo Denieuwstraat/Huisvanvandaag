@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+  <meta name="hv-schema-type" content="techarticle">
+
+  <!-- PAGINATITEL -->
+  <title>Slimme lampen voor Homey vergeleken: Hue, IKEA, Innr, WiZ en Nanoleaf | huisvanvandaag.nl</title>
+
+  <!-- META DESCRIPTION -->
+  <meta name="description" content="Welke slimme lamp past het beste bij Homey? Vergelijk Philips Hue, IKEA KAJPLATS, Innr, WiZ en Nanoleaf op koppeling, protocol en gebruik.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="affiliate-products.js" defer></script>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+  <link rel="canonical" href="https://www.huisvanvandaag.nl/slimme-lampen-voor-homey-vergeleken.html">
+</head>
+<body>
+
+
+  <div id="site-header"></div>
+
+<main>
+
+<section class="article-hero">
+  <div class="container article-layout">
+    <div>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span>•</span>
+        <a href="homey.html">Kennisbank</a>
+        <span>•</span>
+        <span>Slimme lampen voor Homey</span>
+      </div>
+
+      <span class="eyebrow">Informatief</span>
+      <span class="eyebrow">Slimme verlichting</span>
+      <h1>Slimme lampen voor Homey vergeleken: Hue, IKEA, Innr, WiZ en Nanoleaf</h1>
+
+      <p class="lead muted">
+        Vijf slimme lampen, drie verschillende verbindingsroutes en één Homey die ze uiteindelijk allemaal bij elkaar moet brengen. Welke keuze is dan werkelijk het slimst?
+      </p>
+
+      <div class="meta-list">
+        <span class="meta-pill">Categorie: Homey</span>
+        <span class="meta-pill">Onderwerp: Slimme lampen vergelijken</span>
+        <span class="meta-pill">Voor: Homey-gebruikers</span>
+      </div>
+    </div>
+
+    <div class="panel project-info-panel">
+      <h3>Waarom dit artikel de moeite waard is</h3>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Vijf actuele keuzes</strong><br>
+            <span class="muted">Philips Hue, IKEA KAJPLATS, Innr, WiZ en Nanoleaf naast elkaar.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Homey staat centraal</strong><br>
+            <span class="muted">Niet alleen de lamp telt, maar vooral hoe hij met Homey communiceert.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Zigbee, Wi-Fi en Matter</strong><br>
+            <span class="muted">De belangrijkste verschillen uitgelegd zonder protocolsoep.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Keuze per situatie</strong><br>
+            <span class="muted">Van goedkoop uitbreiden tot een volledig verlichtingssysteem.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <span class="check-mark">✓</span>
+          <div>
+            <strong>Praktische tips</strong><br>
+            <span class="muted">Waar ik bij slimme lampen voor Homey vooral op zou letten.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container project-hero-media">
+    <div class="panel">
+      <figure>
+        <img src="assets/header/slimme-lampen-homey-hero.jpg" alt="Vergelijking van slimme lampen die met Homey gekoppeld kunnen worden" fetchpriority="high" decoding="async">
+        <figcaption class="muted small">
+            Slimme lampen voor Homey vergeleken: Hue, IKEA KAJPLATS, Innr, WiZ en Nanoleaf. Welke route naar Homey past het beste bij jouw situatie?
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top: 14px;">
+  <div class="container project-content-layout">
+    <article class="article-body project-article">
+
+      <p class="lead">
+        Het begint meestal onschuldig. Eén slimme lamp in de woonkamer, omdat het handig lijkt om vanaf de bank het licht te dimmen. Daarna volgt er nog eentje in de keuken, een lichtstrip achter de televisie en voor je het weet heb je meer apps voor verlichting dan lichtschakelaars aan de muur. Precies op dat moment wordt Homey interessant: niet omdat iedere lamp hetzelfde wordt, maar omdat al die verschillende systemen ineens in één huis kunnen samenwerken.
+      </p>
+
+      <p>
+        Alleen maakt Homey de keuze voor een lamp niet automatisch eenvoudiger. Philips Hue werkt via zijn eigen bridge, Innr gebruikt Zigbee, WiZ leunt op wifi en IKEA en Nanoleaf zetten inmiddels stevig in op Matter. Op de verpakking staat bij allemaal iets in de trant van “smart”, maar onder de motorkap zijn het behoorlijk verschillende dieren. Daarom vergelijk ik ze hier niet alleen op licht, maar vooral op de vraag die voor een Homey-gebruiker telt: hoe logisch past deze lamp in de rest van je slimme huis?
+      </p>
+
+      <div class="insight-panel">
+        <h3>Kort samengevat</h3>
+        <p class="muted">Wie vooral een compleet en volwassen verlichtingsecosysteem zoekt, komt nog steeds snel bij Philips Hue uit. Wie betaalbaar en modern met Matter wil beginnen, vindt in IKEA KAJPLATS een opvallend sterke kandidaat. Innr is interessant als je Zigbee rechtstreeks aan Homey wilt koppelen, WiZ houdt het eenvoudig via wifi en Nanoleaf is aantrekkelijk voor wie bewust richting Matter en Thread wil bouwen.</p>
+      </div>
+
+      <h2 id="wat-is-het">Eerst het belangrijkste verschil: hoe praat de lamp met Homey?</h2>
+      <p>Bij een gewone lamp kijk je naar fitting, lichtsterkte en misschien de kleurtemperatuur. Bij een slimme lamp komt daar één vraag bij die eigenlijk nog belangrijker is: via welke route bereikt je commando de lamp? De huidige Homey Pro ondersteunt onder meer Zigbee 3.0, Matter en Thread en kan daardoor verschillende soorten verlichting naast elkaar gebruiken. Dat is precies de kracht van Homey, maar het betekent ook dat “werkt met Homey” niet voor iedere lamp hetzelfde betekent.</p>
+      <p>Een Philips Hue-lamp loopt in de officiële Homey-integratie bijvoorbeeld via de Hue Bridge. Een Innr-lamp kan als Zigbee-apparaat rechtstreeks in het Zigbee-netwerk van Homey worden opgenomen. WiZ gebruikt je bestaande wifi. En bij Matter-lampen van IKEA en Nanoleaf kan Homey Pro zelf de rol van Matter-controller spelen. Het eindresultaat lijkt in de Homey-app hetzelfde, een lamp die je kunt aanzetten, dimmen of van kleur laten veranderen, maar de weg ernaartoe verschilt behoorlijk.</p>
+
+      <ul>
+        <li><strong>Zigbee</strong> → een apart mesh-netwerk voor slimme apparaten. Homey Pro kan zelf als Zigbee-coördinator werken, waardoor bijvoorbeeld Innr rechtstreeks gekoppeld kan worden.</li>
+        <li><strong>Matter over Thread</strong> → een moderne route waarbij Homey Pro een Matter-controller en Thread Border Router kan zijn. De nieuwe IKEA KAJPLATS-lampen gebruiken deze combinatie.</li>
+        <li><strong>Wi-Fi of een merkbridge</strong> → WiZ sluit rechtstreeks op je 2,4GHz-wifi aan, terwijl Philips Hue in de officiële Homey-app via de Hue Bridge wordt gekoppeld.</li>
+      </ul>
+
+      <figure>
+        <img src="assets/artikel/vergelijking-zigbee-wifi-matter-homey.jpg" alt="Schema met Zigbee, wifi, Matter en Philips Hue Bridge rondom Homey">
+        <figcaption class="muted small">
+            Slimme lampen voor Homey kunnen via verschillende routes worden gekoppeld. Zigbee, Matter over Thread, Wi-Fi of een merkbridge zoals Philips Hue. Homey Pro kan zelf als Zigbee-coördinator en Matter-controller fungeren.
+        </figcaption>
+      </figure>
+
+      <h2 id="waarom-relevant">Philips Hue: de bekende route met een eigen brug ertussen</h2>
+      <p>Philips Hue is een beetje de oude rot aan tafel. Niet de goedkoopste gast, wel degene die al jaren precies weet waar alles staat. De actuele Hue White and Color Ambiance A60 met E27-fitting levert tot 1100 lumen en gebruikt Zigbee en Bluetooth. Voor Homey is vooral één detail belangrijk: de officiële Philips Hue-app van Homey vereist een Hue Bridge. Homey praat dus met de bridge, en de bridge praat vervolgens met je lampen. Dat is een extra kastje, maar het levert ook een duidelijk afgebakend verlichtingssysteem op. <a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3Dphilips%20hue&name=Bol&subid=hue" rel="sponsored nofollow">Bekijk hier de Philips Hue-lamp</a>.</p>
+      <p>Juist wanneer je al Hue-lampen, dimmers, bewegingssensoren of andere Hue-accessoires hebt, zou ik niet moeilijk doen om één bridge uit de meterkast te verbannen. Homey voegt daar vooral iets aan toe: Hue hoeft niet langer alleen met Hue samen te werken. Een lamp kan reageren op een Fibaro-sensor, een IKEA-knop of een Flow waarin ook muziek, zonwering en energieverbruik meedoen. Begin je helemaal vanaf nul, dan is de hogere instapprijs wel iets om bewust mee te nemen.</p>
+
+      <h2 id="praktijk">De uitdagers: IKEA, Innr, WiZ en Nanoleaf</h2>
+      <p><strong>IKEA KAJPLATS, de opvallend goedkope Matter-route.</strong><br>De nieuwe KAJPLATS E27-kleurlamp levert 1055 lumen en gebruikt Matter over Thread. Dat betekent dat je geen klassieke Zigbee-bridge van IKEA nodig hebt wanneer je hem aan een geschikte Matter-controller met Thread koppelt. Homey Pro kan die rol vervullen. Daarmee is KAJPLATS vooral interessant als je vandaag opnieuw zou beginnen en zo min mogelijk merkgebonden infrastructuur wilt opbouwen.<br><br><strong>Innr — voor wie Zigbee gewoon Zigbee wil laten zijn.</strong><br>Innr heeft met de actuele E27 Colour-lampen een vrij traditionele aanpak: Zigbee 3.0, wit én kleur en koppeling met een Zigbee-hub. Homey heeft een officiële Innr-app en kan de lamp rechtstreeks via Zigbee opnemen. Daardoor heb je geen aparte Innr-bridge nodig wanneer Homey Pro al het middelpunt van je installatie is. De 1200-lumenvariant haalt volgens Innr 1210 lumen. <a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3DInnr&name=Bol&subid=Innr" rel="sponsored nofollow">Bekijk hier de Innr E27 Colour</a>.</p>
+      <p><strong>WiZ — schroeven, wifi, klaar.</strong><br>WiZ kiest een andere route. De full-colour E27-lampen werken via 2,4GHz-wifi en hebben geen losse bridge nodig. De huidige A60-kleurlamp levert tot 806 lumen en is via de WiZ Connected-app aan Homey te koppelen. Voor een paar lampen is dat heerlijk overzichtelijk: je bestaande netwerk doet het transportwerk. Bouw je een compleet huis vol verlichting, dan voeg je wel voor iedere lamp opnieuw een wifi-client toe. <a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3Dwiz&name=Bol&subid=wiz" rel="sponsored nofollow">Bekijk hier een WiZ E27-kleurlamp</a>.<br><br><strong>Nanoleaf — Matter als uitgangspunt, niet als extra vinkje.</strong><br>Nanoleaf verkoopt zijn E27 Smart LED Bulbs zowel als Matter-over-Thread- als Matter-over-Wi-Fi-variant. De Thread-uitvoering past inhoudelijk mooi bij een recente Homey Pro, omdat Homey zelf Thread Border Router kan zijn. De huidige lampen halen tot 1000 lumen, bieden instelbaar wit en kleur en staan ook als Matter E27-lamp in de officiële Nanoleaf-app voor Homey. <a href="https://partner.bol.com/click/click?p=2&t=url&s=1517044&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3Dnanoleaf&name=Bol&subid=nanoleaf" rel="sponsored nofollow">Bekijk hier de Nanoleaf Smart LED Bulb</a>.</p>
+
+      <h2 id="waar-let-je-op">Waar ik bij slimme lampen voor Homey vooral op zou letten</h2>
+      <p>De verleiding is groot om de doos met de meeste logo’s te kopen. Matter, Alexa, Google, Homey, zestien miljoen kleuren, klaar. Alleen merk je pas na een paar weken welke eigenschappen er echt toe doen. Voor mij zou de volgorde daarom andersom zijn: eerst bepalen hoe de lamp in je netwerk past, daarna pas kijken welke kleur paars hij kan maken.</p>
+
+      <ul>
+        <li><strong>Direct koppelen is niet automatisch beter.</strong> Een Hue Bridge is extra hardware, maar houdt het Hue-verlichtingssysteem ook als eigen netwerk bij elkaar. Rechtstreeks koppelen aan Homey is vooral aantrekkelijk als je juist minder bridges wilt.</li>
+        <li><strong>Een slimme lamp heeft continu voeding nodig.</strong> Zet iemand de klassieke wandschakelaar uit, dan is ook de slimste Flow ineens machteloos. Denk daarom bij veelgebruikte ruimtes ook na over slimme schakelaars of knoppen.</li>
+        <li><strong>Lichtkwaliteit blijft belangrijker dan het protocol.</strong> Kijk naast Homey-compatibiliteit ook naar lumen, witbereik, kleurweergave en hoe ver een lamp daadwerkelijk kan dimmen.</li>
+      </ul>
+
+      <p>Daar komt nog iets bij: Homey haalt een deel van de merkkeuze uit de vergelijking. Je hoeft niet per se dezelfde bewegingssensor, knop en lamp van hetzelfde merk te kopen. Juist daardoor kun je een duurdere lamp inzetten waar lichtkwaliteit belangrijk is en een eenvoudiger model gebruiken op plekken waar vooral “aan”, “uit” en “dimmen” telt. Dat is uiteindelijk een veel slimmere manier van besparen dan overal automatisch het goedkoopste model indraaien.</p>
+
+      <h2 id="verdieping">Welke slimme lamp zou ik zelf bij Homey kiezen?</h2>
+      <p>Als ik vandaag een Homey-huis vanaf nul zou opbouwen, zou ik niet één winnaar voor het hele huis aanwijzen. <strong>Philips Hue</strong> blijft mijn logische keuze wanneer ik een uitgebreid en volwassen verlichtingssysteem met veel eigen accessoires wil. <strong>IKEA KAJPLATS</strong> zou ik serieus bekijken voor ruimtes waar ik betaalbaar Matter-over-Thread wil inzetten. <strong>Innr</strong> past mooi wanneer ik liever een directe Zigbee-koppeling met Homey gebruik. <strong>WiZ</strong> is aantrekkelijk voor een kleine installatie zonder bridge, terwijl <strong>Nanoleaf</strong> vooral interessant is wanneer Matter en Thread bewust het vertrekpunt van je smart home worden.</p>
+      <p>En heb je al twintig Hue-lampen hangen? Dan zou ik vooral géén technisch schoonheidsideaal najagen. Laat ze hangen. Homey is juist gemaakt om oude en nieuwe keuzes met elkaar te laten samenwerken. De slimste lamp is daarom zelden de lamp met de modernste sticker op de doos. Het is de lamp die past bij het netwerk dat je al hebt, of bij het netwerk dat je bewust wilt gaan bouwen.</p>
+
+      <h2 id="volgende-stap">Volgende stap</h2>
+      <p>Mijn advies is om niet meteen het hele huis van één merk te voorzien. Kies één ruimte, bepaal wat je daar echt nodig hebt en probeer één verbindingsroute uit. Een woonkamer met scènes en veel bediening stelt andere eisen dan een berging waar een lamp alleen automatisch aan hoeft te gaan.</p>
+
+      <ul>
+        <li>Nieuwsgierig naar Matter als basis voor je eigen projecten? Lees dan <a href="zelf-een-matter-sensor-bouwen.html">hoe ik zelf een Matter-sensor ben gaan bouwen</a>.</li>
+        <li>Wil je verlichting juist tastbaar kunnen bedienen? Bekijk dan ook mijn artikel over <a href="homey-portal.html">de Homey Portal</a>.</li>
+        <li>Wil je verder vergelijken voordat je koopt? Bekijk dan het overzicht met <a href="reviews.html">reviews op HuisvanVandaag</a>.</li>
+      </ul>
+
+      <h2 id="conclusie">Conclusie</h2>
+      <p>Homey maakt de keuze voor slimme verlichting tegelijk makkelijker én interessanter. Makkelijker, omdat Hue, IKEA, Innr, WiZ en Nanoleaf uiteindelijk in dezelfde Flows terecht kunnen komen. Interessanter, omdat je daardoor niet meer per se één merk hoeft te kiezen. Hue biedt het meest uitgewerkte eigen ecosysteem, IKEA maakt Matter-over-Thread opvallend toegankelijk, Innr blijft een nuchtere Zigbee-keuze, WiZ houdt de hardware eenvoudig met wifi en Nanoleaf bouwt duidelijk richting Matter. Mijn belangrijkste les zou daarom zijn: koop niet eerst een slimme lamp en bedenk daarna hoe je hem koppelt. Kies eerst hoe je wilt dat je huis communiceert, en schroef daarna pas de lamp in de fitting.</p>
+
+    </article>
+
+    <aside class="side-stack">
+      <div class="toc">
+        <h3>In dit artikel</h3>
+        <a href="#wat-is-het">Hoe praat de lamp met Homey?</a>
+        <a href="#waarom-relevant">Philips Hue</a>
+        <a href="#praktijk">IKEA, Innr, WiZ en Nanoleaf</a>
+        <a href="#waar-let-je-op">Waar let je op?</a>
+        <a href="#verdieping">Welke zou ik kiezen?</a>
+        <a href="#volgende-stap">Volgende stap</a>
+        <a href="#conclusie">Conclusie</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Gerelateerd</h3>
+        <div class="footer-links">
+          <a href="zelf-een-matter-sensor-bouwen.html">Zelf een Matter-sensor bouwen</a>
+          <a href="homey-portal.html">Homey Portal</a>
+          <a href="reviews.html">Meer reviews</a>
+        </div>
+      </div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+    <div class="row-success" style="display:none;">
+      <h3>Bedankt!</h3>
+      <p>Je staat op de lijst.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+
+
+    </aside>
+  </div>
+</section>
+
+</main>
+
+  <div id="site-footer"></div>
+
+  <script src="include.js"></script>
+  <script src="script.js"></script>
+
+
+</body>
+</html>

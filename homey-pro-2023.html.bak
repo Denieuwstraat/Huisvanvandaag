@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+<meta content="techarticle" name="hv-schema-type"/>
+<title>Homey Pro (2023): het slimme hart van je huis | huisvanvandaag.nl</title>
+<meta content="Is de Homey Pro (2023) de juiste smart home hub voor jouw huis? Een praktische uitleg over protocollen, flows, lokale automatisering, HomeyScript en waarom Homey Pro zoveel apparaten samenbrengt." name="description">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js" defer></script>
+<style>
+    /*
+      Pagina-specifieke CSS.
+      Deze regels staan ná styles.css en overrulen dus de algemene stylesheet.
+    */
+
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+      height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .article-hero {
+      overflow: visible;
+    }
+
+    .article-layout,
+    .project-content-layout {
+      align-items: start;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+    }
+
+    .project-info-panel,
+    .project-info-panel .check-list,
+    .toc,
+    .sidebar-card,
+    .panel,
+    .comparison-card,
+    .insight-panel {
+      height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .comparison-card {
+      padding: 1.1rem 1.15rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .comparison-card h3 {
+      margin-top: 0;
+      margin-bottom: .7rem;
+    }
+
+    .comparison-card ul {
+      margin-bottom: 0;
+    }
+
+    .buy-box {
+      margin: 1.6rem 0;
+      padding: 1.25rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(39, 199, 163, 0.14), rgba(255,255,255,0.04));
+      border: 1px solid rgba(39, 199, 163, 0.28);
+    }
+
+    .buy-box h3 {
+      margin-top: 0;
+      margin-bottom: .55rem;
+    }
+
+    .buy-box p {
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</meta>  <link rel="canonical" href="https://www.huisvanvandaag.nl/homey-pro-2023.html">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="homey.html">Homey</a>
+<span>•</span>
+<span>Homey Pro (2023)</span>
+</div>
+<span class="eyebrow">Homey Pro in de praktijk</span>
+<h1>Homey Pro (2023): de smart home hub die je losse apparaten eindelijk laat samenwerken</h1>
+<p class="lead muted">
+            De Homey Pro (2023) is niet zomaar weer een wit bolletje voor op de kast. Het is vooral de plek waar je slimme lampen, sensoren, stekkers, speakers, schakelaars en zelfbouwprojecten elkaar laat begrijpen.
+          </p>
+<p class="lead muted">
+            En precies daar wordt een smart home pas interessant. Niet wanneer je nóg een app op je telefoon hebt staan, maar wanneer je huis zelf weet wat er moet gebeuren.
+          </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Smart home</span>
+<span class="meta-pill">Onderwerp: Homey Pro (2023)</span>
+<span class="meta-pill">Voor: beginners en doorbouwers</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom dit artikel de moeite waard is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Geen droge specificatielijst</strong><br/>
+<span class="muted">Je leest vooral wat de Homey Pro thuis oplevert wanneer je apparaten van verschillende merken gebruikt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Handig als je wilt doorgroeien</strong><br/>
+<span class="muted">Van simpele lamp-flow tot compleet huis dat reageert op licht, aanwezigheid, luchtkwaliteit en energieverbruik.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Lokaal automatiseren uitgelegd</strong><br/>
+<span class="muted">Waarom het prettig is wanneer de basis van je slimme huis niet volledig afhankelijk is van internet.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Ook leuk voor makers</strong><br/>
+<span class="muted">Advanced Flow, HomeyScript en Homeyduino maken Homey Pro interessant als je meer wilt dan kant-en-klaar.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Helpt bij je keuze</strong><br/>
+<span class="muted">Na dit artikel weet je beter of Homey Pro logisch is voor jouw huis, of dat een eenvoudiger oplossing volstaat.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Homey Pro 2023 smart home hub op een dressoir in een woonkamer" src="assets/header/homey-pro-2023.jpg"/ fetchpriority="high" decoding="async">
+<figcaption class="muted small">
+              De Homey Pro (2023) is vooral interessant wanneer je slimme apparaten niet als losse eilandjes wilt gebruiken, maar als één samenwerkend systeem.
+            </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top:14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+            Veel slimme huizen beginnen hetzelfde. Eerst koop je een paar lampen. Daarna een slimme stekker. Vervolgens een bewegingssensor, een thermostaat, misschien een deurbel, wat speakers en nog ergens een handig apparaatje uit China. Voor je het weet heb je een huis vol slimme spullen, maar voelt het geheel nog steeds niet echt slim.
+          </p>
+<p>
+            De reden is simpel: al die apparaten praten vaak vooral met hun eigen app, hun eigen bridge en hun eigen ecosysteem. Homey Pro probeert daar één laag boven te leggen. Een centrale plek waar je niet alleen apparaten bedient, maar vooral bepaalt wat ze samen moeten doen.
+          </p>
+<div class="insight-panel">
+<h3>Kort samengevat</h3>
+<p class="muted">
+              De Homey Pro (2023) is vooral interessant voor wie meerdere merken en protocollen wil combineren, lokaal wil automatiseren en ruimte zoekt om verder te bouwen. Niet noodzakelijk voor drie slimme lampen, wél bijzonder sterk als je huis stap voor stap slimmer wordt.
+            </p>
+</div>
+<h2 id="wat-is-het">Wat is Homey Pro precies?</h2>
+<p>
+            De Homey Pro (Early 2023) is de lokale smart home hub van Athom. Waar veel systemen vooral binnen één merk of cloudomgeving werken, is Homey juist gebouwd om verschillende technieken bij elkaar te brengen. Denk aan Wi‑Fi, Zigbee, Z-Wave, Bluetooth Low Energy, 433 MHz, infrarood, Matter en Thread.
+          </p>
+<p>
+            Dat klinkt technisch, maar de praktische vertaling is veel interessanter: je kunt een sensor van merk A iets laten starten op een apparaat van merk B, terwijl Google Home of een Homey-flow daar weer een logische actie aan koppelt. Precies dat maakt het verschil tussen losse slimme apparaten en een huis dat echt samenwerkt.
+          </p>
+<ul>
+<li><strong>Breed protocolpakket</strong> → handig als je moderne én oudere apparaten in één systeem wilt gebruiken.</li>
+<li><strong>Local first</strong> → automatiseringen draaien op de Homey Pro zelf en zijn daardoor minder afhankelijk van de cloud.</li>
+<li><strong>Veel groeiruimte</strong> → van standaard Flows tot Advanced Flow, HomeyScript en Homeyduino-projecten.</li>
+</ul>
+<figure>
+<img alt="Homey Pro 2023 als centrale hub voor een slim huis" src="assets/header/homey-pro-2023.jpg"/>
+<figcaption class="muted small">
+              De kracht van Homey Pro zit niet alleen in bedienen, maar vooral in combineren: apparaten, protocollen, sensoren en flows.
+            </figcaption>
+</figure>
+<h2 id="waarom-relevant">Waarom is Homey Pro interessant in de praktijk?</h2>
+<p>
+            Zolang je smart home klein is, lijkt alles overzichtelijk. Een Hue-app voor lampen. Een app voor de thermostaat. Nog eentje voor stekkers. Misschien Google Home voor spraakbediening. Dat werkt best, totdat je wilt dat die onderdelen slim op elkaar reageren.
+          </p>
+<p>
+            Dan komt Homey Pro om de hoek kijken. Niet omdat het alles magisch vanzelf oplost, maar omdat je eindelijk een plek hebt waar je logica kunt bouwen. Bijvoorbeeld: als het donker is, er beweging is in de hal en niemand slaapt, dan gaat de verlichting zacht aan. Of: als de CO₂-waarde te hoog wordt, schakelt de ventilatie automatisch op. Dat zijn kleine automatiseringen, maar precies dit soort dingen maken een huis dagelijks prettiger.
+          </p>
+<p>
+            Ook prettig: omdat Homey Pro lokaal draait, blijft de basis van je automatisering werken wanneer internet even hapert. Natuurlijk geldt dat niet voor apparaten die zelf volledig cloud-afhankelijk zijn, maar je centrale logica staat in ieder geval niet alleen maar ergens buiten je huis.
+          </p>
+<h2 id="praktijk">Mijn ervaring en wat je daarvan merkt</h2>
+<p>
+            Ik gebruik Homey al sinds de originele Kickstarter-versie uit 2014. Dat eerste model draait inmiddels bij mijn ouders nog steeds zijn rondjes. Zelf gebruik ik nu een Homey Pro (2023), aangevuld met een Homey Bridge en Google Nest-speakers voor spraakbediening.
+          </p>
+<p>
+            Wat vooral opvalt aan de Homey Pro (2023), is dat hij minder aanvoelt als gadget en meer als de ruggengraat van je slimme huis. Sneller, rustiger en vooral beter geschikt om meerdere systemen bij elkaar te houden. Dat merk je niet altijd aan één spectaculaire functie, maar juist aan het dagelijkse gemak.
+          </p>
+<p>
+            Een lamp die aangaat op het juiste moment. Een sensor die niet alleen meet, maar ook echt iets veroorzaakt. Een Google-commando dat niet beperkt blijft tot één apparaat, maar een complete flow start. Dat is waar Homey Pro in de praktijk leuk wordt.
+          </p>
+<h2 id="waar-let-je-op">Homey Pro vs Homey Bridge: waar zit het echte verschil?</h2>
+<p>
+            Homey Bridge en Homey Pro lijken op afstand misschien familieleden met ongeveer dezelfde taak, maar in de praktijk zijn het verschillende oplossingen. De Bridge is vooral laagdrempelig en interessant als instap of als extra satelliet. Homey Pro is het echte lokale brein van het systeem.
+          </p>
+<ul>
+<li><strong>Homey Pro</strong> draait lokaal op het apparaat zelf en is bedoeld voor uitgebreidere automatiseringen.</li>
+<li><strong>Homey Bridge</strong> is goedkoper en vooral handig binnen Homey Cloud of als bereikuitbreiding naast Homey Pro.</li>
+<li><strong>Satellite Mode</strong> maakt het mogelijk om met een Homey Bridge het bereik van onder andere Zigbee, Z-Wave, Bluetooth LE, 433 MHz en infrarood te vergroten.</li>
+</ul>
+<div class="comparison-grid">
+<div class="comparison-card">
+<h3>Homey Pro</h3>
+<ul>
+<li>Lokaal platform op het apparaat zelf</li>
+<li>Meer controle en minder afhankelijkheid van internet</li>
+<li>Advanced Flow, HomeyScript en lokale apps inbegrepen</li>
+<li>Logisch voor een serieuze, groeiende smart home-opstelling</li>
+</ul>
+</div>
+<div class="comparison-card">
+<h3>Homey Bridge</h3>
+<ul>
+<li>Lagere instapprijs</li>
+<li>Vooral interessant binnen Homey Cloud of als satelliet</li>
+<li>Minder gericht op lokale diepgang</li>
+<li>Handig voor eenvoudiger opstellingen of bereikuitbreiding</li>
+</ul>
+</div>
+</div>
+<p>
+            Wil je vooral eenvoudig starten, dan kan Homey Bridge een prima begin zijn. Wil je echt bouwen aan een slim huis dat met je meegroeit, dan is Homey Pro de logischere keuze.
+          </p>
+<h2 id="verdieping">Flows, spraak, bereik en makerspotentieel</h2>
+<p>
+            De kracht van Homey zit voor een groot deel in Flows. De simpele variant werkt al volgens het bekende recept: <em>als dit gebeurt, en deze voorwaarde klopt, doe dan dat</em>. Daarmee kom je verrassend ver.
+          </p>
+<p>
+            Met Advanced Flow wordt het serieuzer. Je krijgt meer overzicht, meer vertakkingen en meer controle. Ideaal wanneer je automatisering niet meer uit één simpel schakelmoment bestaat, maar uit meerdere voorwaarden en acties. Denk aan nachtmodus, thuiskomst, ventilatie op basis van CO₂, verlichting op basis van lux-waarde of energiebesparing wanneer niemand thuis is.
+          </p>
+<p>
+            Voor wie nog verder wil, is er HomeyScript. Daarmee kun je met JavaScript extra logica toevoegen. Niet iedereen zal dat nodig hebben, maar het is precies zo’n functie waardoor Homey Pro aantrekkelijk blijft wanneer je meer wilt dan standaardkaarten aan elkaar klikken.
+          </p>
+<p>
+            Spraakbediening doe je niet rechtstreeks via Homey zelf, maar via bijvoorbeeld Google Home. Dat vind ik in de praktijk juist prettig: Google is sterk in spraakherkenning, Homey is sterk in automatisering. Samen vormen ze een combinatie die in een echt huis verrassend natuurlijk aanvoelt.
+          </p>
+<p>
+            En dan is er nog het makersgedeelte. Met Homeyduino kun je eigen sensoren en zelfbouwprojecten koppelen. CO₂-sensoren, relais, deur- en raamsensoren of zelfs een moderne clapper switch: juist dat soort projecten passen perfect bij een huis dat je niet alleen koopt, maar ook een beetje zelf bouwt.
+          </p>
+<h2 id="voor-wie">Voor wie is Homey Pro vooral geschikt?</h2>
+<p>
+            Homey Pro is vooral interessant wanneer je niet bij één merk wilt blijven hangen. Heb je een mix van Hue, IKEA, Aqara, KlikAanKlikUit, slimme stekkers, sensoren, Google Home en misschien wat zelfbouw, dan wordt een centrale hub al snel aantrekkelijk.
+          </p>
+<p>
+            Gebruik je daarentegen maar een paar lampen en wil je vooral af en toe iets met je telefoon of stem aanzetten, dan is Homey Pro mogelijk meer dan je nodig hebt. Dat is niet erg. Een goed smart home begint niet met het duurste apparaat, maar met de juiste keuze voor jouw situatie.
+          </p>
+<div class="buy-box">
+<h3>Mijn advies</h3>
+<p class="muted">
+              Wil je serieus aan de slag met een slim huis dat kan groeien, dan is Homey Pro (2023) een van de meest logische keuzes binnen het Homey-ecosysteem. Begin klein, bouw rustig door en laat vooral de automatiseringen het werk doen.
+            </p>
+<a class="btn btn-primary" data-product="homey-pro-2023" href="#">Bekijk Homey Pro</a>
+</div>
+<h2 id="volgende-stap">Volgende stap</h2>
+<p>
+            Twijfel je of Homey Pro bij jou past, kijk dan vooral naar de vraag hoe je jouw slimme huis wilt gebruiken. Wil je apparaten van verschillende merken combineren, lokaal automatiseren en later kunnen uitbreiden? Dan zit je hier goed. Wil je alleen een paar lampen schakelen, dan kan eenvoudiger ook prima.
+          </p>
+<ul>
+<li><a href="homey-bridge.html">Lees ook: maak kennis met de Homey Bridge</a></li>
+<li><a href="wat-is-het-verschil-tussen-matter-en-thread.html">Bekijk ook: wat is het verschil tussen Matter en Thread?</a></li>
+<li><a href="homeyduino.html">Meer verdieping: wat is Homeyduino en wat kun je ermee?</a></li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>
+            De Homey Pro (2023) is geen apparaat dat je koopt omdat je huis dan ineens vanzelf futuristisch wordt. Zo werkt smart home helaas niet. Maar het is wél een bijzonder sterke basis voor iedereen die van losse slimme apparaten een samenwerkend systeem wil maken.
+          </p>
+<p>
+            De brede protocolondersteuning, lokale werking, sterke flows en uitbreidbaarheid maken Homey Pro een slimme keuze voor wie verder wil dan een paar losse gadgets. Precies zoals het Huis van de Toekomst ooit beloofde, maar dan gewoon vandaag, betaalbaar en in je eigen woonkamer.
+          </p>
+<p>
+            Ben je klaar om je slimme huis serieuzer aan te pakken? Dan is de Homey Pro (2023) een bijzonder mooie plek om te beginnen.
+          </p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-is-het">Wat is Homey Pro precies?</a>
+<a href="#waarom-relevant">Waarom is Homey Pro interessant?</a>
+<a href="#praktijk">Mijn ervaring en wat je daarvan merkt</a>
+<a href="#waar-let-je-op">Homey Pro vs Homey Bridge</a>
+<a href="#verdieping">Flows, spraak, bereik en makerspotentieel</a>
+<a href="#voor-wie">Voor wie is Homey Pro geschikt?</a>
+<a href="#volgende-stap">Volgende stap</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homey-bridge.html">Maak kennis met de Homey Bridge</a><a href="homey-pro-mini-2026.html">Homey Pro mini: wat is het en hoe verschilt het van Bridge en Pro?</a><a href="homey-bridge-satellite-mode-vs-homeylink.html">Homey Bridge Satellite Mode vs HomeyLink: wat zijn de verschillen?</a></div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+<div class="row-success" style="display:none;">
+  <h3>🏠 Welkom aan boord</h3>
+
+  <p>
+    Je inschrijving is gelukt.
+  </p>
+
+  <p>
+    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
+  </p>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+</aside>
+
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

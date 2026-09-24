@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+<meta content="howto" name="hv-schema-type"/>
+<!-- PAGINATITEL -->
+<title>Bouw zelf een slimme CO₂ multi-sensor voor Homey | huisvanvandaag.nl</title>
+<!-- META DESCRIPTION -->
+<meta content="Zelf een slimme CO₂ multi-sensor bouwen voor Homey? Met een MH-Z19, DHT11, LDR en Wemos D1 Mini meet je CO₂, temperatuur, luchtvochtigheid en licht in één compact DIY-project." name="description">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<script src="affiliate-products.js" defer></script>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script defer="" src="/js/global-schema.js"></script>
+<script defer="" src="/js/article-schema.js"></script>
+</meta>  <link rel="canonical" href="https://www.huisvanvandaag.nl/homeyduino-co2-multisensor.html">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<!-- HERO -->
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="diy.html">DIY</a>
+<span>•</span>
+<span>CO₂ multi-sensor</span>
+</div>
+<span class="eyebrow">DIY • Homeyduino • Binnenklimaat</span>
+<h1>Bouw zelf een slimme CO₂ multi-sensor voor Homey</h1>
+<p class="lead muted">Met een MH-Z19, DHT11, LDR en Wemos D1 Mini bouw je een verrassend complete multi-sensor die CO₂, temperatuur, luchtvochtigheid en licht meet en de gegevens netjes doorstuurt naar Homey.</p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: DIY binnenklimaat</span>
+<span class="meta-pill">Platform: Homey / Homeyduino</span>
+<span class="meta-pill">Hardware: Wemos D1 Mini + MH-Z19 + DHT11 + LDR</span>
+</div>
+</div>
+<!-- RECHTER INFOBLOK -->
+<div class="panel project-info-panel">
+<h3>Wat je in dit artikel leert</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Vier metingen, één project</strong><br/>
+<span class="muted">Je combineert CO₂, temperatuur, luchtvochtigheid en licht in één zelfgebouwde sensor.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Meer inzicht in huis</strong><br/>
+<span class="muted">Je ziet sneller wanneer ventileren slim is en krijgt meer gevoel bij het binnenklimaat.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Betaalbaar en praktisch</strong><br/>
+<span class="muted">Met betaalbare onderdelen maak je een sensor die in Homey direct bruikbaar is.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Nettere code, stabieler geheel</strong><br/>
+<span class="muted">De sketch is modulair opgebouwd, bewaakt de wifi en publiceert alleen wanneer dat echt nodig is.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Klaar voor Homey flows</strong><br/>
+<span class="muted">Gebruik de metingen in Inzichten, meldingen en automatiseringen door je hele slimme woning heen.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HERO AFBEELDING -->
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Zelfgebouwde CO₂ multi-sensor met Wemos D1 Mini, MH-Z19, DHT11 en LDR" src="assets/header/homeyduino-multi-sensor-met-co2-hero.jpg"/ fetchpriority="high" decoding="async">
+<figcaption class="muted small">Dit is precies het soort project waar een slim huis echt slimmer van wordt: geen gadget om de gadget, maar meetgegevens waar je in de praktijk iets aan hebt.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<!-- CONTENT -->
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">Een smart home wordt pas echt interessant wanneer het niet alleen schakelt, maar ook meet. Met deze DIY multi-sensor haal je in één keer vier nuttige metingen in huis.</p>
+<p>In dit project combineer je een MH-Z19 CO₂-sensor, een DHT11 en een LDR met een Wemos D1 Mini. Het mooie aan deze vernieuwde opzet is dat de code een stuk netter is opgebouwd: iedere sensor heeft zijn eigen taak, de wifi-verbinding wordt bewaakt en Homey krijgt alleen updates wanneer dat zinvol is.</p>
+<h2 id="wat-ga-je-bouwen">Wat ga je bouwen?</h2>
+<p>Je bouwt een compacte Homeyduino multi-sensor die CO₂, temperatuur, luchtvochtigheid en licht meet en deze waarden als capabilities naar Homey stuurt. Daarmee vervang je niet alleen meerdere losse sensoren, maar maak je ook meteen een veel interessantere databron voor je flows.</p>
+<ul>
+<li><strong>Meerdere sensoren op één Wemos</strong></li>
+<li><strong>Klaar voor automatisering</strong></li>
+</ul>
+<p>Het eindresultaat is een DIY-project waar je in de praktijk echt iets aan hebt. Dankzij de modulaire code, wifi-herstel en slimme manier van publiceren voelt dit niet als een proefopstelling, maar als een sensor die je gewoon dagelijks kunt gebruiken.</p>
+<h2 id="waarom-dit-nuttig-is">Waarom is dit nuttig?</h2>
+<p>Juist CO₂ is zo’n waarde die je niet ziet, maar wel degelijk merkt. Een ruimte kan prima aanvoelen terwijl de luchtkwaliteit ongemerkt achteruitgaat. Zeker in een slaapkamer, werkkamer of woonkamer is het daarom verrassend handig om dit inzichtelijk te maken.</p>
+<p>Door daar ook temperatuur, luchtvochtigheid en licht aan toe te voegen, krijg je een veel completer beeld van wat er in een ruimte gebeurt. En precies dat maakt een multi-sensor vaak waardevoller dan vier losse metingen zonder samenhang.</p>
+<p>Ook technisch is deze opzet een stap vooruit. De sketch is opgesplitst in duidelijke modules voor wifi, CO₂, klimaat en luminance. Dat leest prettiger, werkt stabieler en maakt uitbreiden later ook een stuk eenvoudiger.</p>
+<h2 id="benodigdheden">Benodigdheden</h2>
+<ul>
+<li>Wemos D1 Mini of vergelijkbaar ESP8266-board</li>
+<li>MH-Z19 CO₂-sensor</li>
+<li>DHT11 sensor</li>
+<li>LDR voor de analoge ingang</li>
+<li>Homey met de Homeyduino-app geïnstalleerd</li>
+<li>USB-kabel, jumper wires en eventueel een breadboard</li>
+<li>Computer met Arduino IDE en de benodigde libraries</li>
+</ul>
+<!-- AFFILIATE_AUTO_BLOCK_START -->
+<section class="affiliate-auto-block" aria-label="Aanbevolen producten">
+  <h3>Handige links bij dit project</h3>
+  <p>Dit zijn producten die aansluiten op de benodigdheden in dit artikel.</p>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-1"></div>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-2"></div>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-3"></div>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-4"></div>
+  <div id="affiliate-auto-homeyduino-co2-multisensor-html-5"></div>
+</section>
+<script>
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-1", "dht11_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-2", "homey");
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-3", "ldr_sensor");
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-4", "mh_z19b");
+  renderAffiliateProduct("affiliate-auto-homeyduino-co2-multisensor-html-5", "wemos_d1_mini");
+</script>
+<!-- AFFILIATE_AUTO_BLOCK_END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="prijsvergelijking">Waarom zelf bouwen?</h2>
+<p>Zelf bouwen is juist hier zo leuk omdat je voor relatief weinig geld een sensor maakt die meerdere waarden combineert én netjes samenwerkt met Homey. Je zit dus niet vast aan één fabrikant of een gesloten ecosysteem.</p>
+<p>Bovendien houd je volledige controle. Je bepaalt zelf de apparaatnaam, de drempelwaarden, de manier van publiceren en eventuele uitbreidingen. Precies dat maakt Homeyduino-projecten zo verslavend leuk.</p>
+<h2 id="stappenplan">Stap-voor-stap uitleg</h2>
+<h3>1. Sluit de sensoren aan</h3>
+<p>De vernieuwde code gebruikt andere pinnen dan de oudere versie, dus controleer de aansluitingen goed. Vooral de MH-Z19 wordt nu via seriële communicatie uitgelezen in plaats van via PWM. De pinverdeling ziet er als volgt uit:</p>
+<ul>
+<li><strong>MH-Z19 RX</strong> <strong>D2</strong></li>
+<li><strong>MH-Z19 TX</strong> <strong>D1</strong></li>
+<li><strong>DHT11 data</strong> <strong>D5</strong></li>
+<li><strong>LDR</strong> <strong>A0</strong></li>
+</ul>
+<p>Zorg daarnaast uiteraard voor de juiste voeding en een gedeelde GND. Dat klinkt logisch, maar juist daar gaat het bij zelfbouwprojecten nog weleens mis.</p>
+<figure>
+<img alt="Aansluitschema van de CO₂ multi-sensor op de Wemos D1 Mini" src="assets/artikel/Wemos_D1_Multi-sensor.png"/>
+<figcaption class="muted small">Aansluitschema van de CO₂ multi-sensor met MH-Z19, DHT11 en LDR.</figcaption>
+</figure>
+<h3>2. Bereid de software voor</h3>
+<p>Installeer Arduino IDE en controleer of de ESP8266-board support goed staat ingesteld. Voeg vervolgens de libraries toe die in deze sketch worden gebruikt: ESP8266WiFi, SoftwareSerial, MHZ19, Homey en SimpleDHT. Vul daarna bovenin de code je eigen wifi-gegevens in.</p>
+<h3>3. Upload de code</h3>
+<p>Pas eventueel meteen ook de apparaatnaam aan. In de voorbeeldcode staat die nu op Multisensor. Upload de sketch vervolgens naar je Wemos D1 Mini, waarna vier Homey-capabilities worden aangemaakt: CO₂, temperatuur, luchtvochtigheid en luminance.</p>
+<div class="code-block">
+<button class="copy-btn" onclick="copyCode(this)">Kopieer</button>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;SoftwareSerial.h&gt;
+#include &lt;MHZ19.h&gt;
+#include &lt;Homey.h&gt;
+#include &lt;SimpleDHT.h&gt;
+
+// =========================
+// Debug instellingen
+// =========================
+#define DEBUG 0   // 1 = debug aan, 0 = debug uit
+
+#if DEBUG
+  #define DBG_PRINT(x) Serial.print(x)
+  #define DBG_PRINTLN(x) Serial.println(x)
+#else
+  #define DBG_PRINT(x)
+  #define DBG_PRINTLN(x)
+#endif
+
+// =========================
+// Configuratie
+// =========================
+namespace Config {
+  constexpr const char* WIFI_SSID = "SSID";
+  constexpr const char* WIFI_PASSWORD = "PASSWORD";
+
+  // Pins
+  constexpr uint8_t MH_Z19_RX_PIN = D2;
+  constexpr uint8_t MH_Z19_TX_PIN = D1;
+  constexpr uint8_t DHT_PIN = D5;
+  constexpr uint8_t LDR_ANALOG_PIN = A0;
+
+  // WiFi
+  constexpr unsigned long WIFI_CHECK_INTERVAL_MS = 60000;
+  constexpr unsigned long WIFI_CONNECT_TIMEOUT_MS = 30000;
+
+  // CO2
+  constexpr unsigned long CO2_SAMPLE_INTERVAL_MS = 5000;
+  constexpr unsigned long CO2_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr int CO2_PUBLISH_THRESHOLD_PPM = 30;
+
+  // DHT11
+  constexpr unsigned long DHT_SAMPLE_INTERVAL_MS = 30000;
+  constexpr unsigned long DHT_HEARTBEAT_INTERVAL_MS = 300000;
+
+  // Analoge LDR
+  constexpr unsigned long LDR_SAMPLE_INTERVAL_MS = 1000;
+  constexpr unsigned long LDR_HEARTBEAT_INTERVAL_MS = 60000;
+  constexpr int LDR_PUBLISH_THRESHOLD = 10;
+  constexpr float LDR_EMA_ALPHA = 0.15f;
+
+  // Homey
+  constexpr const char* HOMEY_DEVICE_NAME = "Multisensor";
+  constexpr const char* HOMEY_DEVICE_CLASS = "sensor";
+
+  constexpr const char* CAPABILITY_CO2 = "measure_co2";
+  constexpr const char* CAPABILITY_TEMPERATURE = "measure_temperature";
+  constexpr const char* CAPABILITY_HUMIDITY = "measure_humidity";
+  constexpr const char* CAPABILITY_LUMINANCE = "measure_luminance";
+}
+
+// =========================
+// Centrale helpers
+// =========================
+bool canPublishToHomey() {
+  return WiFi.status() == WL_CONNECTED;
+}
+
+// =========================
+// WiFi-module
+// =========================
+namespace WifiModule {
+  struct State {
+    unsigned long lastCheckAt = 0;
+    bool wasConnected = false;
+    bool reconnectedEvent = false;
+  };
+
+  State state;
+
+  void connectWithTimeout() {
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+
+    Serial.print(F("Verbinden met WiFi..."));
+
+    const unsigned long startAttemptTime = millis();
+
+    while (WiFi.status() != WL_CONNECTED &amp;&amp;
+           millis() - startAttemptTime &lt; Config::WIFI_CONNECT_TIMEOUT_MS) {
+      delay(500);
+      Serial.print(F("."));
+    }
+
+    Serial.println();
+
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.print(F("[SUCCES] Verbonden! IP-adres: "));
+      Serial.println(WiFi.localIP());
+      state.wasConnected = true;
+    } else {
+      Serial.println(F("[WIFI] Timeout bereikt. Sensor start zonder wifi."));
+      state.wasConnected = false;
+    }
+  }
+
+  void maintain(unsigned long currentMillis) {
+    if (currentMillis - state.lastCheckAt &lt; Config::WIFI_CHECK_INTERVAL_MS) {
+      return;
+    }
+
+    state.lastCheckAt = currentMillis;
+    state.reconnectedEvent = false;
+
+    DBG_PRINT(F("[DEBUG] WiFi status: "));
+    DBG_PRINT(WiFi.status());
+    DBG_PRINT(F(" | IP: "));
+    DBG_PRINTLN(WiFi.localIP());
+
+    const wl_status_t wifiStatus = WiFi.status();
+
+    if (wifiStatus == WL_CONNECTED) {
+      if (!state.wasConnected) {
+        Serial.print(F("[WIFI] Opnieuw verbonden! IP-adres: "));
+        Serial.println(WiFi.localIP());
+        state.wasConnected = true;
+        state.reconnectedEvent = true;
+      }
+      return;
+    }
+
+    if (state.wasConnected) {
+      Serial.println(F("[WIFI] Verbinding kwijt. Herstellen..."));
+      state.wasConnected = false;
+    } else {
+      Serial.println(F("[WIFI] Nog niet verbonden. Nieuwe poging..."));
+    }
+
+    WiFi.begin(Config::WIFI_SSID, Config::WIFI_PASSWORD);
+  }
+
+  bool justReconnected() {
+    return state.reconnectedEvent;
+  }
+}
+
+// =========================
+// CO2-module
+// =========================
+namespace Co2Module {
+  struct Reading {
+    int co2 = 0;
+  };
+
+  struct State {
+    unsigned long lastSampleAt = 0;
+    unsigned long lastPublishAt = 0;
+
+    Reading currentReading;
+    Reading lastPublishedReading;
+
+    bool hasReading = false;
+    bool hasPublished = false;
+    bool dirty = false;
+  };
+
+  State state;
+  SoftwareSerial serialPort(Config::MH_Z19_RX_PIN, Config::MH_Z19_TX_PIN);
+  MHZ19 sensor;
+
+  void begin() {
+    serialPort.begin(9600);
+    sensor.begin(serialPort);
+    sensor.autoCalibration(false);
+
+    state.lastSampleAt = millis() - Config::CO2_SAMPLE_INTERVAL_MS;
+  }
+
+  bool read(Reading&amp; reading) {
+    const int co2 = sensor.getCO2();
+
+    if (co2 &lt;= 0) {
+      return false;
+    }
+
+    reading.co2 = co2;
+    return true;
+  }
+
+  bool isValid(const Reading&amp; reading) {
+    return reading.co2 &gt;= 350 &amp;&amp; reading.co2 &lt;= 5000;
+  }
+
+  void logReading(const Reading&amp; reading) {
+    DBG_PRINT(F("CO2: "));
+    DBG_PRINT(reading.co2);
+    DBG_PRINTLN(F(" ppm"));
+  }
+
+  bool shouldPublish(const Reading&amp; reading, unsigned long currentMillis) {
+    if (!state.hasPublished) {
+      return true;
+    }
+
+    const bool thresholdMet =
+        abs(reading.co2 - state.lastPublishedReading.co2) &gt;= Config::CO2_PUBLISH_THRESHOLD_PPM;
+
+    const bool heartbeatMet =
+        (currentMillis - state.lastPublishAt) &gt;= Config::CO2_HEARTBEAT_INTERVAL_MS;
+
+    return thresholdMet || heartbeatMet;
+  }
+
+  void markLatestState(const Reading&amp; reading) {
+    state.currentReading = reading;
+    state.hasReading = true;
+
+    if (!state.hasPublished) {
+      state.dirty = true;
+      return;
+    }
+
+    const bool changedEnough =
+        abs(reading.co2 - state.lastPublishedReading.co2) &gt;= Config::CO2_PUBLISH_THRESHOLD_PPM;
+
+    state.dirty = changedEnough;
+  }
+
+  void publishLatest(unsigned long currentMillis) {
+    if (!state.hasReading) {
+      return;
+    }
+
+    if (!canPublishToHomey()) {
+      state.dirty = true;
+      Serial.println(F("[WAARSCHUWING] CO2-status lokaal bijgewerkt, nog niet naar Homey gestuurd."));
+      return;
+    }
+
+    Homey.setCapabilityValue(Config::CAPABILITY_CO2, state.currentReading.co2);
+
+    state.lastPublishedReading = state.currentReading;
+    state.lastPublishAt = currentMillis;
+    state.hasPublished = true;
+    state.dirty = false;
+
+    Serial.println(F("[HOMEY] CO2 succesvol bijgewerkt."));
+  }
+
+  void syncIfDirty(unsigned long currentMillis) {
+    if (!state.dirty || !state.hasReading) {
+      return;
+    }
+
+    Serial.println(F("[HOMEY] Laatste CO2-status synchroniseren..."));
+    publishLatest(currentMillis);
+  }
+
+  void process(unsigned long currentMillis) {
+    if (currentMillis - state.lastSampleAt &lt; Config::CO2_SAMPLE_INTERVAL_MS) {
+      return;
+    }
+
+    state.lastSampleAt = currentMillis;
+
+    Reading reading;
+    if (!read(reading)) {
+      Serial.println(F("[FOUT] CO2-sensor geeft geen geldig antwoord."));
+      return;
+    }
+
+    if (!isValid(reading)) {
+      Serial.println(F("[FOUT] CO2-waarde buiten geldig bereik."));
+      return;
+    }
+
+    logReading(reading);
+    markLatestState(reading);
+
+    if (shouldPublish(reading, currentMillis)) {
+      publishLatest(currentMillis);
+    }
+  }
+}
+
+// =========================
+// Klimaatmodule (DHT11)
+// =========================
+namespace ClimateModule {
+  struct Reading {
+    int temperature = 0;
+    int humidity = 0;
+  };
+
+  struct State {
+    unsigned long lastSampleAt = 0;
+    unsigned long lastPublishAt = 0;
+
+    Reading currentReading;
+    Reading lastPublishedReading;
+
+    bool hasReading = false;
+    bool hasPublished = false;
+    bool dirty = false;
+  };
+
+  State state;
+  SimpleDHT11 sensor;
+
+  void begin() {
+    state.lastSampleAt = millis() - Config::DHT_SAMPLE_INTERVAL_MS;
+  }
+
+  bool read(Reading&amp; reading) {
+    byte temperature = 0;
+    byte humidity = 0;
+
+    const int err = sensor.read(Config::DHT_PIN, &amp;temperature, &amp;humidity, NULL);
+    if (err != SimpleDHTErrSuccess) {
+      Serial.print(F("[FOUT] DHT11 uitlezen mislukt, err="));
+      Serial.println(err);
+      return false;
+    }
+
+    reading.temperature = static_cast&lt;int&gt;(temperature);
+    reading.humidity = static_cast&lt;int&gt;(humidity);
+    return true;
+  }
+
+  bool isValid(const Reading&amp; reading) {
+    const bool validTemperature = (reading.temperature &gt;= 0 &amp;&amp; reading.temperature &lt;= 50);
+    const bool validHumidity = (reading.humidity &gt;= 0 &amp;&amp; reading.humidity &lt;= 100);
+    return validTemperature &amp;&amp; validHumidity;
+  }
+
+  void logReading(const Reading&amp; reading) {
+    DBG_PRINT(F("Klimaat: "));
+    DBG_PRINT(reading.temperature);
+    DBG_PRINT(F(" C | "));
+    DBG_PRINT(reading.humidity);
+    DBG_PRINTLN(F(" % vochtigheid"));
+  }
+
+  bool shouldPublish(const Reading&amp; reading, unsigned long currentMillis) {
+    if (!state.hasPublished) {
+      return true;
+    }
+
+    const bool temperatureChanged =
+        reading.temperature != state.lastPublishedReading.temperature;
+
+    const bool humidityChanged =
+        reading.humidity != state.lastPublishedReading.humidity;
+
+    const bool heartbeatMet =
+        (currentMillis - state.lastPublishAt) &gt;= Config::DHT_HEARTBEAT_INTERVAL_MS;
+
+    return temperatureChanged || humidityChanged || heartbeatMet;
+  }
+
+  void markLatestState(const Reading&amp; reading) {
+    state.currentReading = reading;
+    state.hasReading = true;
+
+    if (!state.hasPublished) {
+      state.dirty = true;
+      return;
+    }
+
+    const bool temperatureChanged =
+        reading.temperature != state.lastPublishedReading.temperature;
+
+    const bool humidityChanged =
+        reading.humidity != state.lastPublishedReading.humidity;
+
+    state.dirty = temperatureChanged || humidityChanged;
+  }
+
+  void publishLatest(unsigned long currentMillis) {
+    if (!state.hasReading) {
+      return;
+    }
+
+    if (!canPublishToHomey()) {
+      state.dirty = true;
+      Serial.println(F("[WAARSCHUWING] Klimaatstatus lokaal bijgewerkt, nog niet naar Homey gestuurd."));
+      return;
+    }
+
+    Homey.setCapabilityValue(Config::CAPABILITY_TEMPERATURE, static_cast&lt;float&gt;(state.currentReading.temperature));
+    Homey.setCapabilityValue(Config::CAPABILITY_HUMIDITY, static_cast&lt;float&gt;(state.currentReading.humidity));
+
+    state.lastPublishedReading = state.currentReading;
+    state.lastPublishAt = currentMillis;
+    state.hasPublished = true;
+    state.dirty = false;
+
+    Serial.println(F("[HOMEY] Klimaatgegevens succesvol bijgewerkt."));
+  }
+
+  void syncIfDirty(unsigned long currentMillis) {
+    if (!state.dirty || !state.hasReading) {
+      return;
+    }
+
+    Serial.println(F("[HOMEY] Laatste klimaatstatus synchroniseren..."));
+    publishLatest(currentMillis);
+  }
+
+  void process(unsigned long currentMillis) {
+    if (currentMillis - state.lastSampleAt &lt; Config::DHT_SAMPLE_INTERVAL_MS) {
+      return;
+    }
+
+    state.lastSampleAt = currentMillis;
+
+    Reading reading;
+    if (!read(reading)) {
+      return;
+    }
+
+    if (!isValid(reading)) {
+      Serial.println(F("[FOUT] Ongeldige klimaatwaarde ontvangen."));
+      return;
+    }
+
+    logReading(reading);
+    markLatestState(reading);
+
+    if (shouldPublish(reading, currentMillis)) {
+      publishLatest(currentMillis);
+    }
+  }
+}
+
+// =========================
+// Luminance-module (analoge LDR via A0)
+// =========================
+namespace LuminanceModule {
+  struct State {
+    int rawValue = 0;
+    float filteredValue = 0.0f;
+    bool hasReading = false;
+
+    int currentLuminance = 0;
+    int lastPublishedLuminance = 0;
+    bool hasPublished = false;
+    bool dirty = false;
+
+    unsigned long lastSampleAt = 0;
+    unsigned long lastPublishAt = 0;
+  };
+
+  State state;
+
+  void begin() {
+    state.lastSampleAt = millis() - Config::LDR_SAMPLE_INTERVAL_MS;
+  }
+
+  int readRawLuminance() {
+    return analogRead(Config::LDR_ANALOG_PIN);
+  }
+
+  void updateFilteredLuminance(int rawValue) {
+    state.rawValue = rawValue;
+
+    if (!state.hasReading) {
+      state.filteredValue = static_cast&lt;float&gt;(rawValue);
+      state.hasReading = true;
+      return;
+    }
+
+    state.filteredValue =
+        (Config::LDR_EMA_ALPHA * rawValue) +
+        ((1.0f - Config::LDR_EMA_ALPHA) * state.filteredValue);
+  }
+
+  void markLatestState() {
+    state.currentLuminance = static_cast&lt;int&gt;(state.filteredValue);
+
+    if (!state.hasPublished) {
+      state.dirty = true;
+      return;
+    }
+
+    state.dirty =
+        abs(state.currentLuminance - state.lastPublishedLuminance) &gt;=
+        Config::LDR_PUBLISH_THRESHOLD;
+  }
+
+  void logReading() {
+    DBG_PRINT(F("[DEBUG] LDR raw="));
+    DBG_PRINT(state.rawValue);
+    DBG_PRINT(F(" | filtered="));
+    DBG_PRINTLN(state.currentLuminance);
+  }
+
+  bool shouldPublish(unsigned long currentMillis) {
+    if (!state.hasReading) {
+      return false;
+    }
+
+    const bool heartbeatMet =
+        (currentMillis - state.lastPublishAt) &gt;= Config::LDR_HEARTBEAT_INTERVAL_MS;
+
+    return state.dirty || heartbeatMet;
+  }
+
+  void publishLatest(unsigned long currentMillis) {
+    if (!state.hasReading) {
+      return;
+    }
+
+    if (!canPublishToHomey()) {
+      state.dirty = true;
+      Serial.println(F("[WAARSCHUWING] Luminance lokaal bijgewerkt, nog niet naar Homey gestuurd."));
+      return;
+    }
+
+    Homey.setCapabilityValue(
+        Config::CAPABILITY_LUMINANCE,
+        static_cast&lt;float&gt;(state.currentLuminance));
+
+    state.lastPublishedLuminance = state.currentLuminance;
+    state.lastPublishAt = currentMillis;
+    state.hasPublished = true;
+    state.dirty = false;
+
+    Serial.println(F("[HOMEY] Luminance succesvol bijgewerkt."));
+  }
+
+  void syncIfDirty(unsigned long currentMillis) {
+    if (!state.dirty || !state.hasReading) {
+      return;
+    }
+
+    Serial.println(F("[HOMEY] Laatste luminance synchroniseren..."));
+    publishLatest(currentMillis);
+  }
+
+  void process(unsigned long currentMillis) {
+    if (currentMillis - state.lastSampleAt &lt; Config::LDR_SAMPLE_INTERVAL_MS) {
+      return;
+    }
+
+    state.lastSampleAt = currentMillis;
+
+    const int rawValue = readRawLuminance();
+    updateFilteredLuminance(rawValue);
+    markLatestState();
+    logReading();
+
+    if (shouldPublish(currentMillis)) {
+      publishLatest(currentMillis);
+    }
+  }
+}
+
+// =========================
+// Homey initialisatie
+// =========================
+void initializeHomey() {
+  Homey.begin(Config::HOMEY_DEVICE_NAME);
+  Homey.setClass(Config::HOMEY_DEVICE_CLASS);
+  Homey.addCapability(Config::CAPABILITY_CO2);
+  Homey.addCapability(Config::CAPABILITY_TEMPERATURE);
+  Homey.addCapability(Config::CAPABILITY_HUMIDITY);
+  Homey.addCapability(Config::CAPABILITY_LUMINANCE);
+}
+
+// =========================
+// Setup
+// =========================
+void setup() {
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println(F("--- Multisensor: CO2 + DHT11 + LDR Luminance ---"));
+
+  Co2Module::begin();
+  ClimateModule::begin();
+  LuminanceModule::begin();
+
+  WifiModule::connectWithTimeout();
+  initializeHomey();
+}
+
+// =========================
+// Main loop
+// =========================
+void loop() {
+  Homey.loop();
+  yield();
+
+  const unsigned long currentMillis = millis();
+
+  WifiModule::maintain(currentMillis);
+
+  if (WifiModule::justReconnected()) {
+    Co2Module::syncIfDirty(currentMillis);
+    ClimateModule::syncIfDirty(currentMillis);
+    LuminanceModule::syncIfDirty(currentMillis);
+  }
+
+  Co2Module::process(currentMillis);
+  ClimateModule::process(currentMillis);
+  LuminanceModule::process(currentMillis);
+ </code></pre>
+</div>
+<h3>4. Test de metingen</h3>
+<p>Open na het uploaden de Seriële Monitor. Let goed op dat deze sketch op 115200 baud draait en dus niet op 9600. Daar kun je meteen controleren of de wifi netjes verbindt en of de metingen goed binnenkomen. Wil je extra informatie zien, zet DEBUG dan tijdelijk op 1.</p>
+<h3>5. Koppel de sensor aan Homey</h3>
+<p>Voeg de sensor daarna toe via Homeyduino. Zodra de koppeling gelukt is, zie je in Homey de capabilities voor CO₂, temperatuur, luchtvochtigheid en licht. Omdat de code alleen publiceert bij duidelijke veranderingen of via een heartbeat, houd je het systeem netjes en voorkom je een overdaad aan updates.</p>
+<figure>
+<img alt="De CO₂ multi-sensor zichtbaar in Homey" src="assets/artikel/multi-sensor-uitleesbaar-homey.jpg"/>
+<figcaption class="muted small">De meetwaarden van de sensoren zichtbaar in Homey.</figcaption>
+</figure>
+<h2 id="integratie">Integratie met Homey</h2>
+<p>De koppeling met Homey doet hier meer dan alleen wat cijfers tonen. De code registreert vier capabilities en probeert gemiste updates opnieuw te synchroniseren zodra de wifi terugkomt. Dat maakt deze sensor ook in dagelijks gebruik een stuk bruikbaarder.</p>
+<p>In de praktijk kun je deze metingen bijvoorbeeld inzetten voor:</p>
+<ul>
+<li>een flow die waarschuwt of automatisch ventileert zodra de CO₂-waarde te hoog oploopt</li>
+<li>inzichten in temperatuur en luchtvochtigheid per ruimte</li>
+<li>een lichtwaarde als extra voorwaarde voor andere slimme flows</li>
+</ul>
+<h2 id="praktisch-gebruik">Praktisch gebruik</h2>
+<p>Deze sensor komt vooral tot zijn recht in ruimtes waar je langere tijd verblijft, zoals de woonkamer, slaapkamer of thuiswerkplek. Juist daar levert de combinatie van CO₂, temperatuur en luchtvochtigheid vaak meteen bruikbare inzichten op.</p>
+
+<h2 id="aandachtspunten">Aandachtspunten</h2>
+<ul>
+<li>De pinbezetting wijkt af van de eerdere versie: de DHT11 zit nu op D5 en de MH-Z19 gebruikt D2 en D1 via seriële communicatie.</li>
+<li>Gebruik in de Seriële Monitor 115200 baud, anders lijkt het alsof de output niet klopt.</li>
+<li>Vergeet niet om vóór het uploaden je eigen wifi-gegevens en bij voorkeur ook een duidelijke apparaatnaam in te vullen.</li>
+</ul>
+<h2 id="conclusie">Conclusie</h2>
+<p>Met deze vernieuwde opzet bouw je niet alleen een handige CO₂ multi-sensor, maar ook een project dat technisch gewoon netter staat. De modulaire code, automatische wifi-controle, gefilterde lichtmeting en gecontroleerde Homey-updates maken dit tot een uitstekende basis voor een sensor die je echt in huis wilt gebruiken.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-ga-je-bouwen">Wat ga je bouwen?</a>
+<a href="#waarom-dit-nuttig-is">Waarom is dit nuttig?</a>
+<a href="#benodigdheden">Benodigdheden</a>
+<a href="#prijsvergelijking">Waarom zelf bouwen?</a>
+<a href="#stappenplan">Stap-voor-stap uitleg</a>
+<a href="#integratie">Integratie met Homey</a>
+<a href="#praktisch-gebruik">Praktisch gebruik</a>
+<a href="#aandachtspunten">Aandachtspunten</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homeyduino-co2-sensor.html">Bouw je eigen slimme CO₂ sensor met Homeyduino (UART)</a><a href="bewegingssensor_homeyduino.html">Bouw je eigen Bewegingssensor (PIR + Arduino)</a><a href="homeyduino-ld2410-aanwezigheidssensor.html">LD2410 aanwezigheids-sensor maken met Homeyduino en ESP32</a></div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+<div class="row-success" style="display:none;">
+  <h3>🏠 Welkom aan boord</h3>
+
+  <p>
+    Je inschrijving is gelukt.
+  </p>
+
+  <p>
+    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
+  </p>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+</aside>
+
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+<script>
+function copyCode(button) {
+  const code = button.nextElementSibling.innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+    button.innerText = "Gekopieerd!";
+    setTimeout(() => {
+      button.innerText = "Kopieer";
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

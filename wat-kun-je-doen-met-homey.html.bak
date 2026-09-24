@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Mike Mulders">
+<meta name="hv-schema-type" content="techarticle">
+<title>Wat kun je doen met Homey? Praktische toepassingen en inspiratie | huisvanvandaag.nl</title>
+<meta content="Ontdek wat je écht kunt doen met Homey. Van slimme verlichting en beveiliging tot automatiseringen en DIY-projecten. Praktische voorbeelden en inspiratie." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .project-hero-media {
+      margin-top: 1.25rem;
+    }
+
+    .project-hero-media .panel {
+      padding: 1.1rem;
+    }
+
+    .project-hero-media figure,
+    .project-hero-media figcaption {
+      margin: 0;
+    }
+
+    .project-hero-media img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .project-hero-media figcaption {
+      margin-top: .75rem;
+      line-height: 1.5;
+    }
+
+    .project-content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .project-info-panel .check-item {
+      align-items: flex-start;
+    }
+
+    .project-info-panel .check-item strong {
+      display: inline-block;
+      margin-bottom: .15rem;
+    }
+
+    .project-article figure {
+      margin: 1.4rem 0 1.8rem;
+    }
+
+    .project-article figcaption {
+      margin-top: .65rem;
+      line-height: 1.5;
+    }
+
+    .project-article img {
+      border-radius: 18px;
+    }
+
+    .insight-panel {
+      margin: 1.4rem 0 1.8rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .insight-panel h3 {
+      margin-top: 0;
+      margin-bottom: .55rem;
+    }
+
+    @media (max-width: 980px) {
+      .project-content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script src="/js/global-schema.js" defer></script>
+<script src="/js/article-schema.js" defer></script>
+  <link rel="canonical" href="https://www.huisvanvandaag.nl/wat-kun-je-doen-met-homey.html">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="article-hero">
+<div class="container article-layout">
+<div>
+<div class="breadcrumbs">
+<a href="index.html">Home</a>
+<span>•</span>
+<a href="homey.html">Kennisbank</a>
+<span>•</span>
+<span>Wat kun je doen met Homey?</span>
+</div>
+<span class="eyebrow">Informatief</span>
+<span class="eyebrow">Smart home inspiratie</span>
+<h1>Wat kun je doen met Homey? Praktische toepassingen en inspiratie</h1>
+<p class="lead muted">
+          Homey wordt vaak een ‘centrale hub’ genoemd, maar wat betekent dat in de praktijk? In dit artikel ontdek je concrete toepassingen waarmee je je huis slimmer, comfortabeler en efficiënter maakt.
+        </p>
+<div class="meta-list">
+<span class="meta-pill">Categorie: Smart home</span>
+<span class="meta-pill">Onderwerp: Homey</span>
+<span class="meta-pill">Voor: Beginners &amp; gevorderden</span>
+</div>
+</div>
+<div class="panel project-info-panel">
+<h3>Waarom dit artikel de moeite waard is</h3>
+<div class="check-list">
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Concrete voorbeelden</strong><br/>
+<span class="muted">Geen theorie, maar direct toepasbare ideeën voor in huis.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Van simpel tot slim</strong><br/>
+<span class="muted">Geschikt voor zowel beginners als mensen die al verder willen automatiseren.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Praktisch ingestoken</strong><br/>
+<span class="muted">Gericht op wat Homey in het dagelijks leven echt toevoegt.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Helpt keuzes maken</strong><br/>
+<span class="muted">Je ziet sneller of Homey bij jouw manier van slim wonen past.</span>
+</div>
+</div>
+<div class="check-item">
+<span class="check-mark">✓</span>
+<div>
+<strong>Logische volgende stap</strong><br/>
+<span class="muted">Ideaal als opstap naar flows, tutorials en DIY-projecten.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container project-hero-media">
+<div class="panel">
+<figure>
+<img alt="Homey als centrale smart home hub in een modern huis" src="assets/header/homey-pro-2023.jpg"/ fetchpriority="high" decoding="async">
+<figcaption class="muted small">
+            Met Homey breng je losse slimme apparaten samen in één systeem dat echt met je meewerkt.
+          </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="section-tight" style="padding-top: 14px;">
+<div class="container project-content-layout">
+<article class="article-body project-article">
+<p class="lead">
+          Een slim huis klinkt aantrekkelijk, maar in de praktijk loopt het vaak vast op losse apps, verschillende merken en apparaten die nét niet goed samenwerken. Juist daar maakt Homey het verschil.
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+          In plaats van elk apparaat apart te bedienen, gebruik je Homey als centrale schakel. Daardoor ontstaat er rust, overzicht en vooral veel meer logica in huis. Niet omdat alles high-tech moet zijn, maar omdat automatisering pas echt handig wordt als het zonder gedoe werkt.
+        </p>
+<div class="insight-panel">
+<h3>Kort samengevat</h3>
+<p class="muted">Homey is vooral interessant omdat het losse slimme apparaten samenbrengt en ze op een praktische manier laat samenwerken.</p>
+</div>
+<h2 id="wat-is-het">Wat kun je in de praktijk met Homey?</h2>
+<p>Homey is vooral sterk als centrale laag tussen apparaten, merken en automatiseringen. Daardoor kun je veel meer doen dan alleen lampen aan- en uitzetten met één app.</p>
+<p>De echte waarde zit in het combineren van signalen, apparaten en gewoontes. Zo wordt je huis niet alleen slimmer, maar ook prettiger in gebruik.</p>
+<ul>
+<li><strong>Apparaten koppelen</strong> → Slimme lampen, stekkers, sensoren en andere apparaten werken samen binnen één systeem.</li>
+<li><strong>Flows maken</strong> → Je laat acties automatisch starten op basis van tijd, beweging, aanwezigheid of andere triggers.</li>
+<li><strong>Merken combineren</strong> → Apparaten die normaal los van elkaar werken, kun je binnen Homey toch logisch laten samenwerken.</li>
+</ul>
+<figure>
+<img alt="De Homey app met apparaten en automatiseringen in beeld" src="assets/artikel/homey-app-interface.jpg"/>
+<figcaption class="muted small">
+            In de Homey app komen bediening, inzichten en automatiseringen samen.
+          </figcaption>
+</figure>
+<h2 id="waarom-relevant">Waarom is dat in huis zo relevant?</h2>
+<p>Veel mensen beginnen met één slimme lamp of een slimme stekker. Dat werkt vaak prima, totdat er meerdere apparaten bijkomen en elk merk zijn eigen app, logica en beperkingen meebrengt.</p>
+<p>Homey is juist interessant omdat het die versnippering terugbrengt tot één centrale aanpak. Daardoor houd je meer overzicht en kun je makkelijker automatiseringen bouwen die echt bij je dagelijkse ritme passen.</p>
+<h2 id="praktijk">Praktische toepassingen waar Homey echt nuttig wordt</h2>
+<p>De bekendste toepassing is slimme verlichting, maar daar houdt het niet op. Juist in de combinatie van meerdere signalen wordt Homey interessant. Denk aan verlichting die niet alleen op beweging reageert, maar ook op tijdstip of aanwezigheid.</p>
+<p>Ook op het gebied van comfort, meldingen en energiebewust gebruik zijn er veel praktische scenario’s te bedenken. Bijvoorbeeld een routine die apparaten uitschakelt wanneer niemand meer thuis is, of een melding wanneer ergens een deur te lang open blijft staan.</p>
+<figure>
+<img alt="Slimme verlichting en automatisering met Homey in de woonkamer" src="assets/artikel/homey-verlichting-automatisering.jpg"/>
+<figcaption class="muted small">
+            Een goede automatisering voelt niet technisch, maar vanzelfsprekend.
+          </figcaption>
+</figure>
+<h2 id="waar-let-je-op">Waar moet je op letten als je ermee begint?</h2>
+<p>De grootste valkuil is dat je te snel te veel wilt. Homey kan veel, maar juist daarom werkt het beter als je klein begint en per ruimte of situatie kijkt wat echt handig is.</p>
+<ul>
+<li>Begin met één duidelijke automatisering die je dagelijks gebruikt.</li>
+<li>Voeg alleen apparaten toe die echt iets bijdragen aan gemak, inzicht of comfort.</li>
+<li>Houd flows overzichtelijk, zodat je later nog begrijpt waarom iets gebeurt.</li>
+</ul>
+<p>Zo bouw je stap voor stap een slim huis dat rustiger en slimmer aanvoelt, in plaats van ingewikkelder.</p>
+<a href="https://www.huisvanvandaag.nl/homeyduino-clapper-switch.html" class="image-link">
+  <figure>
+    <img 
+      alt="Voorbeeld van een Homey flow met duidelijke logica" 
+      src="assets/artikel/homey-flow-schema-klapschakelaar.jpg"
+    />
+
+    <figcaption class="muted small">
+      Eenvoudige flows zijn vaak krachtiger dan een wirwar aan losse regels. 
+      Deze flow schakelt bijvoorbeeld de lampen aan of uit doormiddel van in je handen te klappen.
+    </figcaption>
+  </figure>
+</a>
+</figure>
+<h2 id="verdieping">Hoe haal je nog meer uit Homey?</h2>
+<p>Wie verder wil gaan, kan Homey ook gebruiken als basis voor zelfbouwprojecten en uitgebreidere automatiseringen. Juist daar wordt het interessant voor mensen die graag iets aanpassen, meten of zelf bouwen.</p>
+<p>Denk bijvoorbeeld aan Homeyduino-projecten waarbij je eigen sensoren toevoegt aan je slimme huis. Daarmee verschuift Homey van een handige hub naar een flexibel platform waarmee je veel meer naar je hand kunt zetten.</p>
+<h2 id="volgende-stap">Volgende stap</h2>
+<p>Heb je een beeld van wat Homey kan, dan is de volgende stap vooral praktisch: begin met één goede flow, leer het systeem kennen en breid daarna pas uit. Vanuit daar kun je logisch doorgroeien naar tutorials, slimme routines en zelfbouwprojecten.</p>
+<ul>
+<li>Lees verder in <a href="tutorials.html">de tutorials over Homey en flows</a> om de basis goed onder de knie te krijgen.</li>
+<li>Bekijk <a href="diy.html">de DIY-projecten</a> als je Homey wilt uitbreiden met eigen sensoren of schakelingen.</li>
+<li>Gebruik dit artikel als vertrekpunt om gerichter te kiezen welke automatiseringen in jouw huis echt nuttig zijn.</li>
+</ul>
+<figure>
+<a href="https://www.huisvanvandaag.nl/diy.html">
+  <img 
+    alt="Zelfbouwproject gekoppeld aan Homey voor extra automatisering" 
+    src="assets/header/homeyduino-co2-sensor-hero.jpg"
+  />
+</a>
+
+<figcaption class="muted small">
+  Wie eenmaal de basis begrijpt, ontdekt vaak al snel hoe krachtig Homey in combinatie met DIY kan zijn.
+</figcaption>
+</figure>
+<h2 id="conclusie">Conclusie</h2>
+<p>Homey is vooral waardevol omdat het losse slimme apparaten verandert in één samenhangend systeem. Niet door zoveel mogelijk techniek toe te voegen, maar door automatisering logisch, overzichtelijk en bruikbaar te maken.</p>
+</article>
+<aside class="side-stack">
+<div class="toc">
+<h3>In dit artikel</h3>
+<a href="#wat-is-het">Wat kun je in de praktijk met Homey?</a>
+<a href="#waarom-relevant">Waarom is dat relevant?</a>
+<a href="#praktijk">Praktische toepassingen</a>
+<a href="#waar-let-je-op">Waar let je op?</a>
+<a href="#verdieping">Hoe haal je er meer uit?</a>
+<a href="#volgende-stap">Volgende stap</a>
+<a href="#conclusie">Conclusie</a>
+</div>
+<div class="sidebar-card">
+<h3>Gerelateerd</h3>
+<div class="footer-links"><a href="homey-pro-mini-2026.html">Homey Pro mini: wat is het en hoe verschilt het van Bridge en Pro?</a><a href="homey-pro-2023.html">Homey Pro (2023): de smart home hub die je losse apparaten eindelijk laat samenwerken</a><a href="wat-is-homeyduino.html">Wat is Homeyduino en wat kun je ermee?</a></div>
+</div>
+<div class="sidebar-card newsletter-sidebar-card">
+  <div id="mlb2-42295160" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42295160">
+    <div class="row-form">
+      <h3>📬 Mis geen project</h3>
+      <p>Vind je dit interessant? Dan vind je de volgende waarschijnlijk ook leuk.</p>
+
+      <form class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/subscribe"
+            method="post"
+            target="_blank">
+
+        <input type="email"
+               name="fields[email]"
+               placeholder="E-mailadres"
+               autocomplete="email"
+               aria-label="E-mailadres"
+               required>
+
+        <p class="newsletter-small">Geen spam. Uitschrijven kan altijd.</p>
+
+        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">👉 Houd me op de hoogte</button>
+      </form>
+    </div>
+
+<div class="row-success" style="display:none;">
+  <h3>🏠 Welkom aan boord</h3>
+
+  <p>
+    Je inschrijving is gelukt.
+  </p>
+
+  <p>
+    Vanaf nu ontvang je af en toe nieuwe Homey-tips, slimme automatiseringen en DIY-projecten.
+  </p>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function ml_webform_success_42295160() {
+  document.querySelector('.ml-subscribe-form-42295160 .row-form').style.display = 'none';
+  document.querySelector('.ml-subscribe-form-42295160 .row-success').style.display = 'block';
+}
+fetch("https://assets.mailerlite.com/jsonp/2409308/forms/189545722225362617/takel");
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+
+</aside>
+
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="include.js"></script>
+<script src="script.js"></script>
+
+<script src="affiliate-products.js" defer></script>
+</body>
+</html>
