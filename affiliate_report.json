@@ -51,6 +51,31 @@
       "matched_product_keys": []
     },
     {
+      "file": "beste-bewegingssensoren-voor-homey-2026.html",
+      "relative_path": "beste-bewegingssensoren-voor-homey-2026.html",
+      "title": "De beste bewegingssensoren voor Homey in 2026 | huisvanvandaag.nl",
+      "article_type": "article",
+      "match_source": "metadata_fallback",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": [
+        "homey",
+        "pir_sensor_module"
+      ]
+    },
+    {
+      "file": "beste-slimme-stekkers-voor-homey-2026.html",
+      "relative_path": "beste-slimme-stekkers-voor-homey-2026.html",
+      "title": "De beste slimme stekkers voor Homey in 2026: welke past bij jouw huis? | huisvanvandaag.nl",
+      "article_type": "review",
+      "match_source": "review_metadata_and_sections",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": [
+        "homey"
+      ]
+    },
+    {
       "file": "bewegingssensor_homeyduino.html",
       "relative_path": "bewegingssensor_homeyduino.html",
       "title": "Bouw je eigen Bewegingssensor (PIR + Arduino) | huisvanvandaag.nl",
@@ -222,6 +247,18 @@
       ]
     },
     {
+      "file": "homey-portal.html",
+      "relative_path": "homey-portal.html",
+      "title": "Homey Portal: dit is Homey's nieuwe bedieningspaneel voor je slimme huis | huisvanvandaag.nl",
+      "article_type": "review",
+      "match_source": "review_metadata_and_sections",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": [
+        "homey"
+      ]
+    },
+    {
       "file": "homey-pro-2023.html",
       "relative_path": "homey-pro-2023.html",
       "title": "Homey Pro (2023): het slimme hart van je huis | huisvanvandaag.nl",
@@ -230,6 +267,21 @@
       "benodigdheden_heading": null,
       "benodigdheden": [],
       "matched_product_keys": [
+        "homey"
+      ]
+    },
+    {
+      "file": "homey-pro-2026-review.html",
+      "relative_path": "homey-pro-2026-review.html",
+      "title": "Homey Pro 2026 + Energy Dongle review: meer rust in mijn smart home | huisvanvandaag.nl",
+      "article_type": "review",
+      "match_source": "review_metadata_and_sections",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": [
+        "MH1750_licht_sensor",
+        "bme280_sensor",
+        "esp32_devkitc",
         "homey"
       ]
     },
@@ -409,20 +461,6 @@
         "ESP32_Development_Board",
         "esp32_devkitc",
         "homey"
-      ]
-    },
-    {
-      "file": "homeyduino-in-2026.html",
-      "relative_path": "homeyduino-in-2026.html",
-      "title": "Homeyduino in 2026: wat kun je er nog mee en waarom is het interessant? | huisvanvandaag.nl",
-      "article_type": "diy",
-      "match_source": "metadata_fallback",
-      "benodigdheden_heading": null,
-      "benodigdheden": [],
-      "matched_product_keys": [
-        "esp32_devkitc",
-        "homey",
-        "wemos_d1_mini"
       ]
     },
     {
@@ -696,6 +734,18 @@
       ]
     },
     {
+      "file": "slimme-lampen-voor-homey-vergeleken.html",
+      "relative_path": "slimme-lampen-voor-homey-vergeleken.html",
+      "title": "Slimme lampen voor Homey vergeleken: Hue, IKEA, Innr, WiZ en Nanoleaf | huisvanvandaag.nl",
+      "article_type": "review",
+      "match_source": "review_metadata_and_sections",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": [
+        "homey"
+      ]
+    },
+    {
       "file": "tutorials.html",
       "relative_path": "tutorials.html",
       "title": "Tutorials | huisvanvandaag.nl",
@@ -730,8 +780,18 @@
       ]
     },
     {
-      "file": "wat-je-hebt-gemist.html",
-      "relative_path": "wat-je-hebt-gemist.html",
+      "file": "wat-je-hebt-gemist-juli-2026.html",
+      "relative_path": "wat-je-hebt-gemist-juli-2026.html",
+      "title": "Zelf Matter-sensoren bouwen | huisvanvandaag.nl",
+      "article_type": "article",
+      "match_source": "metadata_fallback",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
+    },
+    {
+      "file": "wat-je-hebt-gemist-juni-2026.html",
+      "relative_path": "wat-je-hebt-gemist-juni-2026.html",
       "title": "Wat je hebt gemist | huisvanvandaag.nl",
       "article_type": "review",
       "match_source": "review_metadata_and_sections",
@@ -740,6 +800,16 @@
       "matched_product_keys": [
         "homey"
       ]
+    },
+    {
+      "file": "wat-je-hebt-gemist.html",
+      "relative_path": "wat-je-hebt-gemist.html",
+      "title": "Wat je hebt gemist | HuisvanVandaag",
+      "article_type": "article",
+      "match_source": "metadata_fallback",
+      "benodigdheden_heading": null,
+      "benodigdheden": [],
+      "matched_product_keys": []
     },
     {
       "file": "wat-kun-je-doen-met-homey.html",

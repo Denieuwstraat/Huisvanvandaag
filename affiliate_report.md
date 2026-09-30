@@ -1,6 +1,6 @@
 # Affiliate inventory scan
 
-Totaal gescande artikelen: 54
+Totaal gescande artikelen: 60
 
 ## 404.html
 - Titel: Pagina niet gevonden | huisvanvandaag.nl
@@ -40,6 +40,25 @@ Totaal gescande artikelen: 54
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys: geen
+
+## beste-bewegingssensoren-voor-homey-2026.html
+- Titel: De beste bewegingssensoren voor Homey in 2026 | huisvanvandaag.nl
+- Artikeltype: article
+- Matchbron: metadata_fallback
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys:
+  - homey
+  - pir_sensor_module
+
+## beste-slimme-stekkers-voor-homey-2026.html
+- Titel: De beste slimme stekkers voor Homey in 2026: welke past bij jouw huis? | huisvanvandaag.nl
+- Artikeltype: review
+- Matchbron: review_metadata_and_sections
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys:
+  - homey
 
 ## bewegingssensor_homeyduino.html
 - Titel: Bouw je eigen Bewegingssensor (PIR + Arduino) | huisvanvandaag.nl
@@ -176,6 +195,15 @@ Totaal gescande artikelen: 54
   - LD2410_24G_human_presence_sensor
   - homey
 
+## homey-portal.html
+- Titel: Homey Portal: dit is Homey's nieuwe bedieningspaneel voor je slimme huis | huisvanvandaag.nl
+- Artikeltype: review
+- Matchbron: review_metadata_and_sections
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys:
+  - homey
+
 ## homey-pro-2023.html
 - Titel: Homey Pro (2023): het slimme hart van je huis | huisvanvandaag.nl
 - Artikeltype: article
@@ -183,6 +211,18 @@ Totaal gescande artikelen: 54
 - Benodigdheden-sectie gevonden: nee
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys:
+  - homey
+
+## homey-pro-2026-review.html
+- Titel: Homey Pro 2026 + Energy Dongle review: meer rust in mijn smart home | huisvanvandaag.nl
+- Artikeltype: review
+- Matchbron: review_metadata_and_sections
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys:
+  - MH1750_licht_sensor
+  - bme280_sensor
+  - esp32_devkitc
   - homey
 
 ## homey-pro-mini-2026.html
@@ -332,17 +372,6 @@ Totaal gescande artikelen: 54
   - ESP32_Development_Board
   - esp32_devkitc
   - homey
-
-## homeyduino-in-2026.html
-- Titel: Homeyduino in 2026: wat kun je er nog mee en waarom is het interessant? | huisvanvandaag.nl
-- Artikeltype: diy
-- Matchbron: metadata_fallback
-- Benodigdheden-sectie gevonden: nee
-- Benodigdheden: geen lijst gevonden
-- Herkende productkeys:
-  - esp32_devkitc
-  - homey
-  - wemos_d1_mini
 
 ## homeyduino-ld2410-aanwezigheidssensor.html
 - Titel: LD2410 aanwezigheidssensor maken met Homeyduino en ESP32 | huisvanvandaag.nl
@@ -565,6 +594,15 @@ Totaal gescande artikelen: 54
   - homey
   - roomba_i7_plus
 
+## slimme-lampen-voor-homey-vergeleken.html
+- Titel: Slimme lampen voor Homey vergeleken: Hue, IKEA, Innr, WiZ en Nanoleaf | huisvanvandaag.nl
+- Artikeltype: review
+- Matchbron: review_metadata_and_sections
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys:
+  - homey
+
 ## tutorials.html
 - Titel: Tutorials | huisvanvandaag.nl
 - Artikeltype: tutorial
@@ -591,7 +629,15 @@ Totaal gescande artikelen: 54
 - Herkende productkeys:
   - homey
 
-## wat-je-hebt-gemist.html
+## wat-je-hebt-gemist-juli-2026.html
+- Titel: Zelf Matter-sensoren bouwen | huisvanvandaag.nl
+- Artikeltype: article
+- Matchbron: metadata_fallback
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
+
+## wat-je-hebt-gemist-juni-2026.html
 - Titel: Wat je hebt gemist | huisvanvandaag.nl
 - Artikeltype: review
 - Matchbron: review_metadata_and_sections
@@ -599,6 +645,14 @@ Totaal gescande artikelen: 54
 - Benodigdheden: geen lijst gevonden
 - Herkende productkeys:
   - homey
+
+## wat-je-hebt-gemist.html
+- Titel: Wat je hebt gemist | HuisvanVandaag
+- Artikeltype: article
+- Matchbron: metadata_fallback
+- Benodigdheden-sectie gevonden: nee
+- Benodigdheden: geen lijst gevonden
+- Herkende productkeys: geen
 
 ## wat-kun-je-doen-met-homey.html
 - Titel: Wat kun je doen met Homey? Praktische toepassingen en inspiratie | huisvanvandaag.nl
